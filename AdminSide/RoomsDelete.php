@@ -11,12 +11,13 @@
 				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>ID</th><th>Name</th><th>Room Description</th><th>Room Capacity</th><th>Room Rate per night</th><th>Room Number</th><th>Room Status</th><th colspan="2">Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["room_id"]. "</td><td>" . $row["room_type"]. "</td><td>" . $row["room_description"]. "</td><td>" . $row["room_capacity"] . "</td><td>" . $row["room_rate"] . "</td><td>" . $row["room_number"] . "</td><td>" . $row["room_status"] . "<td><form method = 'POST' action = 'roomsDelete.php'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
+	        echo "<tr><td>" . $row["room_id"]. "</td><td>" . $row["room_type"]. "</td><td>" . $row["room_description"]. "</td><td>" . $row["room_capacity"] . "</td><td>" . $row["room_rate"] . "</td><td>" . $row["room_number"] . "</td><td>" . $row["room_status"] . "<td><form method = 'POST' action = 'roomsDelete.php'><input type ='hidden' value = '{$row['room_id']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
 	    // Hello po pwede po patulong pls hehe 
 	    if (isset($_POST['delete'])) {
-			$delete_room_query =  "DELETE FROM room_masterfile WHERE room_id = '{$row['room_id']}'";
+			$delete_room_query =  "DELETE FROM room_masterfile WHERE room_id = {$_POST['delete_id']}";
+
 	        try 
 	        {
 	          $delete_result = mysqli_query($conn, $delete_room_query) or die (mysqli_error($conn) . "saan?");
@@ -29,7 +30,7 @@
 	            }
 	            else 
 	            {
-	              echo "<script>alert('Data not Deleted.');location.href='roomsDelete.php';</script>";
+	              echo "<script>alert('Data not Deleted.{$row['room_id']}');location.href='roomsDelete.php';</script>";
 	            }
 	          } 
 	        } 
