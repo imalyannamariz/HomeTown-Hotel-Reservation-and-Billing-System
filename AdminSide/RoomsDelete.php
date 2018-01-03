@@ -16,10 +16,10 @@
 	    echo "</table></div></div></div>";
 	    // Hello po pwede po patulong pls hehe 
 	    if (isset($_POST['delete'])) {
-			$delete_room_query =  "DELETE FROM `room_masterfile` WHERE 'room_id' = "{$row['room_id']}";
+			$delete_room_query =  "DELETE FROM room_masterfile WHERE room_id = '{$row['room_id']}'";
 	        try 
 	        {
-	          $delete_result = mysqli_query($conn, $delete_room_query) or die (mysqli_error($conn));
+	          $delete_result = mysqli_query($conn, $delete_room_query) or die (mysqli_error($conn) . "saan?");
 	          if ($delete_result) 
 	          {
 	            if (mysqli_affected_rows($conn) > 0) 
