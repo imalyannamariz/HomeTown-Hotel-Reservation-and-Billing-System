@@ -15,7 +15,7 @@
           {
             if (mysqli_affected_rows($conn) > 0) 
             {
-              header("Location: discounts.php");
+              header("Location: DiscountModify.php");
               exit();
             }
             else 

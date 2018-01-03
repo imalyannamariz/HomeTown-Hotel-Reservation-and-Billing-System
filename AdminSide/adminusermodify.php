@@ -13,33 +13,33 @@
 				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>User Id</th><th>First Name</th><th>Last Name</th><th>Email Address</th><th>User type</th><th>Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["user_id"]. "</td><td>" . $row["User_firstname"]. "</td><td>" . $row["User_lastname"]. "</td><td>" . $row["email"] . "</td><td>" . $row["admin_type"] . "<td><form method = 'POST' action = 'roomsDelete.php'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
+	        echo "<tr><td>" . $row["user_id"]. "</td><td>" . $row["User_firstname"]. "</td><td>" . $row["User_lastname"]. "</td><td>" . $row["email"] . "</td><td>" . $row["admin_type"] . "<td><form method = 'POST' action = 'adminusermodify.php'><input type ='hidden' value = '{$row['user_id']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
-	    //Hello po pwede po patulong pls hehe 
-	//     if (isset($_POST['submit'])) {
-	// 		$delete_room_query =  "DELETE FROM `room_masterfile` WHERE 'room_id' = $row["room_id"]";
-	//         try 
-	//         {
-	//           $delete_result = mysqli_query($conn, $delete_room_query) or die (mysqli_error($conn));
-	//           if ($delete_result) 
-	//           {
-	//             if (mysqli_affected_rows($conn) > 0) 
-	//             {
-	//               header("Location: roomsDelete.php");
-	//               exit();
-	//             }
-	//             else 
-	//             {
-	//               echo "<script>alert('Data not Deleted.');location.href='roomsDelete.php';</script>";
-	//             }
-	//           } 
-	//         } 
-	//         catch (Exception $ex) 
-	//         {
-	//           echo "Error Delete Data".$ex->getMessage();
-	//         }
-	// }
+	    if (isset($_POST['delete'])) {
+      $delete_admin_query =  "DELETE FROM adminuser_masterfile WHERE user_id = {$_POST['delete_id']}";
+
+          try 
+          {
+            $delete_result = mysqli_query($conn, $delete_admin_query) or die (mysqli_error($conn) . "saan?");
+            if ($delete_result) 
+            {
+              if (mysqli_affected_rows($conn) > 0) 
+              {
+                header("Location: adminusermodify.php");
+                exit();
+              }
+              else 
+              {
+                echo "<script>alert('Data not Deleted.{$row['user_id']}');location.href='adminusermodify.php';</script>";
+              }
+            } 
+          } 
+          catch (Exception $ex) 
+          {
+            echo "Error Delete Data".$ex->getMessage();
+          }
+      }
 
 	}	
 ?>
@@ -219,7 +219,7 @@ table{
               <a href="DiscountAdd.php">Add Discounts</a>
             </li>
             <li>
-              <a href="#">Modify Discounts</a>
+              <a href="DiscountModify.php">Modify Discounts</a>
             </li>
             
             <li>

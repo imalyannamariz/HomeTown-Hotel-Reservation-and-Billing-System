@@ -2,30 +2,30 @@
 	include_once 'dbConnect.php';
 	session_start();
 
-	$sql = "SELECT * FROM room_masterfile";
+	$sql = "SELECT * FROM discount_masterfile";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
 	    echo '<div class="content-wrapper">
     			<div class="container-fluid"><h3>Room List</h3>
-				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>ID</th><th>Name</th><th>Room Description</th><th>Room Capacity</th><th>Room Rate per night</th><th>Room Number</th><th>Room Status</th><th colspan="2">Actions</th></tr>';
+				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>Discount ID</th><th>Discount Percent</th><th>Discount Name</th><th>Discount Description</th><th colspan="2">Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["room_id"]. "</td><td>" . $row["room_type"]. "</td><td>" . $row["room_description"]. "</td><td>" . $row["room_capacity"] . "</td><td>" . $row["room_rate"] . "</td><td>" . $row["room_number"] . "</td><td>" . $row["room_status"] . "<td><form method = 'POST' action = 'roomsDelete.php'><input type ='hidden' value = '{$row['room_id']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
+	        echo "<tr><td>" . $row["discount_ID"]. "</td><td>" . $row["discount_percent"]. "</td><td>" . $row["discount_name"]. "</td><td>" . $row["discount_description"] . "<td><form method = 'POST' action = 'discountModify.php'><input type ='hidden' value = '{$row['discount_ID']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
 	    // Hello po pwede po patulong pls hehe 
 	    if (isset($_POST['delete'])) {
-			$delete_room_query =  "DELETE FROM room_masterfile WHERE room_id = {$_POST['delete_id']}";
+			$delete_discount_query =  "DELETE FROM discount_masterfile WHERE discount_ID = {$_POST['delete_id']}";
 
 	        try 
 	        {
-	          $delete_result = mysqli_query($conn, $delete_room_query) or die (mysqli_error($conn) . "saan?");
+	          $delete_result = mysqli_query($conn, $delete_discount_query) or die (mysqli_error($conn) . "saan?");
 	          if ($delete_result) 
 	          {
 	            if (mysqli_affected_rows($conn) > 0) 
 	            {
-	              header("Location: roomsDelete.php");
+	              header("Location: DiscountModify.php");
 	              exit();
 	            }
 	            else 
@@ -46,7 +46,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Modify Room</title>
+	<title>Modify Discounts</title>
 
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
