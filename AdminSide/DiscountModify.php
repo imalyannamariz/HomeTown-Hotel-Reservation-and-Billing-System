@@ -11,7 +11,7 @@
 				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>Discount ID</th><th>Discount Percent</th><th>Discount Name</th><th>Discount Description</th><th colspan="2">Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["discount_ID"]. "</td><td>" . $row["discount_percent"]. "</td><td>" . $row["discount_name"]. "</td><td>" . $row["discount_description"] . "<td><form method = 'POST' action = 'discountModify.php'><input type ='hidden' value = '{$row['discount_ID']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Discount</button><br><button name = 'delete' type = 'submit'>Delete Discount</button></form></td>";
+	        echo "<tr><td>" . $row["discount_ID"]. "</td><td>" . $row["discount_percent"]. "</td><td>" . $row["discount_name"]. "</td><td>" . $row["discount_description"] . "<td><form method = 'POST' action = 'discountModify.php'><input type ='hidden' value = '{$row['discount_ID']}' name = 'delete_id'><a href= 'updatediscount.php'><button name = 'edit' type = 'submit'>Edit Discount</a></button><br><button name = 'delete' type = 'submit'>Delete Discount</button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
 	    // Hello po pwede po patulong pls hehe 

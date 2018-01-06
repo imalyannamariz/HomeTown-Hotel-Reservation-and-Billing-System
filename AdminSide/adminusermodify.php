@@ -13,7 +13,7 @@
 				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>User Id</th><th>First Name</th><th>Last Name</th><th>Email Address</th><th>User type</th><th>Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["user_id"]. "</td><td>" . $row["User_firstname"]. "</td><td>" . $row["User_lastname"]. "</td><td>" . $row["email"] . "</td><td>" . $row["admin_type"] . "<td><form method = 'POST' action = 'adminusermodify.php'><input type ='hidden' value = '{$row['user_id']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Account</button><br><button name = 'delete' type = 'submit'>Delete Account</button></form></td>";
+	        echo "<tr><td>" . $row["user_id"]. "</td><td>" . $row["User_firstname"]. "</td><td>" . $row["User_lastname"]. "</td><td>" . $row["email"] . "</td><td>" . $row["admin_type"] . "<td><form method = 'POST' action = 'adminusermodify.php'><input type ='hidden' value = '{$row['user_id']}' name = 'delete_id'><button name = 'edit' type = 'submit'><a href='updateuseraccount.php'>Edit Account</a></button><br><button name = 'delete' type = 'submit'>Delete Account</button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
 	    if (isset($_POST['delete'])) {

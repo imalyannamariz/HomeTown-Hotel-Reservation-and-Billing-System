@@ -1,13 +1,35 @@
 <?php
   include_once 'dbConnect.php';
-
   session_start();
+
+  // if (isset($_SESSION['room_id']))
+
+  //   $id= $_SESSION['room_id'];
+  //   $query="Select * from room_masterfile WHERE room_id = '{$id}'";
+  //   $select_profile_user_query=mysqli_query($connection,$query);
+
+  //   while ($row=myqsqli_fetch_array($select_user_profile_query)){
+
+  //       $room_id=$row['room_id'];
+  //       $room_type=$row['room_type'];
+  //       $room_description=$row['room_description'];
+  //       $room_capacity=$row['room_capacity'];
+  //       $room_rate=$row['room_rate'];
+  //       $room_number=$row['room_number'];
+  //       $room_status=$row['room_status'];
+
+
+
+  //   }
+
+ 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <title>Modify Discounts</title>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,13 +40,31 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Page level plugin CSS-->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
 </head>
+<style>
+table{
+  
+  margin-top:10px;
+}
+table {
+    border-collapse: collapse;
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+}
+
+table, th, td {
+    border: 2px solid black;
+    text-align: center;
+}
+table{
+  color: black;
+}
+
+</style>
+<body>        <form method = "POST" action = "RoomsAdd.php" id = "addRoomsForm">
+        
+  <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.php">HomeTown Hotel Makati - Admin</a>
@@ -84,19 +124,7 @@
               <a href="rooms.php">Update Rooms</a>
             </li> -->
           </ul>
-        </li><!-- 
-        yung href neto palitan ng new form parang dashboard din pero nakatable mga reservations -->
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="reservationpage.php" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Reservations</span>
-          </a>
-          
-            <li>
-          </li>
         </li>
-        
-
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti22" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
@@ -112,9 +140,7 @@
             <li>
               <a href="adminusermodify.php">Modify Account</a>
             </li>
-       <!--      <li>
-              <a href="#">Delete Account</a>
-            </li> -->
+            
             <li>
           </li>
               <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti001">Customer Account</a>
@@ -125,9 +151,7 @@
                 <li>
                   <a href="guestmodify.php">Modify Account</a>
                 </li>
-                <!-- <li>
-                  <a href="#">Delete Account</a>
-                </li> -->
+                
               </ul>
             </li>
           </ul>
@@ -142,13 +166,11 @@
             <li>
               <a href="RoomsAdd.php">Add Rooms</a>
             </li>
+            
             <li>
-              <a href="Roomsdelete.php">Modify Room</a>
-             </li>
-  <!--           <li>
-              <a href="RoomsDelete.php">Delete Rooms</a>
+              <a href="RoomsDelete.php">Modify Rooms</a>
             </li>
-    -->         <li>
+            <li>
           </li>
         </li>
         
@@ -179,11 +201,9 @@
               <a href="DiscountAdd.php">Add Discounts</a>
             </li>
             <li>
-              <a href="discountModify.php">Modify Discounts</a>
+              <a href="DiscountModify.php">Modify Discounts</a>
             </li>
-            <!-- <li>
-              <a href="#">Delete Discounts</a>
-            </li> -->
+            
             <li>
           </li>
         </li>
@@ -396,10 +416,32 @@
     </div>
   </nav>
   <div class="content-wrapper">
-    <h1>  Welcome Admin
-    <small> <?php echo $_SESSION['email']; ?></small></h1>
-    <div class="container-fluid">
-	
+          <div class="card-header">Edit Discount</div>
+      <div class="card-body">
+        <form method = "POST" action = "DiscountAdd.php" id = "addDiscountForm">
+          <div class="form-group">
+            <label for="discountPercent">Discount Percent %</label><br>
+            <input required class="form-control" name = "discountPercent" type="number" aria-describedby="emailHelp" placeholder="Discount Percent">
+          </div>
+          <div class="form-group">
+            <label for="discountName">Discount Name</label><br>
+            <input required class="form-control" name = "discountName" type="text" placeholder="Discount Name">
+          </div>
+          <div class="form-group">
+            <label for="discountDescription">Discount Description</label><br>
+            <textarea rows="4" cols="44" name="discountDescription" form="addDiscountForm" placeholder="Enter discount description here..."></textarea>
+          </div>        
+          <button name = "submit" class="btn btn-primary btn-block">Update Discount</button>
+        </form>
+        
+      </div>
+    </div>
+
+         </table>
+      
+     
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -444,6 +486,6 @@
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
   </div>
-</body>
 
+</body>
 </html>
