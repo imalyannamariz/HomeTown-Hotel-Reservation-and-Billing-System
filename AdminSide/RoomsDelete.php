@@ -11,12 +11,12 @@
 				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>ID</th><th>Name</th><th>Room Description</th><th>Room Capacity</th><th>Room Rate per night</th><th>Room Number</th><th>Room Status</th><th colspan="2">Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["room_id"]. "</td><td>" . $row["room_type"]. "</td><td>" . $row["room_description"]. "</td><td>" . $row["room_capacity"] . "</td><td>" . $row["room_rate"] . "</td><td>" . $row["room_number"] . "</td><td>" . $row["room_status"] . "<td><form method = 'POST' action = 'roomsDelete.php'><input type ='hidden' value = '{$row['room_id']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
+	        echo "<tr><td id='room_id'>" . $row["room_id"]. "</td><td>" . $row["room_type"]. "</td><td>" . $row["room_description"]. "</td><td>" . $row["room_capacity"] . "</td><td>" . $row["room_rate"] . "</td><td>" . $row["room_number"] . "</td><td>" . $row["room_status"] . "<td><form method = 'POST' action = 'roomsDelete.php'><input type ='hidden' value = '{$row['room_id']}' name = 'id'><button name = 'edit' type = 'button' data-toggle='modal' data-target='editRoom'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room </button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
 	    // Hello po pwede po patulong pls hehe 
 	    if (isset($_POST['delete'])) {
-			$delete_room_query =  "DELETE FROM room_masterfile WHERE room_id = {$_POST['delete_id']}";
+			$delete_room_query =  "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}";
 
 	        try 
 	        {
@@ -30,7 +30,7 @@
 	            }
 	            else 
 	            {
-	              echo "<script>alert('Data not Deleted.{$row['room_id']}');location.href='roomsDelete.php';</script>";
+	              echo "<script>alert('Data not Deleted.{$row['id']}');location.href='roomsDelete.php';</script>";
 	            }
 	          } 
 	        } 
@@ -38,7 +38,31 @@
 	        {
 	          echo "Error Delete Data".$ex->getMessage();
 	        }
-	}
+	 }
+   elseif (isset($_POST['edit'])) {
+     $edit_room_query =  "UPDATE room_masterfile SET  ";
+
+          try 
+          {
+            $edit_result = mysqli_query($conn, $edit_room_query) or die (mysqli_error($conn) . "saan?");
+            if ($edit_result) 
+            {
+              if (mysqli_affected_rows($conn) > 0) 
+              {
+                header("Location: roomsDelete.php");
+                exit();
+              }
+              else 
+              {
+                echo "<script>alert('Data not Updated.{$row['id']}');location.href='roomsDelete.php';</script>";
+              }
+            } 
+          } 
+          catch (Exception $ex) 
+          {
+            echo "Error Delete Data".$ex->getMessage();
+          }
+   }
 
 	}	
 ?>
@@ -80,8 +104,7 @@ table{
 }
 
 </style>
-<body>
-	<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="index.php">HomeTown Hotel Makati - Admin</a>
@@ -1048,6 +1071,16 @@ table{
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+    <!-- Edit Room Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalWrapper">
+      <div class="modal-dialog modal-lg" role="document" id="modalWrapper">
+        <div class="modal-content">
+          <div class="modal-body">          
+            
+          </div>
+        </div>          
+      </div>
+    </div>
     <!-- Logout Modal-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -1080,6 +1113,11 @@ table{
     <!-- Custom scripts for this page-->
     <script src="js/sb-admin-datatables.min.js"></script>
     <script src="js/sb-admin-charts.min.js"></script>
+    <script>
+      $("input[name=editRoom]").click(function(){
+        console.log($(this).closest("tr#"))
+      });
+    </script>
   </div>
 
 </body>

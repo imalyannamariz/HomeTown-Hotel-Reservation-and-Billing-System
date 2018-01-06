@@ -13,7 +13,7 @@
 				<div class="table-responsive"><table class="table table-bordered" id="dataTable" align="center"><tr><th>Guest ID</th><th>First Name</th><th>Last Name</th><th>Email Address</th><th>Contact Number</th><th>Country</th><th>Address</th><th>Actions</th></tr>';
 	    // output data of each row
 	    while($row = $result->fetch_assoc()) {
-	        echo "<tr><td>" . $row["guest_ID"]. "</td><td>" . $row["guest_firstname"]. "</td><td>" . $row["guest_lastname"]. "</td><td>" . $row["guest_email"] . "</td><td>" . $row["guest_contactNumber"] . "</td><td>" . $row["guest_country"]."</td><td>".$row["guest_address"] . "<td><form method = 'POST' action = 'guestmodify.php'><input type ='hidden' value = '{$row['guest_ID']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Room</button><br><button name = 'delete' type = 'submit'>Delete Room</button></form></td>";
+	        echo "<tr><td>" . $row["guest_ID"]. "</td><td>" . $row["guest_firstname"]. "</td><td>" . $row["guest_lastname"]. "</td><td>" . $row["guest_email"] . "</td><td>" . $row["guest_contactNumber"] . "</td><td>" . $row["guest_country"]."</td><td>".$row["guest_address"] . "<td><form method = 'POST' action = 'guestmodify.php'><input type ='hidden' value = '{$row['guest_ID']}' name = 'delete_id'><button name = 'edit' type = 'submit'>Edit Account</button><br><button name = 'delete' type = 'submit'>Delete Account</button></form></td>";
 	    }
 	    echo "</table></div></div></div>";
 	    if (isset($_POST['delete'])) {
