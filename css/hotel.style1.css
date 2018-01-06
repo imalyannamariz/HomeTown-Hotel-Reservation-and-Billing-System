@@ -12054,7 +12054,7 @@ header .rq-header-main-menu .container-fluid .rq-menu-wrapper ul li:hover:before
   display: block;
   overflow: hidden;
   position: absolute;
-  background-color: #c99616;
+  background-color: #ed3434;
   top: 0px;
   left: 0px;
 }
@@ -13520,7 +13520,7 @@ SIDE MENU ITEMS
   font-family: 'Roboto', sans-serif;
   font-size: 54px;
   font-weight: 700;
-  color: #c99616;
+  color: #ed3434;
   letter-spacing: 10px;
   margin-right: -10px;
 }
@@ -13584,7 +13584,7 @@ SIDE MENU ITEMS
 .footer .rq-footer-top h5 {
   font-size: 14px;
   text-transform: uppercase;
-  color: #c99616;
+  color: #ed3434;
   margin-bottom: 25px;
 }
 .footer .rq-footer-top address ul {
@@ -17378,7 +17378,7 @@ p {
   line-height: 40px;
   border-radius: 0;
   color: #fff;
-  background-color: #c99616;
+  background-color: #ed3434;
   border-color: transparent;
 }
 .rq-btn-primary:focus,

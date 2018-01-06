@@ -9,7 +9,7 @@
     //   },
     //   {gamma: 0.9}]
     // },
-    {
+    //{
       featureType: 'water',
       elementType: 'geometry',
       stylers: [
