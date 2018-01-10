@@ -31,7 +31,7 @@ session_start();
               $_SESSION['contactNumber'] = $row['guest_contactNumber'];
               $_SESSION['country'] = $row['guest_country'];
               $_SESSION['address'] = $row['guest_address'];
-              header("Location: /HOMETOWNHOTEL/Step1.php");
+              header("Location: Step1.php");
             }
           }
         } 

@@ -19,7 +19,7 @@
           {
             if (mysqli_affected_rows($conn) > 0) 
             {
-              header("Location: index.php");
+              echo "<script>alert('Data Successfully Inserted.');location.href='roomsAdd.php';</script>";
               exit();
             }
             else 
