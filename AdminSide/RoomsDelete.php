@@ -122,7 +122,7 @@ table{
         </div>
         <div class='modal-body'>
           <!-- <div class='content-wrapper'> -->
-            <form id="formEditRoom">
+            <form id="formEditRoom" enctype="multipart/form-data" method ='post'>
               <div class='container-fluid'>
                 <div class='form-group'>
                   <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
@@ -145,8 +145,8 @@ table{
                       <input required class='form-control' name = 'roomNumber' type='number'>
                     </div>
                      <div class='form-group'>
-                      <label for='roomNumber'>Image</label><br>
-                      <input type ='file' required class='form-control' name = 'image'>
+                      <label for ='image_upload'>Image</label><br>
+                      <input type ='file' accept = 'image/*' name = 'image_upload'>
                     </div>
                     <div class='form-group'>
                       <label for='roomStatus'>Room Status &nbsp&nbsp</label>
@@ -193,15 +193,15 @@ table{
         $('#editRoom').find('input[name=roomCapacity]').val(room_capacity);
         $('#editRoom').find('input[name=roomRate]').val(room_rate);
         $('#editRoom').find('input[name=roomNumber]').val(room_number);
-        $('#editRoom').find('input[name=roomStatus]').val(room_status);
-        
+        $('#editRoom').find('input[name=roomStatus]').val(room_status); 
       });
       $("#formEditRoom").submit(function(e){
+        var image_path = $('input[type=file]').val().replace(/.*(\/|\\)/, '')
         e.preventDefault(); // remove default function of form submit
         $.ajax({
           type: 'POST', // type of submission
           url: 'updateroom.php', // where the form send the data HAHAHAH
-          data: $(this).serialize(), // roomType=blabla&roomDescription=blabla&....
+          data: $(this).serialize()+`&image_upload=${image_path}`, // roomType=blabla&roomDescription=blabla&....
           success: function(response){ // eto ung response ng php na nilagay mo sa url
             alert(response)
             location.href="RoomsDelete.php";
