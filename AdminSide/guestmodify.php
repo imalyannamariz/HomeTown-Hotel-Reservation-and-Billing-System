@@ -17,25 +17,25 @@
                       <th>Last Name</th>
                       <th>Email Address</th>
                       <th>Contact Number</th>
-                      <th>Country</th>
                       <th>Address</th>
+                      <th>Country</th>
                       <th>Actions</th>
                     </tr>';
               	    // output data of each row
               	    while($row = $result->fetch_assoc()) {
               	        echo "<tr>
-                                <td>" . $row["guest_ID"]. "</td>
-                                <td>" . $row["guest_firstname"]. "</td>
-                                <td>" . $row["guest_lastname"]. "</td>
-                                <td>" . $row["guest_email"] . "</td>
-                                <td>" . $row["guest_contactNumber"] . "</td>
-                                <td>" . $row["guest_country"]."</td>
-                                <td>".$row["guest_address"] . "<td>
+                                <td id = 'guest_id'>" . $row["guest_ID"]. "</td>
+                                <td id = 'guest_firstname'>" . $row["guest_firstname"]. "</td>
+                                <td id = 'guest_lastname'>" . $row["guest_lastname"]. "</td>
+                                <td id = 'guest_email'>" . $row["guest_email"] . "</td>
+                                <td id = 'guest_contactNumber'>" . $row["guest_contactNumber"] . "</td>
+                                <td id = 'guest_address'>".$row["guest_address"] . "</td>
+                                <td id = 'guest_country'>" . $row["guest_country"]."<td>
                                   <form method = 'POST' action = 'guestmodify.php'>
                                     <input type ='hidden' value = '{$row['guest_ID']}' name = 'delete_id'>
                                     <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editGuestAccount'>Edit</button>
                                     <br><br>
-                                    <button name = 'delete' class = 'btn btn-info btn-xs edit_data' type = 'submit'>Delete</button>
+                                    <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
                                   </form>
                                 </td>";
               	    }
@@ -110,20 +110,20 @@ table{
     <div class='modal-dialog modal-lg'>
       <div class='modal-content'>
         <div class='modal-header'>
-          <h4 class='modal-title'>Update Rooms</h4>
+          <h4 class='modal-title'>Update Infomation</h4>
           <button type='button' class='close' data-dismiss='modal'>&times;</button>
         </div>
         <div class='modal-body'>
-          <form method = "POST" action = "registerCustomer.php">
+          <form id = "formEditGuestAccount">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputName">First name</label>
-                <input  required class="form-control" id="exampleInputName" name = "firstName" type="text" aria-describedby="nameHelp" pattern = "[a-z A-Z]+" onkeypress="return isLetter(event)">
+                <input  required class="form-control" name = "firstName" type="text" aria-describedby="nameHelp" pattern = "[a-z A-Z]+" onkeypress="return isLetter(event)">
               </div>
               <div class="col-md-6">
                 <label for="exampleInputLastName">Last name</label>
-                <input required class="form-control" id="exampleInputLastName" name = "lastName" type="text" aria-describedby="nameHelp" pattern = "[a-z A-Z ]+" onkeypress="return isLetter(event)">
+                <input required class="form-control" name = "lastName" type="text" aria-describedby="nameHelp" pattern = "[a-z A-Z ]+" onkeypress="return isLetter(event)">
               </div>
             </div>
           </div>
@@ -131,23 +131,23 @@ table{
             <div class="form-row">
               <div class="col-md-6">
                 <label for="exampleInputEmail1">Email address</label>
-                <input required class="form-control" id="exampleInputEmail1" name = "email" type="email" aria-describedby="emailHelp">
+                <input required class="form-control" name = "email" type="email" aria-describedby="emailHelp">
               </div>
               <div class="col-md-6">
                 <label for="exampleInputContactNum1">Contact Number</label>
-                <input required class="form-control" id="exampleInputEmail1" name = "contactNumber" type="text" aria-describedby="emailHelp">
+                <input required class="form-control" name = "contactNumber" type="text" aria-describedby="emailHelp">
               </div>
             </div>
           </div>
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-6">
-                <label for="exampleInputPassword1">Password</label>
-                <input required class="form-control" id="exampleInputPassword1" name = "password" type="password">
+                <label for="exampleInputPassword1">Old Password</label>
+                <input required class="form-control" name = "oldPassword" type="password">
               </div>
               <div class="col-md-6">
-                <label for="exampleConfirmPassword">Confirm password</label>
-                <input required class="form-control" id="exampleConfirmPassword" name = "confirmPassword" type="password">
+                <label for="exampleConfirmPassword">New Password</label>
+                <input required class="form-control" name = "newPassword" type="password">
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ table{
             <div class="form-row">
               <div class="col-md-6">
                 <label for="Address">Address</label>
-                <input required class="form-control" id="exampleAddress" name = "address" type="text">
+                <input required class="form-control" name = "address" type="text">
               </div>
               <div class="col-md-6">
                 <label for="country">Country</label><br>
@@ -168,7 +168,7 @@ table{
                   <option value="Japan">Japan</option>
                   <option value="Korea">Korea</option>
                   <option value="Malaysia">Malaysia</option>
-                  <option value="Philippines" selected="selected">Philippines</option>
+                  <option value="Philippines">Philippines</option>
                   <option value="Saudi Arabia">Saudi Arabia</option>
                   <option value="Thailand">Thailand</option>
                   <option value="UAE">United Arab Emirates</option>
@@ -180,7 +180,7 @@ table{
               </div>
             </div>
           </div>
-
+          <input type="hidden" name="guestID">
           <button class="btn btn-primary btn-block" name = "submit" type = "submit">Update Customer Account</button>
         </form>
         </div>
@@ -190,5 +190,44 @@ table{
       </div>
     </div>
   </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" language="javascript" >
+    $(document).ready(function(){
+      $("button.edit_data").click(function(){
+        var guest_id = $(this).closest("tr").find("#guest_id").html();
+        var guest_firstname = $(this).closest("tr").find("#guest_firstname").html();
+        var guest_lastname = $(this).closest("tr").find("#guest_lastname").html();
+        var guest_email = $(this).closest("tr").find("#guest_email").html();
+        var guest_contactNumber = $(this).closest("tr").find("#guest_contactNumber").html();
+        // var guest_oldPassword = $(this).closest("tr").find("#guest_oldPassword").html();
+        // var guest_newPassword = $(this).closest("tr").find("#guest_newPassword").html();
+        var guest_country = $(this).closest("tr").find("#guest_country").html();
+        console.log(room_description);
+        $('#editGuestAccount').find('.modal-title').html(guest_id);
+        $('#editGuestAccount').find('input[name=firstName]').val(guest_firstname);
+        $('#editGuestAccount').find('input[name=lastName]').val(guest_lastname);
+        $('#editGuestAccount').find('input[name=email]').val(guest_email);
+        $('#editGuestAccount').find('input[name=contactNumber]').val(guest_contactNumber);
+        $('#editGuestAccount').find('input[name=oldPassword]').val(guest_oldPassword);
+        $('#editGuestAccount').find('input[name=newPassword]').val(guest_newPassword);
+        $('#editGuestAccount').find('input[name=country]').val(guest_country);
+        
+      });
+      $("#formEditGuestAccount").submit(function(e){
+        e.preventDefault(); // remove default function of form submit
+        $.ajax({
+          type: 'POST', // type of submission
+          url: 'updateguestaccount.php', // where the form send the data HAHAHAH
+          data: $(this).serialize(), // roomType=blabla&roomDescription=blabla&....
+          success: function(response){ // eto ung response ng php na nilagay mo sa url
+            alert(response)
+            location.href="updateguestaccount.php";
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

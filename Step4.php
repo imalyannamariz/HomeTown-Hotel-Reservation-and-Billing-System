@@ -301,7 +301,7 @@ table {
                         <strong>Name:</strong>
                       </td>
                       <td class = "text-left">
-                        (name of the guest)
+                        <?php echo $_SESSION['firstname']; ?>
                       </td>
                     </tr>
                   </thead>
@@ -311,7 +311,7 @@ table {
                         <strong>Email</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (email)
+                        <?php echo $_SESSION['email'];?>
                       </td>
                     </tr>
                     <tr>
@@ -319,7 +319,7 @@ table {
                         <strong>Cellphone:</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (cp num)
+                        <?php echo $_SESSION['contactNumber'];?>
                       </td>
                     </tr>
                     <tr>
@@ -327,7 +327,7 @@ table {
                         <strong>Address:</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (address)
+                        <?php echo $_SESSION['address']; ?>
                       </td>
                     </tr>
                     <tr>
@@ -335,7 +335,7 @@ table {
                         <strong>Check-in</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (check in)
+                        (<?php echo $_SESSION['checkInDate'];?>)
                       </td>
                     </tr>
                     <tr>
@@ -343,7 +343,7 @@ table {
                         <strong>Check out</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (check out date)
+                        (<?php echo $_SESSION['checkOutDate'];?>)
                       </td>
                     </tr>
                     <tr>
@@ -351,7 +351,7 @@ table {
                         <strong>Number of Guest</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (1)
+                        (<?php echo $_SESSION['numberOfAdults']; ?>)
                       </td>
                     </tr>
                     <tr>

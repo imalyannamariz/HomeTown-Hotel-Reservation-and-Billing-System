@@ -11,7 +11,8 @@
     <?php
   }
   if(isset($_SESSION['login'])){
-    header('Location: Step4.php'); }
+    header('Location: Step4.php'); 
+  }
 ?>
 
 <style>
@@ -145,9 +146,9 @@
                     </div>
                  </div>
                  <div class="col-md-6 col-sm-6">
-                   <div class="form-group">
-                      <label for="Password">PASSWORD</label>
-                      <input type="password" name = "password" class="form-control" id="password" required>
+                    <div class="form-group">
+                      <label for="ContactNumber">CONTACT NUMBER<SPAN>*</SPAN></label>
+                      <input type="text" name = "contactNumber" pattern = "[0-9]+" class="form-control" id="contactNumber" required onkeypress="return isNumber(event)" id="contactNumber">
                     </div>
                  </div>
                </div><!------/row-------->
@@ -155,14 +156,28 @@
                <!--country and address-->
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
-                   <div class="form-group">
-                      <label for="ContactNumber">CONTACT NUMBER<SPAN>*</SPAN></label>
-                      <input type="text" name = "contactNumber" pattern = "[0-9]+" class="form-control" id="contactNumber" required onkeypress="return isNumber(event)" id="contactNumber">
+                    <div class="form-group">
+                      <label for="Password">PASSWORD</label>
+                      <input type="password" name = "password" class="form-control" id="password" required>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-6">
                     <div class="form-group">          
-                      <label>COUNTRY</label>
+                      <label for="Password">CONFIRM PASSWORD</label>
+                      <input type="password" name = "confirmPassword" class="form-control" id="password" required>
+                    </div>               
+               </div><!------/row-------->
+
+               <div class="row">
+                 <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <label for = "address">ADDRESS</label>
+                      <input type="text" class="form-control" name="address" required>
+                    </div>
+                 </div>
+                 <div class="col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <label for="country">COUNTRY</label>
                         <div class="rq-checkout-form1 rq-checkout-country">
                           <select required name="country" class="js-example-placeholder-single form-control rq-checkout-form-select">
                             <option>&nbsp;</option>
@@ -184,15 +199,10 @@
                             <option value="Others">Others</option>
                           </select>
                         </div>
-                      </div>
-                    </div>               
-               </div><!------/row-------->
-
-               <div class="form-group">
-                <label for = "address">ADDRESS</label>
-                <input type="text" class="form-control" name="address" required>
-              </div>
-
+                    </div>
+                 </div>
+               </div>         
+             </div>
             <h1 class="rq-checkout-form-title">additional information</h1>
             <div class="form-group">
               <label for="orderNotes">order notes</label>

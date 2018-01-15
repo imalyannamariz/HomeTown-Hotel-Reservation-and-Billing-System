@@ -2,6 +2,7 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
+
 ?>
 <style>
 .navbar-brand{
@@ -21,7 +22,7 @@
         <div class="modal-content">
           <div class="modal-body">          
             <p class="success-message">You have selected <span>King's Room</span> successfully</p>
-            <form action="Step3.php">
+            <form action="Step3.php" method = 'post'>
               <h2>ADD ONS</h2>
               <fieldset>
                 <div class="table-css">
@@ -58,7 +59,7 @@
                       <div class="col-md-6">
                         <h2>Total Room</h2>
                         <div class="rq-total">
-                          <select class="js-example-placeholder-single form-control">
+                          <select class="js-example-placeholder-single form-control" name ='roomno'>
                             <option>&nbsp;</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -201,6 +202,8 @@
                   </div>
                 </div>
               </div>
+              <!-- Room list -->
+              <?php $rooms = mysqli_query($conn, "SELECT * FROM ");?>
               <div class="rq-listing-choose singleRoom-grid-main">
                 <div class="row">
                   <div class="col-md-6 col-sm-12 singleRoom-grid-item">
@@ -210,12 +213,12 @@
                           <img alt="Image" src="img/Twin.jpg" srcset=img/Twin.jpg>
                       </picture>
                       <div class="caption">
-                        <h3><a href="TwinQueenRoomReservation.php">Twin Queen Room</a></h3>
-                        <p>point of using that has more less normal distribution is among</p>
+                        <h3><a href="TwinQueenRoomReservation.php" id = 'room-title'>Twin Queen Room</a></h3>
+                        <p id ='room-desc'>point of using that has more less normal distribution is among</p>
                         <div class="singleRoom-grid-main-custom">
                           <div class="row">
-                            <h4><span>P 1,850 </span> / Night</h4>
-                            <h5> <a class="btn rq-btn-secondary" href="#" data-toggle="modal" data-target="#myModal">Book Now</a></h5>
+                            <h4><span id = 'room-price'>P 1,850 </span> / Night</h4>
+                            <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal">Book Now</a></h5>
                           </div>
                         </div>
                       </div>

@@ -83,7 +83,7 @@
             <label for="roomStatus">Room Status &nbsp&nbsp</label>
             <select required name = "roomStatus">
             	<option value = "Available" selected = "selected">Available</option>
-            	<option value = "UnderMaintenance">Under Maintenance</option>
+            	<option value = "UnderMaintenance">Reserved</option>
             	<option value = "Occupied">Occupied</option> 	
             </select>            	
           </div>

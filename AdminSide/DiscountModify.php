@@ -19,15 +19,15 @@
               	    // output data of each row
               	    while($row = $result->fetch_assoc()) {
               	        echo "<tr>
-                                <td>" . $row["discount_ID"]. "</td>
-                                <td>" . $row["discount_percent"]. "</td>
-                                <td>" . $row["discount_name"]. "</td>
-                                <td>" . $row["discount_description"] . "<td>
+                                <td id = 'discount_ID'>" . $row["discount_ID"]. "</td>
+                                <td id = 'discount_percent'>" . $row["discount_percent"]. "</td>
+                                <td id = 'discount_name'>" . $row["discount_name"]. "</td>
+                                <td id = 'discount_description'>" . $row["discount_description"] . "<td>
                                   <form method = 'POST' action = 'discountModify.php'>
                                     <input type ='hidden' value = '{$row['discount_ID']}' name = 'delete_id'>
                                     <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editDiscount'>Edit</button>
                                     <br><br>
-                                    <button name = 'delete' class = 'btn btn-info btn-xs edit_data' type = 'submit'>Delete</button>
+                                    <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
                                   </form>
                                 </td>";
               	    }
@@ -46,12 +46,13 @@
 	          {
 	            if (mysqli_affected_rows($conn) > 0) 
 	            {
+                echo "<script>alert('Successfully Deleted!')</script>";
 	              header("Location: DiscountModify.php");
 	              exit();
 	            }
 	            else 
 	            {
-	              echo "<script>alert('Data not Deleted.{$row['room_id']}');location.href='roomsDelete.php';</script>";
+	              echo "<script>alert('Data not Deleted.{$row['room_id']}');location.href='DiscountModify.php';</script>";
 	            }
 	          } 
 	        } 
@@ -106,11 +107,11 @@ table{
     <div class='modal-dialog modal-sm'>
       <div class='modal-content'>
         <div class='modal-header'>
-          <h4 class='modal-title'>Update Rooms</h4>
+          <h4 class='modal-title'>Update Discount Information</h4>
           <button type='button' class='close' data-dismiss='modal'>&times;</button>
         </div>
         <div class='modal-body'>
-          <form>
+          <form id = "formEditDiscount">
             <div class="form-group">
               <label for="discountPercent">Discount Percent %</label><br>
               <input required class="form-control" name = "discountPercent" type="number" aria-describedby="emailHelp">
@@ -121,8 +122,9 @@ table{
             </div>
             <div class="form-group">
               <label for="discountDescription">Discount Description</label><br>
-              <textarea rows="4" cols="35" name="discountDescription" form="addDiscountForm"></textarea>
+              <textarea rows="4" cols="35" name="discountDescription" form="formEditDiscount"></textarea>
             </div>        
+            <input type="hidden" name="discountId">
             <button name = "submit" class="btn btn-primary btn-block">Update Discount</button>
         </form>
         </div>
@@ -133,5 +135,38 @@ table{
     </div>
   </div>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" language="javascript" >
+    $(document).ready(function(){
+      $("button.edit_data").click(function(){
+        var discount_ID = $(this).closest("tr").find("#discount_ID").html();
+        var discount_percent = $(this).closest("tr").find("#discount_percent").html();
+        var discount_name = $(this).closest("tr").find("#discount_name").html();
+        var discount_description = $(this).closest("tr").find("#discount_description").html();
+        console.log(discount_description);
+        $('#editDiscount').find('.modal-title').html(discount_name);
+        $('#editDiscount').find('input[name=discountId]').val(discount_ID);
+        $('#editDiscount').find('input[name=discountPercent]').val(discount_percent);
+        $('#editDiscount').find('input[name=discountName]').val(discount_name);
+        $('#editDiscount').find('textarea[name=discountDescription]').val(discount_description);
+        
+      });
+      $("#formEditDiscount").submit(function(e){
+        e.preventDefault(); // remove default function of form submit
+        $.ajax({
+          type: 'POST', // type of submission
+          url: 'updatediscount.php', // where the form send the data HAHAHAH
+          data: $(this).serialize(), // roomType=blabla&roomDescription=blabla&....
+          success: function(response){ // eto ung response ng php na nilagay mo sa url
+            alert(response)
+            location.href="DiscountModify.php";
+          }
+
+        });
+      });
+    });
+  </script>
+
 </body>
-</html>
+</html>editDiscount

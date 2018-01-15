@@ -19,6 +19,7 @@ if ($result->num_rows > 0) {
                   <th>Room Rate per night</th>
                   <th>Room Number</th>
                   <th>Room Status</th>
+                  <th>Image</th>
                   <th colspan="2">Actions</th>
                 </tr>
               </thead>';
@@ -32,12 +33,14 @@ if ($result->num_rows > 0) {
                       <td id='room_capacity'>" . $row["room_capacity"] . "</td>
                       <td id='room_rate'>" . $row["room_rate"] . "</td>
                       <td id='room_number'>" . $row["room_number"] . "</td>
-                      <td id='room_status'>" . $row["room_status"] . "<td>
+                      <td id='room_status'>" . $row["room_status"] . "</td>
+                      <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
+                      <td>
                         <form method = 'POST' action = 'roomsDelete.php'>
                           <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
                             <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editRoom'>Edit</button>
                             <br><br>
-                            <button name = 'delete' class = 'btn btn-info btn-xs edit_data' type = 'submit'>Delete</button>
+                            <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
                         </form>
                       </td>";
               }
@@ -67,25 +70,7 @@ if ($result->num_rows > 0) {
     } catch (Exception $ex) {
       echo "Error Delete Data" . $ex->getMessage();
     }
-  } elseif (isset($_POST['edit'])) {
-    $edit_room_query = "UPDATE room_masterfile SET  ";
-
-    try
-    {
-      $edit_result = mysqli_query($conn, $edit_room_query) or die(mysqli_error($conn) . "saan?");
-      if ($edit_result) {
-        if (mysqli_affected_rows($conn) > 0) {
-          header("Location: roomsDelete.php");
-          exit();
-        } else {
-          echo "<script>alert('Data not Updated.{$row['id']}');location.href='roomsDelete.php';</script>";
-        }
-      }
-    } catch (Exception $ex) {
-      echo "Error Delete Data" . $ex->getMessage();
-    }
   }
-
 }
 ?>
 
@@ -145,7 +130,7 @@ table{
                     <input required class='form-control' name = 'roomType' type='text' aria-describedby='emailHelp'>
                     <div class='form-group'>
                       <label for='roomDescription'>Room Description</label><br>
-                      <textarea rows='4' cols='102' name='roomDescription' form='addRoomsForm'></textarea>
+                      <textarea rows='4' cols='102' name='roomDescription' form='formEditRoom'></textarea>
                     </div>
                     <div class='form-group'>
                       <label for='roomRate'>Room Capacity</label><br>
@@ -159,14 +144,19 @@ table{
                       <label for='roomNumber'>Room Number</label><br>
                       <input required class='form-control' name = 'roomNumber' type='number'>
                     </div>
+                     <div class='form-group'>
+                      <label for='roomNumber'>Image</label><br>
+                      <input type ='file' required class='form-control' name = 'image'>
+                    </div>
                     <div class='form-group'>
                       <label for='roomStatus'>Room Status &nbsp&nbsp</label>
                       <select required name = 'roomStatus'>
                         <option value = 'Available' selected = 'selected'>Available</option>
-                        <option value = 'UnderMaintenance'>Under Maintenance</option>
+                        <option value = 'UnderMaintenance'>Reserved</option>
                         <option value = 'Occupied'>Occupied</option>
                       </select>
                         <br><br>
+                        <input type ='hidden' name = 'roomId'>
                        <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
                     </div>
                   </table>
@@ -196,8 +186,9 @@ table{
         var room_number = $(this).closest("tr").find("#room_number").html();
         var room_status = $(this).closest("tr").find("#room_status").html();
         console.log(room_description);
-        $('#editRoom').find('.modal-title').html(room_id);
-        $('#editRoom').find('input[name=roomType]').val(room_id);
+        $('#editRoom').find('.modal-title').html(room_type);
+        $('#editRoom').find('input[name=roomId]').val(room_id);
+        $('#editRoom').find('input[name=roomType]').val(room_type);
         $('#editRoom').find('textarea[name=roomDescription]').val(room_description);
         $('#editRoom').find('input[name=roomCapacity]').val(room_capacity);
         $('#editRoom').find('input[name=roomRate]').val(room_rate);
@@ -212,8 +203,10 @@ table{
           url: 'updateroom.php', // where the form send the data HAHAHAH
           data: $(this).serialize(), // roomType=blabla&roomDescription=blabla&....
           success: function(response){ // eto ung response ng php na nilagay mo sa url
-            alert(response);
+            alert(response)
+            location.href="RoomsDelete.php";
           }
+
         });
       });
     });
