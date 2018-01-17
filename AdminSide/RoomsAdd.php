@@ -19,7 +19,7 @@
           {
             if (mysqli_affected_rows($conn) > 0) 
             {
-              echo "<script>alert('Data Successfully Inserted.');location.href='roomsAdd.php';</script>";
+              echo "<script>alert('Data Successfully Inserted.');location.href='roomsDelete.php';</script>";
               exit();
             }
             else 
