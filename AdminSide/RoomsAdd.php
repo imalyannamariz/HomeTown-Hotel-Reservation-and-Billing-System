@@ -10,8 +10,9 @@
 		$roomRate = mysqli_escape_string($conn, $_POST['roomRate']);
 		$roomNumber = mysqli_escape_string($conn, $_POST['roomNumber']);
 		$roomStatus = mysqli_escape_string($conn, $_POST['roomStatus']);
+    $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
     
-		$insert_room_query =  "INSERT INTO `room_masterfile`(`room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`) VALUES ('$roomType', '$roomDescription', '$roomCapacity', '$roomRate', '$roomNumber', '$roomStatus')";
+		$insert_room_query =  "INSERT INTO `room_masterfile`(`room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`) VALUES ('$roomType', '$roomDescription', '$roomCapacity', '$roomRate', '$roomNumber', '$roomStatus', '$roomImage')";
         try 
         {
           $insert_result = mysqli_query($conn, $insert_room_query) or die (mysqli_error($conn));
@@ -86,6 +87,10 @@
             	<option value = "UnderMaintenance">Reserved</option>
             	<option value = "Occupied">Occupied</option> 	
             </select>            	
+          </div>
+          <div class='form-group'>
+            <label for ='image_upload'>Image</label><br>
+            <input type ='file' accept = 'image/*' name = 'image_upload'>
           </div>
            </div>
           
