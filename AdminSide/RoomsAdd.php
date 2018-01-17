@@ -11,8 +11,8 @@
 		$roomNumber = mysqli_escape_string($conn, $_POST['roomNumber']);
 		$roomStatus = mysqli_escape_string($conn, $_POST['roomStatus']);
     $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
-    
-		$insert_room_query =  "INSERT INTO `room_masterfile`(`room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`) VALUES ('$roomType', '$roomDescription', '$roomCapacity', '$roomRate', '$roomNumber', '$roomStatus', '$roomImage')";
+		$insert_room_query =  "INSERT INTO `room_masterfile`(`room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`, `room_imagepath`) 
+    VALUES ('$roomType', '$roomDescription', '$roomCapacity', '$roomRate', '$roomNumber', '$roomStatus', 'img/$roomImage')";
         try 
         {
           $insert_result = mysqli_query($conn, $insert_room_query) or die (mysqli_error($conn));
@@ -59,7 +59,7 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Add Rooms</div>
       <div class="card-body">
-        <form method = "POST" action = "RoomsAdd.php" id = "addRoomsForm">
+        <form method = "POST" action = "RoomsAdd.php" id = "addRoomsForm" enctype = 'multiform/form-data'>
           <div class="form-group">
             <label for="RoomType">Room Type</label><br>
             <input required class="form-control" name = "roomType" type="text" aria-describedby="emailHelp" placeholder="Room Type">
