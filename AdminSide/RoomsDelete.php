@@ -138,7 +138,7 @@ table{
                     </div>
                     <div class='form-group'>
                       <label for='roomRate'>Room Rate per night</label><br>
-                      <input required class='form-control' name = 'roomRate' type='number'>
+                      <input required class='form-control' name = 'roomRate' type='number' step = '0.01'>
                     </div>
                     <div class='form-group'>
                       <label for='roomNumber'>Room Number</label><br>
