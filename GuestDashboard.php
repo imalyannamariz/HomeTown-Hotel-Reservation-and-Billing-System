@@ -2,7 +2,8 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
-  ?>
+
+?>
 
   <style>
   .navbar-brand{
@@ -191,7 +192,7 @@
             <div>
               Welcome
               <b>
-                <?php echo "{$_SESSION['guest_firstname']} {$_SESSION['guest_lastname']}"; ?>
+                <?php echo "{$_SESSION['firstname']} {$_SESSION['lastname']}"; ?>
                 <b>
                   <p stlye = "text-align:right;">
                     <a href="account.php">Account Settings</a>
@@ -207,7 +208,7 @@
                         <th>Actions</th>
                       </tr>
                     </thead>
-                    <?php $fetch_reservations = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE guest_id = {$_SESSION['guestID']}");
+                    <?php $fetch_reservations = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE guest_id = {$_SESSION['guest_ID']}");
                     while($row = mysqli_fetch_assoc($fetch_reservations)){ ?>
                     <tbody>
                       <tr>
