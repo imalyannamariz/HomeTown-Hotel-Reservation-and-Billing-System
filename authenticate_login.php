@@ -25,7 +25,7 @@ session_start();
               $_SESSION['login'] = true;
               $_SESSION['guest_ID'] = $row['guest_ID'];
               $_SESSION['firstname'] = $row['guest_firstname'];
-              $_SESSION['lastname'] = $row['lguest_lastname'];
+              $_SESSION['lastname'] = $row['guest_lastname'];
               $_SESSION['email'] = $row['guest_email'];
               $_SESSION['password'] = $row['guest_password'];
               $_SESSION['contactNumber'] = $row['guest_contactNumber'];
