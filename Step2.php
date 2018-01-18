@@ -17,6 +17,7 @@ session_start();
 </style>
 <body>
   <!-- Modal -->
+    <?php $fetch_rooms = mysqli_query($conn, "SELECT * FROM room_masterfile"); ?>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalWrapper">
     <div class="modal-dialog modal-lg" role="document" id="modalWrapper">
       <div class="modal-content">
@@ -51,13 +52,7 @@ session_start();
                 <div class="col-md-6">
                   <h2>Total Room</h2>
                   <div class="rq-total">
-                    <select class="js-example-placeholder-single form-control" name ='roomno'>
-                      <option>&nbsp;</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
+                    <select class="js-example-placeholder-single form-control" id = 'roomno' name ='roomno'>
                     </select>
                   </div>
                 </div>
@@ -156,7 +151,7 @@ session_start();
     </nav>
     <!-- Navigation Menu end-->
   </header> <!-- / rq-header-section end here-->
-  <?php $fetch_rooms = mysqli_query($conn, "SELECT * FROM room_masterfile"); ?>
+
   <div class="rq-checkout-banner">
     <div class="rq-checkout-banner-mask">
       <div class="container">
@@ -213,7 +208,7 @@ session_start();
                     <div class="singleRoom-grid-main-custom">
                       <div class="row">
                         <h4><span id = 'room-price'>P <?= $row['room_rate'];?> </span> / Night</h4>
-                        <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal" data-title = '<?= $row['room_type'] ?>'>Book Now</a></h5>
+                        <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal" data-title = '<?= $row['room_type'] ?>' data-qty = "<?= $row['room_capacity']?>" >Book Now</a></h5>
                       </div>
                     </div>
                   </div>
@@ -250,7 +245,12 @@ session_start();
   $(document).ready(function(){
     $('.showInfo').on('click',function(){
       $('#room-name').html($(this).attr('data-title'))
+      $('#roomno').empty()
+      for(var x = 1; x <= $(this).attr('data-qty'); x++){
+        $('#roomno').append(`<option value = '${x}'>${x}</option>`)
+      }
     })
+
   })
 
 </script>
