@@ -301,7 +301,7 @@ table {
                         <strong>Name:</strong>
                       </td>
                       <td class = "text-left">
-                        <?php echo $_SESSION['firstname']; ?>
+                        <?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?>
                       </td>
                     </tr>
                   </thead>
@@ -359,7 +359,10 @@ table {
                         <strong>Extra Services:</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (optional)
+                        <?php
+                              foreach($_SESSION['services'] as $service_name => $service)
+                                echo $service_name;
+                                   ?>
                       </td>
                     </tr>
                   </tbody>
@@ -397,10 +400,10 @@ table {
                               <strong>Type of Room</strong>
                             </td>
                             <td class="text-left" bgcolor="#EBEDF2">
-                            (Room Type) 
+                            <?= $_SESSION['roomname']?>
                           </td> 
                           <td class="text-center" bgcolor="#EBEDF2">
-                          1
+                          <?= $_SESSION['roomno'] ?>
                         </td>
                         <td class="text-right" bgcolor="#EBEDF2">
                             php
@@ -411,7 +414,9 @@ table {
                         <strong>Length of stay</strong>
                       </td>
                       <td class="text-left" bgcolor="#EBEDF2">
-                      1
+                      <?php $daydiff = (strtotime($_SESSION['checkOutDate']) - strtotime($_SESSION['checkInDate']))/(60*60*24);
+                        echo $daydiff;
+                      ?>
                     </td>
                     <td class="text-left" bgcolor="#EBEDF2">
                       
@@ -497,8 +502,8 @@ table {
       <button class="btn btn-primary nextBtn btn-lg pull-right confirm" data-toggle="modal" data-target="#myModal" type="button" style="margin-right: 1px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
       Confirm
     </button>
-      <a href="CheckoutStep3.php">
-        <button class="btn btn-primary prevBtn btn-lg pull-right" type="button" style="margin-right: 10px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
+      <a href="step2.php">
+        <button class="btn btn-primary prevBtn btn-lg pull-right"  type="button" style="margin-right: 10px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
         Previous
       </button>
     </a>
@@ -531,6 +536,8 @@ table {
   <script src="js/jquery.raty.js"></script>
   <script src="js/jquery.datetimepicker.full.min.js"></script>
   <script src="js/scripts.js"></script>
+<script>
 
+</script>
 </body>
 </html>

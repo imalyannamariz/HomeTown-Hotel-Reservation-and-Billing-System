@@ -24,6 +24,7 @@ session_start();
         <div class="modal-body">          
           <p class="success-message">You have selected <span id ='room-name'>King's Room</span> successfully</p>
           <form action="Step3.php" method = 'post'>
+            <input type ='hidden' id = 'roominput' value = '' name = 'roomname'/>
             <h2>ADD ONS</h2>
             <fieldset>
               <div class="table-css">
@@ -32,7 +33,7 @@ session_start();
                <div class="table-css-row">              
                 <div class="table-css-col">
                   <label>
-                    <input type="checkbox" name="rq-inp-1">
+                    <input type="checkbox" name="services[<?= $row['Addon_name'] ?>]">
                     <?= $row['Addon_name'] ?>
                   </label>
                 </div>
@@ -52,6 +53,7 @@ session_start();
                 <div class="col-md-6">
                   <h2>Total Room</h2>
                   <div class="rq-total">
+                    <!-- Room quantity -->
                     <select class="js-example-placeholder-single form-control" id = 'roomno' name ='roomno'>
                     </select>
                   </div>
@@ -169,7 +171,7 @@ session_start();
       <div class="singleRoom-grid-upper">
         <div class="row">
           <div class="col-md-4 col-sm-4">
-            <div class="singleRoom-grid-upper-left pull-left ">
+            <div class="singleRoom-grid-upper-left pull-leftking ">
               <h5><?= mysqli_num_rows($fetch_rooms) ?> results found</h5>
             </div>
           </div>
@@ -246,6 +248,7 @@ session_start();
     $('.showInfo').on('click',function(){
       $('#room-name').html($(this).attr('data-title'))
       $('#roomno').empty()
+      $('#roominput').attr('value', $(this).attr('data-title'))
       for(var x = 1; x <= $(this).attr('data-qty'); x++){
         $('#roomno').append(`<option value = '${x}'>${x}</option>`)
       }

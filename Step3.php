@@ -11,6 +11,9 @@
     <?php
   }
   if(isset($_SESSION['login'])){
+    $_SESSION['roomno'] = $_POST['roomno'];
+    $_SESSION['roomname'] = $_POST['roomname'];
+    $_SESSION['services'] = $_POST['services'];
     header('Location: Step4.php'); 
   }
 ?>
