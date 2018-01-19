@@ -17,7 +17,7 @@ session_start();
 </style>
 <body>
   <!-- Modal -->
-    <?php $fetch_rooms = mysqli_query($conn, "SELECT * FROM room_masterfile"); ?>
+  <?php $fetch_rooms = mysqli_query($conn, "SELECT * FROM room_masterfile"); ?>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalWrapper">
     <div class="modal-dialog modal-lg" role="document" id="modalWrapper">
       <div class="modal-content">
@@ -25,48 +25,49 @@ session_start();
           <p class="success-message">You have selected <span id ='room-name'>King's Room</span> successfully</p>
           <form action="Step3.php" method = 'post'>
             <input type ='hidden' id = 'roominput' value = '' name = 'roomname'/>
+            <input type ='hidden' id = 'roomid' value = '' name = 'roomid'/>
             <h2>ADD ONS</h2>
             <fieldset>
               <div class="table-css">
                 <?php $fetch_addons = mysqli_query($conn, "SELECT * FROM addons_masterfile");
                 while($row = mysqli_fetch_assoc($fetch_addons)){ ?>
-               <div class="table-css-row">              
-                <div class="table-css-col">
-                  <label>
-                    <input type="checkbox" name="services[<?= $row['Addon_name'] ?>]">
-                    <?= $row['Addon_name'] ?>
-                  </label>
+                <div class="table-css-row">              
+                  <div class="table-css-col">
+                    <label>
+                      <input type="checkbox" name="services[<?= $row['Addon_name'] ?>]">
+                      <?= $row['Addon_name'] ?>
+                    </label>
+                  </div>
+                  <div class="table-css-col">
+                    <span>P <?= $row['Addon_rate']?>/</span> Group / Trip
+                  </div>
                 </div>
-                <div class="table-css-col">
-                  <span>P <?= $row['Addon_rate']?>/</span> Group / Trip
-                </div>
+                <?php } ?>
               </div>
-              <?php } ?>
-            </div>
-          </div>                  
-        </fieldset>
-        <h2>ADDITIONAL INFORMATION</h2>
-        <fieldset>            
-          <div class="rq-single-room-area select-for-modal-width">      
-            <div class="rq-single-room-checkin">
-              <div class="row">                    
-                <div class="col-md-6">
-                  <h2>Total Room</h2>
-                  <div class="rq-total">
-                    <!-- Room quantity -->
-                    <select class="js-example-placeholder-single form-control" id = 'roomno' name ='roomno'>
-                    </select>
+            </div>                  
+          </fieldset>
+          <h2>ADDITIONAL INFORMATION</h2>
+          <fieldset>            
+            <div class="rq-single-room-area select-for-modal-width">      
+              <div class="rq-single-room-checkin">
+                <div class="row">                    
+                  <div class="col-md-6">
+                    <h2>Total Room</h2>
+                    <div class="rq-total">
+                      <!-- Room quantity -->
+                      <select class="js-example-placeholder-single form-control" id = 'roomno' name ='roomno' REQUIRED>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </fieldset>
-        <button type="submit" class="btn btn-flat rq-modal-submit-btn">CHECKOUT</button>
-      </form>
-    </div>
-  </div>          
-</div>
+          </fieldset>
+          <button type="submit" class="btn btn-flat rq-modal-submit-btn">CHECKOUT</button>
+        </form>
+      </div>
+    </div>          
+  </div>
 </div>
 <header>
   <!-- Navigation Menu start-->
@@ -194,7 +195,7 @@ session_start();
         </div>
         <!-- Room list -->
         <div class="row">
-          
+
           <?php while($row = mysqli_fetch_assoc($fetch_rooms)){ ?>
           <div class="rq-listing-choose singleRoom-grid-main">
 
@@ -210,7 +211,7 @@ session_start();
                     <div class="singleRoom-grid-main-custom">
                       <div class="row">
                         <h4><span id = 'room-price'>P <?= $row['room_rate'];?> </span> / Night</h4>
-                        <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal" data-title = '<?= $row['room_type'] ?>' data-qty = "<?= $row['room_capacity']?>" >Book Now</a></h5>
+                        <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal" data-title = '<?= $row['room_type'] ?>' data-qty = "<?= $row['room_capacity']?>" data-id = "<?= $row['room_id']?>" >Book Now</a></h5>
                       </div>
                     </div>
                   </div>
@@ -249,8 +250,10 @@ session_start();
       $('#room-name').html($(this).attr('data-title'))
       $('#roomno').empty()
       $('#roominput').attr('value', $(this).attr('data-title'))
+      $('#roomid').attr('value', $(this).attr('data-id'))
       for(var x = 1; x <= $(this).attr('data-qty'); x++){
         $('#roomno').append(`<option value = '${x}'>${x}</option>`)
+
       }
     })
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2018 at 04:31 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Jan 19, 2018 at 05:47 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,6 +37,13 @@ CREATE TABLE `addons_masterfile` (
   `Discount_Id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `addons_masterfile`
+--
+
+INSERT INTO `addons_masterfile` (`Addon_ID`, `Addon_name`, `Addon_rate`, `Addon_description`, `Addon_status`, `Discount_Id`) VALUES
+(1, 'asdqwe', 55, 'ewanb', 'Available', 9);
+
 -- --------------------------------------------------------
 
 --
@@ -57,14 +64,40 @@ CREATE TABLE `adminuser_masterfile` (
 --
 
 INSERT INTO `adminuser_masterfile` (`user_id`, `User_firstname`, `User_lastname`, `email`, `admin_type`, `password`) VALUES
-(1, 'aya', 'cantos', 'cantosalyannamariz@gmail.com', 'Admin', '123'),
 (2, 'aaaa', 'aaaaaa', 'aaaa@gmail.com', 'Admin', '123'),
 (4, 'aya', 'ganda', 'cg@cg.com', 'FrontDesk', '$2y$10$o8IY08FmU5eZuKqRBrWE5ejUIWlFvx6VRzpolsJAFrlzm0NnmY0gS'),
-(5, 'mark', 'calma', 'mark@gmail.com', 'Admin', '$2y$10$i2KVRFOhLsGgaQzhVgkIUuS7gm8AdiySopQH58sPdTxXySkfXSiy.'),
 (6, 'aya aya', 'aya', 'aya@gmail.com', 'Admin', '$2y$10$w190AMJ0VrxhTLAg/cXq6.4b61bA9o8dXO4L3uOxIpurrt7czW906'),
-(7, 'mark jefferson', 'danganan calma', 'markcalma@gmail.com', 'Admin', '$2y$10$NndMA81KG8vtgfcJ7DVWgOMrAHGA.y50XibiTzSpCp7KRrp1H.m1K'),
 (8, 'Nicki', 'MInaj', 'nickiminaj@gmail.com', 'Admin', '$2y$10$E6CfqpovzgqQ/3g986e6PuacUxUGlPksd3v4jGMYANBi6Vh6iWkeS'),
-(9, 'mark', 'calma', 'markamar@gmail.com', '', '$2y$10$OxkLtXv2OQOaSsdgo8dPqe.uYad/ibbYuHPEYLxUs48wckTKipbE.');
+(9, 'Jerome ', 'Minaj', 'nickiminajj@gmail.com', 'Admin', '$2y$10$6Ke4s3.FPlFCYlVrppmXLee9oB5NDfWUV8qkpf5sQqwvVbQC1VHhu'),
+(10, 'Cardi', 'B', 'cardib@gmail.com', 'Admin', '$2y$10$U8c5bcv3e4O4opw/BH4kx.0y2uA01Imixk2oIcKFrRIJlh/vUUujq');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignedroom_masterfile`
+--
+
+CREATE TABLE `assignedroom_masterfile` (
+  `room_id` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignedroom_masterfile`
+--
+
+INSERT INTO `assignedroom_masterfile` (`room_id`, `guest_id`, `date`) VALUES
+(6, 1, '0000-00-00'),
+(6, 1, '0000-00-00'),
+(6, 1, '0000-00-00'),
+(6, 1, '0000-00-00'),
+(6, 1, '2018-01-23'),
+(6, 1, '2018-01-23'),
+(6, 1, '2018-01-23'),
+(6, 1, '2018-01-24'),
+(6, 1, '2018-01-25'),
+(6, 1, '2018-01-26');
 
 -- --------------------------------------------------------
 
@@ -84,7 +117,7 @@ CREATE TABLE `discount_masterfile` (
 --
 
 INSERT INTO `discount_masterfile` (`discount_ID`, `discount_percent`, `discount_name`, `discount_description`) VALUES
-(6, 20, 'Promo', 'Enter discount description here...');
+(9, 50, 'Year End Sale', 'Happy New Year! Putukan na!!!! ey');
 
 -- --------------------------------------------------------
 
@@ -112,7 +145,10 @@ INSERT INTO `guest_masterfile` (`guest_ID`, `guest_firstname`, `guest_lastname`,
 (2, 'alyanna', 'cantos', 'cantosalyannamariz@gmail.com', '$2y$10$q8.8IPBhMJyQ11gdEUwwoeuvq0XmoSeBDDzb3rcAlk24YrDlSNXPm', '09357771340', 'Philippines', '123'),
 (3, 'aya', 'cantos', 'alyannamariz02@gmail.com', '$2y$10$1ElVGPVEr.nLEVRB8gV5NOzdio/N32GeywHMNMqyuOYAIokLMBsde', '09357771340', 'Philippines', '123'),
 (4, 'aaaa', 'aaaaaa', 'aaa@gmail.com', '$2y$10$y3qjGIOupamrsfxdfZ9mG.YXaBIWqDcjXskqtaGUJYkS4EPlAcxa2', '09357771340', 'Philippines', 'aqqw3sww'),
-(5, 'aya', 'aya', 'bbbb@gmail.com', '$2y$10$3feEUfxMbQ5/6RU218EXGeKSTeayMKbVaHQ.nCCitkKAuxpITgN.m', '09357771340', 'Philippines', '123');
+(5, 'Alyanna', 'Cantos', 'antonioumali@gmail.com', '$2y$10$.bcv9EAuXOilfBW9Tdn2r.1eHh3VbK/YeUbvIgjIIyZ.lVEfUjry2', '09357771340', 'Philippines', 'Tramo Pasay City'),
+(6, 'Mark', 'Calma', 'markdcalma@gmail.com', '$2y$10$t.eEG1fUpNQYW81Apqi.I.6bv05uQErBJEl5EJmX1YCuuQWdyxhJu', '09357771340', 'Philippines', 'Tramo'),
+(7, 'jerome', 'ubina', 'jeromeubina@gmail.com', '$2y$10$8M3NYfZcem4ndy4X8dh09.t2744A7wM3a0utqYHSQlpG8fBQJZBkS', '09357771340', 'Philippines', 'Tramo'),
+(8, 'Jerry', 'Punzalan', 'jerry@gmail.com', '$2y$10$TI3PeuagEBUq6Ee336iNLeuZMvv6y7YPeo/Y7Aqp1.yZLlurhvPfm', '09357771340', 'Philippines', 'Tramo');
 
 -- --------------------------------------------------------
 
@@ -135,13 +171,19 @@ CREATE TABLE `reports_masterfile` (
 
 CREATE TABLE `reservation_masterfile` (
   `reservation_id` int(11) NOT NULL,
-  `addon_id` int(11) NOT NULL,
   `guest_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `checkindate` date NOT NULL,
   `checkoutdate` date NOT NULL,
   `number_guest` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reservation_masterfile`
+--
+
+INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`) VALUES
+(8, 1, 6, '2018-01-23', '2018-01-26', 2);
 
 -- --------------------------------------------------------
 
@@ -154,21 +196,22 @@ CREATE TABLE `room_masterfile` (
   `room_type` varchar(50) NOT NULL,
   `room_description` varchar(50) NOT NULL,
   `room_capacity` varchar(50) NOT NULL,
-  `room_rate` int(11) NOT NULL,
+  `room_rate` float NOT NULL,
   `room_number` int(11) NOT NULL,
-  `room_status` varchar(50) NOT NULL
+  `room_status` varchar(50) NOT NULL,
+  `room_imagepath` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `room_masterfile`
 --
 
-INSERT INTO `room_masterfile` (`room_id`, `room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`) VALUES
-(1, 'queen', 'pakyu', '3', 1200, 12, 'Available'),
-(2, 'King', 'Malake', '5', 3000, 123, 'Available'),
-(3, 'California king bed', 'Rihanna', '1', 10000, 200001, 'Available'),
-(4, 'California king bed11', 'Rihanna', '1', 10000, 200001, 'Available'),
-(5, 'Twin Room', 'For twins only', '2', 1200, 201, 'UnderMaintenance');
+INSERT INTO `room_masterfile` (`room_id`, `room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`, `room_imagepath`) VALUES
+(6, 'Twin Queen Room1111', 'Twin Bed Rooms eyee', '2', 2500560, 14, 'Available', 'img/Twin.JPG'),
+(7, 'Queen Room', 'Queens Rooms', '1', 1500, 2, 'Available', 'img/Queen.jpg'),
+(8, 'Family Room', 'Fambam', '5', 3000, 3, 'Available', 'img\\Family.JPG'),
+(9, 'Quadroom', 'Squad Goals', '4', 2500, 4, 'Available', 'img\\Quad.jpg'),
+(11, 'hah', 'ff', '0', 2, 5, 'Available', 'img/Dorm.jpg');
 
 -- --------------------------------------------------------
 
@@ -250,25 +293,25 @@ ALTER TABLE `transaction_masterfile`
 -- AUTO_INCREMENT for table `addons_masterfile`
 --
 ALTER TABLE `addons_masterfile`
-  MODIFY `Addon_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Addon_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `adminuser_masterfile`
 --
 ALTER TABLE `adminuser_masterfile`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `discount_masterfile`
 --
 ALTER TABLE `discount_masterfile`
-  MODIFY `discount_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `discount_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `guest_masterfile`
 --
 ALTER TABLE `guest_masterfile`
-  MODIFY `guest_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `guest_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `reports_masterfile`
@@ -280,13 +323,13 @@ ALTER TABLE `reports_masterfile`
 -- AUTO_INCREMENT for table `reservation_masterfile`
 --
 ALTER TABLE `reservation_masterfile`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `room_masterfile`
 --
 ALTER TABLE `room_masterfile`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `transaction_masterfile`

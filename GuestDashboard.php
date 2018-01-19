@@ -2,7 +2,11 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
-
+  if(!isset($_SESSION['login'])){
+    echo "<script>alert('Please login to continue')
+    window.location.href = 'login.php';
+    </script>";
+  }
 ?>
 
   <style>
@@ -212,8 +216,8 @@
                     while($row = mysqli_fetch_assoc($fetch_reservations)){ ?>
                     <tbody>
                       <tr>
-                        <td align = "center"><?= $row['checkindate']; ?></td>
-                        <td align = "center"><?= $row['checkoutdate']; ?></td>
+                        <td align = "center"><?= $row['checkindate'] ?></td>
+                        <td align = "center"><?= $row['checkoutdate'] ?></td>
                         <td align = "center"><?= $row['number_guest'] ?></td>
                         <td align = "center">pending</td>
                         <td>

@@ -2,6 +2,11 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
+ if(!isset($_SESSION['login'])){
+    echo "<script>alert('Please login to continue')
+    window.location.href = 'login.php';
+    </script>";
+  }
 ?>
 <style>
 .navbar-brand{
@@ -102,7 +107,7 @@ table {
           </div>
           <div class = "modal-footer">
             <button type="button" class="cancel btn" onclick="" data-dismiss="modal">Close</button>
-            <a href="GuestDashboard.php">
+            <a href="reserve.php">
               <button type="button" class="confirm btn btn-primary" onclick="">Confirm</button>
             </a>
           </div>
@@ -335,7 +340,7 @@ table {
                         <strong>Check-in</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (<?php echo $_SESSION['checkInDate'];?>)
+                        (<?php echo $_SESSION['reservation']['checkInDate'];?>)
                       </td>
                     </tr>
                     <tr>
@@ -343,7 +348,7 @@ table {
                         <strong>Check out</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (<?php echo $_SESSION['checkOutDate'];?>)
+                        (<?php echo $_SESSION['reservation']['checkOutDate'];?>)
                       </td>
                     </tr>
                     <tr>
@@ -351,7 +356,7 @@ table {
                         <strong>Number of Guest</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (<?php echo $_SESSION['numberOfAdults']; ?>)
+                        (<?php echo $_SESSION['reservation']['numberOfAdults']; ?>)
                       </td>
                     </tr>
                     <tr>
@@ -360,9 +365,13 @@ table {
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
                         <?php
-                              foreach($_SESSION['services'] as $service_name => $service)
+                          if(count($_SESSION['reservation']['services']) != 0){
+                              foreach($_SESSION['reservation']['services'] as $service_name => $service)
                                 echo $service_name;
-                                   ?>
+                                   
+                                   }else{
+                                    echo "None";
+                                   }?>
                       </td>
                     </tr>
                   </tbody>
@@ -400,10 +409,10 @@ table {
                               <strong>Type of Room</strong>
                             </td>
                             <td class="text-left" bgcolor="#EBEDF2">
-                            <?= $_SESSION['roomname']?>
+                            <?= $_SESSION['reservation']['roomname']?>
                           </td> 
                           <td class="text-center" bgcolor="#EBEDF2">
-                          <?= $_SESSION['roomno'] ?>
+                          <?= $_SESSION['reservation']['roomno'] ?>
                         </td>
                         <td class="text-right" bgcolor="#EBEDF2">
                             php
@@ -414,7 +423,7 @@ table {
                         <strong>Length of stay</strong>
                       </td>
                       <td class="text-left" bgcolor="#EBEDF2">
-                      <?php $daydiff = (strtotime($_SESSION['checkOutDate']) - strtotime($_SESSION['checkInDate']))/(60*60*24);
+                      <?php $daydiff = (strtotime($_SESSION['reservation']['checkOutDate']) - strtotime($_SESSION['reservation']['checkInDate']))/(60*60*24);
                         echo $daydiff;
                       ?>
                     </td>

@@ -17,10 +17,10 @@
 	// output of calculation, passed to a variable. 
 	$dateLength = $diff->format("%a");
 	session_start();
-	$_SESSION['dateLength'] = $dateLength; 
-	$_SESSION['checkInDate'] = $checkInDate; 
-	$_SESSION['checkOutDate'] = $checkOutDate; 
-	$_SESSION['numberOfAdults'] = $numberOfAdults; 
+	$_SESSION['reservation']['dateLength'] = $dateLength; 
+	$_SESSION['reservation']['checkInDate'] = $checkInDate; 
+	$_SESSION['reservation']['checkOutDate'] = $checkOutDate; 
+	$_SESSION['reservation']['numberOfAdults'] = $numberOfAdults; 
 
 	if(isset($_SESSION['login'])){
 		header('Location: Step2.php'); 

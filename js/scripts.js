@@ -101,7 +101,7 @@ $(document).ready(function(){
 
     $(".rq-total .js-example-placeholder-single").select2({
         minimumResultsForSearch: Infinity,
-        placeholder: "Number of Room",
+        placeholder: "Number of rooms"
     });
 
     $(".rq-adult .js-example-placeholder-single").select2({
