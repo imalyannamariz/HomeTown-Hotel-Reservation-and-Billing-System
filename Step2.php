@@ -34,7 +34,7 @@ session_start();
                 <div class="table-css-row">              
                   <div class="table-css-col">
                     <label>
-                      <input type="checkbox" name="services[<?= $row['Addon_name'] ?>]">
+                      <input type="checkbox" name="services[<?= $row['Addon_ID'] ?>]" value ='<?= $row['Addon_name'] ?>'>
                       <?= $row['Addon_name'] ?>
                     </label>
                   </div>

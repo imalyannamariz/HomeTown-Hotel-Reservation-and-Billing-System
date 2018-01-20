@@ -366,7 +366,7 @@ table {
                       <td class = "text-left" bgcolor= "#EBEDF2">
                         <?php
                           if(count($_SESSION['reservation']['services']) != 0){
-                              foreach($_SESSION['reservation']['services'] as $service_name => $service)
+                              foreach($_SESSION['reservation']['services'] as $service => $service_name)
                                 echo $service_name;
                                    
                                    }else{
