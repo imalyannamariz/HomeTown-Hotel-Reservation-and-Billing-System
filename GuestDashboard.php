@@ -7,7 +7,7 @@
     window.location.href = 'login.php';
     </script>";
   }
-?>
+  ?>
 
   <style>
   .navbar-brand{
@@ -223,8 +223,8 @@
                         <td>
                           <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success" style="display:inline-block !imporatant; width:50%; float:left;">View</a>
                           <form method="post" style="display:inline-block !imporatant; width:50%; float:left;">
-                            <input type="hidden" name="t_id" value="d572c">
-                            <button name="cancel" class="btn btn-sm btn-danger">Cancel</button>
+                            <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
+                            <button name="cancel" type = 'submit' class="btn btn-sm btn-danger">Cancel</button>
                           </form>
                         </td>
                       </tr>
@@ -233,10 +233,6 @@
                   </b>
                 </b>
               </div>
-
-
-
-
 
               <!-- Latest jQuery plugin-->
               <script src="js/main.js"></script>
@@ -256,6 +252,25 @@
               <script src="js/jquery.raty.js"></script>
               <script src="js/jquery.datetimepicker.full.min.js"></script>
               <script src="js/scripts.js"></script>
+              <script>
+                $(document).ready(function(){
+                  $('form').on('submit', function(e){
+                    e.preventDefault();
+                    var prompt = confirm("Are you sure?")
+                    if(prompt){
+                      $.ajax({
+                        type:'POST',
+                        url:'ajax/cancelreservation.php',
+                        data: $(this).serialize(),
+                        success: function(html){
+                          alert('Reservation has been canceled')
+                          location.reload()
+                        }
+                      })
+                    }
+                  })
+                })
 
+              </script>
             </body>
             </html>
