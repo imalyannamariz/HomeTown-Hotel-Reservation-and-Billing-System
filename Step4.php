@@ -7,6 +7,11 @@
     window.location.href = 'login.php';
     </script>";
   }
+
+if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) != 8){
+  header("Location: Step1.php");
+}
+
 ?>
 <style>
 .navbar-brand{

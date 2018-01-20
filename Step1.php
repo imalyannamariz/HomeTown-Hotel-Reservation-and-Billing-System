@@ -2,9 +2,6 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
-  // if (isset($_SESSION['login'])) {
-    
-  // }
 ?>
 <style>
 .navbar-brand{
