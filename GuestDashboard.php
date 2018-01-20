@@ -208,6 +208,7 @@
                         <th>Check In</th>
                         <th>Check Out</th>
                         <th>Number of Guests</th> 
+                        <th>Number of rooms</th>
                         <th>Status</th>
                         <th>Actions</th>
                       </tr>
@@ -219,6 +220,7 @@
                         <td align = "center"><?= $row['checkindate'] ?></td>
                         <td align = "center"><?= $row['checkoutdate'] ?></td>
                         <td align = "center"><?= $row['number_guest'] ?></td>
+                        <td align ='center'><?= $row['room_number'] ?></td>
                         <td align = "center">pending</td>
                         <td>
                           <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success" style="display:inline-block !imporatant; width:50%; float:left;">View</a>
