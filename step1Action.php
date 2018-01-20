@@ -8,7 +8,6 @@
 	$checkOutDate =  $_POST['checkOutDate'];
 	$numberOfAdults =  $_POST['numberOfAdults'];
 	
-	
 	// code to get difference between inputted dates (galing sa jQuery datepicker). wow english. 
 	$date1 = date_create($checkInDate);
 	$date2 = date_create($checkOutDate);
