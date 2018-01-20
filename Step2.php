@@ -196,7 +196,13 @@ session_start();
         <!-- Room list -->
         <div class="row">
 
-          <?php while($row = mysqli_fetch_assoc($fetch_rooms)){ ?>
+          <?php while($row = mysqli_fetch_assoc($fetch_rooms)){ 
+                $fetchReservedrooms = mysqli_query($conn, "SELECT room_number FROM reservation_masterfile WHERE (checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}') AND room_id = {$row['room_id']}") or die(mysqli_error($conn));
+                $reservedroomSum = 0;
+                while($row1 = mysqli_fetch_assoc($fetchReservedrooms)){
+                  $reservedroomSum += $row1['room_number'];
+                }
+            ?>
           <div class="rq-listing-choose singleRoom-grid-main">
 
             <div class="col-md-6 col-sm-12 singleRoom-grid-item">
@@ -211,7 +217,7 @@ session_start();
                     <div class="singleRoom-grid-main-custom">
                       <div class="row">
                         <h4><span id = 'room-price'>P <?= $row['room_rate'];?> </span> / Night</h4>
-                        <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal" data-title = '<?= $row['room_type'] ?>' data-qty = "<?= $row['room_capacity']?>" data-id = "<?= $row['room_id']?>" >Book Now</a></h5>
+                        <h5> <a class="btn rq-btn-secondary showInfo" href="#" data-toggle="modal" data-target="#myModal" data-title = '<?= $row['room_type'] ?>' data-qty = "<?= $row['room_number'] - $reservedroomSum?>" data-id = "<?= $row['room_id']?>" >Book Now</a></h5>
                       </div>
                     </div>
                   </div>

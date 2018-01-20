@@ -207,7 +207,7 @@
       <script type="text/javascript">
          $(function() {
             $("#checkInDate").datepicker({
-                dateFormat: "mm/dd/yy",
+                dateFormat: "yy-mm-dd",
                 minDate: "+3",
                 onSelect: function(dateText, inst) {
                     var d = $.datepicker.parseDate(inst.settings.dateFormat, dateText);
@@ -221,7 +221,7 @@
             }).datepicker("setDate", "+0");
 
             $("#checkOutDate").datepicker({
-                dateFormat: "mm/dd/yy",
+                dateFormat: "yy-mm-dd",
                 minDate: "+4",
             }).datepicker("setDate", "+1");
         });

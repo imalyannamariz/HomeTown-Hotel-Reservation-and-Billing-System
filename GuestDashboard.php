@@ -221,7 +221,7 @@
                         <td align = "center"><?= $row['number_guest'] ?></td>
                         <td align = "center">pending</td>
                         <td>
-                          <a href="summary.php?code=d572c" class="btn btn-sm btn-success" style="display:inline-block !imporatant; width:50%; float:left;">View</a>
+                          <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success" style="display:inline-block !imporatant; width:50%; float:left;">View</a>
                           <form method="post" style="display:inline-block !imporatant; width:50%; float:left;">
                             <input type="hidden" name="t_id" value="d572c">
                             <button name="cancel" class="btn btn-sm btn-danger">Cancel</button>

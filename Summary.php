@@ -2,6 +2,17 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
+  $fetchCurrentReservation = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_GET['code']} AND guest_id = {$_SESSION['guest_ID']}");
+  $reservation = mysqli_fetch_assoc($fetchCurrentReservation);
+  if(mysqli_num_rows($reservation)){
+    echo "<script>alert(\"Reservation not found.\")
+    window.href.location = 'GuestDashboard.php'
+    </script>
+    ";
+  }
+  $fetchCurrentRoom = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$reservation['room_id']}");
+  $room = mysqli_fetch_assoc($fetchCurrentRoom);
+  $fetchAddons = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile as gAddon INNER JOIN addons_masterfile as Addon on gAddon.addons_id = Addon.addons_id WHERE gAddon.reservation_id = {$reservation['reservation_id']} AND gAddon.guest_id = {$_SESSION['guest_ID']}");
 ?>
 
 <style>
@@ -272,7 +283,7 @@ table {
                         <strong>Name:</strong>
                       </td>
                       <td class = "text-left">
-                        (name of the guest)
+                      <?= "{$_SESSION['firstname']} {$_SESSION['lastname']}" ?>
                       </td>
                     </tr>
                   </thead>
@@ -282,7 +293,7 @@ table {
                         <strong>Email</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (email)
+                        <?= $_SESSION['email'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -290,7 +301,7 @@ table {
                         <strong>Cellphone:</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (cp num)
+                        <?= $_SESSION['contactNumber'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -298,7 +309,7 @@ table {
                         <strong>Address:</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (address)
+                        <?= $_SESSION['address'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -306,7 +317,7 @@ table {
                         <strong>Check-in</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (check in)
+                        <?= $reservation['checkindate'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -314,7 +325,7 @@ table {
                         <strong>Check out</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (check out date)
+                        <?= $reservation['checkoutdate'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -322,7 +333,7 @@ table {
                         <strong>Number of Guest</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (1)
+                        <?= $reservation['number_guest'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -330,7 +341,7 @@ table {
                         <strong>Extra Services:</strong>
                       </td>
                       <td class = "text-left" bgcolor= "#EBEDF2">
-                        (optional)
+                        
                       </td>
                     </tr>
                   </tbody>
@@ -368,7 +379,7 @@ table {
                               <strong>Type of Room</strong>
                             </td>
                             <td class="text-left" bgcolor="#EBEDF2">
-                            (Room Type) 
+                            <?= $room['room_type'] ?>
                           </td> 
                           <td class="text-center" bgcolor="#EBEDF2">
                           1
@@ -474,15 +485,6 @@ table {
       </button> 
     </form>
   </div>
-
-
-
-
-
-
-
-
-
     <!-- Latest jQuery plugin-->
   <script src="js/main.js"></script>
   <!-- Latest compiled and minified JavaScript for bootstrap-->
