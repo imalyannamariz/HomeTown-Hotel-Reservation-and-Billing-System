@@ -264,7 +264,6 @@ if(!isset($_SESSION['reservation'])){
       $('#roomid').attr('value', $(this).attr('data-id'))
       for(var x = 1; x <= $(this).attr('data-qty'); x++){
         $('#roomno').append(`<option value = '${x}'>${x}</option>`)
-
       }
     })
 
