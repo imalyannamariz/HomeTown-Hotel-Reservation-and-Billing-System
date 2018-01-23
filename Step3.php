@@ -11,7 +11,7 @@
     <?php
   }
   echo count($_SESSION['reservation']);
-  if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) != 8){
+  if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) < 4){
       header("Location: Step1.php");
       exit;
   }

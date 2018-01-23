@@ -6,7 +6,7 @@ session_start();
     window.location.href = 'login.php';
     </script>";
   }
- if(!isset($_SESSION['reservation']) || count($_SESSION['reservation'])  != 8 ){
+ if(!isset($_SESSION['reservation']) || count($_SESSION['reservation'])  < 8 ){
  	echo "<script>alert('Make sure your reservation is complete')
  	window.location.href ='step1.php'
  	</script>

@@ -5,9 +5,7 @@ session_start();
 if(!isset($_SESSION['reservation'])){
   header("Location: Step1.php");
 }
-  echo print_r($_SESSION['reservation'])."<br/>";
-  echo (!isset($_SESSION['reservation']) || count($_SESSION['reservation']) != 8)? "true": "false";
-  echo count($_SESSION['reservation']);
+echo print_r($_SESSION['reservation']);
 ?>
 <style>
 .navbar-brand{

@@ -7,8 +7,8 @@
     window.location.href = 'login.php';
     </script>";
   }
-
-if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) != 8){
+echo print_r($_SESSION['reservation']);
+if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) < 8){
   header("Location: Step1.php");
 }
 
