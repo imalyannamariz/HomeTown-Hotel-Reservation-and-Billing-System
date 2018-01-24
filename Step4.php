@@ -386,6 +386,18 @@ table {
           </div>
         </div>
         <!-- billing -->
+        <?php $fetchselectedroom = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$_SESSION['reservation'][
+        'roomid']}");
+        $getselectedroom = mysqli_fetch_assoc($fetchselectedroom);
+        $daydiff = (strtotime($_SESSION['reservation']['checkOutDate']) - strtotime($_SESSION['reservation']['checkInDate']))/(60*60*24);
+        $roomrate = $getselectedroom['room_rate'] * $_SESSION['reservation']['roomno'];
+        $lengthofstay = $getselectedroom['room_rate'] * $_SESSION['reservation']['roomno'] * $daydiff;
+        $vatable = $lengthofstay * 0.12;
+        $vattotal = $lengthofstay * 0.88;
+        $downpayment = $vattotal * 0.15;
+        $_SESSION['reservation']['balance'] = $vattotal;
+        
+         ?>
               <div class = "col-md-9">
                 <div class = "panel panel-default">
                   <div class = "panel-heading" style = "background-color: red">
@@ -420,7 +432,7 @@ table {
                           <?= $_SESSION['reservation']['roomno'] ?>
                         </td>
                         <td class="text-right" bgcolor="#EBEDF2">
-                            php
+                            <?= $roomrate ?> php
                       </td>
                     </tr>
                     <tr>
@@ -428,7 +440,7 @@ table {
                         <strong>Length of stay</strong>
                       </td>
                       <td class="text-left" bgcolor="#EBEDF2">
-                      <?php $daydiff = (strtotime($_SESSION['reservation']['checkOutDate']) - strtotime($_SESSION['reservation']['checkInDate']))/(60*60*24);
+                      <?php
                         echo $daydiff;
                       ?>
                     </td>
@@ -436,7 +448,7 @@ table {
                       
                     </td>
                     <td class="text-right" bgcolor="#EBEDF2">
-                      
+                      <?= $lengthofstay ?> php 
                     </td>
                   </tr>
                   <tr>
@@ -450,7 +462,7 @@ table {
                       <strong>Subtotal (per rooms picked)</strong>
                     </td>
                     <td class="highrow text-right">
-                   php
+                   <?= $roomrate ?> php
                   </td>
                 </tr>
                 <tr>
@@ -464,7 +476,7 @@ table {
                     <strong>Vatable</strong>
                   </td>
                   <td class="text-right" bgcolor="#EBEDF2">
-                  php
+                  <?= $vattotal ?> php
                 </td>
               </tr>
               <tr>
@@ -478,7 +490,7 @@ table {
                   <strong>VAT 12%</strong>
                 </td>
                 <td class="text-right">
-                php
+                <?= $vatable ?>php
               </td>
             </tr>
             <tr>
@@ -492,7 +504,7 @@ table {
                 <strong>Down payment</strong>
               </td>
               <td class=" text-right" bgcolor="#EBEDF2">
-              php
+              <?= $downpayment ?>php
             </td>
           </tr>
           <tr>
@@ -506,7 +518,7 @@ table {
               <strong>Total</strong>
             </td>
             <td class=" highrow text-right">
-            php
+            <?= $vattotal ?>php
           </td>
         </tr>
       </tbody>

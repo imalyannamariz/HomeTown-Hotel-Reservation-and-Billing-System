@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2018 at 07:15 AM
+-- Generation Time: Jan 24, 2018 at 01:38 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -102,6 +102,28 @@ INSERT INTO `assignedroom_masterfile` (`room_id`, `guest_id`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `billing_masterfile`
+--
+
+CREATE TABLE `billing_masterfile` (
+  `billing_id` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL,
+  `reservation_id` int(11) NOT NULL,
+  `balance` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `billing_masterfile`
+--
+
+INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `balance`, `created_at`, `updated_at`) VALUES
+(1, 1, 33, 880, '2018-01-24 13:37:33', '2018-01-24 13:37:33');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `discount_masterfile`
 --
 
@@ -130,6 +152,14 @@ CREATE TABLE `guestaddons_masterfile` (
   `addons_id` int(11) NOT NULL,
   `reservation_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `guestaddons_masterfile`
+--
+
+INSERT INTO `guestaddons_masterfile` (`guestaddon_id`, `addons_id`, `reservation_id`) VALUES
+(5, 1, 30),
+(6, 1, 31);
 
 -- --------------------------------------------------------
 
@@ -196,8 +226,11 @@ CREATE TABLE `reservation_masterfile` (
 --
 
 INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`, `room_number`) VALUES
-(8, 1, 6, '2018-01-23', '2018-01-26', 2, 0),
-(9, 1, 6, '2018-01-23', '2018-01-26', 3, 11);
+(29, 1, 6, '2018-01-26', '2018-01-27', 1, 2),
+(30, 1, 6, '2018-01-27', '2018-01-28', 2, 3),
+(31, 1, 6, '2018-01-27', '2018-01-28', 1, 2),
+(32, 1, 6, '2018-01-27', '2018-01-28', 1, 2),
+(33, 1, 6, '2018-01-27', '2018-01-28', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -221,11 +254,10 @@ CREATE TABLE `room_masterfile` (
 --
 
 INSERT INTO `room_masterfile` (`room_id`, `room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`, `room_imagepath`) VALUES
-(6, 'Twin Queen Room1111', 'Twin Bed Rooms eyee', '2', 2500560, 14, 'Available', 'img/Twin.JPG'),
+(6, 'Twin Queen Room1111', 'Twin Bed Rooms eyee', '2', 500, 14, 'Available', 'img/Twin.JPG'),
 (7, 'Queen Room', 'Queens Rooms', '1', 1500, 2, 'Available', 'img/Queen.jpg'),
 (8, 'Family Room', 'Fambam', '5', 3000, 3, 'Available', 'img\\Family.JPG'),
-(9, 'Quadroom', 'Squad Goals', '4', 2500, 4, 'Available', 'img\\Quad.jpg'),
-(11, 'hah', 'ff', '0', 2, 5, 'Available', 'img/Dorm.jpg');
+(9, 'Quadroom', 'Squad Goals', '4', 2500, 4, 'Available', 'img\\Quad.jpg');
 
 -- --------------------------------------------------------
 
@@ -262,6 +294,12 @@ ALTER TABLE `addons_masterfile`
 --
 ALTER TABLE `adminuser_masterfile`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `billing_masterfile`
+--
+ALTER TABLE `billing_masterfile`
+  ADD PRIMARY KEY (`billing_id`);
 
 --
 -- Indexes for table `discount_masterfile`
@@ -313,13 +351,19 @@ ALTER TABLE `transaction_masterfile`
 -- AUTO_INCREMENT for table `addons_masterfile`
 --
 ALTER TABLE `addons_masterfile`
-  MODIFY `Addon_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Addon_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `adminuser_masterfile`
 --
 ALTER TABLE `adminuser_masterfile`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `billing_masterfile`
+--
+ALTER TABLE `billing_masterfile`
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `discount_masterfile`
@@ -331,7 +375,7 @@ ALTER TABLE `discount_masterfile`
 -- AUTO_INCREMENT for table `guestaddons_masterfile`
 --
 ALTER TABLE `guestaddons_masterfile`
-  MODIFY `guestaddon_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `guestaddon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `guest_masterfile`
@@ -349,13 +393,13 @@ ALTER TABLE `reports_masterfile`
 -- AUTO_INCREMENT for table `reservation_masterfile`
 --
 ALTER TABLE `reservation_masterfile`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `room_masterfile`
 --
 ALTER TABLE `room_masterfile`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `transaction_masterfile`
