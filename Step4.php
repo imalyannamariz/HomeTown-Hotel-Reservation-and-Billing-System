@@ -209,7 +209,7 @@ table {
           <!-- policy -->
           <div class = "col-md-3">
             <div class = "panel panel-default">
-              <div class = "panel-heading" style = "background-color: #96281B;">
+              <div class = "panel-heading" style = "background-color: red;">
                 <h3 class = "text-center">
                   <strong>Policy</strong>
                 </h3>
@@ -227,66 +227,38 @@ table {
                     </thead>
                     <tbody>
                       <tr>
-                        <td class = "text-left" bgcolor = "#EBEDF2">Pre Payment</td>
+                        <td class = "text-left" bgcolor = "#EBEDF2">Pre-Payment</td>
                         <td class = "text-left" bgcolor = "#EBEDF2">
-                          asdasdasdasdasdasasasdasdasdasdasasdasdasdasdasdasdasdasdasdasdasd
-                          asdasdasdasdasdadasdasdasdasd
-                          asdasdasdasd
-                          qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
+                          As per hotel policy, you are to <br> 
+                          pay your 15% downpayment to <br>
+                          our bank account as deposit, <br>
+                          take a screenshot of it and <br>
+                          upload it to your customer <br>
+                          dashboard. When you have <br>
+                          successfully uploaded the <br> 
+                          Hotel will monitor your <br>
+                          records and confirm your <br>
+                          reservation. All pending <br>
+                          reservations must be settled <br>
+                          within 3 days, else it will <br>
+                          expire. <br>
                         </td>
                       </tr>
                       <tr>
                         <td class = "text-left" bgcolor = "#EBEDF2">Cancelling</td>
-                        <td class = "text-left" bgcolor = "#EBEDF2">Cancelling
-                            qweqweqweqweqweqweqwewqwieojqwioeqwioejiqwoejioqwjeqw
-                            asdasdqiwoeqjwieoqwjieoqjwieoqwe'asdiqiwjqwioejqwioejqwie'a
-                            asdijasiodjqweqwe
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
+                        <td class = "text-left" bgcolor = "#EBEDF2">
+                          You can cancel your pending <br>
+                          reservations using the <br>
+                          customer dashboard.
                         </td>
                       </tr>
-                       <tr>
+                      <tr>
                         <td class = "text-left" bgcolor = "#EBEDF2">Rebooking</td>
                         <td class = "text-left" bgcolor = "#EBEDF2">
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
-                            qwoejqowiejqowiejioqwjeoiqwjeoiqwjeoiqjweioqwjioejqwoeiqjwieoqwejqiowjeioq
-                            qwiejqiwoejoqwijeiqwjeioqwjeqwioqjweoiqwjeioqjeqqiwejqiwejqowie
-                            qweqweqweqweqweqweqwew
+                          You can modify your pending <br>
+                          reservations using the <br>
+                          customer dashboard.
+                        </td>
                       </tr>
                     </tbody>
                   </table>
