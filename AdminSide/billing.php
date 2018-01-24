@@ -3,28 +3,32 @@
   <div class="container-fluid">
 
     <table class ='table table-striped'>
-      <th>Reservation ID</th>
+      <th>Billing ID</th>
       <th>Guest ID</th>
-      <th>Room ID</th>
-      <th>Check in</th>
-      <th>Check out</th>
-      <th>Number of Guest</th>
-      <th>Room number</th>
+      <th>Reservation ID</th>
+      <th>Balance</th>
+      <th>Total</th>
+      <th>Downpayment</th>
+      <th>Status</th>
+      <th>Created_at</th>
+      <th>Updated_at</th>
       <th>Actions</th>
-      <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM reservation_masterfile");
+      <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM billing_masterfile");
       $currentTime = date("Y-m-d");
       while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
       <tr>
-        <td id ='reservation-id' ><?= $row['reservation_id'] ?></td>
+        <td id ='reservation-id' ><?= $row['billing_id'] ?></td>
         <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
-        <td id = 'room-id' ><?= $row['room_id'] ?></td>
-        <td id = 'checkin' ><?= $row['checkindate'] ?></td>
-        <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
-        <td id = 'number-guest'><?= $row['number_guest']?></td>
-        <td id = 'room-number'><?= $row['room_number'] ?></td>
+        <td id = 'room-id' ><?= $row['reservation_id'] ?></td>
+        <td id = 'checkin' ><?= $row['balance'] ?></td>
+        <td id = 'checkout' ><?= $row['total'] ?></td>
+        <td id = 'number-guest'><?= $row['downpayment']?></td>
+        <td ><?= $row['status'] ?></td>
+        <td ><?= $row['created_at'] ?></td>
+        <td ><?= $row['updated_at'] ?></td>
         <td><form>
-          <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
-          <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
+          <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary' style ='color:white'>Edit</a>
+          <input type="hidden" name="t_id" value="<?= $row['billing_id'] ?>">
           <button type ='submit' class ='btn btn-danger'>Delete</button>
         </form></td>
       </tr>
@@ -90,11 +94,11 @@
                       <label for='roomNumber'>Room Quantity</label><br>
                       <input required class='form-control' name = 'roomNumber'>
                     </div>
-
+                    
                   </table>
                 </div>
               </div>
-
+              
             </div>
             <div class="modal-footer">
               <input type ='hidden' name = 'roomId'>
@@ -122,13 +126,16 @@
 <script src="js/sb-admin-charts.min.js"></script>
 <script>
   $(document).ready(function(){
+    $('button#show').click(function(){
+      $('.editmodal').show()
+    })
     $('form').on('submit', function(e){
       e.preventDefault();
       var prompt = confirm("Are you sure?")
-      if(prompt && btn === undefined){
+      if(prompt){
         $.ajax({
           type:'POST',
-          url:'../ajax/cancelreservation.php',
+          url:'../ajax/deletebilling.php',
           data: $(this).serialize(),
           success: function(html){
             alert('Reservation has been deleted')

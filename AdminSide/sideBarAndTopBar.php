@@ -114,34 +114,49 @@ session_start();
     </ul>
   </li>
   <!-- Manage reservation -->
-    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti101" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Manage Reservation</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti101">
-            <li>
-              <a href="reservation.php">Modify Reservation</a>
-            </li>
-        </li>
-        <ul class="sidenav-third-level collapse" id="collapseMulti2">
-        </ul>
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti101" data-parent="#exampleAccordion">
+      <i class="fa fa-fw fa-sitemap"></i>
+      <span class="nav-link-text">Manage Reservation</span>
+    </a>
+    <ul class="sidenav-second-level collapse" id="collapseMulti101">
+      <li>
+        <a href="reservation.php">Modify Reservation</a>
       </li>
+    </li>
+    <ul class="sidenav-third-level collapse" id="collapseMulti2">
     </ul>
   </li>
-  <!-- End Manage Reservation -->
-  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">
-      <i class="fa fa-fw fa-sitemap"></i>
-      <span class="nav-link-text">Manage Discounts</span>
-    </a>
-    <ul class="sidenav-second-level collapse" id="collapseMulti10000">
-      <li>
-        <a href="DiscountAdd.php">Add Discounts</a>
-      </li>
-      <li>
-        <a href="discountModify.php">Modify Discounts</a>
-      </li>
+</ul>
+</li>
+<!-- End Manage Reservation -->
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti102" data-parent="#exampleAccordion">
+    <i class="fa fa-fw fa-sitemap"></i>
+    <span class="nav-link-text">Billing</span>
+  </a>
+  <ul class="sidenav-second-level collapse" id="collapseMulti102">
+    <li>
+      <a href="billing.php">Check billing</a>
+    </li>
+  </li>
+  <ul class="sidenav-third-level collapse" id="collapseMulti2">
+  </ul>
+</li>
+</ul>
+</li>
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">
+    <i class="fa fa-fw fa-sitemap"></i>
+    <span class="nav-link-text">Manage Discounts</span>
+  </a>
+  <ul class="sidenav-second-level collapse" id="collapseMulti10000">
+    <li>
+      <a href="DiscountAdd.php">Add Discounts</a>
+    </li>
+    <li>
+      <a href="discountModify.php">Modify Discounts</a>
+    </li>
             <!-- <li>
               <a href="#">Delete Discounts</a>
             </li> -->
