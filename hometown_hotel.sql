@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2018 at 01:38 PM
+-- Generation Time: Jan 24, 2018 at 04:19 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -111,15 +111,11 @@ CREATE TABLE `billing_masterfile` (
   `reservation_id` int(11) NOT NULL,
   `balance` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  `status` varchar(30) NOT NULL,
+  `total` int(11) NOT NULL,
+  `downpayment` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `billing_masterfile`
---
-
-INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `balance`, `created_at`, `updated_at`) VALUES
-(1, 1, 33, 880, '2018-01-24 13:37:33', '2018-01-24 13:37:33');
 
 -- --------------------------------------------------------
 
@@ -229,8 +225,7 @@ INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `
 (29, 1, 6, '2018-01-26', '2018-01-27', 1, 2),
 (30, 1, 6, '2018-01-27', '2018-01-28', 2, 3),
 (31, 1, 6, '2018-01-27', '2018-01-28', 1, 2),
-(32, 1, 6, '2018-01-27', '2018-01-28', 1, 2),
-(33, 1, 6, '2018-01-27', '2018-01-28', 1, 2);
+(32, 1, 6, '2018-01-27', '2018-01-28', 1, 2);
 
 -- --------------------------------------------------------
 
