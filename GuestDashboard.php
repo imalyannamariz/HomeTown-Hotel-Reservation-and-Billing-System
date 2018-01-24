@@ -112,15 +112,15 @@
         <ul class="nav navbar-nav rq-menus">
           <li class="active">
             <a href="HomepageFinal.php">Home</a>
-            <ul class="rq-sub-menu">
+            <!-- <ul class="rq-sub-menu">
               <li>
                 <a href="HomepageFinal.php">Homepage 1</a>
               </li>
-            </ul>
+            </ul> -->
           </li>
           <li>
             <a href="Rooms.php">Room</a>
-            <ul class="rq-sub-menu">
+            <!-- <ul class="rq-sub-menu">
               <li>
                 <a href="Rooms.php">Twin Queen Room</a>
               </li>
@@ -138,7 +138,7 @@
                 <li>
                   <a href="Rooms.php">Dormitory</a>
                 </li>
-              </ul>
+              </ul> -->
             </li>
             <li>
               <a href="about-us.html">About</a>

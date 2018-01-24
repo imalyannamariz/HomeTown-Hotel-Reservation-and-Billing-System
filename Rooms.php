@@ -180,15 +180,15 @@ img {
           <ul class="nav navbar-nav rq-menus">
               <li class="">
                 <a href="HomepageFinal.php">Home</a>
-                <ul class="rq-sub-menu">
+                <!-- <ul class="rq-sub-menu">
                     <li>
                         <a href="HomepageFinal.php">Homepage 1</a>
                     </li>
-                </ul>
+                </ul> -->
               </li>
               <li class = "active dropdown">
                 <a href="Rooms.php">Room</a>
-                <ul class="rq-sub-menu">
+                <!-- <ul class="rq-sub-menu">
                     <li>
                         <a href="Rooms.php">Twin Queen Room</a>
                     </li>
@@ -206,7 +206,7 @@ img {
                      <li>
                         <a href="Reservation.php">Dormitory</a>
                     </li>
-                </ul>
+                </ul> -->
               </li>
               <li>
                 <a href="about-us.html">About</a>
