@@ -20,9 +20,9 @@
         <td id ='reservation-id' ><?= $row['billing_id'] ?></td>
         <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
         <td id = 'room-id' ><?= $row['reservation_id'] ?></td>
-        <td id = 'checkin' ><?= $row['balance'] ?></td>
-        <td id = 'checkout' ><?= $row['total'] ?></td>
-        <td id = 'number-guest'><?= $row['downpayment']?></td>
+        <td id = 'checkin' ><?= number_format($row['balance'],2) ?></td>
+        <td id = 'checkout' ><?= number_format($row['total'],2) ?></td>
+        <td id = 'number-guest'><?= number_format($row['downpayment'], 2)?></td>
         <td ><?= $row['status'] ?></td>
         <td ><?= $row['created_at'] ?></td>
         <td ><?= $row['updated_at'] ?></td>
@@ -66,7 +66,7 @@
       </div>
     </div>
     <!-- Edit Modal -->
-    <div class="modal" id ='editreservation' tabindex="-1" role="dialog">
+    <div class="modal fade" id ='editreservation' tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

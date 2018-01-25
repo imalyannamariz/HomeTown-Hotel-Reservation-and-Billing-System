@@ -205,6 +205,7 @@ echo print_r($_SESSION['reservation']);
                 while($row1 = mysqli_fetch_assoc($fetchReservedrooms)){
                   $reservedroomSum += $row1['room_number'];
                 }
+                if($row['room_number'] - $reservedroomSum != 0){
             ?>
           <div class="rq-listing-choose singleRoom-grid-main">
 
@@ -227,7 +228,8 @@ echo print_r($_SESSION['reservation']);
                 </div>
               </div>
 
-              <?php } ?><!----row---->
+              <?php }
+              } ?><!----row---->
             </div>
             <!-- <button><i class="fa fa-spinner" aria-hidden="true"></i>LOAD MORE</button> -->
           </div><!------ singleRoom-grid-main -------->

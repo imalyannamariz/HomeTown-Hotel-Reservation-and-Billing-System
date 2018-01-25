@@ -404,7 +404,7 @@ table {
                           <?= $_SESSION['reservation']['roomno'] ?>
                         </td>
                         <td class="text-right" bgcolor="#EBEDF2">
-                            <?= $roomrate ?> php
+                            <?= number_format($roomrate,2) ?> php
                       </td>
                     </tr>
                     <tr>
@@ -434,7 +434,7 @@ table {
                       <strong>Subtotal (per rooms picked)</strong>
                     </td>
                     <td class="highrow text-right">
-                   <?= $roomrate ?> php
+                   <?= number_format($roomrate,2) ?> php
                   </td>
                 </tr>
                 <tr>
@@ -448,7 +448,7 @@ table {
                     <strong>Vatable</strong>
                   </td>
                   <td class="text-right" bgcolor="#EBEDF2">
-                  <?= $vattotal ?> php
+                  <?= number_format($vattotal,2) ?> php
                 </td>
               </tr>
               <tr>
@@ -462,7 +462,7 @@ table {
                   <strong>VAT 12%</strong>
                 </td>
                 <td class="text-right">
-                <?= $vatable ?>php
+                <?= number_format($vatable,2) ?>php
               </td>
             </tr>
             <tr>
@@ -476,7 +476,7 @@ table {
                 <strong>Down payment</strong>
               </td>
               <td class=" text-right" bgcolor="#EBEDF2">
-              <?= $downpayment ?>php
+              <?= number_format($downpayment,2) ?>php
             </td>
           </tr>
           <tr>
@@ -490,7 +490,7 @@ table {
               <strong>Total</strong>
             </td>
             <td class=" highrow text-right">
-            <?= $vattotal ?>php
+            <?= number_format($vattotal,2) ?>php
           </td>
         </tr>
       </tbody>

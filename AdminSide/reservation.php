@@ -1,28 +1,30 @@
- <?= include_once 'sideBarAndTopBar.php'; ?>
+ <?= include_once 'sideBarAndTopBar.php';
+ ?>
+
  <div class="content-wrapper">
   <div class="container-fluid">
 
     <table class ='table table-striped'>
       <th>Reservation ID</th>
       <th>Guest ID</th>
-      <th>Room ID</th>
+      <th>Room Name</th>
       <th>Check in</th>
       <th>Check out</th>
       <th>Number of Guest</th>
       <th>Room number</th>
       <th>Actions</th>
-      <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM reservation_masterfile");
+      <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id");
       $currentTime = date("Y-m-d");
       while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
       <tr>
         <td id ='reservation-id' ><?= $row['reservation_id'] ?></td>
         <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
-        <td id = 'room-id' ><?= $row['room_id'] ?></td>
+        <td id = 'room-id' ><?= $row['room_type'] ?></td>
         <td id = 'checkin' ><?= $row['checkindate'] ?></td>
         <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
         <td id = 'number-guest'><?= $row['number_guest']?></td>
-        <td id = 'room-number'><?= $row['room_number'] ?></td>
-        <td><form>
+        <td id = 'room-number'><?= $row['reserve_room'] ?></td>
+        <td><form id = 'deletereservation'>
           <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
           <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
           <button type ='submit' class ='btn btn-danger'>Delete</button>
@@ -62,7 +64,7 @@
       </div>
     </div>
     <!-- Edit Modal -->
-    <div class="modal" id ='editreservation' tabindex="-1" role="dialog">
+    <div class="modal fade" id ='editreservation' tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -77,20 +79,29 @@
                 <div class='form-group'>
                   <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
                     <label for='RoomType'>Check in</label><br>
-                    <input required class='form-control' name = 'roomType' type ='date'>
+                    <input required class='form-control' name = 'checkin' id = 'checkInDate' type ='text'>
                     <div class='form-group'>
                       <label for='roomRate'>Check out</label><br>
-                      <input required class='form-control' name = 'roomCapacity' type='date'>
+                      <input required class='form-control' name = 'checkout'  id = 'checkOutDate' type='text'>
                     </div>
+                    
                     <div class='form-group'>
-                      <label for='roomRate'>Room type</label><br>
-                      <input required class='form-control' name = 'roomRate'>
-                    </div>
-                    <div class='form-group'>
-                      <label for='roomNumber'>Room Quantity</label><br>
-                      <input required class='form-control' name = 'roomNumber'>
-                    </div>
 
+                      <label for='roomNumber'>Room Type</label><br>
+                      <select class ='form-control' name ='roomtype' id ='roomtype'>
+                        <?php $fetchrooms = mysqli_query($conn, "SELECT * FROM room_masterfile");
+                        while($row = mysqli_fetch_assoc($fetchrooms)){
+                          echo "<option value = '{$row['room_id']}'>{$row['room_type']}</option>";
+                        } ?>
+                      </select>
+                    </div>
+                    <div class='form-group'>
+                      <label for='roomRate'>Room Quantity</label><br>
+                      <select id ='roomquantity' name = 'roomquantity' class ='form-control'>
+
+                      </select>
+                    </div>
+                    <input type ='hidden' name = 'reservationno'/>
                   </table>
                 </div>
               </div>
@@ -107,6 +118,7 @@
   </div>
 </div>
 <!-- Bootstrap core JavaScript-->
+
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
@@ -120,12 +132,15 @@
 <!-- Custom scripts for this page-->
 <script src="js/sb-admin-datatables.min.js"></script>
 <script src="js/sb-admin-charts.min.js"></script>
+
+<!-- Datepicker-->
+
 <script>
   $(document).ready(function(){
-    $('form').on('submit', function(e){
+    $('form#deletereservation').on('submit', function(e){
       e.preventDefault();
       var prompt = confirm("Are you sure?")
-      if(prompt && btn === undefined){
+      if(prompt){
         $.ajax({
           type:'POST',
           url:'../ajax/cancelreservation.php',
@@ -137,6 +152,69 @@
         })
       }
     })
+    $('a.edit').on('click',function(){
+      var checkin = $(this).parent().closest('tr').find('#checkin').html()
+      var checkout = $(this).closest('tr').find('#checkout').html()
+      var reservationno = $(this).closest('tr').find('#reservation-id').html()
+      var roomno = $(this).closest('tr').find('#room-number').html()
+      $('input[name=checkin]').val(checkin)
+      $('input[name=checkout').val(checkout)
+      $('input[name=roomquantity').val(roomno)
+      $('input[name=reservationno]').val(reservationno)
+    })
+    $('#checkInDate, #checkOutDate, #roomtype').on('change',function(){
+      $.ajax({
+        type:'POST',
+        url:'../ajax/getreservedrooms.php',
+        data:{
+          checkInDate: $('#checkInDate').val(),
+          checkOutDate: $('#checkOutDate').val(),
+          room_id: $('option:selected').val(),
+          guest_id: $('input[name=guestno]').val(),
+        },
+        success:function(html){
+          var availablerooms = parseInt(html)
+          $('#roomquantity').empty()
+          for(var x = 1; x<=availablerooms; x++){
+            $('#roomquantity').append(`<option value = ${x}>${x}</option>`)
+          }
+        },
+        error:function(){
+          alert('asdasd')
+        }
+      })
+    })
+    $('form#formEditRoom').on('submit', function(e){
+      e.preventDefault();
+      alert($(this).serialize())
+      $.ajax({
+        type:'POST',
+        url:'../ajax/editreservation.php',
+        data: $(this).serialize(),
+        success: function(html){
+          alert("Success")
+        }
+      })
+      
+    })
+    $("#checkInDate").datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: "+3",
+      onSelect: function(dateText, inst) {
+        var d = $.datepicker.parseDate(inst.settings.dateFormat, dateText);
+        d.setDate(d.getDate() + 1);
+
+        $("#checkOutDate").datepicker("option","minDate",
+          $("#checkInDate").datepicker("getDate"));
+        $("#checkOutDate").val($.datepicker.formatDate(inst.settings.dateFormat, d));
+
+      }, 
+    }).datepicker("setDate", "+0");
+
+    $("#checkOutDate").datepicker({
+      dateFormat: "yy-mm-dd",
+      minDate: "+4",
+    }).datepicker("setDate", "+1");
   })
 </script>
 </body>
