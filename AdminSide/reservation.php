@@ -4,33 +4,40 @@
  <div class="content-wrapper">
   <div class="container-fluid">
 
-    <table class ='table table-striped'>
-      <th>Reservation ID</th>
-      <th>Guest ID</th>
-      <th>Room Name</th>
-      <th>Check in</th>
-      <th>Check out</th>
-      <th>Number of Guest</th>
-      <th>Room number</th>
-      <th>Actions</th>
-      <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id");
-      $currentTime = date("Y-m-d");
-      while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
-      <tr>
-        <td id ='reservation-id' ><?= $row['reservation_id'] ?></td>
-        <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
-        <td id = 'room-id' ><?= $row['room_type'] ?></td>
-        <td id = 'checkin' ><?= $row['checkindate'] ?></td>
-        <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
-        <td id = 'number-guest'><?= $row['number_guest']?></td>
-        <td id = 'room-number'><?= $row['reserve_room'] ?></td>
-        <td><form id = 'deletereservation'>
-          <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
-          <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
-          <button type ='submit' class ='btn btn-danger'>Delete</button>
-        </form></td>
-      </tr>
-      <?php } ?>
+    <table id ='thisTable' class ='table table-striped display dataTable'>
+      <thead>
+        <tr>
+          <th>Reservation ID</th>
+          <th>Guest ID</th>
+          <th>Room Name</th>
+          <th>Check in</th>
+          <th>Check out</th>
+          <th>Number of Guest</th>
+          <th>Room number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id");
+        $currentTime = date("Y-m-d");
+        while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
+        <tr>
+          <td id ='reservation-id' ><?= $row['reservation_id'] ?></td>
+          <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
+          <td id = 'room-id' ><?= $row['room_type'] ?></td>
+          <td id = 'checkin' ><?= $row['checkindate'] ?></td>
+          <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
+          <td id = 'number-guest'><?= $row['number_guest']?></td>
+          <td id = 'room-number'><?= $row['reserve_room'] ?></td>
+          <td><form id = 'deletereservation'>
+            <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
+            <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
+            <button type ='submit' class ='btn btn-danger'>Delete</button>
+          </form></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+      <tfoot></tfoot>
     </table>
 
     <footer class="sticky-footer">
@@ -125,17 +132,18 @@
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
 <script src="vendor/chart.js/Chart.min.js"></script>
-<script src="vendor/datatables/jquery.dataTables.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
-<script src="js/sb-admin-datatables.min.js"></script>
-<script src="js/sb-admin-charts.min.js"></script>
+<script type = 'text/javascript' src ='js/datatables.min.js'></script> 
+<script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap.min.js"></script>
 
 <!-- Datepicker-->
 
 <script>
+  $(function(){
+    $('#thisTable').DataTable()
+  })
   $(document).ready(function(){
     $('form#deletereservation').on('submit', function(e){
       e.preventDefault();

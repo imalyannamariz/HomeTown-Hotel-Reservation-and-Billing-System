@@ -3,16 +3,19 @@
   <div class="container-fluid">
 
     <table class ='table table-striped'>
-      <th>Billing ID</th>
-      <th>Guest ID</th>
-      <th>Reservation ID</th>
-      <th>Balance</th>
-      <th>Total</th>
-      <th>Downpayment</th>
-      <th>Status</th>
-      <th>Created_at</th>
-      <th>Updated_at</th>
-      <th>Actions</th>
+      <thead>
+        <th>Billing ID</th>
+        <th>Guest ID</th>
+        <th>Reservation ID</th>
+        <th>Balance</th>
+        <th>Total</th>
+        <th>Downpayment</th>
+        <th>Status</th>
+        <th>Created_at</th>
+        <th>Updated_at</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
       <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM billing_masterfile");
       $currentTime = date("Y-m-d");
       while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
@@ -33,6 +36,7 @@
         </form></td>
       </tr>
       <?php } ?>
+      </tbody>
     </table>
 
     <footer class="sticky-footer">
@@ -117,15 +121,11 @@
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
 <script src="vendor/chart.js/Chart.min.js"></script>
-<script src="vendor/datatables/jquery.dataTables.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
-<!-- Custom scripts for this page-->
-<script src="js/sb-admin-datatables.min.js"></script>
-<script src="js/sb-admin-charts.min.js"></script>
+<script type = 'text/javascript' src ='js/datatables.min.js'></script> 
+<script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){
+    $('.table').DataTable()
     $('button#show').click(function(){
       $('.editmodal').show()
     })

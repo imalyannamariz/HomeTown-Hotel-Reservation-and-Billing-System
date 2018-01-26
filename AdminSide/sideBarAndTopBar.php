@@ -24,6 +24,7 @@ session_start();
   <link href="css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
