@@ -81,7 +81,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="formEditRoom" enctype="multipart/form-data" method ='post'>
+            <form id="formEditRoom" enctype="multipart/form-data" method ='post' aria-location = '../ajax/getreservedrooms.php' action = '../ajax/editreservation.php' aria-delete = '../ajax/deletereservation.php'>
               <div class='container-fluid'>
                 <div class='form-group'>
                   <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
@@ -98,7 +98,7 @@
                       <select class ='form-control' name ='roomtype' id ='roomtype'>
                         <?php $fetchrooms = mysqli_query($conn, "SELECT * FROM room_masterfile");
                         while($row = mysqli_fetch_assoc($fetchrooms)){
-                          echo "<option value = '{$row['room_id']}'>{$row['room_type']}</option>";
+                          echo "<option class ='get' value = '{$row['room_id']}'>{$row['room_type']}</option>";
                         } ?>
                       </select>
                     </div>
@@ -141,92 +141,11 @@
 
 <!-- Datepicker-->
 <script src="js/jquery.datetimepicker.full.min.js"></script>
+<script src = 'js/edit_reservation.js'></script>
 <script>
   $(document).ready(function(){
     $('#thisTable').DataTable()
-    $('form#deletereservation').on('submit', function(e){
-      e.preventDefault();
-      var prompt = confirm("Are you sure?")
-      if(prompt){
-        $.ajax({
-          type:'POST',
-          url:'../ajax/cancelreservation.php',
-          data: $(this).serialize(),
-          success: function(html){
-            alert('Reservation has been deleted')
-            location.reload()
-          }
-        })
-      }
-    })
-    $('a.edit').on('click',function(){
-      var checkin = $(this).parent().closest('tr').find('#checkin').html()
-      var checkout = $(this).closest('tr').find('#checkout').html()
-      var reservationno = $(this).closest('tr').find('#reservation-id').html()
-      var roomno = $(this).closest('tr').find('#room-number').html()
-      $('input[name=checkin]').val(checkin)
-      $('input[name=checkout').val(checkout)
-      $('input[name=roomquantity').val(roomno)
-      $('input[name=reservationno]').val(reservationno)
-    })
-    $('#checkInDate, #checkOutDate, #roomtype').on('change',function(){
-      $.ajax({
-        type:'POST',
-        url:'../ajax/getreservedrooms.php',
-        data:{
-          checkInDate: $('#checkInDate').val(),
-          checkOutDate: $('#checkOutDate').val(),
-          room_id: $('option:selected').val(),
-          guest_id: $('input[name=guestno]').val(),
-        },
-        success:function(html){
-          var availablerooms = parseInt(html)
-          $('#roomquantity').empty()
-          for(var x = 1; x<=availablerooms; x++){
-            $('#roomquantity').append(`<option value = ${x}>${x}</option>`)
-          }
-        },
-        error:function(){
-          alert('asdasd')
-        }
-      })
-    })
-    $('form#formEditRoom').on('submit', function(e){
-      e.preventDefault();
-      alert($(this).serialize())
-      $.ajax({
-        type:'POST',
-        url:'../ajax/editreservation.php',
-        data: $(this).serialize(),
-        success: function(html){
-          alert("Success")
-        }
-      })
-      
-    })
-    $("#checkInDate").datetimepicker({
-      timepicker: false,
-      format: "Y-m-d",
-      minDate: 0,
-      onSelect: function(dateText, inst) {
-        var d = $.datepicker.parseDate(inst.settings.dateFormat, dateText);
-        d.setDate(d.getDate() + 1);
 
-        $("#checkOutDate").datetimepicker("option","minDate",
-          $("#checkInDate").datetimepicker("getDate"));
-        $("#checkOutDate").val($.datetimepicker.formatDate(inst.settings.dateFormat, d));
-      },
-    })
-
-    $("#checkOutDate").datetimepicker({
-      timepicker: false,
-      format: "Y-m-d",
-      onShow:function( ct ){
-       this.setOptions({
-        minDate:$('#checkInDate').val()?$('#checkInDate').val():false
-      })
-     },
-   })
   })
 </script>
 </body>
