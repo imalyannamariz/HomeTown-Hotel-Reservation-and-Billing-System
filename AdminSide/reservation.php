@@ -4,7 +4,7 @@
  <div class="content-wrapper">
   <div class="container-fluid">
 
-    <table id ='thisTable' class ='table table-striped display dataTable'>
+    <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
           <th>Reservation ID</th>
@@ -135,16 +135,15 @@
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
+<!-- DataTable-->
 <script type = 'text/javascript' src ='js/datatables.min.js'></script> 
-<script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap.min.js"></script>
+<script type ='text/javascript' src = 'js/dataTables.bootstrap4.min.js'></script>
 
 <!-- Datepicker-->
-
+<script src="js/jquery.datetimepicker.full.min.js"></script>
 <script>
-  $(function(){
-    $('#thisTable').DataTable()
-  })
   $(document).ready(function(){
+    $('#thisTable').DataTable()
     $('form#deletereservation').on('submit', function(e){
       e.preventDefault();
       var prompt = confirm("Are you sure?")
@@ -205,24 +204,25 @@
       })
       
     })
-    $("#checkInDate").datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: "+3",
+    $("#checkInDate").datetimepicker({
+      timepicker: false,
+      format: "Y-m-d",
+      minDate: 0,
       onSelect: function(dateText, inst) {
         var d = $.datepicker.parseDate(inst.settings.dateFormat, dateText);
         d.setDate(d.getDate() + 1);
 
-        $("#checkOutDate").datepicker("option","minDate",
-          $("#checkInDate").datepicker("getDate"));
-        $("#checkOutDate").val($.datepicker.formatDate(inst.settings.dateFormat, d));
+        $("#checkOutDate").datetimepicker("option","minDate",
+          $("#checkInDate").datetimepicker("getDate"));
+        $("#checkOutDate").val($.datetimepicker.formatDate(inst.settings.dateFormat, d));
+      },
+    })
 
-      }, 
-    }).datepicker("setDate", "+0");
-
-    $("#checkOutDate").datepicker({
-      dateFormat: "yy-mm-dd",
-      minDate: "+4",
-    }).datepicker("setDate", "+1");
+    $("#checkOutDate").datetimepicker({
+      timepicker: false,
+      format: "Y-m-d",
+      minDate:$('#checkInDate').val()
+    })
   })
 </script>
 </body>
