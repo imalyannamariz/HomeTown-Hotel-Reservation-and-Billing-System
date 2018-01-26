@@ -213,7 +213,7 @@
                         <th>Actions</th>
                       </tr>
                     </thead>
-                    <?php $fetch_reservations = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE guest_id = {$_SESSION['guest_ID']}");
+                    <?php $fetch_reservations = mysqli_query($conn, "SELECT * FROM reservation_masterfile JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id WHERE guest_id = {$_SESSION['guest_ID']}");
                     while($row = mysqli_fetch_assoc($fetch_reservations)){ ?>
                     <tbody>
                       <tr>
@@ -221,6 +221,7 @@
                         <td align = "center"><?= $row['checkoutdate'] ?></td>
                         <td align = "center"><?= $row['number_guest'] ?></td>
                         <td align ='center'><?= $row['room_number'] ?></td>
+                        <td align = 'center'><?= $row['room_type'] ?></td>
                         <td align = "center">pending</td>
                         <td>
                           <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success" style="display:inline-block !imporatant; width:50%; float:left;">View</a>
