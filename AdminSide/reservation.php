@@ -221,8 +221,12 @@
     $("#checkOutDate").datetimepicker({
       timepicker: false,
       format: "Y-m-d",
-      minDate:$('#checkInDate').val()
-    })
+      onShow:function( ct ){
+       this.setOptions({
+        minDate:$('#checkInDate').val()?$('#checkInDate').val():false
+      })
+     },
+   })
   })
 </script>
 </body>
