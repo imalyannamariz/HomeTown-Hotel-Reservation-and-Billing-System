@@ -198,38 +198,23 @@ table {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr style = 'width:277px'>
                         <td class = "text-left" bgcolor = "#EBEDF2">Pre-Payment</td>
-                        <td class = "text-left" bgcolor = "#EBEDF2">
-                          As per hotel policy, you are to <br> 
-                          pay your 15% downpayment to <br>
-                          our bank account as deposit, <br>
-                          take a screenshot of it and <br>
-                          upload it to your customer <br>
-                          dashboard. When you have <br>
-                          successfully uploaded the <br> 
-                          Hotel will monitor your <br>
-                          records and confirm your <br>
-                          reservation. All pending <br>
-                          reservations must be settled <br>
-                          within 3 days, else it will <br>
-                          expire. <br>
+                        <td class = "text-left" bgcolor = "#EBEDF2" style = 'text-align: justify'>
+                          As per hotel policy, you are to pay your 15% downpayment to our bank account as deposit, 
+                          take a screenshot of it and upload it to your customer dashboard. When you have successfully uploaded the Hotel will monitor your records and confirm your reservation. All pending reservations must be settled within 3 days, else it will expire. 
                         </td>
                       </tr>
                       <tr>
                         <td class = "text-left" bgcolor = "#EBEDF2">Cancelling</td>
-                        <td class = "text-left" bgcolor = "#EBEDF2">
-                          You can cancel your pending <br>
-                          reservations using the <br>
-                          customer dashboard.
+                        <td class = "text-left" bgcolor = "#EBEDF2" style = 'text-align: justify'>
+                          You can cancel your pending reservations using the customer dashboard.
                         </td>
                       </tr>
                       <tr>
                         <td class = "text-left" bgcolor = "#EBEDF2">Rebooking</td>
-                        <td class = "text-left" bgcolor = "#EBEDF2">
-                          You can modify your pending <br>
-                          reservations using the <br>
-                          customer dashboard.
+                        <td class = "text-left" bgcolor = "#EBEDF2" style = 'text-align: justify'>
+                          You can modify your pending reservations using the customer dashboard.
                         </td>
                         </tr>
                       </tbody>
