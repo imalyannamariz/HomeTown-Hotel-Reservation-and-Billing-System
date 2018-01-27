@@ -2,6 +2,9 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
+  if(!isset($_SESSION['login'])){
+    echo "<script>window.location.href = 'Confirm-Account.php'</script>";
+  }
 ?>
 <style>
 .navbar-brand{

@@ -3,14 +3,18 @@
   include_once 'header.php';
   session_start();
  if(!isset($_SESSION['login'])){
-    echo "<script>alert('Please login to continue')
-    window.location.href = 'login.php';
+    echo "<script>
+    window.location.href = 'Confirm-Account.php';
     </script>";
   }
 echo print_r($_SESSION['reservation']);
-if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) < 8){
+if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) < 4){
   header("Location: Step1.php");
 }
+$_SESSION['reservation']['roomid'] = $_POST['roomid'];
+$_SESSION['reservation']['roomno'] = $_POST['roomno'];
+$_SESSION['reservation']['roomname'] = $_POST['roomname'];
+$_SESSION['reservation']['services'] = $_POST['services'];
 
 ?>
 <style>

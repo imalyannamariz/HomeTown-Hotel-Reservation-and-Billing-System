@@ -42,7 +42,7 @@ $(document).ready(function(){
         }
       },
       error:function(){
-        alert('asdasd')
+        alert('Rooms not found')
       }
     })
   })

@@ -3,13 +3,6 @@
   session_start();
   include_once 'db.php';
   include_once 'header.php';
-  if(isset($_GET['login'])){
-    ?>
-    <script>
-      alert("Incorrect username and password");
-    </script>
-    <?php
-  }
 ?>
 
 
@@ -114,6 +107,7 @@
         <input type="password" name="password" class="form-control" id="password" required>
       </div>
       <button name="submit" class="btn btn-primary">Log in</button>
+      <a href= 'Step3.php' class = 'btn btn-success'>Register</a>
     </form>
   </div>
 </div>
