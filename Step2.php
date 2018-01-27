@@ -126,7 +126,7 @@ echo print_r($_SESSION['reservation']);
               <a href="about-us.html">About</a>
             </li>
             <li>
-              <a href="contact.html">Contact</a>
+              <a href="ContactUs.php">Contact</a>
             </li>
             <li class="active">
               <a href="step1.php">Reservations</a>

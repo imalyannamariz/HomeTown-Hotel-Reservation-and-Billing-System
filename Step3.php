@@ -84,7 +84,7 @@
                 <a href="about-us.html">About</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="ContactUs.php">Contact</a>
               </li>
               <li class = "active">
                 <a href="Step1.php">Reservations</a>

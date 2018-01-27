@@ -93,7 +93,7 @@ header .rq-header-main-menu .container-fluid .rq-menu-wrapper ul li:hover:before
                 <a href="about-us.html">About</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="ContactUs.php">Contact</a>
               </li>
              <!--  <li>
                 <a href="Confirm-Account.php">Reservations</a>
