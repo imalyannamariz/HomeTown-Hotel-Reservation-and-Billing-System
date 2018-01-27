@@ -250,7 +250,7 @@
                   <h4 class ='title'>Edit reservation</h4>
                 </div>
                 <div class="modal-body">
-                  <form action = 'ajax/editreservation.php' aria-delete = '../ajax/deletereservation.php' aria-location = 'ajax/getreservedrooms.php' id = 'formEditRoom'>
+                  <form action = 'ajax/editreservation.php' aria-delete = '../ajax/cancelreservation.php' aria-location = 'ajax/getreservedrooms.php' id = 'formEditRoom'>
                    <div class='form-group'>
                     <label for='RoomType'>Check in</label><br>
                     <input required class='form-control' name = 'checkin' id = 'checkInDate' type ='text'>

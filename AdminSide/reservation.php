@@ -81,7 +81,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="formEditRoom" enctype="multipart/form-data" method ='post' aria-location = '../ajax/getreservedrooms.php' action = '../ajax/editreservation.php' aria-delete = '../ajax/deletereservation.php'>
+            <form id="formEditRoom" enctype="multipart/form-data" method ='post' aria-location = '../ajax/getreservedrooms.php' action = '../ajax/editreservation.php' aria-delete = '../ajax/cancelreservation.php'>
               <div class='container-fluid'>
                 <div class='form-group'>
                   <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
