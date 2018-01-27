@@ -118,30 +118,7 @@
                 </li>
               </ul> -->
             </li>
-            <li>
-<<<<<<< HEAD
-              <a href="about-us.html">About</a>
-            </li>
-            <li>
-              <a href="ContactUs.php">Contact</a>
-            </li>
-            <li>
-              <a href="Step1.php">Reservations</a>
-            </li>
-            <?php if(isset($_SESSION['login'])){  ?>
-            <li class="active dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded = "false">
-                MY ACCOUNT<span class="caret"></span>
-              </a>
-              <ul class="rq-sub-menu">
-                <li><a href="GuestDashboard.php">MY RESERVATIONS</a></li> 
-                <li><a href="Logout.php">LOGOUT</a></li>
-              </ul>
-            </li>
-            <?php } else { ?> 
-            <li><a href="login.php">LOGIN</a></li>
-            <?php } ?>   
-=======
+
               <a href="Rooms.php">Room</a>
               <!-- <ul class="rq-sub-menu">
                 <li>
@@ -185,7 +162,6 @@
               <?php } else { ?> 
               <li><a href="login.php">LOGIN</a></li>
               <?php } ?>   
->>>>>>> 2dc925f4cb3cde51d4bbf53ca6e4981238592192
 
             </ul>
           </div>

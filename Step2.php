@@ -23,7 +23,9 @@ if(!isset($_SESSION['reservation'])){
 </style>
 <body>
   <!-- Modal -->
-  <?php $fetch_rooms = mysqli_query($conn, "SELECT * FROM room_masterfile"); ?>
+  <?php 
+  $roomcount = 0;
+  $fetch_rooms = mysqli_query($conn, "SELECT * FROM room_masterfile"); ?>
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalWrapper">
     <div class="modal-dialog modal-lg" role="document" id="modalWrapper">
       <div class="modal-content">
@@ -179,7 +181,7 @@ if(!isset($_SESSION['reservation'])){
         <div class="row">
           <div class="col-md-4 col-sm-4">
             <div class="singleRoom-grid-upper-left pull-leftking ">
-              <h5><?= mysqli_num_rows($fetch_rooms) ?> results found</h5>
+              <h5><?= $roomcount ?> results found</h5>
             </div>
           </div>
           <div class="col-md-8 col-sm-8">
@@ -209,6 +211,7 @@ if(!isset($_SESSION['reservation'])){
                   $reservedroomSum += $row1['room_number'];
                 }
                 if($row['room_number'] - $reservedroomSum != 0){
+                  $roomcount++;
             ?>
           <div class="rq-listing-choose singleRoom-grid-main">
 

@@ -9,9 +9,9 @@
   $fetch_rooms = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE guest_ID = {$_SESSION['guest_ID']}");
   $yourReservedRooms = 0;
   while($row = mysqli_fetch_assoc($fetch_rooms)){
-    $yourReservedrooms += $row['room_number'];
+    $yourReservedRooms += $row['room_number'];
   }
-  if($yourReservedrooms >= 5){
+  if($yourReservedRooms >= 5){
     echo "<script>alert('You are only allowed to reserve 5 rooms')
     window.location.href = 'GuestDashboard.php' </script>";
   }
