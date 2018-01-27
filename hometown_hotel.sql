@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2018 at 12:38 AM
+-- Generation Time: Jan 27, 2018 at 09:50 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -126,7 +126,8 @@ INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `b
 (3, 9, 35, 1760, '2018-01-25 17:27:10', '2018-01-25 17:27:10', 'Not paid', 1760, 264),
 (4, 9, 36, 3520, '2018-01-25 17:27:26', '2018-01-25 17:27:26', 'Not paid', 3520, 528),
 (5, 9, 37, 1320, '2018-01-25 17:27:46', '2018-01-25 17:27:46', 'Not paid', 1320, 198),
-(6, 9, 38, 1320, '2018-01-25 19:34:36', '2018-01-25 19:34:36', 'Not paid', 1320, 198);
+(6, 9, 38, 1320, '2018-01-25 19:34:36', '2018-01-25 19:34:36', 'Not paid', 1320, 198),
+(7, 9, 39, 2640, '2018-01-27 01:51:23', '2018-01-27 01:51:23', 'Not paid', 2640, 396);
 
 -- --------------------------------------------------------
 
@@ -205,6 +206,25 @@ INSERT INTO `guest_masterfile` (`guest_ID`, `guest_firstname`, `guest_lastname`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `proofofpayment_masterfile`
+--
+
+CREATE TABLE `proofofpayment_masterfile` (
+  `proofofpayment_id` int(11) NOT NULL,
+  `reservation_id` int(11) NOT NULL,
+  `path` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `proofofpayment_masterfile`
+--
+
+INSERT INTO `proofofpayment_masterfile` (`proofofpayment_id`, `reservation_id`, `path`) VALUES
+(1, 35, '../uploads/DR4bHCSW0AAwnQA.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reports_masterfile`
 --
 
@@ -228,23 +248,25 @@ CREATE TABLE `reservation_masterfile` (
   `checkindate` date NOT NULL,
   `checkoutdate` date NOT NULL,
   `number_guest` int(11) NOT NULL,
-  `room_number` int(11) NOT NULL
+  `room_number` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reservation_masterfile`
 --
 
-INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`, `room_number`) VALUES
-(29, 1, 6, '2018-01-26', '2018-01-27', 1, 3),
-(30, 1, 6, '2018-01-27', '2018-01-28', 2, 3),
-(31, 1, 6, '2018-01-27', '2018-01-28', 1, 2),
-(32, 1, 6, '2018-01-27', '2018-01-28', 1, 2),
-(34, 1, 9, '2018-01-31', '2018-02-07', 2, 2),
-(35, 9, 6, '2018-01-29', '2018-01-30', 2, 4),
-(36, 9, 6, '2018-01-29', '2018-01-31', 2, 4),
-(37, 9, 6, '2018-01-29', '2018-01-30', 3, 3),
-(38, 9, 6, '2018-01-29', '2018-01-30', 1, 3);
+INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`, `room_number`, `status`) VALUES
+(29, 1, 6, '2018-01-26', '2018-01-27', 1, 3, 'Pending'),
+(30, 1, 6, '2018-01-27', '2018-01-28', 2, 3, 'Pending'),
+(31, 1, 6, '2018-01-27', '2018-01-28', 1, 2, 'Pending'),
+(32, 1, 6, '2018-01-27', '2018-01-28', 1, 2, 'Pending'),
+(34, 1, 9, '2018-01-31', '2018-02-07', 2, 2, 'Pending'),
+(35, 9, 6, '2018-01-29', '2018-01-30', 2, 4, 'Approved'),
+(36, 9, 6, '2018-01-29', '2018-01-31', 2, 4, 'Pending'),
+(37, 9, 6, '2018-01-29', '2018-01-30', 3, 3, 'Pending'),
+(38, 9, 6, '2018-01-29', '2018-01-30', 1, 3, 'Pending'),
+(39, 9, 7, '2018-01-30', '2018-01-31', 1, 2, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -334,6 +356,12 @@ ALTER TABLE `guest_masterfile`
   ADD PRIMARY KEY (`guest_ID`);
 
 --
+-- Indexes for table `proofofpayment_masterfile`
+--
+ALTER TABLE `proofofpayment_masterfile`
+  ADD PRIMARY KEY (`proofofpayment_id`);
+
+--
 -- Indexes for table `reports_masterfile`
 --
 ALTER TABLE `reports_masterfile`
@@ -377,7 +405,7 @@ ALTER TABLE `adminuser_masterfile`
 -- AUTO_INCREMENT for table `billing_masterfile`
 --
 ALTER TABLE `billing_masterfile`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `discount_masterfile`
@@ -398,6 +426,12 @@ ALTER TABLE `guest_masterfile`
   MODIFY `guest_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `proofofpayment_masterfile`
+--
+ALTER TABLE `proofofpayment_masterfile`
+  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `reports_masterfile`
 --
 ALTER TABLE `reports_masterfile`
@@ -407,7 +441,7 @@ ALTER TABLE `reports_masterfile`
 -- AUTO_INCREMENT for table `reservation_masterfile`
 --
 ALTER TABLE `reservation_masterfile`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `room_masterfile`

@@ -250,7 +250,7 @@
                       <td align = "center"><?= $row['number_guest'] ?></td>
                       <td align ='center'><?= $row['roomno'] ?></td>
                       <td align = 'center'><?= $row['room_type'] ?></td>
-                      <td align = "center">pending</td>
+                      <td align = "center"><?= $row['status'] ?></td>
                       <td align ='center'> 
                         <form method="post" id ='deletereservation'>
                          <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success">View</a>

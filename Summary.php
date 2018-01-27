@@ -450,8 +450,9 @@ table {
               </div>
             </div>
             <h3>Payment Proof:</h3>
-            <form class="hide-this-shit hidden-xs" method="post" action = 'ajax/uploadproof.php' style="display:inline; float:right !important;" enctype="multipart/form-data">
+            <form class="hide-this-shit hidden-xs" method="post" style="display:inline; float:right !important;" enctype="multipart/form-data">
               <input class="hide-this-shit hidden-xs" type="file" name="img" style="display:inline;">
+              <input type ='hidden' name = 'code' value = '<?= $_GET['code']?>'/>
               <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;">
                 Upload
               </button> 
@@ -480,7 +481,8 @@ table {
               $('form').on('submit',function(e){
                 e.preventDefault();  
                 var form_data = new FormData()
-                form_data.append('img', $('input[type=file]').prop('files')[0])       
+                form_data.append('img', $('input[type=file]').prop('files')[0])
+                form_data.append('code', $('input[name=code']).val())       
                 $.ajax({
                   url:'ajax/uploadproof.php',
                   type:'post',
@@ -489,6 +491,7 @@ table {
                   processData: false,
                   success:function(html){
                     alert("Success")
+                    location.reload()
                   }
                 })
               })
