@@ -10,7 +10,6 @@
           <th>Reservation ID</th>
           <th>Proof of payment ID</th>
           <th>Image</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -21,13 +20,6 @@
           <td id ='reservation-id' ><?= $row['proofofpayment_id'] ?></td>
           <td id = 'guest-id' ><?= $row['reservation_id'] ?></td>
           <td ><img src = '<?= $row['path'] ?>' style ='width:50%'/></td>
-          <td><form id = 'deleteproof'>
-            <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
-            <input type="hidden" name="t_id" value="<?= $row['proofofpayment_id'] ?>">
-            <input type ='hidden' name ='imgpath' value = '<?= $row['path'] ?>' />
-            <input type ='hidden' name ='r_id' value = '<?= $row['reservation_id']?>'/>
-            <button type ='submit' class ='btn btn-danger'>Delete</button>
-          </form></td>
         </tr>
         <?php } ?>
       </tbody>

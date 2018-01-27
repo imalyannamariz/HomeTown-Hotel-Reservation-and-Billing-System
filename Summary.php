@@ -216,217 +216,89 @@ table {
                         <td class = "text-left" bgcolor = "#EBEDF2" style = 'text-align: justify'>
                           You can modify your pending reservations using the customer dashboard.
                         </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-            <!-- guest info -->
-            <div class = "col-md-8">
-              <div class = "panel panel-default">
-                <div class = "panel-heading" style = "background-color: red">
-                  <h3 class = "text-center">
-                    <strong>Guest Information</strong>
-                  </h3>
-                </div>
-                <div class = "panel-body">
-                  <div class = "table-responsive">
-                    <table class = "table table-condensed">
-                      <thead>
-                        <tr>
-                          <td class = "text-left">
-                            <strong>Name:</strong>
-                          </td>
-                          <td class = "text-left">
-                            <?= "{$_SESSION['firstname']} {$_SESSION['lastname']}" ?>
-                          </td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Email</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-                            <?= $_SESSION['email'] ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Cellphone:</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-                            <?= $_SESSION['contactNumber'] ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Address:</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-                            <?= $_SESSION['address'] ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Check-in</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-                            <?= $reservation['checkindate'] ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Check out</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-                            <?= $reservation['checkoutdate'] ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Number of Guest</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-                            <?= $reservation['number_guest'] ?>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td bgcolor = "#EBEDF2" class = "text-left">
-                            <strong>Extra Services:</strong>
-                          </td>
-                          <td class = "text-left" bgcolor= "#EBEDF2">
-
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+          </div>
+          <!-- guest info -->
+          <div class = "col-md-8">
+            <div class = "panel panel-default">
+              <div class = "panel-heading" style = "background-color: red">
+                <h3 class = "text-center">
+                  <strong>Guest Information</strong>
+                </h3>
               </div>
-            </div>
-            <!-- billing -->
-            <div class = "col-md-8">
-              <div class = "panel panel-default">
-                <div class = "panel-heading" style = "background-color: red">
-                  <h3 class = "text-center">
-                    <strong>Total Billing</strong>
-                  </h3>
-                </div>
-                <div class = "panel-body" stlye = "margin-bottom: -25px">
-                  <div class = "table-responsive">
-                    <table class = "table table-condensed">
-                      <thead>
-                        <tr>
-                          <td><strong></strong></td>
-                          <td><strong></strong></td>
-                          <td class = "text-center">
-                            <strong>Number of Room/s</strong>
-                          </td>
-                          <td class = "text-right">
-                            <strong>Cost</strong>
-                          </td>
-                        </tr>
-                      </thead>
-                      <tbody> 
-                        <tr>
-                          <td class="text-left" bgcolor="#EBEDF2">
-                            <strong>Type of Room</strong>
-                          </td>
-                          <td class="text-left" bgcolor="#EBEDF2">
-                            <?= $room['room_type'] ?>
-                          </td> 
-                          <td class="text-center" bgcolor="#EBEDF2">
-                            1
-                          </td>
-                          <td class="text-right" bgcolor="#EBEDF2">
-                            php
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-left" bgcolor="#EBEDF2">
-                            <strong>Length of stay</strong>
-                          </td>
-                          <td class="text-left" bgcolor="#EBEDF2">
-                            1
-                          </td>
-                          <td class="text-left" bgcolor="#EBEDF2">
-
-                          </td>
-                          <td class="text-right" bgcolor="#EBEDF2">
-
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="highrow text-left">
-
-                          </td>
-                          <td class="highrow text-left">
-
-                          </td>
-                          <td class="highrow text-center">
-                            <strong>Subtotal (per rooms picked)</strong>
-                          </td>
-                          <td class="highrow text-right">
-                           php
-                         </td>
-                       </tr>
-                       <tr>
-                        <td class="text-left" bgcolor="#EBEDF2">
-
+              <div class = "panel-body">
+                <div class = "table-responsive">
+                  <table class = "table table-condensed">
+                    <thead>
+                      <tr>
+                        <td class = "text-left">
+                          <strong>Name:</strong>
                         </td>
-                        <td class="text-left" bgcolor="#EBEDF2">
-
+                        <td class = "text-left">
+                          <?= "{$_SESSION['firstname']} {$_SESSION['lastname']}" ?>
                         </td>
-                        <td class="text-center" bgcolor="#EBEDF2">
-                          <strong>Vatable</strong>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Email</strong>
                         </td>
-                        <td class="text-right" bgcolor="#EBEDF2">
-                          php
+                        <td class = "text-left" bgcolor= "#EBEDF2">
+                          <?= $_SESSION['email'] ?>
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-left">
-
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Cellphone:</strong>
                         </td>
-                        <td class="text-left">
-                          <strong></strong>
-                        </td>
-                        <td class="text-center">
-                          <strong>VAT 12%</strong>
-                        </td>
-                        <td class="text-right">
-                          php
+                        <td class = "text-left" bgcolor= "#EBEDF2">
+                          <?= $_SESSION['contactNumber'] ?>
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-left" bgcolor="#EBEDF2">
-
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Address:</strong>
                         </td>
-                        <td class=" text-left" bgcolor="#EBEDF2">
-
-                        </td>
-                        <td class=" text-center" bgcolor="#EBEDF2">
-                          <strong>Down payment</strong>
-                        </td>
-                        <td class=" text-right" bgcolor="#EBEDF2">
-                          php
+                        <td class = "text-left" bgcolor= "#EBEDF2">
+                          <?= $_SESSION['address'] ?>
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-left">
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Check-in</strong>
+                        </td>
+                        <td class = "text-left" bgcolor= "#EBEDF2">
+                          <?= $reservation['checkindate'] ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Check out</strong>
+                        </td>
+                        <td class = "text-left" bgcolor= "#EBEDF2">
+                          <?= $reservation['checkoutdate'] ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Number of Guest</strong>
+                        </td>
+                        <td class = "text-left" bgcolor= "#EBEDF2">
+                          <?= $reservation['number_guest'] ?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor = "#EBEDF2" class = "text-left">
+                          <strong>Extra Services:</strong>
+                        </td>
+                        <td class = "text-left" bgcolor= "#EBEDF2">
 
-                        </td>
-                        <td class="text-left">
-
-                        </td>
-                        <td class=" highrow text-center">
-                          <strong>Total</strong>
-                        </td>
-                        <td class=" highrow text-right">
-                          php
                         </td>
                       </tr>
                     </tbody>
@@ -434,53 +306,180 @@ table {
                 </div>
               </div>
             </div>
-            <h3>Payment Proof:</h3>
-            <form class="hide-this-shit hidden-xs" method="post" style="display:inline; float:right !important;" enctype="multipart/form-data">
-              <input class="hide-this-shit hidden-xs" type="file" name="img" style="display:inline;">
-              <input type ='hidden' name = 'code' value = '<?= $_GET['code']?>'/>
-              <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;">
-                Upload
-              </button> 
-            </form>
           </div>
-          <!-- Latest jQuery plugin-->
-          <script src="js/main.js"></script>
-          <!-- Latest compiled and minified JavaScript for bootstrap-->
-          <script src="js/bootstrap.min.js"></script>
-          <script src="js/owl.carousel.min.js"></script>
-          <script src="js/parallax.min.js"></script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpKAwq-qKxzm-9D1405KCFp7ZTtu_Vimg"></script>
-          <script src="js/googleMap.js"></script>
-          <script src="js/customGoogleMap.js"></script>
-          <script src="js/jquery-ui.min.js"></script>
-          <script src="js/jquery.timepicker.min.js"></script>
-          <script src="js/jquery.countdown.min.js"></script>
-          <script src="js/jquery.flexslider-min.js"></script>
-          <script src="js/select2.min.js"></script>
-          <script src="js/icheck.min.js"></script>
-          <script src="js/jquery.raty.js"></script>
-          <script src="js/jquery.datetimepicker.full.min.js"></script>
-          <script src="js/scripts.js"></script>
-          <script>
-            $(document).ready(function(){
-              $('form').on('submit',function(e){
-                e.preventDefault();  
-                var form_data = new FormData()
-                form_data.append('img', $('input[type=file]').prop('files')[0])
-                form_data.append('code', $('input[name=code']).val())       
-                $.ajax({
-                  url:'ajax/uploadproof.php',
-                  type:'post',
-                  data:form_data,
-                  contentType: false,
-                  processData: false,
-                  success:function(html){
-                    alert("Success")
-                    location.reload()
-                  }
-                })
+          <!-- billing -->
+          <div class = "col-md-8">
+            <div class = "panel panel-default">
+              <div class = "panel-heading" style = "background-color: red">
+                <h3 class = "text-center">
+                  <strong>Total Billing</strong>
+                </h3>
+              </div>
+              <div class = "panel-body" stlye = "margin-bottom: -25px">
+                <div class = "table-responsive">
+                  <table class = "table table-condensed">
+                    <thead>
+                      <tr>
+                        <td><strong></strong></td>
+                        <td><strong></strong></td>
+                        <td class = "text-center">
+                          <strong>Number of Room/s</strong>
+                        </td>
+                        <td class = "text-right">
+                          <strong>Cost</strong>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                      <tr>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <strong>Type of Room</strong>
+                        </td>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <?= $room['room_type'] ?>
+                        </td> 
+                        <td class="text-center" bgcolor="#EBEDF2">
+                          1
+                        </td>
+                        <td class="text-right" bgcolor="#EBEDF2">
+                          php
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <strong>Length of stay</strong>
+                        </td>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          1
+                        </td>
+                        <td class="text-left" bgcolor="#EBEDF2">
+
+                        </td>
+                        <td class="text-right" bgcolor="#EBEDF2">
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="highrow text-left">
+
+                        </td>
+                        <td class="highrow text-left">
+
+                        </td>
+                        <td class="highrow text-center">
+                          <strong>Subtotal (per rooms picked)</strong>
+                        </td>
+                        <td class="highrow text-right">
+                         php
+                       </td>
+                     </tr>
+                     <tr>
+                      <td class="text-left" bgcolor="#EBEDF2">
+
+                      </td>
+                      <td class="text-left" bgcolor="#EBEDF2">
+
+                      </td>
+                      <td class="text-center" bgcolor="#EBEDF2">
+                        <strong>Vatable</strong>
+                      </td>
+                      <td class="text-right" bgcolor="#EBEDF2">
+                        php
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">
+
+                      </td>
+                      <td class="text-left">
+                        <strong></strong>
+                      </td>
+                      <td class="text-center">
+                        <strong>VAT 12%</strong>
+                      </td>
+                      <td class="text-right">
+                        php
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left" bgcolor="#EBEDF2">
+
+                      </td>
+                      <td class=" text-left" bgcolor="#EBEDF2">
+
+                      </td>
+                      <td class=" text-center" bgcolor="#EBEDF2">
+                        <strong>Down payment</strong>
+                      </td>
+                      <td class=" text-right" bgcolor="#EBEDF2">
+                        php
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-left">
+
+                      </td>
+                      <td class="text-left">
+
+                      </td>
+                      <td class=" highrow text-center">
+                        <strong>Total</strong>
+                      </td>
+                      <td class=" highrow text-right">
+                        php
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <h3>Payment Proof:</h3>
+          <form class="hide-this-shit hidden-xs" method="post" style="display:inline; float:right !important;" enctype="multipart/form-data">
+            <input class="hide-this-shit hidden-xs" type="file" name="img" style="display:inline;">
+            <input type ='hidden' name = 'code' value = '<?= $_GET['code']?>'/>
+            <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;">
+              Upload
+            </button> 
+          </form>
+        </div>
+        <!-- Latest jQuery plugin-->
+        <script src="js/main.js"></script>
+        <!-- Latest compiled and minified JavaScript for bootstrap-->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/parallax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpKAwq-qKxzm-9D1405KCFp7ZTtu_Vimg"></script>
+        <script src="js/googleMap.js"></script>
+        <script src="js/customGoogleMap.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/jquery.timepicker.min.js"></script>
+        <script src="js/jquery.countdown.min.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
+        <script src="js/select2.min.js"></script>
+        <script src="js/icheck.min.js"></script>
+        <script src="js/jquery.raty.js"></script>
+        <script src="js/jquery.datetimepicker.full.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <script>
+          $(document).ready(function(){
+            $('form').on('submit',function(e){
+              e.preventDefault()
+              var form_data = new FormData()
+              form_data.append('img', $('input[type=file]').prop('files')[0])
+              form_data.append('code', $('input[name=code]').val())
+              $.ajax({
+                url:'ajax/uploadproof.php',
+                type:'post',
+                data:form_data,
+                contentType: false,
+                processData: false,
+                success:function(html){
+                  alert("Success")
+                }
               })
             })
-          </script>
-        </body>
-        </html>
+          })
+        </script>
+      </body>
+      </html>

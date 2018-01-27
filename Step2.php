@@ -205,7 +205,7 @@ if(!isset($_SESSION['reservation'])){
         <div class="row">
 
           <?php while($row = mysqli_fetch_assoc($fetch_rooms)){ 
-                $fetchReservedrooms = mysqli_query($conn, "SELECT room_number FROM reservation_masterfile WHERE ((checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}')) AND room_id = {$row['room_id']}") or die(mysqli_error($conn));
+                $fetchReservedrooms = mysqli_query($conn, "SELECT room_number FROM reservation_masterfile WHERE (((checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}')) AND room_id = {$row['room_id']}) AND status ='Approved'") or die(mysqli_error($conn));
                 $reservedroomSum = 0;
                 while($row1 = mysqli_fetch_assoc($fetchReservedrooms)){
                   $reservedroomSum += $row1['room_number'];

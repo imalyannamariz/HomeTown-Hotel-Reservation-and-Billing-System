@@ -6,50 +6,57 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   echo '
-      <div class="container-fluid">
-          <h3>Room List</h3>
-          <div class="table-responsive">
-          <div id="alert_message"></div>
-            <table class="table table-bordered table-striped" align="center">
-              <thead> 
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Room Description</th>
-                  <th>Room Capacity</th>
-                  <th>Room Rate per night</th>
-                  <th>Room Number</th>
-                  <th>Room Status</th>
-                  <th>Image</th>
-                  <th colspan="2">Actions</th>
-                </tr>
-              </thead>';
+  <div class ="form-group">
+  <form>
+  <input type ="text" class ="form-control" id = "checkInDate" name ="checkInDate"/>
+  </form>
+  </div>
+  <div class="container-fluid">
+  <h3>Room List</h3>
+  <div class="table-responsive">
+  <div id="alert_message"></div>
+  <table class="table table-bordered table-striped" align="center">
+  <thead> 
+  <tr>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Room Description</th>
+  <th>Room Capacity</th>
+  <th>Room Rate per night</th>
+  <th>Room Number</th>
+  <th>Room Status</th>
+  <th>Image</th>
+  <th colspan="2">Actions</th>
+  </tr>
+  </thead>
+  <tbody>';
               // output data of each row
-              while ($row = $result->fetch_assoc()) {
-                echo
-                  "<tr>
-                      <td id='room_id'>" . $row["room_id"] . "</td>
-                      <td id='room_type'>" . $row["room_type"] . "</td>
-                      <td id='room_description'>" . $row["room_description"] . "</td>
-                      <td id='room_capacity'>" . $row["room_capacity"] . "</td>
-                      <td id='room_rate'>" . $row["room_rate"] . "</td>
-                      <td id='room_number'>" . $row["room_number"] . "</td>
-                      <td id='room_status'>" . $row["room_status"] . "</td>
-                      <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
-                      <td>
-                        <form method = 'POST' action = 'roomsDelete.php'>
-                          <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
-                            <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editRoom'>Edit</button>
-                            <br><br>
-                            <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
-                        </form>
-                      </td>";
-              }
-              echo "
-            </table>
-          </div>
-        </div>
-        ";
+  while ($row = $result->fetch_assoc()) {
+    echo
+    "<tr>
+    <td id='room_id'>" . $row["room_id"] . "</td>
+    <td id='room_type'>" . $row["room_type"] . "</td>
+    <td id='room_description'>" . $row["room_description"] . "</td>
+    <td id='room_capacity'>" . $row["room_capacity"] . "</td>
+    <td id='room_rate'>" . $row["room_rate"] . "</td>
+    <td id='room_number'>" . $row["room_number"] . "</td>
+    <td id='room_status'>" . $row["room_status"] . "</td>
+    <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
+    <td>
+    <form method = 'POST' action = 'roomsDelete.php'>
+    <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
+    <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editRoom'>Edit</button>
+    <br><br>
+    <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
+    </form>
+    </td>";
+  }
+  echo "
+  </tbody>
+  </table>
+  </div>
+  </div>
+  ";
 
   // if (isset($_POST['edit'])) {
   //   $update_room_query = "";
@@ -100,13 +107,13 @@ table{
   margin-top:10px;
 }
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 
 }
 
 table, th, td {
-    border: 2px solid black;
-    text-align: center;
+  border: 2px solid black;
+  text-align: center;
 }
 table{
   color: black;
@@ -146,7 +153,7 @@ table{
                       <label for='roomNumber'>Room Number</label><br>
                       <input required class='form-control' name = 'roomNumber' type='number'>
                     </div>
-                     <div class='form-group'>
+                    <div class='form-group'>
                       <label for ='image_upload'>Image</label><br>
                       <input type ='file' accept = 'image/*' name = 'image_upload'>
                     </div>
@@ -157,48 +164,48 @@ table{
                         <option value = 'UnderMaintenance'>Reserved</option>
                         <option value = 'Occupied'>Occupied</option>
                       </select>
-                        <br><br>
-                        <input type ='hidden' name = 'roomId'>
-                       <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
+                      <br><br>
+                      <input type ='hidden' name = 'roomId'>
+                      <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
                     </div>
                   </table>
                 </div>
               </div>
             </form>
-              
-          <!-- </div> -->
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+            
+            <!-- </div> -->
+          </div>
+          <div class='modal-footer'>
+            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" language="javascript" >
-    $(document).ready(function(){
-      $("button.edit_data").click(function(){
-        var room_id = $(this).closest("tr").find("#room_id").html();
-        var room_type = $(this).closest("tr").find("#room_type").html();
-        var room_description = $(this).closest("tr").find("#room_description").html();
-        var room_capacity = $(this).closest("tr").find("#room_capacity").html();
-        var room_rate = $(this).closest("tr").find("#room_rate").html();
-        var room_number = $(this).closest("tr").find("#room_number").html();
-        var room_status = $(this).closest("tr").find("#room_status").html();
-        console.log(room_description);
-        $('#editRoom').find('.modal-title').html(room_type);
-        $('#editRoom').find('input[name=roomId]').val(room_id);
-        $('#editRoom').find('input[name=roomType]').val(room_type);
-        $('#editRoom').find('textarea[name=roomDescription]').val(room_description);
-        $('#editRoom').find('input[name=roomCapacity]').val(room_capacity);
-        $('#editRoom').find('input[name=roomRate]').val(room_rate);
-        $('#editRoom').find('input[name=roomNumber]').val(room_number);
-        $('#editRoom').find('input[name=roomStatus]').val(room_status); 
-      });
-      $("#formEditRoom").submit(function(e){
-        var image_path = $('input[type=file]').val().replace(/.*(\/|\\)/, '')
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src = 'js/jquery.datetimepicker.full.min.js'></script>
+    <script type="text/javascript" language="javascript" >
+      $(document).ready(function(){
+        $("button.edit_data").click(function(){
+          var room_id = $(this).closest("tr").find("#room_id").html();
+          var room_type = $(this).closest("tr").find("#room_type").html();
+          var room_description = $(this).closest("tr").find("#room_description").html();
+          var room_capacity = $(this).closest("tr").find("#room_capacity").html();
+          var room_rate = $(this).closest("tr").find("#room_rate").html();
+          var room_number = $(this).closest("tr").find("#room_number").html();
+          var room_status = $(this).closest("tr").find("#room_status").html();
+          console.log(room_description);
+          $('#editRoom').find('.modal-title').html(room_type);
+          $('#editRoom').find('input[name=roomId]').val(room_id);
+          $('#editRoom').find('input[name=roomType]').val(room_type);
+          $('#editRoom').find('textarea[name=roomDescription]').val(room_description);
+          $('#editRoom').find('input[name=roomCapacity]').val(room_capacity);
+          $('#editRoom').find('input[name=roomRate]').val(room_rate);
+          $('#editRoom').find('input[name=roomNumber]').val(room_number);
+          $('#editRoom').find('input[name=roomStatus]').val(room_status); 
+        });
+        $("#formEditRoom").submit(function(e){
+          var image_path = $('input[type=file]').val().replace(/.*(\/|\\)/, '')
         e.preventDefault(); // remove default function of form submit
         $.ajax({
           type: 'POST', // type of submission
@@ -211,7 +218,29 @@ table{
 
         });
       });
-    });
-  </script>
-</body>
-</html>
+        $('input#checkInDate').datetimepicker({
+          timepicker: false,
+          format: "Y-m-d",
+          onShow:function( ct ){
+           this.setOptions({
+            minDate:0
+          })
+         }
+       });
+        $('input#checkInDate').on("change", function(){
+          $.ajax({
+            type:'POST',
+            url:"../ajax/getallreservedrooms.php",
+            data:{
+              checkInDate: $('input#checkInDate').val()
+            },
+            success: function(html){
+              $('tbody').empty()
+              $('tbody').append(html)
+            }
+          })
+        })
+      });
+    </script>
+  </body>
+  </html>
