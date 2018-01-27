@@ -14,10 +14,7 @@ session_start();
           exit();
         } else {
           if ($row = mysqli_fetch_assoc($result)) {
-            // if (!password_verify($password, $row['password'])) {
-            if($row['guest_password'] !== $password){
-              // kapag mali password
-              // header("Location: login.php?login=Incorrect+username+or+password");
+            if (!password_verify($password, $row['guest_password'])) {
               echo "<script>alert('Incorrect Username or Password');location.href='login.php';</script>";
               exit();
             }
@@ -31,7 +28,7 @@ session_start();
               $_SESSION['contactNumber'] = $row['guest_contactNumber'];
               $_SESSION['country'] = $row['guest_country'];
               $_SESSION['address'] = $row['guest_address'];
-              header("Location: Step1.php");
+              header("Location: GuestDashboard.php");
             }
           }
         } 

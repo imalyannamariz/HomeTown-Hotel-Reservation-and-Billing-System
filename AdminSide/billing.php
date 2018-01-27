@@ -3,16 +3,19 @@
   <div class="container-fluid">
 
     <table class ='table table-striped'>
-      <th>Billing ID</th>
-      <th>Guest ID</th>
-      <th>Reservation ID</th>
-      <th>Balance</th>
-      <th>Total</th>
-      <th>Downpayment</th>
-      <th>Status</th>
-      <th>Created_at</th>
-      <th>Updated_at</th>
-      <th>Actions</th>
+      <thead>
+        <th>Billing ID</th>
+        <th>Guest ID</th>
+        <th>Reservation ID</th>
+        <th>Balance</th>
+        <th>Total</th>
+        <th>Downpayment</th>
+        <th>Status</th>
+        <th>Created_at</th>
+        <th>Updated_at</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
       <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM billing_masterfile");
       $currentTime = date("Y-m-d");
       while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
@@ -20,9 +23,9 @@
         <td id ='reservation-id' ><?= $row['billing_id'] ?></td>
         <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
         <td id = 'room-id' ><?= $row['reservation_id'] ?></td>
-        <td id = 'checkin' ><?= $row['balance'] ?></td>
-        <td id = 'checkout' ><?= $row['total'] ?></td>
-        <td id = 'number-guest'><?= $row['downpayment']?></td>
+        <td id = 'checkin' ><?= number_format($row['balance'],2) ?></td>
+        <td id = 'checkout' ><?= number_format($row['total'],2) ?></td>
+        <td id = 'number-guest'><?= number_format($row['downpayment'], 2)?></td>
         <td ><?= $row['status'] ?></td>
         <td ><?= $row['created_at'] ?></td>
         <td ><?= $row['updated_at'] ?></td>
@@ -33,6 +36,7 @@
         </form></td>
       </tr>
       <?php } ?>
+      </tbody>
     </table>
 
     <footer class="sticky-footer">
@@ -66,7 +70,7 @@
       </div>
     </div>
     <!-- Edit Modal -->
-    <div class="modal" id ='editreservation' tabindex="-1" role="dialog">
+    <div class="modal fade" id ='editreservation' tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -117,15 +121,11 @@
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
 <script src="vendor/chart.js/Chart.min.js"></script>
-<script src="vendor/datatables/jquery.dataTables.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
-<!-- Custom scripts for this page-->
-<script src="js/sb-admin-datatables.min.js"></script>
-<script src="js/sb-admin-charts.min.js"></script>
+<script type = 'text/javascript' src ='js/datatables.min.js'></script> 
+<script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){
+    $('.table').DataTable()
     $('button#show').click(function(){
       $('.editmodal').show()
     })

@@ -2,10 +2,13 @@
 include_once 'db.php';
 include_once 'header.php';
 session_start();
+if(!isset($_SESSION['login'])){
+  echo "<script>window.location.href= 'Confirm-Account.php'</script>";
+}
 if(!isset($_SESSION['reservation'])){
   header("Location: Step1.php");
 }
-echo print_r($_SESSION['reservation']);
+
 ?>
 <style>
 .navbar-brand{
@@ -26,7 +29,7 @@ echo print_r($_SESSION['reservation']);
       <div class="modal-content">
         <div class="modal-body">          
           <p class="success-message">You have selected <span id ='room-name'>King's Room</span> successfully</p>
-          <form action="Step3.php" method = 'post'>
+          <form action="Step4.php" method = 'post'>
             <input type ='hidden' id = 'roominput' value = '' name = 'roomname'/>
             <input type ='hidden' id = 'roomid' value = '' name = 'roomid'/>
             <h2>ADD ONS</h2>
@@ -205,6 +208,7 @@ echo print_r($_SESSION['reservation']);
                 while($row1 = mysqli_fetch_assoc($fetchReservedrooms)){
                   $reservedroomSum += $row1['room_number'];
                 }
+                if($row['room_number'] - $reservedroomSum != 0){
             ?>
           <div class="rq-listing-choose singleRoom-grid-main">
 
@@ -227,7 +231,8 @@ echo print_r($_SESSION['reservation']);
                 </div>
               </div>
 
-              <?php } ?><!----row---->
+              <?php }
+              } ?><!----row---->
             </div>
             <!-- <button><i class="fa fa-spinner" aria-hidden="true"></i>LOAD MORE</button> -->
           </div><!------ singleRoom-grid-main -------->

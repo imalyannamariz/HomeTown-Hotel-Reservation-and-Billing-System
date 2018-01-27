@@ -39,25 +39,49 @@
             <span class="nav-link-text">Home</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-
           </ul>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="reservationpage.php" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-sitemap"></i>
+            <span class="nav-link-text">Reservations</span>
+          </a>
+        </li>
+        
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti22" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
             <span class="nav-link-text">Manage Account</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti22">
-            <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti000">Admin Account</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti000">
-                <li><a href="register.php">Add Account</a></li>
-                <li><a href="adminusermodify.php">Modify Account</a></li>
-              </ul>
+            <li style = "color: #007bff">
+              Admin Account
+            </li> 
+            <li>
+              <a href="register.php">Add Account</a>
+            </li>
+            <li>
+              <a href="adminusermodify.php">Modify Account</a>
+            </li>
+       <!--      <li>
+              <a href="#">Delete Account</a>
+            </li> -->
+            <li>
+            </li>
             <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti001">Customer Account</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti001">
-                <li><a href="registerCustomer.php">Add Account</a></li>
-                <li><a href="guestmodify.php">Modify Account</a></li>
+            <ul class="sidenav-third-level collapse" id="collapseMulti001">
+              <li>
+                <a href="registerCustomer.php">Add Account</a>
+              </li>
+              <li>
+                <a href="guestmodify.php">Modify Account</a>
+              </li>
+                <!-- <li>
+                  <a href="#">Delete Account</a>
+                </li> -->
               </ul>
+            </li>
           </ul>
         </li>
 
@@ -70,103 +94,128 @@
             <li>
               <a href="RoomsAdd.php">Add Rooms</a>
             </li>
-
             <li>
-              <a href="RoomsDelete.php">Modify Rooms</a>
+              <a href="Roomsdelete.php">Modify Room</a>
             </li>
-            <li>
+  <!--           <li>
+              <a href="RoomsDelete.php">Delete Rooms</a>
             </li>
-            </li>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Manage Discounts</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti10000">
-            <li>
-              <a href="DiscountAdd.php">Add Discounts</a>
-            </li>
-            <li>
-              <a href="DiscountModify.php">Modify Discounts</a>
-            </li>
-
-            <li>
+          -->         <li>
           </li>
         </li>
+        
 
 
+        <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
+        <ul class="sidenav-third-level collapse" id="collapseMulti2">
 
-             <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <!-- <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li> -->
-              </ul>
-            </li>
-          </ul>
-        </li>
-
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti100000" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Reports</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti100000">
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- Manage reservation -->
+  <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti101" data-parent="#exampleAccordion">
+      <i class="fa fa-fw fa-sitemap"></i>
+      <span class="nav-link-text">Manage Reservation</span>
+    </a>
+    <ul class="sidenav-second-level collapse" id="collapseMulti101">
+      <li>
+        <a href="reservation.php">Modify Reservation</a>
+      </li>
+    </li>
+    <ul class="sidenav-third-level collapse" id="collapseMulti2">
+    </ul>
+  </li>
+</ul>
+</li>
+<!-- End Manage Reservation -->
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti102" data-parent="#exampleAccordion">
+    <i class="fa fa-fw fa-sitemap"></i>
+    <span class="nav-link-text">Billing</span>
+  </a>
+  <ul class="sidenav-second-level collapse" id="collapseMulti102">
+    <li>
+      <a href="billing.php">Check billing</a>
+    </li>
+  </li>
+  <ul class="sidenav-third-level collapse" id="collapseMulti2">
+  </ul>
+</li>
+</ul>
+</li>
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">
+    <i class="fa fa-fw fa-sitemap"></i>
+    <span class="nav-link-text">Manage Discounts</span>
+  </a>
+  <ul class="sidenav-second-level collapse" id="collapseMulti10000">
+    <li>
+      <a href="DiscountAdd.php">Add Discounts</a>
+    </li>
+    <li>
+      <a href="discountModify.php">Modify Discounts</a>
+    </li>
+            <!-- <li>
+              <a href="#">Delete Discounts</a>
+            </li> -->
             <li>
-              <a href="ReportOccupancy.php">Occupancy Report</a>
             </li>
-            <li>
-              <a href="ReportReservationSummary.php">Reservation Summary</a>
-            </li>
-            <li>
-              <a href="ReportDiscount.php">Discount Report</a>
-            </li>
-            <li>
-              <a href="ReportEarningsSummary">Summary of Earnings</a>
-            </li>
-            <li>
-              <a href="ReportAveRoomIncome.php">Average Room Income</a>
-            </li>
-            <li>
           </li>
-        </li>
 
 
 
-             <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                <!-- <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
-                </li> -->
-              </ul>
-            </li>
+          <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
+          <ul class="sidenav-third-level collapse" id="collapseMulti2">
+
           </ul>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
-    </div>
-  </nav>
+    </li>
+
+    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+      <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti100000" data-parent="#exampleAccordion">
+        <i class="fa fa-fw fa-sitemap"></i>
+        <span class="nav-link-text">Reports</span>
+      </a>
+      <ul class="sidenav-second-level collapse" id="collapseMulti100000">
+        <li>
+          <a href="ReportOccupancy.php">Occupancy Report</a>
+        </li>
+        <li>
+          <a href="ReportReservationSummary.php">Reservation Summary</a>
+        </li>
+        <li>
+          <a href="ReportDiscount.php">Discount Report</a>
+        </li>
+        <li>
+          <a href="ReportEarningsSummary">Summary of Earnings</a>
+        </li>
+        <li>
+          <a href="ReportAveRoomIncome.php">Average Room Income</a>
+        </li>
+        <li>
+        </li>
+      </li>
+
+
+
+      <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
+      <ul class="sidenav-third-level collapse" id="collapseMulti2">
+
+      </ul>
+    </li>
+  </ul>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+  </li>
+</ul>
+</div>
+</nav>
   <div class="content-wrapper">
     <div class="container-fluid">
 

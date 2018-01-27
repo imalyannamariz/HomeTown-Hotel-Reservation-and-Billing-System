@@ -5,7 +5,8 @@ $sql    = "SELECT * FROM room_masterfile";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  echo '<div class="container-fluid">
+  echo '
+      <div class="container-fluid">
           <h3>Room List</h3>
           <div class="table-responsive">
           <div id="alert_message"></div>
@@ -47,7 +48,8 @@ if ($result->num_rows > 0) {
               echo "
             </table>
           </div>
-        </div>";
+        </div>
+        ";
 
   // if (isset($_POST['edit'])) {
   //   $update_room_query = "";
