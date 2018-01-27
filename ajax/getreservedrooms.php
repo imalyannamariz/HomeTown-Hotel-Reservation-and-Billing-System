@@ -8,4 +8,4 @@ while($row1 = mysqli_fetch_assoc($fetchReservedrooms)){
 	$reservedroomSum += $row1['room_number'];
 }
 echo $getroomcount['room_number'] - $reservedroomSum;
-echo print_r($_POST);
+?>

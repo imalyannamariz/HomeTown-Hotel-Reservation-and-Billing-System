@@ -100,7 +100,7 @@
             </div>
             <div class="modal-footer">
               <input type ='hidden' name ='b_id'/>
-              <input type ='hidden' name ='total'/>
+              <input type ='hidden' name ='currentBalance'/>
               <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update</button>
             </div>
           </form>
@@ -123,9 +123,9 @@
     $('.table').DataTable()
     $('.edit').click(function(){
       var b_id = $(this).closest('tr').find('#billing-id').html()
-      var total = $(this).closest('tr').find('#total').html().replace(/\,/, '')
+      var total = $(this).closest('tr').find('#balance').html().replace(/\,/, '')
       $('input[name=b_id]').val(b_id)
-      $('input[name=total]').val(total)
+      $('input[name=currentBalance]').val(total)
     })
     $('form').on('submit', function(e){
       e.preventDefault();
