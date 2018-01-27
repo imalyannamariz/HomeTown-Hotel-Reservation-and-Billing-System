@@ -10,18 +10,6 @@
     </script>
     <?php
   }
-  echo count($_SESSION['reservation']);
-  if(!isset($_SESSION['reservation']) || count($_SESSION['reservation']) < 4){
-      header("Location: Step1.php");
-      exit;
-  }
-  if(isset($_SESSION['login'])){
-    $_SESSION['reservation']['roomid'] = $_POST['roomid'];
-    $_SESSION['reservation']['roomno'] = $_POST['roomno'];
-    $_SESSION['reservation']['roomname'] = $_POST['roomname'];
-    $_SESSION['reservation']['services'] = $_POST['services'];
-    header('Location: Step4.php'); 
-  }
 ?>
 
 <style>
@@ -84,7 +72,7 @@
                 <a href="about-us.html">About</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="ContactUs.php">Contact</a>
               </li>
               <li class = "active">
                 <a href="Step1.php">Reservations</a>

@@ -212,7 +212,7 @@ img {
                 <a href="about-us.html">About</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="ContactUs.php">Contact</a>
               </li>
               <li>
                 <a href="Step1.php">Reservations</a>
@@ -263,7 +263,7 @@ img {
                 <img width="160" height="100" src="img/Twin.jpg" class="image wp-post-image" alt="">
               </a>
               <div class="blurb">
-                <p>asdasdasdasdsd</p>
+                <p>Fully renovated room with two (2) single beds and a bathroom, Equipped with Wifi, Aircon and Televsion. Perfect for sharing  </p>
               </div>
             </div>
           </article>
@@ -277,7 +277,7 @@ img {
                 <img width="160" height="100" src="img/Queen.jpg" class="image wp-post-image" alt="">
               </a>
               <div class="blurb">
-                <p>asdasdasdasdsd</p>
+                <p>Fully renovated room with one (1) Queen beds and a bathroom, Equipped with Wifi, Aircon and Televsion.</p>
               </div>
             </div>
           </article>
@@ -291,7 +291,7 @@ img {
                 <img width="160" height="100" src="Family.jpg" class="image wp-post-image" alt="">
               </a>
               <div class="blurb">
-                <p>asdasdasdasdsd</p>
+                <p>Fully renovated room with two (2) Queen beds and a bathroom, Equipped with Wifi, Aircon and Televsion. Perfect for family vacations</p>
               </div>
             </div>
           </article>
@@ -305,12 +305,12 @@ img {
                 <img width="160" height="100" src="img/Quad.jpg" class="image wp-post-image" alt="">
               </a>
               <div class="blurb">
-                <p>asdasdasdasdsd</p>
+                <p>Fully renovated room with two (2) double deck beds and a bathroom, Equipped with Wifi, Aircon, Large Cabinet and Televsion. </p>
               </div>
             </div>
           </article>
 
-          <article class = "article-box">
+          <!-- <article class = "article-box">
             <div class = "article-wrap">
               <h2 class = "title">
                 <a href="#" title="Female/Male Room" class="link">Female/Male Room</a>
@@ -337,7 +337,7 @@ img {
               </div>
             </div>
           </article>
-
+ -->
 
 
    <!-- Latest jQuery plugin-->

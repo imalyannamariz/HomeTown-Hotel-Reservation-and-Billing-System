@@ -2,6 +2,19 @@
   include_once 'db.php';
   include_once 'header.php';
   session_start();
+
+  if(!isset($_SESSION['login'])){
+    echo "<script>window.location.href = 'Confirm-Account.php'</script>";
+  }
+  $fetch_rooms = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE guest_ID = {$_SESSION['guest_ID']}");
+  $yourReservedRooms = 0;
+  while($row = mysqli_fetch_assoc($fetch_rooms)){
+    $yourReservedrooms += $row['room_number'];
+  }
+  if($yourReservedrooms >= 5){
+    echo "<script>alert('You are only allowed to reserve 5 rooms')
+    window.location.href = 'GuestDashboard.php' </script>";
+  }
 ?>
 <style>
 .navbar-brand{
@@ -102,7 +115,7 @@
                 <a href="about-us.html">About</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="ContactUs.php">Contact</a>
               </li>
               <li class="active">
                 <a href="Step1.php">Reservations</a>

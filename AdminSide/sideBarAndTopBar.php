@@ -137,11 +137,14 @@ session_start();
 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
   <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti102" data-parent="#exampleAccordion">
     <i class="fa fa-fw fa-sitemap"></i>
-    <span class="nav-link-text">Billing</span>
+    <span class="nav-link-text">Transaction</span>
   </a>
   <ul class="sidenav-second-level collapse" id="collapseMulti102">
     <li>
       <a href="billing.php">Check billing</a>
+    </li>
+        <li>
+      <a href="proofofpayment.php">Check Proof of payment</a>
     </li>
   </li>
   <ul class="sidenav-third-level collapse" id="collapseMulti2">

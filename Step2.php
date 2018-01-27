@@ -2,10 +2,13 @@
 include_once 'db.php';
 include_once 'header.php';
 session_start();
+if(!isset($_SESSION['login'])){
+  echo "<script>window.location.href= 'Confirm-Account.php'</script>";
+}
 if(!isset($_SESSION['reservation'])){
   header("Location: Step1.php");
 }
-echo print_r($_SESSION['reservation']);
+
 ?>
 <style>
 .navbar-brand{
@@ -26,7 +29,7 @@ echo print_r($_SESSION['reservation']);
       <div class="modal-content">
         <div class="modal-body">          
           <p class="success-message">You have selected <span id ='room-name'>King's Room</span> successfully</p>
-          <form action="Step3.php" method = 'post'>
+          <form action="Step4.php" method = 'post'>
             <input type ='hidden' id = 'roominput' value = '' name = 'roomname'/>
             <input type ='hidden' id = 'roomid' value = '' name = 'roomid'/>
             <h2>ADD ONS</h2>
@@ -126,7 +129,7 @@ echo print_r($_SESSION['reservation']);
               <a href="about-us.html">About</a>
             </li>
             <li>
-              <a href="contact.html">Contact</a>
+              <a href="ContactUs.php">Contact</a>
             </li>
             <li class="active">
               <a href="step1.php">Reservations</a>
