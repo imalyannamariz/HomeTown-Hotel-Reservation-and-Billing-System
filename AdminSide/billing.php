@@ -16,26 +16,26 @@
         <th>Actions</th>
       </thead>
       <tbody>
-      <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM billing_masterfile");
-      $currentTime = date("Y-m-d");
-      while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
-      <tr>
-        <td id ='reservation-id' ><?= $row['billing_id'] ?></td>
-        <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
-        <td id = 'room-id' ><?= $row['reservation_id'] ?></td>
-        <td id = 'checkin' ><?= number_format($row['balance'],2) ?></td>
-        <td id = 'checkout' ><?= number_format($row['total'],2) ?></td>
-        <td id = 'number-guest'><?= number_format($row['downpayment'], 2)?></td>
-        <td ><?= $row['status'] ?></td>
-        <td ><?= $row['created_at'] ?></td>
-        <td ><?= $row['updated_at'] ?></td>
-        <td><form>
-          <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary' style ='color:white'>Edit</a>
-          <input type="hidden" name="t_id" value="<?= $row['billing_id'] ?>">
-          <button type ='submit' class ='btn btn-danger'>Delete</button>
-        </form></td>
-      </tr>
-      <?php } ?>
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM billing_masterfile");
+        $currentTime = date("Y-m-d");
+        while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
+        <tr>
+          <td id ='billing-id' ><?= $row['billing_id'] ?></td>
+          <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
+          <td id = 'reservation-id' ><?= $row['reservation_id'] ?></td>
+          <td id = 'balance' ><?= number_format($row['balance'],2) ?></td>
+          <td id = 'total' ><?= number_format($row['total'],2) ?></td>
+          <td id = 'number-guest'><?= number_format($row['downpayment'], 2)?></td>
+          <td ><?= $row['status'] ?></td>
+          <td ><?= $row['created_at'] ?></td>
+          <td ><?= $row['updated_at'] ?></td>
+          <td><form id = 'deletebilling' action = '../ajax/deletebilling.php'>
+            <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
+            <input type="hidden" name="t_id" value="<?= $row['billing_id'] ?>">
+            <button type ='submit' class ='btn btn-danger'>Delete</button>
+          </form></td>
+        </tr>
+        <?php } ?>
       </tbody>
     </table>
 
@@ -80,33 +80,28 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="formEditRoom" enctype="multipart/form-data" method ='post'>
+            <form id="formEditRoom" action ='../ajax/editbilling.php' enctype="multipart/form-data" method ='post'>
               <div class='container-fluid'>
                 <div class='form-group'>
-                  <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
-                    <label for='RoomType'>Check in</label><br>
-                    <input required class='form-control' name = 'roomType' type ='date'>
-                    <div class='form-group'>
-                      <label for='roomRate'>Check out</label><br>
-                      <input required class='form-control' name = 'roomCapacity' type='date'>
-                    </div>
-                    <div class='form-group'>
-                      <label for='roomRate'>Room type</label><br>
-                      <input required class='form-control' name = 'roomRate'>
-                    </div>
-                    <div class='form-group'>
-                      <label for='roomNumber'>Room Quantity</label><br>
-                      <input required class='form-control' name = 'roomNumber'>
-                    </div>
-                    
-                  </table>
+                  <input type ='number' class ='form-control' name = 'payment'/>
                 </div>
+                <hr/>
+                <div class ='row'>
+                  <div class ='col-md-6'style ='text-align:left'>
+                    <h6>Change</h6>
+                  </div>
+                  <div class ='col-md-6' style ='text-align:right'>
+                    <h6 id = 'changeVal'>None</h6>
+                  </div>
+                </div>
+
               </div>
               
             </div>
             <div class="modal-footer">
-              <input type ='hidden' name = 'roomId'>
-              <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
+              <input type ='hidden' name ='b_id'/>
+              <input type ='hidden' name ='total'/>
+              <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update</button>
             </div>
           </form>
         </div>
@@ -126,19 +121,30 @@
 <script>
   $(document).ready(function(){
     $('.table').DataTable()
-    $('button#show').click(function(){
-      $('.editmodal').show()
+    $('.edit').click(function(){
+      var b_id = $(this).closest('tr').find('#billing-id').html()
+      var total = $(this).closest('tr').find('#total').html().replace(/\,/, '')
+      $('input[name=b_id]').val(b_id)
+      $('input[name=total]').val(total)
     })
     $('form').on('submit', function(e){
       e.preventDefault();
-      var prompt = confirm("Are you sure?")
+      var  message
+      var prompt = true
+      if($(this).attr('id') == 'formEditRoom'){
+        message = "Billing has been updated"
+      }
+      else{
+        var prompt = confirm("Are you sure?")
+        message = "Billing has been deleted"
+      }
       if(prompt){
         $.ajax({
           type:'POST',
-          url:'../ajax/deletebilling.php',
+          url: $(this).attr('action'),
           data: $(this).serialize(),
           success: function(html){
-            alert('Reservation has been deleted')
+            alert(message)
             location.reload()
           }
         })
