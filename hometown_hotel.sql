@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2018 at 09:50 AM
+-- Generation Time: Jan 28, 2018 at 03:15 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -109,12 +109,12 @@ CREATE TABLE `billing_masterfile` (
   `billing_id` int(11) NOT NULL,
   `guest_id` int(11) NOT NULL,
   `reservation_id` int(11) NOT NULL,
-  `balance` int(11) NOT NULL,
+  `balance` float NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `status` varchar(30) NOT NULL,
-  `total` int(11) NOT NULL,
-  `downpayment` int(11) NOT NULL
+  `total` float NOT NULL,
+  `downpayment` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -122,8 +122,8 @@ CREATE TABLE `billing_masterfile` (
 --
 
 INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `balance`, `created_at`, `updated_at`, `status`, `total`, `downpayment`) VALUES
-(2, 1, 34, 30800, '2018-01-24 16:34:47', '2018-01-25 19:46:48', 'Not paid', 30800, 4620),
-(3, 9, 35, 1760, '2018-01-25 17:27:10', '2018-01-25 17:27:10', 'Not paid', 1760, 264),
+(2, 1, 34, 0, '2018-01-24 16:34:47', '2018-01-27 14:19:19', 'Partial', 30800, 4620),
+(3, 9, 35, 0, '2018-01-25 17:27:10', '2018-01-27 14:19:54', 'Fully Paid', 1760, 264),
 (4, 9, 36, 3520, '2018-01-25 17:27:26', '2018-01-25 17:27:26', 'Not paid', 3520, 528),
 (5, 9, 37, 1320, '2018-01-25 17:27:46', '2018-01-25 17:27:46', 'Not paid', 1320, 198),
 (6, 9, 38, 1320, '2018-01-25 19:34:36', '2018-01-25 19:34:36', 'Not paid', 1320, 198),
@@ -152,6 +152,19 @@ INSERT INTO `discount_masterfile` (`discount_ID`, `discount_percent`, `discount_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `financialreports_masterfile`
+--
+
+CREATE TABLE `financialreports_masterfile` (
+  `financialreport_id` int(11) NOT NULL,
+  `payment` int(11) NOT NULL,
+  `payment_type` text NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `guestaddons_masterfile`
 --
 
@@ -166,8 +179,6 @@ CREATE TABLE `guestaddons_masterfile` (
 --
 
 INSERT INTO `guestaddons_masterfile` (`guestaddon_id`, `addons_id`, `reservation_id`) VALUES
-(5, 1, 30),
-(6, 1, 31),
 (7, 1, 34),
 (8, 1, 35),
 (9, 1, 37);
@@ -220,7 +231,9 @@ CREATE TABLE `proofofpayment_masterfile` (
 --
 
 INSERT INTO `proofofpayment_masterfile` (`proofofpayment_id`, `reservation_id`, `path`) VALUES
-(1, 35, '../uploads/DR4bHCSW0AAwnQA.jpg');
+(4, 35, '../uploads/26219674_10207907625968249_3350982610459939574_n.jpg'),
+(5, 35, '../uploads/26219674_10207907625968249_3350982610459939574_n.jpg'),
+(6, 35, '../uploads/26219674_10207907625968249_3350982610459939574_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -257,10 +270,6 @@ CREATE TABLE `reservation_masterfile` (
 --
 
 INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`, `room_number`, `status`) VALUES
-(29, 1, 6, '2018-01-26', '2018-01-27', 1, 3, 'Pending'),
-(30, 1, 6, '2018-01-27', '2018-01-28', 2, 3, 'Pending'),
-(31, 1, 6, '2018-01-27', '2018-01-28', 1, 2, 'Pending'),
-(32, 1, 6, '2018-01-27', '2018-01-28', 1, 2, 'Pending'),
 (34, 1, 9, '2018-01-31', '2018-02-07', 2, 2, 'Pending'),
 (35, 9, 6, '2018-01-29', '2018-01-30', 2, 4, 'Approved'),
 (36, 9, 6, '2018-01-29', '2018-01-31', 2, 4, 'Pending'),
@@ -429,7 +438,7 @@ ALTER TABLE `guest_masterfile`
 -- AUTO_INCREMENT for table `proofofpayment_masterfile`
 --
 ALTER TABLE `proofofpayment_masterfile`
-  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `reports_masterfile`
