@@ -91,89 +91,12 @@
   </style>
   <body>
    <header>
+    <?php
+      include_once 'navigationBar.php';
+    ?>
     <!-- Navigation Menu start-->
-    <nav class="navbar rq-header-main-menu navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <!-- Navbar Toggle -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" style = "margin-right: 20px;">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
 
-          <!-- Logo -->
-          <a class="navbar-brand" href="index.php"><img class="logo" src="HometownLogo.png" alt="Hometown"></a>
-        </div>
-        <!-- Navbar Toggle End -->
-
-        <!-- navbar-collapse start-->
-        <div id="nav-menu" class="navbar-collapse rq-menu-wrapper collapse navbar-right" role="navigation">
-          <ul class="nav navbar-nav rq-menus">
-            <li class="active">
-              <a href="HomepageFinal.php">Home</a>
-              <!-- <ul class="rq-sub-menu">
-                <li>
-                  <a href="HomepageFinal.php">Homepage 1</a>
-                </li>
-              </ul> -->
-            </li>
-
-              <a href="Rooms.php">Room</a>
-              <!-- <ul class="rq-sub-menu">
-                <li>
-                  <a href="Rooms.php">Twin Queen Room</a>
-                </li>
-                <li>
-                  <a href ="Rooms.php">Queen Room </a>
-                  <li>
-                    <a href="Rooms.php">Family Room</a>
-                  </li>
-                  <li>
-                    <a href="Rooms.php">Quad Room</a>
-                  </li>
-                  <li>
-                    <a href="Rooms.php">Female/Male Room</a>
-                  </li>
-                  <li>
-                    <a href="Rooms.php">Dormitory</a>
-                  </li>
-                </ul> -->
-              </li>
-              <li>
-                <a href="about-us.html">About</a>
-              </li>
-              <li>
-                <a href="contact.html">Contact</a>
-              </li>
-              <li>
-                <a href="Step1.php">Reservations</a>
-              </li>
-              <?php if(isset($_SESSION['login'])){  ?>
-              <li class="active dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded = "false">
-                  MY ACCOUNT<span class="caret"></span>
-                </a>
-                <ul class="rq-sub-menu">
-                  <li><a href="GuestDashboard.php">MY RESERVATIONS</a></li> 
-                  <li><a href="Logout.php">LOGOUT</a></li>
-                </ul>
-              </li>
-              <?php } else { ?> 
-              <li><a href="login.php">LOGIN</a></li>
-              <?php } ?>   
-
-            </ul>
-          </div>
-          <!-- navbar-collapse end-->
-
-          <!--<div class="rq-extra-btns-wrapper">
-              <button id="rq-side-menu-btn" class="cd-btn btn rq-sidemenu-btn"></button>
-          </div>
-
-        </div>
-      </nav>
-      <!-- Navigation Menu end-->
+      <!-- Navigation Menu end
     </header> <!-- / rq-header-section end here-->
 
     <div class="rq-checkout-banner">
@@ -198,9 +121,9 @@
                 <b>
                   <?php echo "{$_SESSION['firstname']} {$_SESSION['lastname']}"; ?>
                   <b>
-                    <p stlye = "text-align:right;">
+                    <!-- <p stlye = "text-align:right;">
                       <a href="account.php">Account Settings</a>
-                    </p>
+                    </p> -->
                     <h2> Reservation </h2>
                     <table class = "table table-bordered display" id = 'reservations'>
                       <thead>
@@ -250,7 +173,7 @@
                   <h4 class ='title'>Edit reservation</h4>
                 </div>
                 <div class="modal-body">
-                  <form action = 'ajax/editreservation.php' aria-delete = '../ajax/cancelreservation.php' aria-location = 'ajax/getreservedrooms.php' id = 'formEditRoom'>
+                  <form action = 'ajax/editreservation.php' aria-delete = 'ajax/cancelreservation.php' aria-location = 'ajax/getreservedrooms.php' id = 'formEditRoom'>
                    <div class='form-group'>
                     <label for='RoomType'>Check in</label><br>
                     <input required class='form-control' name = 'checkin' id = 'checkInDate' type ='text'>
