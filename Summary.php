@@ -26,7 +26,7 @@ $fetchAddons = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile as gAdd
   border-color: #96281B;
 }
 
-.table-condensed>tbody>tr>td{
+  .table-condensed>tbody>tr>td{
   padding: 5px;
 }
 .table>tbody>tr>td {
@@ -98,7 +98,7 @@ table {
           <!-- policy -->
           <div class = "col-md-4">
             <div class = "panel panel-default">
-              <div class = "panel-heading" style = "background-color: red;">
+              <div class = "panel-heading" style = "background-color: ;">
                 <h3 class = "text-center">
                   <strong>Policy</strong>
                 </h3>
@@ -143,7 +143,7 @@ table {
           <!-- guest info -->
           <div class = "col-md-8">
             <div class = "panel panel-default">
-              <div class = "panel-heading" style = "background-color: red">
+              <div class = "panel-heading" style = "background-color: ">
                 <h3 class = "text-center">
                   <strong>Guest Information</strong>
                 </h3>
@@ -227,7 +227,7 @@ table {
           <!-- billing -->
           <div class = "col-md-8">
             <div class = "panel panel-default">
-              <div class = "panel-heading" style = "background-color: red">
+              <div class = "panel-heading" style = "background-color: ">
                 <h3 class = "text-center">
                   <strong>Total Billing</strong>
                 </h3>
