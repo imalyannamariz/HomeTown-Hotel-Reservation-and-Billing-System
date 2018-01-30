@@ -189,6 +189,7 @@ if(!isset($_SESSION['reservation'])){
         $('#roomno').append(`<option value = '${x}'>${x}</option>`)
       }
     })
+    $('.singleRoom-grid-upper-left.pull-leftking h5').html(`${$(".rq-listing-choose.singleRoom-grid-main").length()} result(s) found`)
 
   })
 

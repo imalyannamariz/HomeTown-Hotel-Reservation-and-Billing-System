@@ -188,7 +188,7 @@ session_start();
       </a>
       <ul class="sidenav-second-level collapse" id="collapseMulti100000">
         <li>
-          <a href="ReportOccupancy.php">Occupancy Report</a>
+          <a href="financialreports.php">Financial Report</a>
         </li>
         <li>
           <a href="ReportReservationSummary.php">Reservation Summary</a>
