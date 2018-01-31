@@ -94,7 +94,7 @@ table {
       <h1 style = "text-align:center">Do you have an Account?</h1>
       <br>
       <a style="text-align: center; color: blue;" href="Login.php?url=step1.php">Yes, Let me login</a>
-      <a style="text-align: center; color: red;" href="Step2.php">No, Create one for me</a>
+      <a style="text-align: center; color: red;" href="Step3.php">No, Create one for me</a>
     </div>
   </div>
 

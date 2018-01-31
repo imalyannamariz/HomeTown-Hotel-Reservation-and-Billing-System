@@ -8,33 +8,40 @@
       <thead>
         <tr>
           <th>Reservation ID</th>
-          <th>Proof of payment ID</th>
-          <th>Image</th>
+          <th>Guest ID</th>
+          <th>Room Name</th>
+          <th>Check in</th>
+          <th>Check out</th>
+          <th>Number of Guest</th>
+          <th>Room number</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT * from proofofpayment_masterfile");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id WHERE reserve.status != 'Void'");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
-          <td id ='reservation-id' ><?= $row['proofofpayment_id'] ?></td>
-          <td id = 'guest-id' ><?= $row['reservation_id'] ?></td>
-          <td ><img src = '<?= $row['path'] ?>' style ='width:50%'/></td>
-          <td><form method ='post'>
-            <input type ='hidden' name = 'approve_id' value = '<?= $row['reservation_id'] ?>'/> 
-            <button type ='submit' class ='btn btn-primary' onclick = "return confirm('Are you sure?')" name ='submit'>Accept</button></form></td>
+          <td id ='reservation-id' ><?= $row['reservation_id'] ?></td>
+          <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
+          <td id = 'room-id' ><?= $row['room_type'] ?></td>
+          <td id = 'checkin' ><?= $row['checkindate'] ?></td>
+          <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
+          <td id = 'number-guest'><?= $row['number_guest']?></td>
+          <td id = 'room-number'><?= $row['reserve_room'] ?></td>
+          <td><form id = 'deletereservation'>
+            <?php $disabled = 'disabled';
+              if($row['checkindate'] <= $currentDay)
+                $disabled = '';
+            ?>
+            <button type ='submit' <?= $disabled ?> class ='btn btn-danger btn-block'>Checkout</button>
+          </form></td>
         </tr>
         <?php } ?>
       </tbody>
       <tfoot></tfoot>
     </table>
-    <?php 
-    if(isset($_POST['submit'])){
-      echo "<script>alert('Success')</script>";
-      mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = '{$_POST['approve_id']}'");
-    }
-    ?>
+
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
@@ -70,25 +77,48 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Edit</h5>
+            <h5 class="modal-title">Modal title</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form id="formEditproof" enctype="multipart/form-data" method ='post'>
+            <form id="formEditRoom" enctype="multipart/form-data" method ='post' aria-location = '../ajax/getreservedrooms.php' action = '../ajax/editreservation.php' aria-delete = '../ajax/cancelreservation.php'>
               <div class='container-fluid'>
-                <input type ='hidden' name ='t_id' />
-                <input type ='hidden' name ='old_img'/>
                 <div class='form-group'>
-                  <input type ='file' class ='form-control' name = 'img' value = ''/>
+                  <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
+                    <label for='RoomType'>Check in</label><br>
+                    <input required class='form-control' name = 'checkin' id = 'checkInDate' type ='text'>
+                    <div class='form-group'>
+                      <label for='roomRate'>Check out</label><br>
+                      <input required class='form-control' name = 'checkout'  id = 'checkOutDate' type='text'>
+                    </div>
+                    
+                    <div class='form-group'>
+
+                      <label for='roomNumber'>Room Type</label><br>
+                      <select class ='form-control' name ='roomtype' id ='roomtype'>
+                        <?php $fetchrooms = mysqli_query($conn, "SELECT * FROM room_masterfile");
+                        while($row = mysqli_fetch_assoc($fetchrooms)){
+                          echo "<option class ='get' value = '{$row['room_id']}'>{$row['room_type']}</option>";
+                        } ?>
+                      </select>
+                    </div>
+                    <div class='form-group'>
+                      <label for='roomRate'>Room Quantity</label><br>
+                      <select id ='roomquantity' name = 'roomquantity' class ='form-control'>
+
+                      </select>
+                    </div>
+                    <input type ='hidden' name = 'reservationno'/>
+                  </table>
                 </div>
               </div>
 
             </div>
             <div class="modal-footer">
               <input type ='hidden' name = 'roomId'>
-              <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Proof of payment</button>
+              <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
             </div>
           </form>
         </div>
@@ -117,44 +147,7 @@
 <script>
   $(document).ready(function(){
     $('#thisTable').DataTable()
-    $('form#deleteproof').on("submit",function(){
-      var prompt = confirm("Are you sure?")
-      if(prompt){
-        $.ajax({
-          url:'../ajax/deleteproof.php',
-          type:'POST',
-          data:$(this).serialize(),
-          success:function(html){
-            alert("Proof of payment has been deleted")
-            location.reload()
-          }
-        })
-      }
-    })
-    $('a.edit').on('click',function(){
-      var imagepath = $(this).closest('tr').find('img').attr('src')
-      var proof_id = $(this).closest('tr').find('#reservation-id').html()
-      $('input[name=old_img').val(imagepath)
-      $('input[name=img').val(imagepath)
-      $('input[name=t_id]').val(proof_id)
-    })
-    $('$form#editproof').on("submit",function(){
-      var form_data = new FormData()
-      form_data.append('img', $('input[name=img]').prop('files')[0])
-      form_data.append('t_id', $('input[name=t_id]').val())
-      form_data.append('old_img', $('input[name=old_img]').val())
-      $.ajax({
-        url:'../ajax/editproof.php',
-        type:'POST',
-        data:form_data,
-        contentType: false,
-        processData: false,
-        success: function(html){
-          alert("Success")
-          location.reload()
-        }
-      })
-    })
+
   })
 </script>
 </body>

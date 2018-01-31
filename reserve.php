@@ -13,10 +13,16 @@ session_start();
  }
 // Declarations 
 $currentTime = date("Y-m-d H:i:s");
-
-mysqli_query($conn, "INSERT INTO reservation_masterfile(guest_id, room_id,checkindate,checkoutdate,number_guest, room_number,status)
+          $alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+          $code = '';
+          do{
+          	$code ='';
+          for($x = 0; $x <= 10; $x++)
+            $code .= $alphanum[rand(0, strlen($alphanum))];
+          }while(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_code ='$code'")) != 0);
+mysqli_query($conn, "INSERT INTO reservation_masterfile(guest_id, room_id,checkindate,checkoutdate,number_guest, room_number,status, reservation_code)
  	VALUES({$_SESSION['guest_ID']} ,{$_SESSION['reservation']['roomid']},'{$_SESSION['reservation']['checkInDate']}'
- 	 ,'{$_SESSION['reservation']['checkOutDate']}',{$_SESSION['reservation']['numberOfAdults']}, {$_SESSION['reservation']['roomno']},'Pending')") or die(mysqli_error($conn));
+ 	 ,'{$_SESSION['reservation']['checkOutDate']}',{$_SESSION['reservation']['numberOfAdults']}, {$_SESSION['reservation']['roomno']},'Pending','{$code}')") or die(mysqli_error($conn));
 
 $fetch_reservationID = mysqli_query($conn, "SELECT max(reservation_id) FROM reservation_masterfile");
 $row = mysqli_fetch_assoc($fetch_reservationID);
