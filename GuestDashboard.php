@@ -134,11 +134,12 @@
                           <th>Number of rooms</th>
                           <th>Room Name</th>
                           <th>Status</th>
+                          <th>Balance</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
                     </tbody>
-                    <?php $fetch_reservations = mysqli_query($conn, "SELECT *, reservation_masterfile.room_number as roomno FROM reservation_masterfile JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id WHERE guest_id = {$_SESSION['guest_ID']}");
+                    <?php $fetch_reservations = mysqli_query($conn, "SELECT *, reservation_masterfile.room_number as roomno FROM reservation_masterfile JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id JOIN billing_masterfile ON reservation_masterfile.reservation_id = billing_masterfile.reservation_id WHERE reservation_masterfile.guest_id = {$_SESSION['guest_ID']}") or die(mysqli_error($conn));
                     while($row = mysqli_fetch_assoc($fetch_reservations)){ ?>
 
                     <tr>
@@ -149,6 +150,7 @@
                       <td align ='center'><?= $row['roomno'] ?></td>
                       <td align = 'center'><?= $row['room_type'] ?></td>
                       <td align = "center"><?= $row['status'] ?></td>
+                      <td align = 'center'> <?= number_format($row['balance'],2) . " php"?></td>
                       <td align ='center'> 
                         <form method="post" id ='deletereservation'>
                          <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success">View</a>

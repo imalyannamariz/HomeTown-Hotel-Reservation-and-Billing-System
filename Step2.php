@@ -61,7 +61,7 @@ if(!isset($_SESSION['reservation'])){
               <div class="rq-single-room-checkin">
                 <div class="row">                    
                   <div class="col-md-6">
-                    <h2>Total Room</h2>
+                    <h2>Total number of rooms to reserve</h2>
                     <div class="rq-total">
                       <!-- Room quantity -->
                       <select class="js-example-placeholder-single form-control" id = 'roomno' name ='roomno' REQUIRED>

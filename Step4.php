@@ -116,7 +116,7 @@ table {
         </div>
         <div class = "modal-footer">
           <button type="button" class="cancel btn" onclick="" data-dismiss="modal">Close</button>
-          <a href="reserve.php">
+          <a href ='reserve.php'>
             <button type="button" class="confirm btn btn-primary" onclick="">Confirm</button>
           </a>
         </div>
@@ -292,19 +292,25 @@ table {
           $daydiff = (strtotime($_SESSION['reservation']['checkOutDate']) - strtotime($_SESSION['reservation']['checkInDate']))/(60*60*24);
           $roomrate = $getselectedroom['room_rate'] * $_SESSION['reservation']['roomno'];
           $lengthofstay = $getselectedroom['room_rate'] * $_SESSION['reservation']['roomno'] * $daydiff;
-          $vatable = $lengthofstay * 0.12;
-          $vattotal = $lengthofstay * 0.88;
+          $vattotal = $lengthofstay;
           $addon_total = 0;
-          $_SESSION['reservation']['balance'] = $vattotal;
+        
           if(count($_SESSION['reservation']['services']) != 0){
             foreach($_SESSION['reservation']['services'] as $service => $service_name){
               $fetchaddon = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$service}");
+
               $getaddon = mysqli_fetch_assoc($fetchaddon);
+
               $addon_total+= $getaddon['Addon_rate'];
+
             }
           }
           $vattotal += $addon_total;
-          $downpayment = $vattotal * 0.15;
+          $total = $vattotal;
+          $_SESSION['reservation']['balance'] = $total;
+          $vatable = $vattotal * 0.12;
+          $vattotal *= 0.88;
+          $downpayment = $total * 0.15; 
         ?>
         <div class = "col-md-9">
           <div class = "panel panel-default">
@@ -356,7 +362,7 @@ table {
 
                       </td>
                       <td class="text-right" bgcolor="#EBEDF2">
-                        <?= $lengthofstay ?> php 
+                        <?= number_format($lengthofstay,2) ?> php 
                       </td>
                     </tr>
                     <tr>
@@ -367,26 +373,13 @@ table {
 
                       </td>
                       <td class="highrow text-center">
-                        <strong>Subtotal (per rooms picked)</strong>
+                        <strong>Subtotal (taxed to 12%)</strong>
                       </td>
                       <td class="highrow text-right">
-                       <?= number_format($roomrate,2) ?> php
+                       <?= number_format($vattotal,2) ?> php
                      </td>
                    </tr>
-                   <tr>
-                    <td class="text-left" bgcolor="#EBEDF2">
-
-                    </td>
-                    <td class="text-left" bgcolor="#EBEDF2">
-
-                    </td>
-                    <td class="text-center" bgcolor="#EBEDF2">
-                      <strong>Vatable</strong>
-                    </td>
-                    <td class="text-right" bgcolor="#EBEDF2">
-                      <?= number_format($vattotal,2) ?> php
-                    </td>
-                  </tr>
+                   
                   <tr>
                     <td class="text-left">
 
@@ -412,7 +405,7 @@ table {
                       <strong>Down payment</strong>
                     </td>
                     <td class=" text-right" bgcolor="#EBEDF2">
-                      <?= number_format($downpayment,2) ?>php
+                      <?= number_format($total,2) . " * 15% = " . number_format($downpayment,2) ?>php
                     </td>
                   </tr>
                   <tr>
@@ -426,7 +419,7 @@ table {
                       <strong>Total</strong>
                     </td>
                     <td class=" highrow text-right">
-                      <?= number_format($vattotal,2) ?>php
+                      <?= number_format($total,2) ?>php
                     </td>
                   </tr>
                 </tbody>
