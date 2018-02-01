@@ -18,12 +18,12 @@
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id WHERE reserve.status != 'Void'");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id JOIN guest_masterfile on guest_masterfile.guest_ID = reserve.guest_id WHERE reserve.status != 'Void'") or die(mysqli_error($conn));
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
-          <td id ='reservation-id' ><?= $row['reservation_id'] ?></td>
-          <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
+          <td id ='reservation-id' ><?= $row['reservation_code'] ?></td>
+          <td id = 'guest-id' ><?= $row['guest_code'] ?></td>
           <td id = 'room-id' ><?= $row['room_type'] ?></td>
           <td id = 'checkin' ><?= $row['checkindate'] ?></td>
           <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
