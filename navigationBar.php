@@ -30,7 +30,7 @@
               <a href="Rooms.php">Room</a>
               </li>
               <li>
-                <a href="about-us.html">About</a>
+                <a href="aboutUs.php">About</a>
               </li>
               <li>
                 <a href="contact.html">Contact</a>
