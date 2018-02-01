@@ -137,7 +137,7 @@ table {
           <!-- policy -->
           <div class = "col-md-3">
             <div class = "panel panel-default">
-              <div class = "panel-heading" style = "background-color: red;">
+              <div class = "panel-heading" style = "background-color:;">
                 <h3 class = "text-center">
                   <strong>Policy</strong>
                 </h3>
@@ -197,7 +197,7 @@ table {
           <!-- guest info -->
           <div class = "col-md-9">
             <div class = "panel panel-default">
-              <div class = "panel-heading" style = "background-color: red">
+              <div class = "panel-heading" style = "background-color: ">
                 <h3 class = "text-center">
                   <strong>Guest Information</strong>
                 </h3>
@@ -314,7 +314,7 @@ table {
         ?>
         <div class = "col-md-9">
           <div class = "panel panel-default">
-            <div class = "panel-heading" style = "background-color: red">
+            <div class = "panel-heading" style = "background-color: ">
               <h3 class = "text-center">
                 <strong>Total Billing</strong>
               </h3>
