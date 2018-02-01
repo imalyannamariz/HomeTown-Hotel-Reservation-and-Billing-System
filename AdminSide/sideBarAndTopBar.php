@@ -127,6 +127,9 @@ session_start();
       <li>
         <a href="reservation.php">Modify Reservation</a>
       </li>
+       <li>
+        <a href="reservationcheckouts.php">Check out</a>
+      </li>
     </li>
     <ul class="sidenav-third-level collapse" id="collapseMulti2">
     </ul>

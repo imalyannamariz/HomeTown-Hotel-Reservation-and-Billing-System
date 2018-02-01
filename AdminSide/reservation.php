@@ -18,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id WHERE reserve.status != 'Void'");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
@@ -34,7 +34,6 @@
               if($row['checkindate'] <= $currentDay)
                 $disabled = '';
             ?>
-            <button type ='submit' <?= $disabled ?> class ='btn btn-danger btn-block'>Checkout</button>
             <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit btn-block' style ='color:white;margin-bottom:10px'>Edit</a>
             <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
             <button type ='submit' class ='btn btn-danger btn-block'>Delete</button>

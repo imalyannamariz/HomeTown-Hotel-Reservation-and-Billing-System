@@ -83,7 +83,7 @@
             <form id="formEditRoom" action ='../ajax/editbilling.php' enctype="multipart/form-data" method ='post'>
               <div class='container-fluid'>
                 <div class='form-group'>
-                  <input type ='number' class ='form-control' name = 'payment'/>
+                  <input type ='number' id ='payment' class ='form-control' placeholder = 'Input guest payment here' name = 'payment'/>
                 </div>
                 <hr/>
                 <div class ='row'>
@@ -148,6 +148,13 @@
             location.reload()
           }
         })
+      }
+    })
+    $('#payment').change(function(){
+      var payment = parseFloat($(this).val())
+      var balance = parseFloat($('input[name=currentBalance]').val())
+      if(balance < payment){
+        $('#changeVal').html(payment - balance)
       }
     })
   })

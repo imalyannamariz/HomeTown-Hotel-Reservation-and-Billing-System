@@ -392,7 +392,7 @@ table {
                 contentType: false,
                 processData: false,
                 success:function(html){
-                  alert("Success")
+                  alert("Success. Please wait for your reservation to accept")
                 }
               })
             })

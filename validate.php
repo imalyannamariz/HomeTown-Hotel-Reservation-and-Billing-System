@@ -1,8 +1,6 @@
   <?php
     include_once 'db.php';
     session_start();
-    // Hindi pa pala nag-eexist yung page na pupuntahan nito :(
-    // Sabihin mo na lang kung ano yung gagawin dito hindi ko muna gagalawin hahaha :)
       if (isset($_POST['submit'])){
         $selectedValue = $_POST['country'];
         $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
@@ -26,8 +24,26 @@
       else 
       {
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
-          $sql = "INSERT INTO guest_masterfile (guest_firstname, guest_lastname, guest_email, guest_password, guest_ContactNumber, guest_country, guest_address) VALUES ('$firstName', '$lastName', '$email', '$hashedPwd', '$contactNumber', '$country', '$address')";
+          $alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+          $code = '';
+          do{
+            $code = '';
+          for($x = 0; $x <= 10; $x++)
+            $code .= $alphanum[rand(0, strlen($alphanum))];
+          }while(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_code ='$code'")) != 0);
+          $sql = "INSERT INTO guest_masterfile (guest_firstname, guest_lastname, guest_email, guest_password, guest_ContactNumber, guest_country, guest_address, guest_code) VALUES ('$firstName', '$lastName', '$email', '$hashedPwd', '$contactNumber', '$country', '$address','$code')";
           mysqli_query($conn, $sql) or die(mysqli_error($conn));
+          $fetchnewaccount = mysqli_query($conn, "SELECT max(guest_ID) FROM guest_masterfile");
+          $getnewaccount = mysqli_fetch_assoc($fetchnewaccount);
+              $_SESSION['login'] = true;
+              $_SESSION['guest_ID'] = $getnewaccount['max(guest_ID)'];
+              $_SESSION['firstname'] = $_POST['firstName'];
+              $_SESSION['lastname'] = $_POST['lastName'];
+              $_SESSION['email'] = $_POST['email'];
+              $_SESSION['contactNumber'] = $_POST['contactNumber'];
+              $_SESSION['country'] = $selectedValue;
+              $_SESSION['address'] = $_POST['address'];
+              header("Location: GuestDashboard.php");
           echo "<script>alert('Successful!');location.href='step4.php';</script>";  
           }         
         }         
