@@ -72,7 +72,7 @@ if(!isset($_SESSION['reservation'])){
               </div>
             </div>
           </fieldset>
-          <button type="submit" class="btn btn-flat rq-modal-submit-btn">CHECKOUT</button>
+          <button type="submit" class="btn btn-flat rq-modal-submit-btn">BOOK NOW</button>
         </form>
       </div>
     </div>          

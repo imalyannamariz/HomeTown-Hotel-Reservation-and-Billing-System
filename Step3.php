@@ -27,7 +27,7 @@ if(isset($_GET['Step3.php'])){
       <div class="container">
         <div class="rq-checkout-banner-text">
           <div class="rq-checkout-banner-text-middle">
-            <h1>booking</h1>
+            <h1>Register account</h1>
           </div>
         </div>
       </div>
@@ -119,13 +119,13 @@ if(isset($_GET['Step3.php'])){
         </div>
       </div>         
     </div>
-    <h1 class="rq-checkout-form-title">additional information</h1>
+  <!--   <h1 class="rq-checkout-form-title">additional information</h1>
     <div class="form-group">
       <label for="orderNotes">order notes</label>
       <textarea class="form-control" rows="5" id="orderNotes"></textarea>
-    </div>
+    </div> -->
     <!-- <a class="rq-btn-primary" href="#" role="button"></a> -->
-    <button class="btn btn-lg btn-primary" name="submit" type="submit">book now</button>
+    <button class="btn btn-lg btn-primary" name="submit" type="submit">Register</button>
   </form>
 </div>
 </div>
