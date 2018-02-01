@@ -136,7 +136,7 @@ if(!isset($_SESSION['login'])){
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-6" style ='padding-left:0px'>
-          <form method = "POST" action = "validate.php">
+          <form method = "POST" >
             <h1 class="rq-checkout-form-title">Change Password</h1>
             <div class="form-group">
               <div class ='col-md-6' style ='padding-left:0px'>
@@ -155,6 +155,14 @@ if(!isset($_SESSION['login'])){
             if(isset($_POST['changepass'])){
               $newpassword = mysqli_real_escape_string($conn, $_POST['oldpassword']);
               $confirmpassword = mysqli_real_escape_string($conn, $_POST['newPassword']);
+              if($newpassword != $confirmpassword){
+                echo "<script>alert('Password does not match')</script>";
+              }
+              else{
+                $hashedPwd = password_hash($confirmpassword, PASSWORD_DEFAULT);
+                  mysqli_query($conn, "UPDATE guest_masterfile SET guest_password ='{$hashedPwd}' WHERE guest_ID = {$_SESSION['guest_ID']}");
+                  echo "<script>alert('Success. Password has been changed')</script>";
+              }
             }
           ?>
         </div>
