@@ -32,7 +32,10 @@
     <?php 
     if(isset($_POST['submit'])){
       echo "<script>alert('Success')</script>";
-      mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = '{$_POST['approve_id']}'");
+      $fetchcode = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_POST['approve_id']}");
+      $row = mysqli_fetch_assoc($fetchcode);
+      mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = {$_POST['approve_id']}");
+      mysqli_query($conn, "UPDATE assignedroom_masterfile SET status = 'Reserved' WHERE type ='Reservation' AND code ='{$row['reservation_code']}'") or die(mysqli_error($conn));
     }
     ?>
     <footer class="sticky-footer">

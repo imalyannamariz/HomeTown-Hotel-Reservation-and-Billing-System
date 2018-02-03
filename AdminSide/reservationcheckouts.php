@@ -31,7 +31,7 @@
           <td id = 'room-number'><?= $row['reserve_room'] ?></td>
           <td><form id = 'deletereservation'>
             <?php $disabled = 'disabled';
-              if($row['checkindate'] <= $currentDay)
+              if($row['checkindate'] <= $currentTime)
                 $disabled = '';
             ?>
             <button type ='submit' <?= $disabled ?> class ='btn btn-danger btn-block'>Checkout</button>

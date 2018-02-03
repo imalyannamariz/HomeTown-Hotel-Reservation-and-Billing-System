@@ -153,6 +153,7 @@
     $('#payment').change(function(){
       var payment = parseFloat($(this).val())
       var balance = parseFloat($('input[name=currentBalance]').val())
+      $('#changeVal').html("None")
       if(balance < payment){
         $('#changeVal').html(payment - balance)
       }
