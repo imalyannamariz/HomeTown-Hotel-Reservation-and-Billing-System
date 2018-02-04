@@ -123,7 +123,7 @@ include_once 'navigationBar.php';
       <div class="row">
 
         <?php while($row = mysqli_fetch_assoc($fetch_rooms)){ 
-          $fetchReservedrooms = mysqli_query($conn, "SELECT room_number FROM reservation_masterfile WHERE (((checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}')) AND room_id = {$row['room_id']}) AND (status == 'Approved' or status == 'Checkin')") or die(mysqli_error($conn));
+          $fetchReservedrooms = mysqli_query($conn, "SELECT room_number FROM reservation_masterfile WHERE (((checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}')) AND room_id = {$row['room_id']}) AND (status = 'Approved' or status = 'Checkin')") or die(mysqli_error($conn));
           $fetchreservedwalkin = mysqli_query($conn, "SELECT * FROM assignedroom_masterfile INNER JOIN walkinrooms_masterfile ON assignedroom_masterfile.room_id = walkinrooms_masterfile.walkinrooms_id WHERE walkinrooms_masterfile.room_id = {$row['room_id']} AND ((date >= '{$_SESSION['reservation']['checkInDate']}' AND date <= '{$_SESSION['reservation']['checkOutDate']}') AND status = 'Walkin')") or die(mysqli_error($conn));
           $reservedwalkin = array();
           while($row1 = mysqli_fetch_assoc($fetchreservedwalkin)){
