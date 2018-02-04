@@ -15,7 +15,7 @@
         $result = mysqli_query($conn, $sql) or die (mysqli_error($conn));
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
-            echo "<script>alert('Email already taken.');location.href='registerCustomer.php';</script>";
+            echo "<script>alert('Email already taken, please try another email adress.');location.href='Step3.php';</script>";
         }
         else {//hashing the password
           if ($password != $confirmPassword) {
