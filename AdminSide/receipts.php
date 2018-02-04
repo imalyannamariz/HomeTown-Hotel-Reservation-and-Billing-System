@@ -7,8 +7,7 @@
       <thead>
         <tr>
           <th>Receipt ID</th>
-          <th>Billing ID</th>
-          <th>Reservation ID</th>
+          <th>Guest ID</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -17,9 +16,8 @@
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
-          <td id ='reservation-id' ><?= $row['receipts_id'] ?></td>
-          <td id = 'guest-id' ><?= $row['reservation_id'] ?></td>
-          <td ><?= $row['billing_id']?></td>
+          <td id = 'guest-id' ><?= $row['receipts_id'] ?></td>
+          <td ><?= $row['guest_id']?></td>
           <td>
             <a href = "printreceipt.php?receipt_id=<?=$row['receipts_id']?>" class ='btn btn-success'>View</a>
         </td>

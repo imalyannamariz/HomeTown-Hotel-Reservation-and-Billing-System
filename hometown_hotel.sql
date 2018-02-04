@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2018 at 09:09 AM
+-- Generation Time: Feb 04, 2018 at 10:04 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -130,9 +130,9 @@ CREATE TABLE `billing_masterfile` (
 --
 
 INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `balance`, `created_at`, `updated_at`, `status`, `total`, `downpayment`) VALUES
-(5, 18, 37, 65, '2018-02-01 03:13:34', '2018-02-04 15:18:03', 'Partial', 1375, 198),
-(44, 9, 72, 900, '2018-02-04 12:58:55', '2018-02-04 12:58:55', 'Not paid', 900, 135),
-(45, 9, 73, 3000, '2018-02-04 16:07:09', '2018-02-04 16:07:09', 'Not paid', 3000, 450);
+(5, 18, 37, 0, '2018-02-01 03:13:34', '2018-02-04 16:27:31', 'Partial', 1375, 198),
+(44, 9, 72, 0, '2018-02-04 12:58:55', '2018-02-04 16:30:52', 'Fully Paid', 900, 135),
+(45, 9, 73, 2500, '2018-02-04 16:07:09', '2018-02-04 17:03:49', 'Partial', 3000, 450);
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,19 @@ INSERT INTO `financialreports_masterfile` (`payment`, `payment_type`, `created_a
 (400, 'Partial', '2018-02-04 15:14:23', 0, 4),
 (400, 'Partial', '2018-02-04 15:14:23', 0, 5),
 (5, 'Partial', '2018-02-04 15:15:40', 0, 6),
-(5, 'Partial', '2018-02-04 15:18:03', 0, 7);
+(5, 'Partial', '2018-02-04 15:18:03', 0, 7),
+(50, 'Partial', '2018-02-04 16:18:06', 5, 8),
+(5, 'Partial', '2018-02-04 16:27:06', 5, 9),
+(5, 'Partial', '2018-02-04 16:27:31', 5, 10),
+(5, 'Partial', '2018-02-04 16:27:31', 5, 11),
+(55, 'Partial', '2018-02-04 16:27:55', 44, 12),
+(5, 'Partial', '2018-02-04 16:28:53', 44, 13),
+(5, 'Partial', '2018-02-04 16:29:17', 44, 14),
+(4, 'Partial', '2018-02-04 16:29:24', 44, 15),
+(55, 'Partial', '2018-02-04 16:29:55', 44, 16),
+(55, 'Partial', '2018-02-04 16:30:15', 44, 17),
+(721, 'Fully Paid', '2018-02-04 16:30:52', 44, 18),
+(500, 'Partial', '2018-02-04 17:03:49', 45, 19);
 
 -- --------------------------------------------------------
 
@@ -263,15 +275,16 @@ INSERT INTO `proofofpayment_masterfile` (`proofofpayment_id`, `reservation_id`, 
 --
 
 CREATE TABLE `receipts_masterfile` (
-  `receipts_id` int(11) NOT NULL
+  `receipts_id` int(11) NOT NULL,
+  `guest_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `receipts_masterfile`
 --
 
-INSERT INTO `receipts_masterfile` (`receipts_id`) VALUES
-(1);
+INSERT INTO `receipts_masterfile` (`receipts_id`, `guest_id`) VALUES
+(3, 9);
 
 -- --------------------------------------------------------
 
@@ -566,7 +579,7 @@ ALTER TABLE `discount_masterfile`
 -- AUTO_INCREMENT for table `financialreports_masterfile`
 --
 ALTER TABLE `financialreports_masterfile`
-  MODIFY `financialreport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `financialreport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `guestaddons_masterfile`
@@ -590,7 +603,7 @@ ALTER TABLE `proofofpayment_masterfile`
 -- AUTO_INCREMENT for table `receipts_masterfile`
 --
 ALTER TABLE `receipts_masterfile`
-  MODIFY `receipts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `receipts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `reports_masterfile`

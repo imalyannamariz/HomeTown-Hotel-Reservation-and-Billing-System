@@ -160,6 +160,7 @@
         contentType: false,
         processData: false,
         success: function(html){
+          alert(html)
           alert("Success")
           location.reload()
         }

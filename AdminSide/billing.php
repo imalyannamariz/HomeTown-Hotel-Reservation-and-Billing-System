@@ -102,6 +102,7 @@
               <input type ='hidden' name ='b_id'/>
               <input type ='hidden' name ='currentBalance'/>
               <input type ='hidden' name ='r_id'/>
+              <input type ='hidden' name ='g_id'/>
               <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update</button>
             </div>
           </form>
@@ -126,6 +127,8 @@
       var b_id = $(this).closest('tr').find('#billing-id').html()
       var total = $(this).closest('tr').find('#balance').html().replace(/\,/, '')
       var r_id = $(this).closest('tr').find('#reservation-id').html()
+      var g_id = $(this).closest('tr').find('#guest-id').html()
+      $('input[name=g_id]').val(g_id)
       $('input[name=b_id]').val(b_id)
       $('input[name=currentBalance]').val(total)
       $('input[name=r_id]').val(r_id)
