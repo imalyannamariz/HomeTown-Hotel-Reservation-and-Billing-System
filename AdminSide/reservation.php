@@ -14,6 +14,7 @@
           <th>Check out date</th>
           <th>Number of Guest</th>
           <th>Room number</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -29,12 +30,16 @@
           <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
           <td id = 'number-guest'><?= $row['number_guest']?></td>
           <td id = 'room-number'><?= $row['reserve_room'] ?></td>
+          <td><?=$row['status']?></td>
           <td><form id = 'deletereservation'>
             <?php $disabled = 'disabled';
               if($row['checkindate'] <= $currentDay)
                 $disabled = '';
             ?>
             <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit btn-block' style ='color:white;margin-bottom:10px'>Edit</a>
+            <input type ='hidden' <?=$disabled?> name ='checkin'/>
+            <input type ='submit'<?=$disabled?> name ='checkIn' class ='btn btn-success btn-block' style ='margin-bottom:10px' value ='Check in'/>
+            <input type ='submit' name ='checkOut' class ='btn btn-warning btn-block' value ='Check out' style ='margin-bottom:10px; color:white'/>
             <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
             <button type ='submit' class ='btn btn-danger btn-block'>Delete</button>
           </form></td>

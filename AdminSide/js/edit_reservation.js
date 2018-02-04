@@ -8,7 +8,7 @@ $(document).ready(function(){
         url:$('form#formEditRoom').attr('aria-delete'),
         data: $(this).serialize(),
         success: function(html){
-          alert('Reservation has been deleted')
+          alert(html)
           location.reload()
         }
       })

@@ -3,7 +3,7 @@
 
  <div class="content-wrapper">
   <div class="container-fluid">
-
+    <h5 id ='totalBill'>Total: </h5>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
@@ -20,7 +20,7 @@
         <tr>
           <td id ='reservation-id' ><?= $row['financialreport_id'] ?></td>
           <td id = 'guest-id' ><?= number_format($row['payment'],2) ?></td>
-          <td ><?= $row['payment_type']?></td>
+          <td><?= $row['payment_type']?></td>
             <td ><?= $row['created_at'] ?></td>
         </tr>
         <?php } ?>
@@ -109,6 +109,11 @@
 <script src = 'js/edit_reservation.js'></script>
 <script>
   $(document).ready(function(){
+    var total = 0
+    $('td#guest-id').each(function(){
+      total += parseFloat($(this).html())
+    })
+    $('#totalBill').html(`Total Earnings: ${total}.00 PHP`)
     $('#thisTable').DataTable()
     $('form#deleteproof').on("submit",function(){
       var prompt = confirm("Are you sure?")
