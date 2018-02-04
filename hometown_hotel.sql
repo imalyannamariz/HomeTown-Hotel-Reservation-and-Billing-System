@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2018 at 10:04 AM
+-- Generation Time: Feb 04, 2018 at 03:05 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -302,6 +302,26 @@ CREATE TABLE `reports_masterfile` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reservationreports_masterfile`
+--
+
+CREATE TABLE `reservationreports_masterfile` (
+  `reservereports_id` int(11) NOT NULL,
+  `reservation_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `reservationreports_masterfile`
+--
+
+INSERT INTO `reservationreports_masterfile` (`reservereports_id`, `reservation_id`, `created_at`, `updated_at`) VALUES
+(0, 37, '2018-02-04 21:16:18', '2018-02-04 21:16:18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reservation_masterfile`
 --
 
@@ -323,7 +343,7 @@ CREATE TABLE `reservation_masterfile` (
 
 INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`, `room_number`, `status`, `reservation_code`) VALUES
 (36, 13, 6, '2018-02-04', '2018-02-05', 1, 2, 'Void', ''),
-(37, 18, 7, '2018-02-04', '2018-02-05', 1, 1, 'Approved', 'YGN9C3VE'),
+(37, 18, 7, '2018-02-04', '2018-02-05', 1, 1, 'Checkout', 'YGN9C3VE'),
 (72, 9, 6, '2018-02-07', '2018-02-08', 1, 1, 'Pending', '146PR6Q4DO'),
 (73, 9, 7, '2018-02-07', '2018-02-08', 1, 2, 'Pending', 'RFIAN9WTUH');
 
@@ -510,6 +530,12 @@ ALTER TABLE `receipts_masterfile`
 --
 ALTER TABLE `reports_masterfile`
   ADD PRIMARY KEY (`report_id`);
+
+--
+-- Indexes for table `reservationreports_masterfile`
+--
+ALTER TABLE `reservationreports_masterfile`
+  ADD PRIMARY KEY (`reservereports_id`);
 
 --
 -- Indexes for table `reservation_masterfile`
