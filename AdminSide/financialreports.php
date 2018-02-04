@@ -111,7 +111,7 @@
   $(document).ready(function(){
     var total = 0
     $('td#guest-id').each(function(){
-      total += parseFloat($(this).html())
+      total += parseFloat($(this).html().replace(/\,/, ''))
     })
     $('#totalBill').html(`Total Earnings: ${total}.00 PHP`)
     $('#thisTable').DataTable()
