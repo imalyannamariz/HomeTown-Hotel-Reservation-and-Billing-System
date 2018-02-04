@@ -3,6 +3,8 @@ include '../db.php';
 if(isset($_POST['checkin'])){
 echo "Reservation has checked in";
 mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Checkin' WHERE reservation_id = {$_POST['t_id']}");
+$currentDay = date("Y-m-d H:i:s");
+mysqli_query($conn, "INSERT INTO reservationreports_masterfile(reservation_id, created_at, updated_at) VALUES({$_POST['t_id']}, '{$currentDay}', '{$currentDay}')");
 }
 else{
 echo "Reservation has been deleted";

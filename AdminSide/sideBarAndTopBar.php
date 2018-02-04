@@ -128,9 +128,6 @@ session_start();
         <a href="reservation.php">Modify Reservation</a>
       </li>
       <li>
-        <a href="reservationcheckouts.php">Check out</a>
-      </li>
-      <li>
         <a href="walkin.php">Walkin</a>
       </li>
     </li>
@@ -198,6 +195,9 @@ session_start();
       <ul class="sidenav-second-level collapse" id="collapseMulti100000">
         <li>
           <a href="financialreports.php">Financial Report</a>
+        </li>
+        <li>
+          <a href="reservationreports.php">Reservation Report</a>
         </li>
         <li>
           <a href="ReportReservationSummary.php">Reservation Summary</a>

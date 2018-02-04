@@ -14,6 +14,7 @@
           <th>Check out date</th>
           <th>Number of Guest</th>
           <th>Room number</th>
+          <th>Room assigned</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
@@ -21,7 +22,14 @@
       <tbody>
         <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id JOIN guest_masterfile on guest_masterfile.guest_ID = reserve.guest_id WHERE reserve.status != 'Void'") or die(mysqli_error($conn));
         $currentTime = date("Y-m-d");
-        while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
+        while($row = mysqli_fetch_assoc($fetchallreservation)){ 
+            $fetchassignedrooms = mysqli_query($conn, "SELECT * FROM assignedroom_masterfile JOIN walkinrooms_masterfile ON assignedroom_masterfile.room_id = walkinrooms_masterfile.walkinrooms_id WHERE assignedroom_masterfile.code = '{$row['reservation_code']}'");
+            $assignedroom = array();
+            while($assignedrooms = mysqli_fetch_assoc($fetchassignedrooms)){
+              $assignedroom[] = $assignedrooms['walkinrooms_name'];
+            }
+
+          ?>
         <tr>
           <td id ='reservation-id' ><?= $row['reservation_code'] ?></td>
           <td id = 'guest-id' ><?= $row['guest_code'] ?></td>
@@ -30,15 +38,16 @@
           <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>
           <td id = 'number-guest'><?= $row['number_guest']?></td>
           <td id = 'room-number'><?= $row['reserve_room'] ?></td>
+          <td><?= implode(", ", array_unique($assignedroom))?></td>
           <td><?=$row['status']?></td>
           <td><form id = 'deletereservation'>
-            <?php $disabled = 'disabled';
+            <?php $checkIndisabled = 'disabled';
               if($row['checkindate'] <= $currentDay)
-                $disabled = '';
+                $checkIndisabled = '';
             ?>
             <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit btn-block' style ='color:white;margin-bottom:10px'>Edit</a>
-            <input type ='hidden' <?=$disabled?> name ='checkin'/>
-            <input type ='submit'<?=$disabled?> name ='checkIn' class ='btn btn-success btn-block' style ='margin-bottom:10px' value ='Check in'/>
+            <input type ='hidden' <?=$checkIndisabled?> name ='checkin'/>
+            <input type ='submit'<?=$checkIndisabled?> name ='checkIn' class ='btn btn-success btn-block' style ='margin-bottom:10px' value ='Check in'/>
             <input type ='submit' name ='checkOut' class ='btn btn-warning btn-block' value ='Check out' style ='margin-bottom:10px; color:white'/>
             <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
             <button type ='submit' class ='btn btn-danger btn-block'>Delete</button>
