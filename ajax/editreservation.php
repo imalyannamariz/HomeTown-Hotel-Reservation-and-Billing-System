@@ -9,8 +9,13 @@ $daydiff = (strtotime($_POST['checkout']) - strtotime($_POST['checkin']))/(60*60
 $roomrate = $getnewroom['room_rate'] * $_POST['roomquantity'];
 $lengthofstay = $getnewroom['room_rate'] * $_POST['roomquantity'] * $daydiff;
 $vatable = $lengthofstay * 0.12;
-$vattotal = $lengthofstay * 0.88;
+$vattotal = $lengthofstay;
+$fetchaddons = mysqli_query($conn , "SELECT * FROM guestaddons_masterfile JOIN addons_masterfile ON guestaddons_masterfile.addons_id = addons_masterfile.Addon_ID WHERE guestaddons_masterfile.reservation_id = {$_POST['reservationno']}");
+while($row = mysqli_fetch_assoc($fetchaddons)){
+	$vattotal += $row['Addon_rate'];
+}
 $downpayment = $vattotal * 0.15;
 $currentTime = date("Y-m-d H:i:s");
+
 mysqli_query($conn, "UPDATE billing_masterfile SET balance = {$vattotal}, total = {$vattotal}, downpayment = {$downpayment}, updated_at = '{$currentTime}' WHERE reservation_id = {$_POST['reservationno']}") or die (mysqli_error($conn));
 ?>
