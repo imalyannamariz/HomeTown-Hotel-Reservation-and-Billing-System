@@ -10,5 +10,8 @@ else{
 	$status = 'Fully Paid';
 	mysqli_query($conn, "UPDATE billing_masterfile SET balance = 0, status = '$status', updated_at = '{$currentDay}' WHERE billing_id = {$_POST['b_id']}") or die(mysqli_error($conn));
 }
-mysqli_query($conn, "INSERT INTO financialreports_masterfile (payment, payment_type,created_at) VALUES({$_POST['payment']}, '{$status}','{$currentDay}')");
+mysqli_query($conn, "INSERT INTO financialreports_masterfile (payment, payment_type,created_at, billing_id) VALUES({$_POST['payment']}, '{$status}','{$currentDay}', {$_POST['b_id']})");
+$checkifexist = mysqli_query($conn, "SELECT * FROM receipts_masterfile WHERE billing_id = {$_POST['b_id']}");
+if(mysqli_num_rows($checkifexist) == 0)
+	mysqli_query($conn, "INSERT INTO receipts_masterfile(reservation_id, billing_id) VALUES({$_POST['r_id']}, {$_POST['b_id']})") or die (mysqli_error($conn));
 ?>

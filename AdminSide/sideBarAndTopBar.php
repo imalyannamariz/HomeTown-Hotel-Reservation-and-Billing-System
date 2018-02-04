@@ -22,10 +22,10 @@ session_start();
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
-<link rel ='stylesheet' type ='text/css' href = 'css/jquery.datetimepicker.min.css'/>
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <link rel ='stylesheet' type ='text/css' href = 'css/jquery.datetimepicker.min.css'/>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -127,7 +127,7 @@ session_start();
       <li>
         <a href="reservation.php">Modify Reservation</a>
       </li>
-       <li>
+      <li>
         <a href="reservationcheckouts.php">Check out</a>
       </li>
       <li>
@@ -149,8 +149,11 @@ session_start();
     <li>
       <a href="billing.php">Check billing</a>
     </li>
-        <li>
+    <li>
       <a href="proofofpayment.php">Check Proof of payment</a>
+    </li>
+    <li>
+      <a href="receipts.php">Check Receipts</a>
     </li>
   </li>
   <ul class="sidenav-third-level collapse" id="collapseMulti2">

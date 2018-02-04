@@ -101,6 +101,7 @@
             <div class="modal-footer">
               <input type ='hidden' name ='b_id'/>
               <input type ='hidden' name ='currentBalance'/>
+              <input type ='hidden' name ='r_id'/>
               <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update</button>
             </div>
           </form>
@@ -124,8 +125,10 @@
     $('.edit').click(function(){
       var b_id = $(this).closest('tr').find('#billing-id').html()
       var total = $(this).closest('tr').find('#balance').html().replace(/\,/, '')
+      var r_id = $(this).closest('tr').find('#reservation-id').html()
       $('input[name=b_id]').val(b_id)
       $('input[name=currentBalance]').val(total)
+      $('input[name=r_id]').val(r_id)
     })
     $('form').on('submit', function(e){
       e.preventDefault();

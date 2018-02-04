@@ -295,7 +295,7 @@ table {
                           <strong>Subtotal (taxed to 12%)</strong>
                         </td>
                         <td class="highrow text-right">
-                         <?= number_format(($daydiff * $room['room_rate'] * $reservation['room_number'] + $addonTotal)*0.88,2). " php"?>
+                         <?= number_format(($billing['total'])*0.88,2). " php"?>
                        </td>
                      </tr>
                      <tr>
@@ -309,7 +309,7 @@ table {
                         <strong>Vat 12%</strong>
                       </td>
                       <td class="text-right" bgcolor="#EBEDF2">
-                        <?= number_format(($daydiff * $room['room_rate'] * $reservation['room_number'] + $addonTotal) * 0.12,2) ?> php
+                        <?= number_format($billing['total']* 0.12,2) ?> php
                       </td>
                     </tr>
                     <tr>
@@ -323,7 +323,7 @@ table {
                         <strong>Down payment</strong>
                       </td>
                       <td class=" text-right" bgcolor="#EBEDF2">
-                        <?=number_format(($daydiff * $room['room_rate'] * $reservation['room_number'])+ $addonTotal,2) . " * 15% = " . number_format((($daydiff * $room['room_rate'] * $reservation['room_number'] )+ $addonTotal) * 0.15 ,2) ?> php
+                        <?= number_format($billing['total'], 2) . " * 15% = ". number_format($billing['total'] * 0.15, 2)?> php
                       </td>
                     </tr>
                     <tr>
@@ -337,7 +337,7 @@ table {
                         <strong>Total</strong>
                       </td>
                       <td class=" highrow text-right">
-                        <?= number_format(($daydiff * $reservation['room_number'] * $room['room_rate']) + $addonTotal, 2)?> php
+                        <?= number_format($billing['total'], 2)?> php
                       </td>
                     </tr>
                   </tbody>

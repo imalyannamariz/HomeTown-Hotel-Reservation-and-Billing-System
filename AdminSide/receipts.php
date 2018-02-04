@@ -3,42 +3,25 @@
 
  <div class="content-wrapper">
   <div class="container-fluid">
-    <?php 
-    if(isset($_POST['submit'])){
-      echo "<script>alert('Success')</script>";
-      $fetchcode = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_POST['approve_id']}");
-      $row = mysqli_fetch_assoc($fetchcode);
-      mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = {$_POST['approve_id']}");
-      mysqli_query($conn, "UPDATE assignedroom_masterfile SET status = 'Reserved' WHERE type ='Reservation' AND code ='{$row['reservation_code']}'") or die(mysqli_error($conn));
-    }
-    if(isset($_POST['delete'])){
-      echo "<script>alert('Proof of payment has been deleted')</script>";
-      mysqli_query($conn, "DELETE FROM proofofpayment_masterfile WHERE proofofpayment_id = {$_POST['proof_id']}") or die(mysqli_error($conn));
-    }
-    ?>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
+          <th>Receipt ID</th>
+          <th>Billing ID</th>
           <th>Reservation ID</th>
-          <th>Proof of payment ID</th>
-          <th>Image</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT * from proofofpayment_masterfile");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM receipts_masterfile");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
-          <td id ='reservation-id' ><?= $row['proofofpayment_id'] ?></td>
+          <td id ='reservation-id' ><?= $row['receipts_id'] ?></td>
           <td id = 'guest-id' ><?= $row['reservation_id'] ?></td>
-          <td ><img src = '<?= $row['path'] ?>' style ='width:50%'/></td>
-          <td><form method ='post'>
-            <input type ='hidden' name ='proof_id' value ='<?= $row['proofofpayment_id']?> '/>
-            <input type ='hidden' name = 'approve_id' value = '<?= $row['reservation_id'] ?>'/> 
-            <button type ='submit' class ='btn btn-primary' onclick = "return confirm('Are you sure?')" name ='submit'>Accept</button>
-            <button type ='submit' class ='btn btn-danger' onclick ="return confirm('Are you sure?')" name ='delete'>Delete</button>
-          </form>
+          <td ><?= $row['billing_id']?></td>
+          <td>
+            <a href = "printreceipt.php?receipt_id=<?=$row['receipts_id']?>" class ='btn btn-success'>View</a>
         </td>
       </tr>
       <?php } ?>

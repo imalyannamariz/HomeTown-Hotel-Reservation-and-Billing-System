@@ -7,7 +7,7 @@ while($row = mysqli_fetch_assoc($fetchallrooms)){
 		$fetchreservedwalkin = mysqli_query($conn, "SELECT * FROM assignedroom_masterfile INNER JOIN walkinrooms_masterfile ON assignedroom_masterfile.room_id = walkinrooms_masterfile.walkinrooms_id WHERE walkinrooms_masterfile.room_id = {$row['room_id']} AND ((date >= '{$_POST['checkInDate']}' AND date <= '{$_POST['checkOutDate']}') AND status = 'Walkin')") or die(mysqli_error($conn));
 		$reservedwalkin = array();
 		while($row1 = mysqli_fetch_assoc($fetchreservedwalkin)){
-			$reservedwalkin[] = $row1['room_id']
+			$reservedwalkin[] = $row1['room_id'];
 		}
 	while($row1 = mysqli_fetch_assoc($fetchreservedrooms)){
 
