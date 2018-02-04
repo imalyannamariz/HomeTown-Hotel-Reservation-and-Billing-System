@@ -3,7 +3,19 @@
 
  <div class="content-wrapper">
   <div class="container-fluid">
-
+    <?php 
+    if(isset($_POST['submit'])){
+      echo "<script>alert('Success')</script>";
+      $fetchcode = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_POST['approve_id']}");
+      $row = mysqli_fetch_assoc($fetchcode);
+      mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = {$_POST['approve_id']}");
+      mysqli_query($conn, "UPDATE assignedroom_masterfile SET status = 'Reserved' WHERE type ='Reservation' AND code ='{$row['reservation_code']}'") or die(mysqli_error($conn));
+    }
+    if(isset($_POST['delete'])){
+      echo "<script>alert('Proof of payment has been deleted')</script>";
+      mysqli_query($conn, "DELETE FROM proofofpayment_masterfile WHERE proofofpayment_id = {$_POST['proof_id']}") or die(mysqli_error($conn));
+    }
+    ?>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
@@ -22,82 +34,77 @@
           <td id = 'guest-id' ><?= $row['reservation_id'] ?></td>
           <td ><img src = '<?= $row['path'] ?>' style ='width:50%'/></td>
           <td><form method ='post'>
+            <input type ='hidden' name ='proof_id' value ='<?= $row['proofofpayment_id']?> '/>
             <input type ='hidden' name = 'approve_id' value = '<?= $row['reservation_id'] ?>'/> 
-            <button type ='submit' class ='btn btn-primary' onclick = "return confirm('Are you sure?')" name ='submit'>Accept</button></form></td>
-        </tr>
-        <?php } ?>
-      </tbody>
-      <tfoot></tfoot>
-    </table>
-    <?php 
-    if(isset($_POST['submit'])){
-      echo "<script>alert('Success')</script>";
-      $fetchcode = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_POST['approve_id']}");
-      $row = mysqli_fetch_assoc($fetchcode);
-      mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = {$_POST['approve_id']}");
-      mysqli_query($conn, "UPDATE assignedroom_masterfile SET status = 'Reserved' WHERE type ='Reservation' AND code ='{$row['reservation_code']}'") or die(mysqli_error($conn));
-    }
-    ?>
-    <footer class="sticky-footer">
-      <div class="container">
-        <div class="text-center">
-          <small>Copyright © HomeTown Hotel Makati</small>
-        </div>
-      </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fa fa-angle-up"></i>
-    </a>
-    
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.php">Logout</a>
-          </div>
-        </div>
+            <button type ='submit' class ='btn btn-primary' onclick = "return confirm('Are you sure?')" name ='submit'>Accept</button>
+            <button type ='submit' class ='btn btn-danger' onclick ="return confirm('Are you sure?')" name ='delete'>Delete</button>
+          </form>
+        </td>
+      </tr>
+      <?php } ?>
+    </tbody>
+    <tfoot></tfoot>
+  </table>
+  <footer class="sticky-footer">
+    <div class="container">
+      <div class="text-center">
+        <small>Copyright © HomeTown Hotel Makati</small>
       </div>
     </div>
-    <!-- Edit Modal -->
-    <div class="modal fade" id ='editreservation' tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form id="formEditproof" enctype="multipart/form-data" method ='post'>
-              <div class='container-fluid'>
-                <input type ='hidden' name ='t_id' />
-                <input type ='hidden' name ='old_img'/>
-                <div class='form-group'>
-                  <input type ='file' class ='form-control' name = 'img' value = ''/>
-                </div>
-              </div>
+  </footer>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
 
-            </div>
-            <div class="modal-footer">
-              <input type ='hidden' name = 'roomId'>
-              <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Proof of payment</button>
-            </div>
-          </form>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.php">Logout</a>
         </div>
       </div>
     </div>
   </div>
+  <!-- Edit Modal -->
+  <div class="modal fade" id ='editreservation' tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="formEditproof" enctype="multipart/form-data" method ='post'>
+            <div class='container-fluid'>
+              <input type ='hidden' name ='t_id' />
+              <input type ='hidden' name ='old_img'/>
+              <div class='form-group'>
+                <input type ='file' class ='form-control' name = 'img' value = ''/>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <input type ='hidden' name = 'roomId'>
+            <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Proof of payment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <!-- Bootstrap core JavaScript-->
 

@@ -4,15 +4,23 @@ include_once 'header.php';
 session_start();
 $fetchCurrentReservation = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_GET['code']} AND guest_id = {$_SESSION['guest_ID']}");
 $reservation = mysqli_fetch_assoc($fetchCurrentReservation);
-if(mysqli_num_rows($reservation)){
+if(mysqli_num_rows($fetchCurrentReservation) == 0){
   echo "<script>alert(\"Reservation not found.\")
   window.href.location = 'GuestDashboard.php'
   </script>
   ";
 }
+$daydiff = (strtotime($reservation['checkoutdate']) - strtotime($reservation['checkindate']))/(60*60*24);
 $fetchCurrentRoom = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$reservation['room_id']}") or die(mysqli_error($conn));
 $room = mysqli_fetch_assoc($fetchCurrentRoom);
-$fetchAddons = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile as gAddon INNER JOIN addons_masterfile as Addon on gAddon.addons_id = Addon.addons_id WHERE gAddon.reservation_id = {$reservation['reservation_id']} AND gAddon.guest_id = {$_SESSION['guest_ID']}");
+$fetchbilling = mysqli_query($conn, "SELECT * FROM billing_masterfile WHERE reservation_id = {$_GET['code']} AND guest_id = {$_SESSION['guest_ID']}");
+$billing = mysqli_fetch_assoc($fetchbilling);
+$fetchAddons = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile as gAddon INNER JOIN addons_masterfile as Addon on gAddon.addons_id = Addon.Addon_id WHERE gAddon.reservation_id = {$reservation['reservation_id']}") or die(mysqli_error($conn));
+$addonTotal = 0;
+while($addon = mysqli_fetch_assoc($fetchAddons)){
+  $addonTotal += $addon['Addon_rate'];
+}
+
 ?>
 
 <style>
@@ -259,7 +267,7 @@ table {
                           1
                         </td>
                         <td class="text-right" bgcolor="#EBEDF2">
-                          php
+                          <?=number_format($room['room_rate'],2)?> php
                         </td>
                       </tr>
                       <tr>
@@ -267,7 +275,7 @@ table {
                           <strong>Length of stay</strong>
                         </td>
                         <td class="text-left" bgcolor="#EBEDF2">
-                          1
+                          <?= $daydiff ?>
                         </td>
                         <td class="text-left" bgcolor="#EBEDF2">
 
@@ -284,10 +292,10 @@ table {
 
                         </td>
                         <td class="highrow text-center">
-                          <strong>Subtotal (per rooms picked)</strong>
+                          <strong>Subtotal (taxed to 12%)</strong>
                         </td>
                         <td class="highrow text-right">
-                         php
+                         <?= number_format(($daydiff * $room['room_rate'])*0.88,2). " php"?>
                        </td>
                      </tr>
                      <tr>
@@ -298,24 +306,10 @@ table {
 
                       </td>
                       <td class="text-center" bgcolor="#EBEDF2">
-                        <strong>Vatable</strong>
+                        <strong>Vat 12%</strong>
                       </td>
                       <td class="text-right" bgcolor="#EBEDF2">
-                        php
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="text-left">
-
-                      </td>
-                      <td class="text-left">
-                        <strong></strong>
-                      </td>
-                      <td class="text-center">
-                        <strong>VAT 12%</strong>
-                      </td>
-                      <td class="text-right">
-                        php
+                        <?= number_format(($daydiff * $room['room_rate']) * 0.12,2) ?> php
                       </td>
                     </tr>
                     <tr>
@@ -329,7 +323,7 @@ table {
                         <strong>Down payment</strong>
                       </td>
                       <td class=" text-right" bgcolor="#EBEDF2">
-                        php
+                        <?=number_format(($daydiff * $room['room_rate'] + $addonTotal),2) . " * 15% = " . number_format(($daydiff * $room['room_rate'] + $addonTotal) * 0.15 ,2) ?> php
                       </td>
                     </tr>
                     <tr>
@@ -343,7 +337,7 @@ table {
                         <strong>Total</strong>
                       </td>
                       <td class=" highrow text-right">
-                        php
+                        <?= number_format($daydiff * $room['room_rate'] + $addonTotal, 2)?> php
                       </td>
                     </tr>
                   </tbody>

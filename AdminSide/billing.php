@@ -30,7 +30,7 @@
           <td ><?= $row['created_at'] ?></td>
           <td ><?= $row['updated_at'] ?></td>
           <td><form id = 'deletebilling' action = '../ajax/deletebilling.php'>
-            <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Edit</a>
+            <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit' style ='color:white'>Pay</a>
             <input type="hidden" name="t_id" value="<?= $row['billing_id'] ?>">
             <button type ='submit' class ='btn btn-danger'>Delete</button>
           </form></td>

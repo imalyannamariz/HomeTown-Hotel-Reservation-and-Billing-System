@@ -150,6 +150,16 @@
               mysqli_query($conn, "INSERT INTO assignedroom_masterfile (room_id, date, status, type, code) VALUES({$_POST['room_id']}, '{$checkInDate}' ,'Reserved', 'Walkin', '{$code}')") or die(mysqli_error($conn));
               $checkInDate = date("Y-m-d", strtotime($checkInDate) + (60*60*24));
             }
+            $fetchroomtype = mysqli_query($conn, "SELECT * FROM walkinrooms_masterfile WHERE walkinrooms_id = {$_POST['room_id']}") or die(mysqli_error($conn));
+            $row = mysqli_fetch_assoc($fetchroomtype);
+            $fetchrate = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$row['room_id']}");
+            $row = mysqli_fetch_assoc($fetchrate);
+            $daydiff = (strtotime($_POST['checkOutDate']) - strtotime($_POST['checkInDate']))/(60*60*24);
+            $total = $row['room_rate'] * $daydiff;
+            $downpayment = $total * 0.15;
+            $fetchreservation =mysqli_query($conn, "SELECT max(reservation_id) FROM walkinreservation_masterfile") or die(mysqli_error($conn));
+            $row1 = mysqli_fetch_assoc($fetchreservation);
+            mysqli_query($conn, "INSERT INTO billing_masterfile(reservation_id,balance,total,downpayment, created_at, updated_at) VALUES({$row1['max(reservation_id)']}, {$total}, {$total}, {$downpayment},'{$currentDay}','{$currentDay}') ") or die(mysqli_error($conn));
   }
   ?>
 </div>
