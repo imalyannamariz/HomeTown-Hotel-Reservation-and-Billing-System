@@ -26,10 +26,16 @@
   		<tbody>
   			<?php while($row = mysqli_fetch_assoc($fetchallbilling)) {
   				$type = ($row['total'] - $row['balance'] == $row['total'])? "Fully Paid" : "Partial";
-  				
+  				$fetchAddon = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile JOIN addons_masterfile ON guestaddons_masterfile.addons_id = addons_masterfile.Addon_ID WHERE guestaddons_masterfile.reservation_id = {$row['reservation_id']}") or die(mysqli_error($conn));
+  				$addonstr = '';
+  				if(mysqli_num_rows($fetchAddon) != 0){
+  					while($addons = mysqli_fetch_assoc($fetchAddon)){
+  						$addonstr .= "{$addons['quantity']} {$addons['Addon_name']}";
+  					}
+  				}
   				?>
   				<tr>
-  					<td><?="{$row['room_type']} ({$type}) [{$row['checkindate']} - {$row['checkoutdate']}]"?></td>
+  					<td><?="{$row['room_type']} ({$type}) [{$row['checkindate']} - {$row['checkoutdate']}]<br/>{$addonstr}"?></td>
   					<td><?= $row['reserve_number']?></td>
   					<td><?= number_format($row['total'] - $row['balance'],2)?> PHP</td>
   				</tr>
