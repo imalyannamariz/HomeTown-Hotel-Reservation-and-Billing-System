@@ -99,10 +99,10 @@ $(document).ready(function(){
         placeholder: "Select Your State",
     });
 
-    $(".rq-total .js-example-placeholder-single").select2({
-        minimumResultsForSearch: Infinity,
-        placeholder: "Number of rooms"
-    });
+    // $(".rq-total .js-example-placeholder-single").select2({
+    //     minimumResultsForSearch: Infinity,
+    //     placeholder: "Number of rooms"
+    // });
 
     $(".rq-adult .js-example-placeholder-single").select2({
         minimumResultsForSearch: Infinity,

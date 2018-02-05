@@ -14,6 +14,11 @@ $fetchaddons = mysqli_query($conn , "SELECT * FROM guestaddons_masterfile JOIN a
 while($row = mysqli_fetch_assoc($fetchaddons)){
 	$vattotal += $row['Addon_rate'];
 }
+$fetchguest = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_POST['reservationno']} JOIN guest_masterfile ON reservation_masterfile.guest_id = guest_masterfile.guest_ID");
+$guest = mysqli_fetch_assoc($fetchguest);
+if($guest['count'] >= 3){
+	$vattotal *= 0.90;
+}
 $downpayment = $vattotal * 0.15;
 $currentTime = date("Y-m-d H:i:s");
 

@@ -50,6 +50,9 @@ if(!isset($_SESSION['reservation'])){
                   <div class="table-css-col">
                     <span>P <?= $row['Addon_rate']?>/</span> Group / Trip
                   </div>
+                  <div class="table-css-col">
+                    <span>Remaining <?= $row['Addon_qty']?></span>
+                  </div>
                 </div>
                 <?php } ?>
               </div>
