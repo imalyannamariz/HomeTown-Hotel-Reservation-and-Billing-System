@@ -3,7 +3,7 @@
   <?php
   include_once '../db.php';
   $total = 0;
-  $fetchreceipt = mysqli_query($conn, "SELECT * FROM receipts_masterfile JOIN guest_masterfile ON receipts_masterfile.guest_id = guest_masterfile.guest_id ")or die (mysqli_error($conn));
+  $fetchreceipt = mysqli_query($conn, "SELECT * FROM receipts_masterfile JOIN guest_masterfile ON receipts_masterfile.guest_id = guest_masterfile.guest_id WHERE receipts_masterfile.receipts_id = {$_GET['receipt_id']} ")or die (mysqli_error($conn));
   $receipt = mysqli_fetch_assoc($fetchreceipt);
   $fetchallbilling = mysqli_query($conn, "SELECT *, reservation_masterfile.room_number as reserve_number FROM billing_masterfile INNER JOIN reservation_masterfile ON reservation_masterfile.reservation_id = billing_masterfile.reservation_id INNER JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id WHERE billing_masterfile.guest_id = {$receipt['guest_id']} AND (billing_masterfile.status = 'Partial' OR billing_masterfile.status = 'Fully Paid')");
 

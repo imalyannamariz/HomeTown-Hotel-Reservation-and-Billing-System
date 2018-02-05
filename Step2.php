@@ -46,11 +46,14 @@ if(!isset($_SESSION['reservation'])){
                   while($guestaddons = mysqli_fetch_assoc($fetchreservedaddons)){
                     $reservedaddons += $guestaddons['quantity'];
                   }
-                  $remainingaddons = $row['Addon_qty'] - $reservedaddons; ?>
+                  $remainingaddons = $row['Addon_qty'] - $reservedaddons;
+                  $disabled ='';
+                  if($remainingaddons == 0)
+                    $disabled = 'disabled'; ?>
                   <div class="table-css-row">              
                     <div class="table-css-col">
                       <label>
-                        <input type="checkbox" name="services[<?= $row['Addon_ID'] ?>]" value ='<?= $row['Addon_name'] ?>'>
+                        <input type="checkbox" <?=$disabled?> name="services[<?= $row['Addon_ID'] ?>]" value ='<?= $row['Addon_name'] ?>'>
                         <?= $row['Addon_name'] ?>
                       </label>
                     </div>

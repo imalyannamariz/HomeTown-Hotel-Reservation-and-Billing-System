@@ -294,7 +294,7 @@ table {
           $lengthofstay = $getselectedroom['room_rate'] * $_SESSION['reservation']['roomno'] * $daydiff;
           $vattotal = $lengthofstay;
           $addon_total = 0;
-        
+
           if(count($_SESSION['reservation']['services']) != 0){
             foreach($_SESSION['reservation']['services'] as $service => $service_name){
               $fetchaddon = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$service}");
@@ -311,151 +311,176 @@ table {
           $vatable = $vattotal * 0.12;
           $vattotal *= 0.88;
           $downpayment = $total * 0.15; 
-        ?>
-        <div class = "col-md-9">
-          <div class = "panel panel-default">
-            <div class = "panel-heading" style = "background-color: ">
-              <h3 class = "text-center">
-                <strong>Total Billing</strong>
-              </h3>
-            </div>
-            <div class = "panel-body" stlye = "margin-bottom: -25px">
-              <div class = "table-responsive">
-                <table class = "table table-condensed">
-                  <thead>
-                    <tr>
-                      <td><strong></strong></td>
-                      <td><strong></strong></td>
-                      <td class = "text-center">
-                        <strong>Number of Room/s</strong>
+          ?>
+          <div class = "col-md-9">
+            <div class = "panel panel-default">
+              <div class = "panel-heading" style = "background-color: ">
+                <h3 class = "text-center">
+                  <strong>Total Billing</strong>
+                </h3>
+              </div>
+              <div class = "panel-body" stlye = "margin-bottom: -25px">
+                <div class = "table-responsive">
+                  <table class = "table table-condensed">
+                    <thead>
+                      <tr>
+                        <td><strong></strong></td>
+                        <td><strong></strong></td>
+                        <td class = "text-center">
+                          <strong>Number of Room/s</strong>
+                        </td>
+                        <td class = "text-right">
+                          <strong>Cost</strong>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                      <tr>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <strong>Type of Room</strong>
+                        </td>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <?= $_SESSION['reservation']['roomname']?>
+                        </td> 
+                        <td class="text-center" bgcolor="#EBEDF2">
+                          <?= $_SESSION['reservation']['roomno'] ?>
+                        </td>
+                        <td class="text-right" bgcolor="#EBEDF2">
+                          <?= number_format($roomrate,2) ?> php
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <strong>Length of stay</strong>
+                        </td>
+                        <td class="text-left" bgcolor="#EBEDF2">
+                          <?php
+                          echo $daydiff;
+                          ?>
+                        </td>
+                        <td class="text-left" bgcolor="#EBEDF2">
+
+                        </td>
+                        <td class="text-right" bgcolor="#EBEDF2">
+                          <?= number_format($lengthofstay,2) ?> php 
+                        </td>
+
+                      </tr>
+                      <tr>
+                        <td class ='highrow text-left'>
+                          <b>Extra Services</b>
+                        </td>
+                        <td class ='highrow text-left'></td>
+                        <td class ='highrow text-center'></td>
+                        <td class ='highrow text-right'></td>
+                      </tr>
+                      <?php if(count($_SESSION['reservation']['services']) != 0){
+
+                        foreach($_SESSION['reservation']['services'] as $service => $service_name){
+                          $fetchaddon = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$service}");
+                          $getaddon = mysqli_fetch_assoc($fetchaddon);?>
+                          <tr>
+                            <td class ='highrow text-left'>
+                            </td>
+                            <td class ='highrow text-left'></td>
+                            <td class ='highrow text-center'><?=$getaddon['Addon_name']?></td>
+                            <td class ='highrow text-right'><?=number_format($getaddon['Addon_rate'],2)?> PHP</td>
+                          </tr>
+                          <?php 
+                        }
+                      } ?>
+
+                      <tr>
+                        <td class="highrow text-left">
+
+                        </td>
+                        <td class="highrow text-left">
+
+                        </td>
+                        <td class="highrow text-center">
+                          <strong>Subtotal (taxed to 12%)</strong>
+                        </td>
+                        <td class="highrow text-right">
+                         <?= number_format($vattotal,2) ?> php
+                       </td>
+                     </tr>
+
+                     <tr>
+                      <td class="text-left">
+
                       </td>
-                      <td class = "text-right">
-                        <strong>Cost</strong>
+                      <td class="text-left">
+                        <strong></strong>
+                      </td>
+                      <td class="text-center">
+                        <strong>VAT 12%</strong>
+                      </td>
+                      <td class="text-right">
+                        <?= number_format($vatable,2) ?>php
                       </td>
                     </tr>
-                  </thead>
-                  <tbody> 
                     <tr>
                       <td class="text-left" bgcolor="#EBEDF2">
-                        <strong>Type of Room</strong>
+
                       </td>
-                      <td class="text-left" bgcolor="#EBEDF2">
-                        <?= $_SESSION['reservation']['roomname']?>
-                      </td> 
-                      <td class="text-center" bgcolor="#EBEDF2">
-                        <?= $_SESSION['reservation']['roomno'] ?>
+                      <td class=" text-left" bgcolor="#EBEDF2">
+
                       </td>
-                      <td class="text-right" bgcolor="#EBEDF2">
-                        <?= number_format($roomrate,2) ?> php
+                      <td class=" text-center" bgcolor="#EBEDF2">
+                        <strong>Down payment</strong>
+                      </td>
+                      <td class=" text-right" bgcolor="#EBEDF2">
+                        <?= number_format($total,2) . " * 15% = " . number_format($downpayment,2) ?>php
                       </td>
                     </tr>
                     <tr>
-                      <td class="text-left" bgcolor="#EBEDF2">
-                        <strong>Length of stay</strong>
+
+                      <td class="text-left">
+
                       </td>
-                      <td class="text-left" bgcolor="#EBEDF2">
-                        <?php
-                        echo $daydiff;
+                      <td class="text-left">
+
+                      </td>
+                      <?php if($_SESSION['count'] >= 3){?>
+                      <td class ='highrow text-center'>
+                        <strong>Discount (10%)</strong>
+
+                      </td>
+                      <td class ='highrow text-right'>
+                        <?php 
+                        $total *= 0.90;
+                        echo number_format($total, 2). " php";
                         ?>
                       </td>
-                      <td class="text-left" bgcolor="#EBEDF2">
+                    </tr>
+                    <?php } ?>
+                    <tr>
+                      <td class="text-left">
 
                       </td>
-                      <td class="text-right" bgcolor="#EBEDF2">
-                        <?= number_format($lengthofstay,2) ?> php 
+                      <td class="text-left">
+
+                      </td>
+                      <td class=" highrow text-center">
+                        <strong>Total</strong>
+                      </td>
+                      <td class=" highrow text-right">
+                        <?= number_format($total,2) ?>php
                       </td>
                     </tr>
-                    <tr>
-                      <td class="highrow text-left">
-
-                      </td>
-                      <td class="highrow text-left">
-
-                      </td>
-                      <td class="highrow text-center">
-                        <strong>Subtotal (taxed to 12%)</strong>
-                      </td>
-                      <td class="highrow text-right">
-                       <?= number_format($vattotal,2) ?> php
-                     </td>
-                   </tr>
-                   
-                  <tr>
-                    <td class="text-left">
-
-                    </td>
-                    <td class="text-left">
-                      <strong></strong>
-                    </td>
-                    <td class="text-center">
-                      <strong>VAT 12%</strong>
-                    </td>
-                    <td class="text-right">
-                      <?= number_format($vatable,2) ?>php
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-left" bgcolor="#EBEDF2">
-
-                    </td>
-                    <td class=" text-left" bgcolor="#EBEDF2">
-
-                    </td>
-                    <td class=" text-center" bgcolor="#EBEDF2">
-                      <strong>Down payment</strong>
-                    </td>
-                    <td class=" text-right" bgcolor="#EBEDF2">
-                      <?= number_format($total,2) . " * 15% = " . number_format($downpayment,2) ?>php
-                    </td>
-                  </tr>
-                  <tr>
-
-                    <td class="text-left">
-
-                    </td>
-                    <td class="text-left">
-
-                    </td>
-                    <?php if($_SESSION['count'] >= 3){?>
-                    <td class ='highrow text-center'>
-                      <strong>Discount (10%)</strong>
-                      
-                    </td>
-                    <td class ='highrow text-right'>
-                      <?php 
-                      $total *= 0.90;
-                      echo number_format($total, 2). " php";
-                      ?>
-                    </td>
-                  </tr>
-                  <?php } ?>
-                  <tr>
-                    <td class="text-left">
-
-                    </td>
-                    <td class="text-left">
-
-                    </td>
-                    <td class=" highrow text-center">
-                      <strong>Total</strong>
-                    </td>
-                    <td class=" highrow text-right">
-                      <?= number_format($total,2) ?>php
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-          <button class="btn btn-primary nextBtn btn-lg pull-right confirm" data-toggle="modal" data-target="#myModal" type="button" style="margin-right: 1px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
-            Confirm
-          </button>
-          <a href="step2.php">
-            <button class="btn btn-primary prevBtn btn-lg pull-right"  type="button" style="margin-right: 10px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
-              Previous
+            <button class="btn btn-primary nextBtn btn-lg pull-right confirm" data-toggle="modal" data-target="#myModal" type="button" style="margin-right: 1px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
+              Confirm
             </button>
-          </a>
-        </div>
+            <a href="step2.php">
+              <button class="btn btn-primary prevBtn btn-lg pull-right"  type="button" style="margin-right: 10px; margin-top: 10px; background-color: #01b1d7; border: 1; border-radius: 3px">
+                Previous
+              </button>
+            </a>
+          </div>
 
 
 
@@ -466,26 +491,26 @@ table {
 
 
 
-        <!-- Latest jQuery plugin-->
-        <script src="js/main.js"></script>
-        <!-- Latest compiled and minified JavaScript for bootstrap-->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/parallax.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpKAwq-qKxzm-9D1405KCFp7ZTtu_Vimg"></script>
-        <script src="js/googleMap.js"></script>
-        <script src="js/customGoogleMap.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/jquery.timepicker.min.js"></script>
-        <script src="js/jquery.countdown.min.js"></script>
-        <script src="js/jquery.flexslider-min.js"></script>
-        <script src="js/select2.min.js"></script>
-        <script src="js/icheck.min.js"></script>
-        <script src="js/jquery.raty.js"></script>
-        <script src="js/jquery.datetimepicker.full.min.js"></script>
-        <script src="js/scripts.js"></script>
-        <script>
+          <!-- Latest jQuery plugin-->
+          <script src="js/main.js"></script>
+          <!-- Latest compiled and minified JavaScript for bootstrap-->
+          <script src="js/bootstrap.min.js"></script>
+          <script src="js/owl.carousel.min.js"></script>
+          <script src="js/parallax.min.js"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpKAwq-qKxzm-9D1405KCFp7ZTtu_Vimg"></script>
+          <script src="js/googleMap.js"></script>
+          <script src="js/customGoogleMap.js"></script>
+          <script src="js/jquery-ui.min.js"></script>
+          <script src="js/jquery.timepicker.min.js"></script>
+          <script src="js/jquery.countdown.min.js"></script>
+          <script src="js/jquery.flexslider-min.js"></script>
+          <script src="js/select2.min.js"></script>
+          <script src="js/icheck.min.js"></script>
+          <script src="js/jquery.raty.js"></script>
+          <script src="js/jquery.datetimepicker.full.min.js"></script>
+          <script src="js/scripts.js"></script>
+          <script>
 
-        </script>
-      </body>
-      </html>
+          </script>
+        </body>
+        </html>
