@@ -409,6 +409,27 @@ table {
                     </td>
                   </tr>
                   <tr>
+
+                    <td class="text-left">
+
+                    </td>
+                    <td class="text-left">
+
+                    </td>
+                    <?php if($_SESSION['count'] >= 3){?>
+                    <td class ='highrow text-center'>
+                      <strong>Discount (10%)</strong>
+                      
+                    </td>
+                    <td class ='highrow text-right'>
+                      <?php 
+                      $total *= 0.90;
+                      echo number_format($total, 2). " php";
+                      ?>
+                    </td>
+                  </tr>
+                  <?php } ?>
+                  <tr>
                     <td class="text-left">
 
                     </td>

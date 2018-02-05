@@ -28,6 +28,7 @@ session_start();
               $_SESSION['contactNumber'] = $row['guest_contactNumber'];
               $_SESSION['country'] = $row['guest_country'];
               $_SESSION['address'] = $row['guest_address'];
+              $_SESSION['count'] = $row['count'];
               header("Location: GuestDashboard.php");
             }
           }

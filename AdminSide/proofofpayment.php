@@ -10,6 +10,8 @@
       $row = mysqli_fetch_assoc($fetchcode);
       mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = {$_POST['approve_id']}");
       mysqli_query($conn, "UPDATE assignedroom_masterfile SET status = 'Reserved' WHERE type ='Reservation' AND code ='{$row['reservation_code']}'") or die(mysqli_error($conn));
+      $currentDay = date("Y-m-d H:i:s");
+      mysqli_query($conn, "INSERT INTO reservationreports_masterfile(reservation_id, created_at, updated_at) VALUES({$_POST['approve_id']}, '{$currentDay}', '{$currentDay}')");
     }
     if(isset($_POST['delete'])){
       echo "<script>alert('Proof of payment has been deleted')</script>";

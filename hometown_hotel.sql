@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2018 at 03:05 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Feb 05, 2018 at 07:56 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -105,7 +105,11 @@ INSERT INTO `assignedroom_masterfile` (`room_id`, `date`, `assignedroom_id`, `st
 (16, '2018-02-07', 19, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
 (16, '2018-02-08', 20, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
 (17, '2018-02-07', 21, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
-(17, '2018-02-08', 22, 'Temporary', 'Reservation', 'RFIAN9WTUH');
+(17, '2018-02-08', 22, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
+(5, '2018-02-07', 27, 'Temporary', 'Reservation', 'L7WZ1M58OE'),
+(5, '2018-02-08', 28, 'Temporary', 'Reservation', 'L7WZ1M58OE'),
+(1, '2018-02-08', 33, 'Temporary', 'Reservation', 'G1BA8JI4UX'),
+(1, '2018-02-09', 34, 'Temporary', 'Reservation', 'G1BA8JI4UX');
 
 -- --------------------------------------------------------
 
@@ -132,7 +136,12 @@ CREATE TABLE `billing_masterfile` (
 INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `balance`, `created_at`, `updated_at`, `status`, `total`, `downpayment`) VALUES
 (5, 18, 37, 0, '2018-02-01 03:13:34', '2018-02-04 16:27:31', 'Partial', 1375, 198),
 (44, 9, 72, 0, '2018-02-04 12:58:55', '2018-02-04 16:30:52', 'Fully Paid', 900, 135),
-(45, 9, 73, 2500, '2018-02-04 16:07:09', '2018-02-04 17:03:49', 'Partial', 3000, 450);
+(45, 9, 73, 2500, '2018-02-04 16:07:09', '2018-02-04 17:03:49', 'Partial', 3000, 450),
+(47, 2, 75, 0, '2018-02-04 22:53:28', '2018-02-04 23:00:33', 'Fully Paid', 880, 132),
+(48, 6, 76, 0, '2018-02-04 23:21:57', '2018-02-05 14:26:51', 'Fully Paid', 3650, 547.5),
+(50, 9, 78, 2000, '2018-02-05 14:43:20', '2018-02-05 14:43:20', 'Not paid', 2000, 300),
+(51, 9, 79, 1150, '2018-02-05 14:48:25', '2018-02-05 14:48:25', 'Not paid', 1150, 172.5),
+(52, 9, 80, 3400, '2018-02-05 14:48:47', '2018-02-05 14:48:47', 'Not paid', 3400, 510);
 
 -- --------------------------------------------------------
 
@@ -191,7 +200,10 @@ INSERT INTO `financialreports_masterfile` (`payment`, `payment_type`, `created_a
 (55, 'Partial', '2018-02-04 16:29:55', 44, 16),
 (55, 'Partial', '2018-02-04 16:30:15', 44, 17),
 (721, 'Fully Paid', '2018-02-04 16:30:52', 44, 18),
-(500, 'Partial', '2018-02-04 17:03:49', 45, 19);
+(500, 'Partial', '2018-02-04 17:03:49', 45, 19),
+(132, 'Partial', '2018-02-04 23:00:02', 47, 20),
+(750, 'Fully Paid', '2018-02-04 23:00:33', 47, 21),
+(4000, 'Fully Paid', '2018-02-05 14:26:51', 48, 22);
 
 -- --------------------------------------------------------
 
@@ -212,7 +224,17 @@ CREATE TABLE `guestaddons_masterfile` (
 
 INSERT INTO `guestaddons_masterfile` (`guestaddon_id`, `addons_id`, `reservation_id`, `quantity`) VALUES
 (10, 1, 37, 0),
-(12, 1, 72, 1);
+(12, 1, 72, 1),
+(14, 1, 75, 1),
+(15, 1, 76, 1),
+(16, 2, 76, 1),
+(17, 4, 76, 1),
+(18, 1, 78, 1),
+(19, 2, 78, 1),
+(20, 1, 79, 1),
+(21, 2, 79, 1),
+(22, 4, 79, 1),
+(23, 1, 80, 1);
 
 -- --------------------------------------------------------
 
@@ -229,24 +251,25 @@ CREATE TABLE `guest_masterfile` (
   `guest_contactNumber` text NOT NULL,
   `guest_country` varchar(200) NOT NULL,
   `guest_address` varchar(200) NOT NULL,
-  `guest_code` varchar(10) NOT NULL
+  `guest_code` varchar(10) NOT NULL,
+  `count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `guest_masterfile`
 --
 
-INSERT INTO `guest_masterfile` (`guest_ID`, `guest_firstname`, `guest_lastname`, `guest_email`, `guest_password`, `guest_contactNumber`, `guest_country`, `guest_address`, `guest_code`) VALUES
-(2, 'alyanna', 'cantos', 'cantosalyannamariz@gmail.com', '$2y$10$q8.8IPBhMJyQ11gdEUwwoeuvq0XmoSeBDDzb3rcAlk24YrDlSNXPm', '09357771340', 'Philippines', '123', ''),
-(3, 'aya', 'cantos', 'alyannamariz02@gmail.com', '$2y$10$1ElVGPVEr.nLEVRB8gV5NOzdio/N32GeywHMNMqyuOYAIokLMBsde', '09357771340', 'Philippines', '123', ''),
-(4, 'aaaa', 'aaaaaa', 'aaa@gmail.com', '$2y$10$y3qjGIOupamrsfxdfZ9mG.YXaBIWqDcjXskqtaGUJYkS4EPlAcxa2', '09357771340', 'Philippines', 'aqqw3sww', ''),
-(5, 'Alyanna', 'Cantos', 'antonioumali@gmail.com', '$2y$10$.bcv9EAuXOilfBW9Tdn2r.1eHh3VbK/YeUbvIgjIIyZ.lVEfUjry2', '09357771340', 'Philippines', 'Tramo Pasay City', ''),
-(6, 'Mark', 'Calma', 'markdcalma@gmail.com', '$2y$10$t.eEG1fUpNQYW81Apqi.I.6bv05uQErBJEl5EJmX1YCuuQWdyxhJu', '09357771340', 'Philippines', 'Tramo', ''),
-(7, 'jerome', 'ubina', 'jeromeubina@gmail.com', '$2y$10$8M3NYfZcem4ndy4X8dh09.t2744A7wM3a0utqYHSQlpG8fBQJZBkS', '09357771340', 'Philippines', 'Tramo', ''),
-(8, 'Jerry', 'Punzalan', 'jerry@gmail.com', '$2y$10$TI3PeuagEBUq6Ee336iNLeuZMvv6y7YPeo/Y7Aqp1.yZLlurhvPfm', '09357771340', 'Philippines', 'Tramo', ''),
-(9, 'asdlaksd', 'lqkelqkwe', 'aaaa@gmail.com', '$2y$10$wWGvFDQc/rH.sY./y7fhQe0MldVoZs9ectuM7txm3jLH0mHJ.C3fy', '0923456672', 'Philippines', 'qwesadqwe', ''),
-(13, 'Jerry', 'Punzalan', 'jerrypunzalan24@gmail.com', '$2y$10$ixQMZMiIkW4zeiqt5XWTM.25FltA5kAR0PSLGL1L9kjX/IO5zfP02', '09156155821', 'Philippines', 'asdqwe', ''),
-(18, 'top', 'kek', 'aaaa@gmail.com', '$2y$10$uHX/rcNapLSP330ZwHGyouVAV1K59NGydQHyxaiQpa7kJlPEAeAXy', '9156155821', 'Philippines', 'qweaswqe', 'P8OB1ZJ');
+INSERT INTO `guest_masterfile` (`guest_ID`, `guest_firstname`, `guest_lastname`, `guest_email`, `guest_password`, `guest_contactNumber`, `guest_country`, `guest_address`, `guest_code`, `count`) VALUES
+(2, 'alyanna', 'cantos', 'cantosalyannamariz@gmail.com', '$2y$10$q8.8IPBhMJyQ11gdEUwwoeuvq0XmoSeBDDzb3rcAlk24YrDlSNXPm', '09357771340', 'Philippines', '123', '', 0),
+(3, 'aya', 'cantos', 'alyannamariz02@gmail.com', '$2y$10$1ElVGPVEr.nLEVRB8gV5NOzdio/N32GeywHMNMqyuOYAIokLMBsde', '09357771340', 'Philippines', '123', '', 0),
+(4, 'aaaa', 'aaaaaa', 'aaa@gmail.com', '$2y$10$y3qjGIOupamrsfxdfZ9mG.YXaBIWqDcjXskqtaGUJYkS4EPlAcxa2', '09357771340', 'Philippines', 'aqqw3sww', '', 0),
+(5, 'Alyanna', 'Cantos', 'antonioumali@gmail.com', '$2y$10$.bcv9EAuXOilfBW9Tdn2r.1eHh3VbK/YeUbvIgjIIyZ.lVEfUjry2', '09357771340', 'Philippines', 'Tramo Pasay City', '', 0),
+(6, 'Mark', 'Calma', 'markdcalma@gmail.com', '$2y$10$t.eEG1fUpNQYW81Apqi.I.6bv05uQErBJEl5EJmX1YCuuQWdyxhJu', '09357771340', 'Philippines', 'Tramo', '', 0),
+(7, 'jerome', 'ubina', 'jeromeubina@gmail.com', '$2y$10$8M3NYfZcem4ndy4X8dh09.t2744A7wM3a0utqYHSQlpG8fBQJZBkS', '09357771340', 'Philippines', 'Tramo', '', 0),
+(8, 'Jerry', 'Punzalan', 'jerry@gmail.com', '$2y$10$TI3PeuagEBUq6Ee336iNLeuZMvv6y7YPeo/Y7Aqp1.yZLlurhvPfm', '09357771340', 'Philippines', 'Tramo', '', 0),
+(9, 'asdlaksd', 'lqkelqkwe', 'aaaa@gmail.com', '$2y$10$wWGvFDQc/rH.sY./y7fhQe0MldVoZs9ectuM7txm3jLH0mHJ.C3fy', '0923456672', 'Philippines', 'qwesadqwe', '', 3),
+(13, 'Jerry', 'Punzalan', 'jerrypunzalan24@gmail.com', '$2y$10$ixQMZMiIkW4zeiqt5XWTM.25FltA5kAR0PSLGL1L9kjX/IO5zfP02', '09156155821', 'Philippines', 'asdqwe', '', 0),
+(18, 'top', 'kek', 'aaaa@gmail.com', '$2y$10$uHX/rcNapLSP330ZwHGyouVAV1K59NGydQHyxaiQpa7kJlPEAeAXy', '9156155821', 'Philippines', 'qweaswqe', 'P8OB1ZJ', 0);
 
 -- --------------------------------------------------------
 
@@ -259,14 +282,6 @@ CREATE TABLE `proofofpayment_masterfile` (
   `reservation_id` int(11) NOT NULL,
   `path` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `proofofpayment_masterfile`
---
-
-INSERT INTO `proofofpayment_masterfile` (`proofofpayment_id`, `reservation_id`, `path`) VALUES
-(4, 35, '../uploads/26219674_10207907625968249_3350982610459939574_n.jpg'),
-(5, 35, '../uploads/26219674_10207907625968249_3350982610459939574_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -284,7 +299,9 @@ CREATE TABLE `receipts_masterfile` (
 --
 
 INSERT INTO `receipts_masterfile` (`receipts_id`, `guest_id`) VALUES
-(3, 9);
+(3, 9),
+(4, 2),
+(5, 6);
 
 -- --------------------------------------------------------
 
@@ -345,7 +362,12 @@ INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `
 (36, 13, 6, '2018-02-04', '2018-02-05', 1, 2, 'Void', ''),
 (37, 18, 7, '2018-02-04', '2018-02-05', 1, 1, 'Checkout', 'YGN9C3VE'),
 (72, 9, 6, '2018-02-07', '2018-02-08', 1, 1, 'Pending', '146PR6Q4DO'),
-(73, 9, 7, '2018-02-07', '2018-02-08', 1, 2, 'Pending', 'RFIAN9WTUH');
+(73, 9, 7, '2018-02-07', '2018-02-08', 1, 2, 'Pending', 'RFIAN9WTUH'),
+(75, 2, 6, '2018-02-07', '2018-02-08', 1, 2, 'Pending', 'L7WZ1M58OE'),
+(76, 6, 7, '2018-02-07', '2018-02-09', 1, 1, 'Pending', 'CBIIKKZ60Y'),
+(78, 9, 7, '2018-02-08', '2018-02-09', 1, 1, 'Pending', 'FZRX52JQF2'),
+(79, 9, 6, '2018-02-08', '2018-02-09', 1, 1, 'Pending', 'G1BA8JI4UX'),
+(80, 9, 7, '2018-02-08', '2018-02-09', 1, 2, 'Pending', '0QXAW7MXI5');
 
 -- --------------------------------------------------------
 
@@ -369,7 +391,7 @@ CREATE TABLE `room_masterfile` (
 --
 
 INSERT INTO `room_masterfile` (`room_id`, `room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`, `room_imagepath`) VALUES
-(6, 'Twin Queen Room', 'Twin Bed Rooms eyee', '2', 500, 14, 'Available', 'img/Twin.JPG'),
+(6, 'Twin Queen Room', 'Twin Bed Rooms eyee', '2', 1500, 14, 'Available', 'img/Twin.JPG'),
 (7, 'Queen Room', 'Queens Rooms', '1', 1500, 2, 'Available', 'img/Queen.jpg'),
 (8, 'Family Room', 'Fambam', '5', 3000, 3, 'Available', 'img\\Family.JPG'),
 (9, 'Quadroom', 'Squad Goals', '4', 2500, 4, 'Available', 'img\\Quad.jpg');
@@ -575,7 +597,7 @@ ALTER TABLE `walkinrooms_masterfile`
 -- AUTO_INCREMENT for table `addons_masterfile`
 --
 ALTER TABLE `addons_masterfile`
-  MODIFY `Addon_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Addon_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `adminuser_masterfile`
@@ -587,13 +609,13 @@ ALTER TABLE `adminuser_masterfile`
 -- AUTO_INCREMENT for table `assignedroom_masterfile`
 --
 ALTER TABLE `assignedroom_masterfile`
-  MODIFY `assignedroom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `assignedroom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `billing_masterfile`
 --
 ALTER TABLE `billing_masterfile`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `discount_masterfile`
@@ -605,13 +627,13 @@ ALTER TABLE `discount_masterfile`
 -- AUTO_INCREMENT for table `financialreports_masterfile`
 --
 ALTER TABLE `financialreports_masterfile`
-  MODIFY `financialreport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `financialreport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `guestaddons_masterfile`
 --
 ALTER TABLE `guestaddons_masterfile`
-  MODIFY `guestaddon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `guestaddon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `guest_masterfile`
@@ -623,13 +645,13 @@ ALTER TABLE `guest_masterfile`
 -- AUTO_INCREMENT for table `proofofpayment_masterfile`
 --
 ALTER TABLE `proofofpayment_masterfile`
-  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `receipts_masterfile`
 --
 ALTER TABLE `receipts_masterfile`
-  MODIFY `receipts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `receipts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `reports_masterfile`
@@ -641,7 +663,7 @@ ALTER TABLE `reports_masterfile`
 -- AUTO_INCREMENT for table `reservation_masterfile`
 --
 ALTER TABLE `reservation_masterfile`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `room_masterfile`
@@ -659,7 +681,7 @@ ALTER TABLE `transaction_masterfile`
 -- AUTO_INCREMENT for table `walkinreservation_masterfile`
 --
 ALTER TABLE `walkinreservation_masterfile`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `walkinrooms_masterfile`

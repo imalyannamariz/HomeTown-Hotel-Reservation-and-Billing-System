@@ -23,7 +23,10 @@ do{
   mysqli_query($conn, "INSERT INTO reservation_masterfile(guest_id, room_id,checkindate,checkoutdate,number_guest, room_number,status, reservation_code)
   	VALUES({$_SESSION['guest_ID']} ,{$_SESSION['reservation']['roomid']},'{$_SESSION['reservation']['checkInDate']}'
   	,'{$_SESSION['reservation']['checkOutDate']}',{$_SESSION['reservation']['numberOfAdults']}, {$_SESSION['reservation']['roomno']},'Pending','{$code}')") or die(mysqli_error($conn));
-
+mysqli_query($conn , "UPDATE guest_masterfile SET count = count + 1 WHERE guest_ID = {$_SESSION['guest_ID']}");
+$updatecount = mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_ID = {$_SESSION['guest_ID']}");
+$count = mysqli_fetch_assoc($updatecount);
+$_SESSION['count'] = $count['count']; 
   $fetch_reservationID = mysqli_query($conn, "SELECT max(reservation_id) FROM reservation_masterfile");
   $row = mysqli_fetch_assoc($fetch_reservationID);
   $balance = $_SESSION['reservation']['balance'];
