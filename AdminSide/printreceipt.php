@@ -31,7 +31,7 @@
   				$totalQty = $row['reserve_number'];
   				if(mysqli_num_rows($fetchAddon) != 0){
   					while($addons = mysqli_fetch_assoc($fetchAddon)){
-  						$addonstr .= "{$addons['quantity']} {$addons['Addon_name']}";
+  						$addonstr .= "{$addons['quantity']} {$addons['Addon_name']} ";
   						$totalQty += $addons['quantity'];
   					}
   				}

@@ -49,9 +49,10 @@
                 $checkIndisabled = '';
               ?>
               <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit btn-block' style ='color:white;margin-bottom:10px'>Edit</a>
+              <a data-toggle ='modal' data-target = '#addservice' class ='btn btn-primary addservice btn-block' style ='color:white;margin-bottom:10px'>Add service</a>
               <input type ='hidden' <?=$checkIndisabled?> name ='checkin'/>
               <input type ='submit'<?=$checkIndisabled?> name ='checkIn' class ='btn btn-success btn-block' style ='margin-bottom:10px' value ='Check in'/>
-              <input type ='hidden' <?=$checkOutdisabled?> name = 'checkout'/>
+              <input type ='hidden' <?=$checkOutdisabled?> name = 'checkout' value ='Checkout'/>
               <input type ='submit' <?=$checkOutdisabled?> name ='checkout' class ='btn btn-warning btn-block' value ='Check out' style ='margin-bottom:10px; color:white'/>
               <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
               <button type ='submit' class ='btn btn-danger btn-block'>Delete</button>
@@ -144,6 +145,70 @@
           </div>
         </div>
       </div>
+      <div class="modal fade" id ='addservice' tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add services</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form  method ='post'>
+                <div class='container-fluid'>
+                  <div class='form-group'>
+                    <div class ='row'>
+                      <div class ='form-group col-md-9'>
+                        <label>Addons</label>
+                        <select name ='addons' id ='addonsQuantity' class ='form-control'>
+                          <?php $fetchaddons = mysqli_query($conn, "SELECT * FROM addons_masterfile");
+                          while($addons = mysqli_fetch_assoc($fetchaddons)){?>
+                          <option value ='<?=$addons['Addon_ID']?>'><?=$addons['Addon_name']?></option>
+                          <?php } ?>
+                          <option value ='x' selected>None</option>
+                        </select>
+                      </div>
+                      <div class ='form-group col-md-3'>
+                        <label>Quantity</label>
+                        <select name = 'addonsqty' id = 'addonsqty' class ='form-control'>
+
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <input type ='hidden' name ='checkInDate' value =''/>
+                <input type ='hidden' name ='checkOutDate' value =''/>
+                <input type ='hidden' name ='r_id' value =''/>
+                <input type ='submit' name ='submitservice' class ='btn btn-info btn-block'/>
+              </div>
+            </form>
+            <?php
+            if(isset($_POST['submitservice'])){
+              if($_POST['addons'] != 'x'){
+                $selectaddon = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile WHERE reservation_id = {$_POST['r_id']} AND addons_id = {$_POST['addons']}") or die(mysqli_error($conn));
+                if(mysqli_num_rows($selectaddon) == 0){
+                  mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id,reservation_id,quantity) VALUES({$_POST['addons']},{$_POST['r_id']},{$_POST['addonsqty']})") or die(mysqli_error($conn));
+                }
+                else{
+                  mysqli_query($conn, "UPDATE guestaddons_masterfile SET quantity = quantity + {$_POST['addonsqty']} WHERE reservation_id = {$_POST['r_id']} AND addons_id = {$_POST['addons']}") or die(mysqli_error($conn));
+                }
+                $fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_ID = {$_POST['addons']}");
+                $rate = mysqli_fetch_assoc($fetchrate);
+                $total = $rate['Addon_rate'] * $_POST['addonsqty'];
+                // add to billing
+                mysqli_query($conn, "UPDATE billing_masterfile SET balance = balance + {$total}, total = total + {$total} WHERE reservation_id = {$_POST['r_id']}");
+                echo "<script>alert('Success')</script>";
+              }
+            }
+            ?>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
@@ -167,7 +232,35 @@
   <script>
     $(document).ready(function(){
       $('#thisTable').DataTable()
+      $('#addonsQuantity').change(function(){
+        $.ajax({
+          type:'POST',
+          url:'../ajax/getalladdons.php',
+          data:{
+            checkInDate: $('input[name=checkInDate]').val(),
+            checkOutDate: $('input[name=checkOutDate').val(),
+            a_id: $(this).val()
+          },
+          success:function(html){
+            var addons = parseInt(html)
+            $('#addonsqty').empty()
 
+            for(var x = 1; x<=addons; x++){
+              $('#addonsqty').append(`<option value = '${x}'>${x}</option>`)
+            }
+          }
+        })
+      })
+      $('.addservice').click(function(){
+        $('#addonsQuantity option').last().remove()
+        $('#addonsQuantity').append(`<option value ='x' selected >None</option>`)
+        var checkInDate = $(this).closest('tr').find('#checkin').html()
+        var checkOutDate = $(this).closest('tr').find('#checkout').html()
+        var r_id = $(this).closest('tr').find('input[name=t_id]').val()
+        $('input[name=r_id]').val(r_id)
+        $('input[name=checkInDate').val(checkInDate)
+        $('input[name=checkOutDate').val(checkOutDate)
+      })
     })
   </script>
 </body>
