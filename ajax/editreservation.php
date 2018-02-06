@@ -1,7 +1,8 @@
 <?php 
-// Tanong niyo kay ma'am kung dapat ma disable yung edit kapag nag due na yung check in niya
+// UPDATING OF RESERVATION + ASSIGINING OF ROOMS
 include '../db.php';
-mysqli_query($conn, "UPDATE reservation_masterfile SET checkindate = '{$_POST['checkin']}', checkoutdate ='{$_POST['checkout']}', room_number = {$_POST['roomquantity']}, room_id = {$_POST['roomtype']} WHERE reservation_id = '{$_POST['reservationno']}'") or die(mysqli_error($conn)."Asds");
+session_start();
+mysqli_query($conn, "UPDATE reservation_masterfile SET checkindate = '{$_POST['checkin']}', checkoutdate ='{$_POST['checkout']}', room_number = {$_POST['roomquantity']}, room_id = {$_POST['roomtype']} WHERE reservation_id = {$_POST['reservationno']}") or die(mysqli_error($conn)."Asds");
 $fetchreservation = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = '{$_POST['reservationno']}'") or die(mysqli_error($conn). "asd");
 $reservation = mysqli_fetch_assoc($fetchreservation);
 $checkOutDate = date("Y-m-d", strtotime($_POST['checkout']));
@@ -22,6 +23,8 @@ while($row = mysqli_fetch_assoc($getallwalkrinrooms)){
 	}
 }
 
+// END UPDATING OF RESERVATION + ASSIGNING OF ROOMS
+
 $fetchnewroom = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$_POST['roomtype']}");
 $getnewroom = mysqli_fetch_assoc($fetchnewroom);
 // UPDATE billing record
@@ -30,9 +33,17 @@ $roomrate = $getnewroom['room_rate'] * $_POST['roomquantity'];
 $lengthofstay = $getnewroom['room_rate'] * $_POST['roomquantity'] * $daydiff;
 $vatable = $lengthofstay * 0.12;
 $vattotal = $lengthofstay;
-$fetchaddons = mysqli_query($conn , "SELECT * FROM guestaddons_masterfile JOIN addons_masterfile ON guestaddons_masterfile.addons_id = addons_masterfile.Addon_ID WHERE guestaddons_masterfile.reservation_id = {$_POST['reservationno']}");
-while($row = mysqli_fetch_assoc($fetchaddons)){
-	$vattotal += $row['Addon_rate'];
+mysqli_query($conn, "DELETE FROM guestaddons_masterfile WHERE reservation_id = {$_POST['reservationno']}") or die(mysqli_error($conn));
+echo"sdsd";
+if(isset($_POST['addon'])){
+	echo"sd";
+	foreach($_POST['addon'] as $addon_id){
+		echo $addon_id;
+		$fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$addon_id}") or die(mysqli_error($conn));
+		$addonrate = mysqli_fetch_assoc($fetchrate);
+		mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id, reservation_id, quantity) VALUES({$addon_id}, {$_POST['reservationno']}, {$_POST['addonqty'][$addon_id]})") or die(mysqli_error($conn));
+		$vattotal += $addon['Addon_rate'] * $_POST['addonqty'][$addon_id];
+	}
 }
 $fetchguest = mysqli_query($conn, "SELECT * FROM reservation_masterfile  JOIN guest_masterfile ON reservation_masterfile.guest_id = guest_masterfile.guest_ID WHERE reservation_masterfile.reservation_id = {$_POST['reservationno']}") or die(mysqli_error($conn));
 $guest = mysqli_fetch_assoc($fetchguest);
@@ -41,7 +52,6 @@ if($guest['count'] >= 3){
 }
 $downpayment = $vattotal * 0.15;
 $currentTime = date("Y-m-d H:i:s");
-
+unset($_SESSION['temp']);
 mysqli_query($conn, "UPDATE billing_masterfile SET balance = {$vattotal}, total = {$vattotal}, downpayment = {$downpayment}, updated_at = '{$currentTime}' WHERE reservation_id = {$_POST['reservationno']}") or die (mysqli_error($conn). "sdsds");
-
 ?>

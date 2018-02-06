@@ -20,6 +20,18 @@ $(document).ready(function(){
     var reservationno = $(this).closest('tr').find('#reservation-id').html()
     var roomno = $(this).closest('tr').find('#room-number').html()
     var decrease = $(this).closest('form').find('input[name=decrease]').val()
+    $.ajax({
+      type:'POST',
+      url:'../ajax/assigncheckin.php',
+      data:{
+        checkin:checkin,
+        checkout:checkout
+      },
+      success: function(html){
+        alert(html)
+        $('#addons').html(html)
+      }
+    })
     $('input[name=checkin]').val(checkin)
     $('input[name=checkout').val(checkout)
     $('input[name=roomquantity').val(roomno)
@@ -37,6 +49,7 @@ $(document).ready(function(){
         reservation_id: $('input[name=reservationno]').val(),
       },
       success:function(html){
+        alert(html)
         var availablerooms = parseInt(html)
         var decrease = Math.floor(parseInt($('input[name=decrease]').val()))
         $('#roomquantity').empty()

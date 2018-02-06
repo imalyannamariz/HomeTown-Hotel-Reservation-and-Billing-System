@@ -135,137 +135,142 @@
                       <input type ='hidden' name = 'reservationno'/>
                       <input type ='hidden' name ='decrease'/>
                     </table>
-                  </div>
-                </div>
+                    <h5>Addons</h5>
+                    <hr/>
+                    <div class ='row' id ='addons'>
 
-              </div>
-              <div class="modal-footer">
-                <input type ='hidden' name = 'roomId'>
-                <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id ='addservice' tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Add services</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form  method ='post'>
-                <div class='container-fluid'>
-                  <div class='form-group'>
-                    <div class ='row'>
-                      <div class ='form-group col-md-9'>
-                        <label>Addons</label>
-                        <select name ='addons' id ='addonsQuantity' class ='form-control'>
-                          <?php $fetchaddons = mysqli_query($conn, "SELECT * FROM addons_masterfile");
-                          while($addons = mysqli_fetch_assoc($fetchaddons)){?>
-                          <option value ='<?=$addons['Addon_ID']?>'><?=$addons['Addon_name']?></option>
-                          <?php } ?>
-                          <option value ='x' selected>None</option>
-                        </select>
-                      </div>
-                      <div class ='form-group col-md-3'>
-                        <label>Quantity</label>
-                        <select name = 'addonsqty' id = 'addonsqty' class ='form-control'>
-
-                        </select>
                       </div>
                     </div>
                   </div>
-                </div>
 
+                </div>
+                <div class="modal-footer">
+                  <input type ='hidden' name = 'roomId'>
+                  <button name = 'update' type = 'submit' class='btn btn-primary btn-block'>Update Room</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id ='addservice' tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Add services</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="modal-footer">
-                <input type ='hidden' name ='checkInDate' value =''/>
-                <input type ='hidden' name ='checkOutDate' value =''/>
-                <input type ='hidden' name ='r_id' value =''/>
-                <input type ='hidden' name ='guest_ud' value =''/>
-                <input type ='submit' name ='submitservice' class ='btn btn-info btn-block'/>
-              </div>
-            </form>
-            <?php
-            if(isset($_POST['submitservice'])){
-              if($_POST['addons'] != 'x'){
-                $selectaddon = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile WHERE reservation_id = {$_POST['r_id']} AND addons_id = {$_POST['addons']}") or die(mysqli_error($conn));
-                if(mysqli_num_rows($selectaddon) == 0){
-                  mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id,reservation_id,quantity) VALUES({$_POST['addons']},{$_POST['r_id']},{$_POST['addonsqty']})") or die(mysqli_error($conn));
-                }
-                else{
-                  mysqli_query($conn, "UPDATE guestaddons_masterfile SET quantity = quantity + {$_POST['addonsqty']} WHERE reservation_id = {$_POST['r_id']} AND addons_id = {$_POST['addons']}") or die(mysqli_error($conn));
-                }
-                $fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_ID = {$_POST['addons']}");
-                $rate = mysqli_fetch_assoc($fetchrate);
-                $total = $rate['Addon_rate'] * $_POST['addonsqty'];
+              <div class="modal-body">
+                <form  method ='post'>
+                  <div class='container-fluid'>
+                    <div class='form-group'>
+                      <div class ='row'>
+                        <div class ='form-group col-md-9'>
+                          <label>Addons</label>
+                          <select name ='addons' id ='addonsQuantity' class ='form-control'>
+                            <?php $fetchaddons = mysqli_query($conn, "SELECT * FROM addons_masterfile");
+                            while($addons = mysqli_fetch_assoc($fetchaddons)){?>
+                            <option value ='<?=$addons['Addon_ID']?>'><?=$addons['Addon_name']?></option>
+                            <?php } ?>
+                            <option value ='x' selected>None</option>
+                          </select>
+                        </div>
+                        <div class ='form-group col-md-3'>
+                          <label>Quantity</label>
+                          <select name = 'addonsqty' id = 'addonsqty' class ='form-control'>
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <input type ='hidden' name ='checkInDate' value =''/>
+                  <input type ='hidden' name ='checkOutDate' value =''/>
+                  <input type ='hidden' name ='r_id' value =''/>
+                  <input type ='hidden' name ='guest_ud' value =''/>
+                  <input type ='submit' name ='submitservice' class ='btn btn-info btn-block'/>
+                </div>
+              </form>
+              <?php
+              if(isset($_POST['submitservice'])){
+                if($_POST['addons'] != 'x'){
+                  $selectaddon = mysqli_query($conn, "SELECT * FROM guestaddons_masterfile WHERE reservation_id = {$_POST['r_id']} AND addons_id = {$_POST['addons']}") or die(mysqli_error($conn));
+                  if(mysqli_num_rows($selectaddon) == 0){
+                    mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id,reservation_id,quantity) VALUES({$_POST['addons']},{$_POST['r_id']},{$_POST['addonsqty']})") or die(mysqli_error($conn));
+                  }
+                  else{
+                    mysqli_query($conn, "UPDATE guestaddons_masterfile SET quantity = quantity + {$_POST['addonsqty']} WHERE reservation_id = {$_POST['r_id']} AND addons_id = {$_POST['addons']}") or die(mysqli_error($conn));
+                  }
+                  $fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_ID = {$_POST['addons']}");
+                  $rate = mysqli_fetch_assoc($fetchrate);
+                  $total = $rate['Addon_rate'] * $_POST['addonsqty'];
                 // add to billing
-                mysqli_query($conn, "UPDATE billing_masterfile SET balance = balance + {$total}, total = total + {$total} WHERE reservation_id = {$_POST['r_id']}");
-                echo "<script>alert('Success')</script>";
+                  mysqli_query($conn, "UPDATE billing_masterfile SET balance = balance + {$total}, total = total + {$total} WHERE reservation_id = {$_POST['r_id']}");
+                  echo "<script>alert('Success')</script>";
+                }
               }
-            }
-            ?>
+              ?>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Bootstrap core JavaScript-->
+    <!-- Bootstrap core JavaScript-->
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
-  <!-- Custom scripts for this page-->
-  <!-- DataTable-->
-  <script type = 'text/javascript' src ='js/datatables.min.js'></script> 
-  <script type ='text/javascript' src = 'js/dataTables.bootstrap4.min.js'></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <!-- DataTable-->
+    <script type = 'text/javascript' src ='js/datatables.min.js'></script> 
+    <script type ='text/javascript' src = 'js/dataTables.bootstrap4.min.js'></script>
 
-  <!-- Datepicker-->
-  <script src="js/jquery.datetimepicker.full.min.js"></script>
-  <script src = 'js/edit_reservation.js'></script>
-  <script>
-    $(document).ready(function(){
-      $('#thisTable').DataTable()
-      $('#addonsQuantity').change(function(){
-        $.ajax({
-          type:'POST',
-          url:'../ajax/getalladdons.php',
-          data:{
-            checkInDate: $('input[name=checkInDate]').val(),
-            checkOutDate: $('input[name=checkOutDate').val(),
-            a_id: $(this).val()
-          },
-          success:function(html){
-            var addons = parseInt(html)
-            $('#addonsqty').empty()
+    <!-- Datepicker-->
+    <script src="js/jquery.datetimepicker.full.min.js"></script>
+    <script src = 'js/edit_reservation.js'></script>
+    <script>
+      $(document).ready(function(){
+        $('#thisTable').DataTable()
+        $('#addonsQuantity').change(function(){
+          $.ajax({
+            type:'POST',
+            url:'../ajax/getalladdons.php',
+            data:{
+              checkInDate: $('input[name=checkInDate]').val(),
+              checkOutDate: $('input[name=checkOutDate').val(),
+              a_id: $(this).val()
+            },
+            success:function(html){
+              var addons = parseInt(html)
+              $('#addonsqty').empty()
 
-            for(var x = 1; x<=addons; x++){
-              $('#addonsqty').append(`<option value = '${x}'>${x}</option>`)
+              for(var x = 1; x<=addons; x++){
+                $('#addonsqty').append(`<option value = '${x}'>${x}</option>`)
+              }
             }
-          }
+          })
+        })
+        $('.addservice').click(function(){
+          $('#addonsQuantity option').last().remove()
+          $('#addonsQuantity').append(`<option value ='x' selected >None</option>`)
+          var checkInDate = $(this).closest('tr').find('#checkin').html()
+          var checkOutDate = $(this).closest('tr').find('#checkout').html()
+          var r_id = $(this).closest('tr').find('input[name=t_id]').val()
+          $('input[name=r_id]').val(r_id)
+          $('input[name=checkInDate').val(checkInDate)
+          $('input[name=checkOutDate').val(checkOutDate)
         })
       })
-      $('.addservice').click(function(){
-        $('#addonsQuantity option').last().remove()
-        $('#addonsQuantity').append(`<option value ='x' selected >None</option>`)
-        var checkInDate = $(this).closest('tr').find('#checkin').html()
-        var checkOutDate = $(this).closest('tr').find('#checkout').html()
-        var r_id = $(this).closest('tr').find('input[name=t_id]').val()
-        $('input[name=r_id]').val(r_id)
-        $('input[name=checkInDate').val(checkInDate)
-        $('input[name=checkOutDate').val(checkOutDate)
-      })
-    })
-  </script>
-</body>
+    </script>
+  </body>
 
-</html>
+  </html>
