@@ -48,7 +48,7 @@ header .rq-header-main-menu .container-fluid .rq-menu-wrapper ul li:hover:before
       <div class="container">
         <div class="bq-banner-text">
           <div class="bq-banner-text-middle">
-            <h3>Hometown Hotel </h3>
+            <h1><b>Hometown Hotel </b></h1>
             <div class="rq-checkout-area  ">
               <div class="container">
                 <div class="rq-cheakout-content">
