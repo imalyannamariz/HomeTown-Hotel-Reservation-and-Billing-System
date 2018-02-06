@@ -155,7 +155,8 @@
                         <form method="post" id ='deletereservation'>
                          <a href="summary.php?code=<?= $row['reservation_id']?>" class="btn btn-sm btn-success">View</a>
                          <a href = '#' data-target = '#exampleModal' data-toggle ='modal' class ='btn btn-info edit' >Edit</a>
-                         <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
+                         <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>" />
+                         <input type ='hidden' id ='decrease' name ='decrease' value ='<?=floor(($row['number_guest']-1)/$row['room_capacity'])?>' />
                          <button name="cancel" type = 'submit' class="btn btn-sm btn-danger">Cancel</button>
                        </form>
                      </td>

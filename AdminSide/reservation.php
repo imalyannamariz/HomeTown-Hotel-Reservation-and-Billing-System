@@ -55,6 +55,7 @@
               <input type ='hidden' <?=$checkOutdisabled?> name = 'checkout' value ='Checkout'/>
               <input type ='submit' <?=$checkOutdisabled?> name ='checkout' class ='btn btn-warning btn-block' value ='Check out' style ='margin-bottom:10px; color:white'/>
               <input type="hidden" name="t_id" value="<?= $row['reservation_id'] ?>">
+              <input type ='hidden' name ='decrease' value ='<?=floor(($row['number_guest']-1)/$row['room_capacity']) ?>'/>
               <button type ='submit' class ='btn btn-danger btn-block'>Delete</button>
             </form></td>
           </tr>
@@ -132,6 +133,7 @@
                         </select>
                       </div>
                       <input type ='hidden' name = 'reservationno'/>
+                      <input type ='hidden' name ='decrease'/>
                     </table>
                   </div>
                 </div>
@@ -184,6 +186,7 @@
                 <input type ='hidden' name ='checkInDate' value =''/>
                 <input type ='hidden' name ='checkOutDate' value =''/>
                 <input type ='hidden' name ='r_id' value =''/>
+                <input type ='hidden' name ='guest_ud' value =''/>
                 <input type ='submit' name ='submitservice' class ='btn btn-info btn-block'/>
               </div>
             </form>
