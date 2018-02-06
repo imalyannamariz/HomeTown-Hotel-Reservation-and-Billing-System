@@ -33,16 +33,17 @@ $roomrate = $getnewroom['room_rate'] * $_POST['roomquantity'];
 $lengthofstay = $getnewroom['room_rate'] * $_POST['roomquantity'] * $daydiff;
 $vatable = $lengthofstay * 0.12;
 $vattotal = $lengthofstay;
+
 mysqli_query($conn, "DELETE FROM guestaddons_masterfile WHERE reservation_id = {$_POST['reservationno']}") or die(mysqli_error($conn));
-echo"sdsd";
-if(isset($_POST['addon'])){
-	echo"sd";
-	foreach($_POST['addon'] as $addon_id){
-		echo $addon_id;
-		$fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$addon_id}") or die(mysqli_error($conn));
-		$addonrate = mysqli_fetch_assoc($fetchrate);
-		mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id, reservation_id, quantity) VALUES({$addon_id}, {$_POST['reservationno']}, {$_POST['addonqty'][$addon_id]})") or die(mysqli_error($conn));
-		$vattotal += $addon['Addon_rate'] * $_POST['addonqty'][$addon_id];
+echo print_r($_POST);
+if(isset($_POST['addonqty'])){
+	foreach($_POST['addonqty'] as $addon_id => $addonqty){
+		if($addonqty != 0){
+			$fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$addon_id}") or die(mysqli_error($conn));
+			$addonrate = mysqli_fetch_assoc($fetchrate);
+			mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id, reservation_id, quantity) VALUES({$addon_id}, {$_POST['reservationno']}, {$addonqty})") or die(mysqli_error($conn));
+			$vattotal += $addonrate['Addon_rate'] * $addonqty;
+		}
 	}
 }
 $fetchguest = mysqli_query($conn, "SELECT * FROM reservation_masterfile  JOIN guest_masterfile ON reservation_masterfile.guest_id = guest_masterfile.guest_ID WHERE reservation_masterfile.reservation_id = {$_POST['reservationno']}") or die(mysqli_error($conn));
@@ -52,6 +53,5 @@ if($guest['count'] >= 3){
 }
 $downpayment = $vattotal * 0.15;
 $currentTime = date("Y-m-d H:i:s");
-unset($_SESSION['temp']);
 mysqli_query($conn, "UPDATE billing_masterfile SET balance = {$vattotal}, total = {$vattotal}, downpayment = {$downpayment}, updated_at = '{$currentTime}' WHERE reservation_id = {$_POST['reservationno']}") or die (mysqli_error($conn). "sdsds");
 ?>
