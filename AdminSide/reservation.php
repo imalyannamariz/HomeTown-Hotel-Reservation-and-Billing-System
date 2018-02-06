@@ -7,8 +7,9 @@
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
-          <th>Reservation ID</th>
-          <th>Guest ID</th>
+          <th style ='display:none'></th>
+          <th>Reservation code</th>
+          <th>Guest code</th>
           <th>Room Name</th>
           <th>Check in date</th>
           <th>Check out date</th>
@@ -20,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id JOIN guest_masterfile on guest_masterfile.guest_ID = reserve.guest_id WHERE reserve.status != 'Void'") or die(mysqli_error($conn));
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT *, reserve.room_number as reserve_room FROM reservation_masterfile as reserve JOIN room_masterfile as room on reserve.room_id = room.room_id JOIN guest_masterfile on guest_masterfile.guest_ID = reserve.guest_id WHERE reserve.status != 'Void' AND reserve.status != 'Checkout'") or die(mysqli_error($conn));
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ 
           $fetchassignedrooms = mysqli_query($conn, "SELECT * FROM assignedroom_masterfile JOIN walkinrooms_masterfile ON assignedroom_masterfile.room_id = walkinrooms_masterfile.walkinrooms_id WHERE assignedroom_masterfile.code = '{$row['reservation_code']}'");
@@ -31,7 +32,8 @@
 
           ?>
           <tr>
-            <td id ='reservation-id' ><?= $row['reservation_code'] ?></td>
+            <td id = 'reservation-id' style ='display:none'><?=$row['reservation_id']?></td>
+            <td><?= $row['reservation_code'] ?></td>
             <td id = 'guest-id' ><?= $row['guest_code'] ?></td>
             <td id = 'room-id' ><?= $row['room_type'] ?></td>
             <td id = 'checkin' ><?= $row['checkindate'] ?></td>
@@ -115,9 +117,7 @@
                         <label for='roomRate'>Check out</label><br>
                         <input required class='form-control' name = 'checkout'  id = 'checkOutDate' type='text'>
                       </div>
-
                       <div class='form-group'>
-
                         <label for='roomNumber'>Room Type</label><br>
                         <select class ='form-control' name ='roomtype' id ='roomtype'>
                           <?php $fetchrooms = mysqli_query($conn, "SELECT * FROM room_masterfile");

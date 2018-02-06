@@ -56,7 +56,7 @@ $(document).ready(function(){
       url:$('form#formEditRoom').attr('action'),
       data: $(this).serialize(),
       success: function(html){
-        alert("Success")
+        alert(html)
         location.reload()
       }
     })
