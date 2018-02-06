@@ -90,7 +90,7 @@
                   "30" name = "checkOutDate" style = "width: 262px">
 
             <h1 style="width: 120%; font-size: 2em;">Number of Guests:</h1>
-            <input type="number" class="form-control" name="numberOfAdults" value="1" min="1" max="12" placeholder="1" style="width: 262px"  required="">
+            <input type="number" class="form-control" name="numberOfAdults" value="1" min="1" max="100" placeholder="1" style="width: 262px"  required="">
             
             <br>
             <br>
