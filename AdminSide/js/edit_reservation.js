@@ -8,7 +8,7 @@ $(document).ready(function(){
         url:$('form#formEditRoom').attr('aria-delete'),
         data: $(this).serialize(),
         success: function(html){
-          alert(html)
+          alert("Reservation has been deleted")
           location.reload()
         }
       })
@@ -28,7 +28,6 @@ $(document).ready(function(){
         checkout:checkout
       },
       success: function(html){
-        alert(html)
         $('#addons').html(html)
       }
     })
@@ -49,7 +48,6 @@ $(document).ready(function(){
         reservation_id: $('input[name=reservationno]').val(),
       },
       success:function(html){
-        alert(html)
         var availablerooms = parseInt(html)
         var decrease = Math.floor(parseInt($('input[name=decrease]').val()))
         $('#roomquantity').empty()
@@ -69,7 +67,7 @@ $(document).ready(function(){
       url:$('form#formEditRoom').attr('action'),
       data: $(this).serialize(),
       success: function(html){
-        alert(html)
+        alert("Success")
         location.reload()
       }
     })
