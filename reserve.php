@@ -23,10 +23,10 @@ do{
   mysqli_query($conn, "INSERT INTO reservation_masterfile(guest_id, room_id,checkindate,checkoutdate,number_guest, room_number,status, reservation_code)
   	VALUES({$_SESSION['guest_ID']} ,{$_SESSION['reservation']['roomid']},'{$_SESSION['reservation']['checkInDate']}'
   	,'{$_SESSION['reservation']['checkOutDate']}',{$_SESSION['reservation']['numberOfAdults']}, {$_SESSION['reservation']['roomno']},'Pending','{$code}')") or die(mysqli_error($conn));
-mysqli_query($conn , "UPDATE guest_masterfile SET count = count + 1 WHERE guest_ID = {$_SESSION['guest_ID']}");
-$updatecount = mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_ID = {$_SESSION['guest_ID']}");
-$count = mysqli_fetch_assoc($updatecount);
-$_SESSION['count'] = $count['count']; 
+  mysqli_query($conn , "UPDATE guest_masterfile SET count = count + 1 WHERE guest_ID = {$_SESSION['guest_ID']}");
+  $updatecount = mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_ID = {$_SESSION['guest_ID']}");
+  $count = mysqli_fetch_assoc($updatecount);
+  $_SESSION['count'] = $count['count']; 
   $fetch_reservationID = mysqli_query($conn, "SELECT max(reservation_id) FROM reservation_masterfile");
   $row = mysqli_fetch_assoc($fetch_reservationID);
   $balance = $_SESSION['reservation']['balance'];
@@ -39,9 +39,9 @@ $_SESSION['count'] = $count['count'];
   		mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id,reservation_id, quantity) VALUES($addon_id, {$row['max(reservation_id)']}, 1)") or die(mysqli_error($conn));
   	}
   }
-
-  $checkOutDate = date("Y-m-d", strtotime($_SESSION['reservation']['checkOutDate']));
   mysqli_query($conn, "INSERT INTO billing_masterfile(reservation_id, guest_id, balance,total,downpayment,status, created_at, updated_at) VALUES({$row['max(reservation_id)']}, {$_SESSION['guest_ID']}, {$balance},{$balance},{$downpayment},'Not paid', '{$currentTime}','{$currentTime}')") or die(mysqli_error($conn));
+  $checkOutDate = date("Y-m-d", strtotime($_SESSION['reservation']['checkOutDate']));
+
   $getallwalkrinrooms = mysqli_query($conn, "SELECT * FROM walkinrooms_masterfile WHERE room_id = {$_SESSION['reservation']['roomid']}") or die(mysqli_error($conn));
   $i=0;
   while($row = mysqli_fetch_assoc($getallwalkrinrooms)){
@@ -56,7 +56,7 @@ $_SESSION['count'] = $count['count'];
 		}
 		$i++;
 	}
-	}
+}
 unset($_SESSION['reservation']);
 header("Location: GuestDashboard.php");
 ?>
