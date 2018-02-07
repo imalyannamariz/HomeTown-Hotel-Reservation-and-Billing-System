@@ -1,5 +1,4 @@
  <?= include_once 'sideBarAndTopBar.php';
- echo "<script>alert('".print_r($_POST)."')</script>";
  ?>
 
  <div class="content-wrapper">
@@ -190,13 +189,14 @@ if(isset($_POST['update'])){
     $i++;
   }
   // BILLING?
-  $hashedpwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
-  mysqli_query($conn, "INSERT INTO walkinreservation_masterfile(room_id, checkindate, checkoutdate, code, balance, total, email, password) vALUES
-    ('{$room_ids}', '{$_POST['checkInDate']}', '{$_POST['checkOutDate']}', '{$code}', {$total},{$total}, '{$_POST['email']}', '{$hashedpwd}')") or die(mysqli_error($conn));
+
 
 }
 }
 $downpayment = $total * 0.15;
+$hashedpwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
+mysqli_query($conn, "INSERT INTO walkinreservation_masterfile(room_id, checkindate, checkoutdate, code, balance, total, email, password) vALUES
+  ('{$room_ids}', '{$_POST['checkInDate']}', '{$_POST['checkOutDate']}', '{$code}', {$total},{$total}, '{$_POST['email']}', '{$hashedpwd}')") or die(mysqli_error($conn));
 }
 ?>
 <!-- Bootstrap core JavaScript-->
