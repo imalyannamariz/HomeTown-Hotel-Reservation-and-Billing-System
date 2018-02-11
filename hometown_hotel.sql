@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2018 at 04:37 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Feb 11, 2018 at 04:47 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -318,6 +318,18 @@ CREATE TABLE `room_masterfile` (
   `room_imagepath` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `room_masterfile`
+--
+
+INSERT INTO `room_masterfile` (`room_id`, `room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`, `room_imagepath`) VALUES
+(16, 'Queen Room', 'Capacity: 2 pax', '2', 1950, 8, 'Available', '../img/Queen1.jpg'),
+(17, 'Twin Queen Room', 'Capacity: 2 pax', '2', 1950, 8, 'Available', '../img/Twin.JPG'),
+(18, 'Quad Room', 'Capacity: 4 pax', '4', 2400, 3, 'Available', '../img/Quad1.jpg'),
+(19, 'Family Room', 'Capacity: 3-4 pax', '4', 2400, 3, 'Available', '../img/FM3.jpg'),
+(20, 'Group Room', 'Capacity: 14 pax', '14', 4000, 1, 'Available', '../img/group1.jpg'),
+(21, 'Dorm Room', 'Php 599/pax\r\nCapacity: 4 pax', '4', 599, 2, 'Available', '../img/Quad3.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -349,6 +361,37 @@ CREATE TABLE `walkinrooms_masterfile` (
   `walkinrooms_name` varchar(30) NOT NULL,
   `room_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `walkinrooms_masterfile`
+--
+
+INSERT INTO `walkinrooms_masterfile` (`walkinrooms_id`, `walkinrooms_name`, `room_id`) VALUES
+(25, 'Queen Room1', 16),
+(26, 'Queen Room2', 16),
+(27, 'Queen Room3', 16),
+(28, 'Queen Room4', 16),
+(29, 'Queen Room5', 16),
+(30, 'Queen Room6', 16),
+(31, 'Queen Room7', 16),
+(32, 'Queen Room8', 16),
+(33, 'Twin Queen Room1', 17),
+(34, 'Twin Queen Room2', 17),
+(35, 'Twin Queen Room3', 17),
+(36, 'Twin Queen Room4', 17),
+(37, 'Twin Queen Room5', 17),
+(38, 'Twin Queen Room6', 17),
+(39, 'Twin Queen Room7', 17),
+(40, 'Twin Queen Room8', 17),
+(41, 'Quad Room1', 18),
+(42, 'Quad Room2', 18),
+(43, 'Quad Room3', 18),
+(44, 'Family Room1', 19),
+(45, 'Family Room2', 19),
+(46, 'Family Room3', 19),
+(47, 'Group Room1', 20),
+(48, 'Dorm Room1', 21),
+(49, 'Dorm Room2', 21);
 
 --
 -- Indexes for dumped tables
@@ -530,7 +573,7 @@ ALTER TABLE `reservation_masterfile`
 -- AUTO_INCREMENT for table `room_masterfile`
 --
 ALTER TABLE `room_masterfile`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `walkinreservation_masterfile`
@@ -542,7 +585,7 @@ ALTER TABLE `walkinreservation_masterfile`
 -- AUTO_INCREMENT for table `walkinrooms_masterfile`
 --
 ALTER TABLE `walkinrooms_masterfile`
-  MODIFY `walkinrooms_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `walkinrooms_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

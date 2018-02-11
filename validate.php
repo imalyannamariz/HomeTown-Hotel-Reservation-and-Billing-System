@@ -24,14 +24,18 @@
       else 
       {
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+          $verifier = md5( rand(0,1000) );
           $alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
           $code = '';
           do{
             $code = '';
-          for($x = 0; $x <= 10; $x++)
+            for($x = 0; $x <= 10; $x++)
             $code .= $alphanum[rand(0, strlen($alphanum))];
-          }while(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_code ='$code'")) != 0);
-          $sql = "INSERT INTO guest_masterfile (guest_firstname, guest_lastname, guest_email, guest_password, guest_ContactNumber, guest_country, guest_address, guest_code) VALUES ('$firstName', '$lastName', '$email', '$hashedPwd', '$contactNumber', '$country', '$address','$code')";
+          }
+          while(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_code ='$code'")) != 0);
+          
+          $sql = "INSERT INTO guest_masterfile (guest_firstname, guest_lastname, guest_email, guest_password, guest_ContactNumber, guest_country, guest_address, guest_code, verifier) VALUES ('$firstName', '$lastName', '$email', '$hashedPwd', '$contactNumber', '$country', '$address','$code', '$verifier')";
+          
           mysqli_query($conn, $sql) or die(mysqli_error($conn));
           $fetchnewaccount = mysqli_query($conn, "SELECT max(guest_ID) FROM guest_masterfile");
           $getnewaccount = mysqli_fetch_assoc($fetchnewaccount);
@@ -44,7 +48,7 @@
               $_SESSION['country'] = $selectedValue;
               $_SESSION['address'] = $_POST['address'];
               header("Location: GuestDashboard.php");
-          echo "<script>alert('Successful!');location.href='Step1.php';</script>";  
+          echo "<script>alert('Success! Please verify your account by clicking the activation link that has been send to your email.');location.href='Step1.php';</script>";  
           }         
         }         
       }
