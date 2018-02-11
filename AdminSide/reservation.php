@@ -50,8 +50,6 @@
               if($row['checkindate'] <= $currentDay & ($row['status'] != 'Checkin' && $row['status'] != 'Checkout' ))
                 $checkIndisabled = '';
               ?>
-              <a data-toggle ='modal' data-target = '#editreservation' class='btn btn-primary edit btn-block' style ='color:white;margin-bottom:10px'>Edit</a>
-              <a data-toggle ='modal' data-target = '#addservice' class ='btn btn-primary addservice btn-block' style ='color:white;margin-bottom:10px'>Add service</a>
               <input type ='hidden' <?=$checkIndisabled?> name ='checkin'/>
               <input type ='submit'<?=$checkIndisabled?> name ='checkIn' class ='btn btn-success btn-block' style ='margin-bottom:10px' value ='Check in'/>
               <input type ='hidden' <?=$checkOutdisabled?> name = 'checkout' value ='Checkout'/>
@@ -252,7 +250,6 @@
             success:function(html){
               var addons = parseInt(html)
               $('#addonsqty').empty()
-
               for(var x = 1; x<=addons; x++){
                 $('#addonsqty').append(`<option value = '${x}'>${x}</option>`)
               }

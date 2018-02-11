@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
     <td id='room_rate'>" . $row["room_rate"] . "</td>
     <td id='room_number'>" . $row["room_number"] . "</td>
     <td id='room_status'>" . $row["room_status"] . "</td>
-    <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
+    <td><img src ='{$row['room_imagepath']}' style = 'width:100%'/></td>
     <td>
     <form method = 'POST' action = 'Roomsdelete.php'>
     <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
@@ -67,22 +67,9 @@ if ($result->num_rows > 0) {
   // }
 
   if (isset($_POST['delete'])) {
-    $delete_room_query = "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}";
-
-    try
-    {
-      $delete_result = mysqli_query($conn, $delete_room_query) or die(mysqli_error($conn) . "saan?");
-      if ($delete_result) {
-        if (mysqli_affected_rows($conn) > 0) {
-          header("Location: Roomsdelete.php");
-          exit();
-        } else {
-          echo "<script>alert('Data not Deleted.{$row['id']}');location.href='Roomsdelete.php';</script>";
-        }
-      }
-    } catch (Exception $ex) {
-      echo "Error Delete Data" . $ex->getMessage();
-    }
+    mysqli_query($conn, "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}");
+    mysqli_query($conn, "DELETE FROM walkinrooms_masterfile WHERE room_id = {$_POST['id']}");
+    echo "<script>alert('Success')</script>";
   }
 }
 ?>
