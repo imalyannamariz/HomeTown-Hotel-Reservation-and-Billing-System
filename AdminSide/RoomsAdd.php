@@ -10,16 +10,17 @@
 		$roomRate = mysqli_escape_string($conn, $_POST['roomRate']);
 		$roomNumber = mysqli_escape_string($conn, $_POST['roomNumber']);
 		$roomStatus = mysqli_escape_string($conn, $_POST['roomStatus']);
-        $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
+    $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
         
-        $query = mysqli_query($conn, "INSERT INTO room_masterfile (room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) VALUES('{$roomType}','{$roomDescription}',
-    {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','../img/{$roomImage}')") or die(mysqli_error($conn));
+    $query = mysqli_query($conn, "INSERT INTO room_masterfile (room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) VALUES('{$roomType}','{$roomDescription}',
+       {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','../img/{$roomImage}')") or die(mysqli_error($conn));
     $fetchnewid = mysqli_query($conn, "SELECT max(room_id) FROM room_masterfile");
     $room = mysqli_fetch_assoc($fetchnewid);
-        for($i = 1; $i <= $roomNumber; $i++){
-            mysqli_query($conn, "INSERT walkinrooms_masterfile(walkinrooms_name, room_id) VALUES('{$roomType}{$i}', {$room['max(room_id)']})") or die(mysqli_error($conn));
-        }
-    // $insert_result = mysqli_query($conn, "INSERT INTO room_masterfile(room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) 
+    for($i = 1; $i <= $roomNumber; $i++){
+      mysqli_query($conn, "INSERT walkinrooms_masterfile(walkinrooms_name, room_id) VALUES('{$roomType}{$i}', {$room['max(room_id)']})") or die(mysqli_error($conn));
+    }
+    echo "<script>window.alert('Success! Room added.')location.href='Roomsdelete.php'</script>";
+// $insert_result = mysqli_query($conn, "INSERT INTO room_masterfile(room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) 
     // VALUES ('{$roomType}', '{$roomDescription}', {$roomCapacity}, {$roomRate}, {$roomNumber}, '{$roomStatus}', '../img/{$roomImage}')") or die (mysqli_error($conn));
 	}
 ?>
