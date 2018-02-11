@@ -21,8 +21,8 @@
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
-          <th>Reservation ID</th>
           <th>Proof of payment ID</th>
+          <th>Reservation ID</th>
           <th>Image</th>
           <th>Actions</th>
         </tr>
