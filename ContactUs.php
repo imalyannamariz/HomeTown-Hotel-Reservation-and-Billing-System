@@ -7,199 +7,103 @@
   // }
 ?>
 <style>
-*{
-  border: 0;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    font-size: 100%;
+ .navbar-brand{
+  margin-top: -22px;
+  margin-right: 5px;
 }
-.wrapper {
-  position: relative;
-  background-color: white;
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-  margin-top: 80px;
-  margin-bottom: 140px;
+.btn-primary {
+    color: #fff;
+    background-color: #96281B;
+    border-color: #96281B;
 }
-.wrapper{
-  width: 978px;
-  margin: 0 auto;
-  text-align:left;
+.container{
+  margin-top: 40px;
 }
-.styled-form{
-    position: relative;
-    display: inline;
-    float: left;
-    width: 622px;
-    padding: 25px 30px;
+.row{
+  padding-right: 15px;
+  padding-left: 15px;
 }
-.styled-form .pagetitle {
-    margin-bottom: 5px;
+h1{
+  font-size: 30;
 }
-.pagetitle{
-  color: #ed3434;
-    font-size: 35px;
-    line-height: 40px;
-    margin-bottom: 30px;
-    font-weight: 300;
+.container, h1{
+  text-transform: uppercase;
 }
-.styled-form .note {
-    margin-bottom: 40px;
-}
-.styled-form .row.half.first {
-    margin-left: 0;
-    clear: left;
-}
-.styled-form .row.half {
-    width: 46%;
-    margin-left: 8%;
-}
-.styled-form .row {
-    display: inline;
-    float: left;
-    width: 100%;
-}
-p {
-    margin-bottom: 20px;
-}
-.styled-form label {
-    display: block;
-    font-family: "brandon-grotesque", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 11px;
-    line-height: 20px;
-    text-transform: uppercase;
-    color: #4e4e4d;
-}
-.required {
-    text-transform: uppercase;
-    font-family: "brandon-grotesque", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: 1px;
-    position: relative;
-    top: 7px;
-    font-size: 20px;
-    font-style: normal;
-    line-height: 1px;
-    color: #e8554e;
-}
-.styled-form .field {
-    display: block;
-}
-.styled-form input[type=text], .styled-form input[type=password], .styled-form textarea {
-    background-color: #e1e1db;
-    width: 100%;
-    padding: 12px 14px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    font-family: "museo-slab", Georgia, serif;
-}
-.styled-form .row {
-    display: inline;
-    float: left;
-    width: 100%;
-}
-.submit-row {
-    text-align: right;
-}
-.styled-form .submit-row {
-    clear: both;
-}
-button[type=submit], .button {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    white-space: nowrap;
-    position: relative;
-    display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: middle;
-    zoom: 1;
-    font-family: "brandon-grotesque", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
-    font-size: 14px;
-    line-height: 14px;
-    text-transform: uppercase;
-    color: white;
-    background-color: #e8554e;
-    cursor: pointer;
-    border-bottom: 5px solid #9a3834;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-transition: none 125ms ease-out;
-    -webkit-transition-delay: 0;
-    -moz-transition: none 125ms ease-out 0;
-    -o-transition: none 125ms ease-out 0;
-    transition: none 125ms ease-out 0;
-    -webkit-transition-property: background-color, color;
-    -moz-transition-property: background-color, color;
-    -o-transition-property: background-color, color;
-    transition-property: background-color, color;
-    padding: 10px 55px;
-}
-
 
 </style>
 <body>
   <?php
     include_once 'navigationBar.php';
   ?>
+
+
   <div class = "container">
-    <div id = "sidecontent">
-      <div class = "wrapper">
-        <form id = "contact-form" class = "styled-form" action method = "post" accept-chraset = "utf-8">
-          <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="8ece95d139633656ad0371bf53c45b2d"></div>
-          <h1 class = "pagetitle">Contact us</h1>
-          <div class = "note">
-            <p>
-              We are here to answer any questions you may have about our
-              experiences. Reach out to us and we'll respond as soon as we can.
-            </p>
-            <p>
-              Even if there is something you have always wanted to experience and
-              can't find it on Hometown, let us know and we promise we'll do our
-              best to find it for you and send you there.
-            </p>
-          </div>
-          <p class="row half first">
-            <label for="id_name">Name:<span class="required">
-            *</span>
-          </label>
-          <span class="field"><input type="text" name="name" id="id_name">
-          </span>
+    <div class = "row">
+      <div class = "col-lg-12">
+        <h1 class="pagetitle">Contact us</h1>
+        <p>
+           We are here to answer any questions you may have about our experiences. Reach out to us and we'll respond as soon as we can.
         </p>
-        <p class="row half">
-            <label for="id_name">Email:<span class="required">
-            *</span>
-          </label>
-          <span class="field"><input type="text" name="Email" id="id_email">
-          </span>
-        </p>
-        <p class="row">
-            <label for="id_name">Message:<span class="required">
-            *</span>
-          </label>
-          <span class="field"><input type="text" name="Message" id="id_message">
-            <textarea cols="40" rows="5" name="message" id="id_message"></textarea>
-          </span>
-        </p>
-        <p class="submit-row">
-      <button type="submit">SEND</button>
-    </p>
-  </form>
+        <p>
+           Even if there is something you have always wanted to experience and can't find it on Hometown, let us know and we promise we'll do our best to find it for you and send you there.
+         </p>
+      </div>
+    </div>
+  </div>
   
+  <div class="rq-contact-message">
+      <div class="container">
+       <div class="rq-submit-review">
+           <div class="row">
+             <div class="col-md-8 col-sm-8">
+              <h2>send a message</h2>
+              <form action="#">
+                <input type="text" name="rq-contact-name" id="rq-contact-name" placeholder="Name">
+                <input type="email" name="rq-contact-email" id="rq-contact-email" placeholder="Email">
+                <textarea name="rq-contact-message" id="rq-contact-message" cols="30" rows="5" placeholder="Message"></textarea>
+                <button type="submit">Submit</button>
+              </form>
+             </div><!----- /col-md-8  ------>
+             <div class="col-md-3 col-md-offset-1 col-sm-4">
+               <div class="rq-address-wrapper rq-message-address-2">
+                <h5>address </h5>
+                <ul>
+                  <li>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <a href="#">57 Epifanio de los Santos Ave, <br> <span>Makati, 1233 Metro Manila</span> </a>
+                  </li>
+                  <li>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <a href="#">(02) 805 3386</a>
+                  </li>
+                  <li>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    <a href="#">hometownmakati@gmail.com</a>
+                  </li>
+                </ul>
+               </div>
+             </div>
+           </div><!---- /row ---->
+         </div>
+        </div>
+      </div>
+  
+   <script src="js/main.js"></script>
+  <!-- Latest compiled and minified JavaScript for bootstrap-->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/parallax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpKAwq-qKxzm-9D1405KCFp7ZTtu_Vimg"></script>
+  <script src="js/googleMap.js"></script>
+  <script src="js/customGoogleMap.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.flexslider-min.js"></script>
+ <!--  // <script src="js/bootstrap-datepicker.js"></script> -->
+  <script src="js/select2.min.js"></script>
+  <script src="js/icheck.min.js"></script>
+  <script src="js/jquery.raty.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>

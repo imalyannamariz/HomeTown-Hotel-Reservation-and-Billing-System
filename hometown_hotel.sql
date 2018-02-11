@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2018 at 02:15 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 7.1.11
+-- Generation Time: Feb 07, 2018 at 06:21 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -100,50 +100,26 @@ INSERT INTO `assignedroom_masterfile` (`room_id`, `date`, `assignedroom_id`, `st
 (1, '2018-02-05', 4, 'Reserved', 'Walkin', '1NTJDQAEZQ'),
 (1, '2018-02-06', 5, 'Reserved', 'Walkin', '1NTJDQAEZQ'),
 (1, '2018-02-07', 6, 'Reserved', 'Walkin', '1NTJDQAEZQ'),
-(2, '2018-02-07', 17, 'Temporary', 'Reservation', '146PR6Q4DO'),
-(2, '2018-02-08', 18, 'Temporary', 'Reservation', '146PR6Q4DO'),
-(16, '2018-02-07', 19, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
-(16, '2018-02-08', 20, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
-(17, '2018-02-07', 21, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
-(17, '2018-02-08', 22, 'Temporary', 'Reservation', 'RFIAN9WTUH'),
+(16, '2018-02-07', 19, 'Reserved', 'Reservation', 'RFIAN9WTUH'),
+(16, '2018-02-08', 20, 'Reserved', 'Reservation', 'RFIAN9WTUH'),
+(17, '2018-02-07', 21, 'Reserved', 'Reservation', 'RFIAN9WTUH'),
+(17, '2018-02-08', 22, 'Reserved', 'Reservation', 'RFIAN9WTUH'),
 (5, '2018-02-07', 27, 'Temporary', 'Reservation', 'L7WZ1M58OE'),
 (5, '2018-02-08', 28, 'Temporary', 'Reservation', 'L7WZ1M58OE'),
-(1, '2018-02-10', 41, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(1, '2018-02-11', 42, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(5, '2018-02-10', 43, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(5, '2018-02-11', 44, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(6, '2018-02-10', 45, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(6, '2018-02-11', 46, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(7, '2018-02-10', 47, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(7, '2018-02-11', 48, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(8, '2018-02-10', 49, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(8, '2018-02-11', 50, 'Reserved', 'Reservation', 'TY99YCIYVH'),
-(2, '2018-02-05', 54, 'Temporary', 'Reservation', 'YGN9C3VE'),
-(3, '2018-02-04', 55, 'Temporary', 'Reservation', 'YGN9C3VE'),
-(3, '2018-02-05', 56, 'Temporary', 'Reservation', 'YGN9C3VE'),
-(16, '2018-02-10', 58, 'Temporary', 'Reservation', 'RKTYHDVXFZ'),
-(17, '2018-02-09', 59, 'Temporary', 'Reservation', 'RKTYHDVXFZ'),
-(17, '2018-02-10', 60, 'Temporary', 'Reservation', 'RKTYHDVXFZ'),
-(1, '2018-02-08', 147, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(1, '2018-02-09', 148, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(3, '2018-02-08', 149, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(3, '2018-02-09', 150, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(4, '2018-02-08', 151, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(4, '2018-02-09', 152, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(6, '2018-02-08', 153, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(6, '2018-02-09', 154, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(7, '2018-02-08', 155, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(7, '2018-02-09', 156, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(8, '2018-02-08', 157, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(8, '2018-02-09', 158, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(9, '2018-02-08', 159, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(9, '2018-02-09', 160, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(10, '2018-02-08', 161, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(10, '2018-02-09', 162, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(11, '2018-02-08', 163, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(11, '2018-02-09', 164, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(12, '2018-02-08', 165, 'Reserved', 'Walkin', 'JTNT14MRON'),
-(12, '2018-02-09', 166, 'Reserved', 'Walkin', 'JTNT14MRON');
+(19, '2018-02-05', 35, 'Reserved', 'Walkin', 'NH0F93KF1S'),
+(19, '2018-02-06', 36, 'Reserved', 'Walkin', 'NH0F93KF1S'),
+(1, '2018-02-09', 37, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(1, '2018-02-10', 38, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(2, '2018-02-09', 39, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(2, '2018-02-10', 40, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(3, '2018-02-09', 41, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(3, '2018-02-10', 42, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(4, '2018-02-09', 43, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(4, '2018-02-10', 44, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(5, '2018-02-09', 45, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(5, '2018-02-10', 46, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(6, '2018-02-09', 47, 'Reserved', 'Reservation', 'L473E1AHWX'),
+(6, '2018-02-10', 48, 'Reserved', 'Reservation', 'L473E1AHWX');
 
 -- --------------------------------------------------------
 
@@ -168,9 +144,9 @@ CREATE TABLE `billing_masterfile` (
 --
 
 INSERT INTO `billing_masterfile` (`billing_id`, `guest_id`, `reservation_id`, `balance`, `created_at`, `updated_at`, `status`, `total`, `downpayment`) VALUES
-(5, 18, 37, 1900, '2018-02-01 03:13:34', '2018-02-07 06:20:23', 'Partial', 1900, 285),
-(53, 9, 81, 2150, '2018-02-06 00:58:11', '2018-02-07 06:18:34', 'Not paid', 2150, 322.5),
-(54, 9, 82, 7900, '2018-02-07 05:30:41', '2018-02-07 05:30:41', 'Not paid', 7900, 1185);
+(45, 9, 73, 2500, '2018-02-04 16:07:09', '2018-02-04 17:03:49', 'Partial', 3000, 450),
+(54, 0, 13, 2550, '2018-02-05 00:00:00', '2018-02-06 02:49:46', 'Partial', 3000, 450),
+(55, 14, 82, 2150, '2018-02-06 18:46:18', '2018-02-06 18:48:47', 'Not paid', 2150, 322.5);
 
 -- --------------------------------------------------------
 
@@ -232,7 +208,8 @@ INSERT INTO `financialreports_masterfile` (`payment`, `payment_type`, `created_a
 (500, 'Partial', '2018-02-04 17:03:49', 45, 19),
 (132, 'Partial', '2018-02-04 23:00:02', 47, 20),
 (750, 'Fully Paid', '2018-02-04 23:00:33', 47, 21),
-(4000, 'Fully Paid', '2018-02-05 14:26:51', 48, 22);
+(4000, 'Fully Paid', '2018-02-05 14:26:51', 48, 22),
+(450, 'Partial', '2018-02-06 02:49:46', 54, 23);
 
 -- --------------------------------------------------------
 
@@ -253,10 +230,9 @@ CREATE TABLE `guestaddons_masterfile` (
 
 INSERT INTO `guestaddons_masterfile` (`guestaddon_id`, `addons_id`, `reservation_id`, `quantity`) VALUES
 (10, 1, 37, 0),
-(24, 1, 81, 4),
-(25, 2, 81, 1),
-(26, 4, 81, 1),
-(27, 1, 82, 1);
+(26, 1, 82, 1),
+(27, 2, 82, 1),
+(28, 4, 82, 1);
 
 -- --------------------------------------------------------
 
@@ -286,12 +262,12 @@ INSERT INTO `guest_masterfile` (`guest_ID`, `guest_firstname`, `guest_lastname`,
 (3, 'aya', 'cantos', 'alyannamariz02@gmail.com', '$2y$10$1ElVGPVEr.nLEVRB8gV5NOzdio/N32GeywHMNMqyuOYAIokLMBsde', '09357771340', 'Philippines', '123', '', 0),
 (4, 'aaaa', 'aaaaaa', 'aaa@gmail.com', '$2y$10$y3qjGIOupamrsfxdfZ9mG.YXaBIWqDcjXskqtaGUJYkS4EPlAcxa2', '09357771340', 'Philippines', 'aqqw3sww', '', 0),
 (5, 'Alyanna', 'Cantos', 'antonioumali@gmail.com', '$2y$10$.bcv9EAuXOilfBW9Tdn2r.1eHh3VbK/YeUbvIgjIIyZ.lVEfUjry2', '09357771340', 'Philippines', 'Tramo Pasay City', '', 0),
-(6, 'Mark', 'Calma', 'markdcalma@gmail.com', '$2y$10$t.eEG1fUpNQYW81Apqi.I.6bv05uQErBJEl5EJmX1YCuuQWdyxhJu', '09357771340', 'Philippines', 'Tramo', '', 0),
+(6, 'Mark', 'Calma', 'markdcalma@gmail.com', '$2y$10$t.eEG1fUpNQYW81Apqi.I.6bv05uQErBJEl5EJmX1YCuuQWdyxhJu', '09357771340', 'Philippines', 'Tramo', '', 1),
 (7, 'jerome', 'ubina', 'jeromeubina@gmail.com', '$2y$10$8M3NYfZcem4ndy4X8dh09.t2744A7wM3a0utqYHSQlpG8fBQJZBkS', '09357771340', 'Philippines', 'Tramo', '', 0),
 (8, 'Jerry', 'Punzalan', 'jerry@gmail.com', '$2y$10$TI3PeuagEBUq6Ee336iNLeuZMvv6y7YPeo/Y7Aqp1.yZLlurhvPfm', '09357771340', 'Philippines', 'Tramo', '', 0),
-(9, 'asdlaksd', 'lqkelqkwe', 'aaaa@gmail.com', '$2y$10$wWGvFDQc/rH.sY./y7fhQe0MldVoZs9ectuM7txm3jLH0mHJ.C3fy', '0923456672', 'Philippines', 'qwesadqwe', '', 5),
+(9, 'Acis', 'Torculas', 'aaaa@gmail.com', '$2y$10$wWGvFDQc/rH.sY./y7fhQe0MldVoZs9ectuM7txm3jLH0mHJ.C3fy', '923456672', 'Philippines', 'qwesadqwe', '', 5),
 (13, 'Jerry', 'Punzalan', 'jerrypunzalan24@gmail.com', '$2y$10$ixQMZMiIkW4zeiqt5XWTM.25FltA5kAR0PSLGL1L9kjX/IO5zfP02', '09156155821', 'Philippines', 'asdqwe', '', 0),
-(18, 'top', 'kek', 'aaaa@gmail.com', '$2y$10$uHX/rcNapLSP330ZwHGyouVAV1K59NGydQHyxaiQpa7kJlPEAeAXy', '9156155821', 'Philippines', 'qweaswqe', 'P8OB1ZJ', 0);
+(14, 'Franz', 'Mondero', 'franzcupcake@yahoo.com', '$2y$10$uTsg1qeiwoF/kr2OdfrXfeJYlasDvc7SeKQNN88QNCDsCDPv2/sy2', '09095483567', 'Philippines', 'blumentrit', 'BAA8F7BGB5', 1);
 
 -- --------------------------------------------------------
 
@@ -310,8 +286,8 @@ CREATE TABLE `proofofpayment_masterfile` (
 --
 
 INSERT INTO `proofofpayment_masterfile` (`proofofpayment_id`, `reservation_id`, `path`) VALUES
-(2, 81, '../uploads/26219575_184591688706933_8485893161295026593_n.jpg'),
-(3, 82, '../uploads/220px-Shiba_inu_taiki.jpg');
+(3, 73, '../uploads/22554641_1483862081707930_2010112762_n.jpg'),
+(4, 82, '../uploads/Cantos.jpg');
 
 -- --------------------------------------------------------
 
@@ -331,7 +307,8 @@ CREATE TABLE `receipts_masterfile` (
 INSERT INTO `receipts_masterfile` (`receipts_id`, `guest_id`) VALUES
 (3, 9),
 (4, 2),
-(5, 6);
+(5, 6),
+(6, 0);
 
 -- --------------------------------------------------------
 
@@ -390,13 +367,11 @@ CREATE TABLE `reservation_masterfile` (
 
 INSERT INTO `reservation_masterfile` (`reservation_id`, `guest_id`, `room_id`, `checkindate`, `checkoutdate`, `number_guest`, `room_number`, `status`, `reservation_code`) VALUES
 (36, 13, 6, '2018-02-04', '2018-02-05', 1, 2, 'Void', ''),
-(37, 18, 6, '2018-02-04', '2018-02-05', 1, 1, 'Checkout', 'YGN9C3VE'),
-(72, 9, 6, '2018-02-07', '2018-02-08', 1, 1, 'Void', '146PR6Q4DO'),
-(73, 9, 7, '2018-02-07', '2018-02-08', 1, 2, 'Void', 'RFIAN9WTUH'),
+(37, 18, 7, '2018-02-04', '2018-02-05', 1, 1, 'Checkout', 'YGN9C3VE'),
+(73, 9, 7, '2018-02-07', '2018-02-08', 1, 2, 'Approved', 'RFIAN9WTUH'),
 (75, 2, 6, '2018-02-07', '2018-02-08', 1, 2, 'Void', 'L7WZ1M58OE'),
-(76, 6, 7, '2018-02-07', '2018-02-09', 1, 1, 'Void', 'CBIIKKZ60Y'),
-(81, 9, 7, '2018-02-09', '2018-02-10', 1, 1, 'Approved', 'RKTYHDVXFZ'),
-(82, 9, 6, '2018-02-10', '2018-02-11', 10, 5, 'Approved', 'TY99YCIYVH');
+(81, 6, 6, '2018-02-08', '2018-02-09', 1, 3, 'Void', 'RBYQMMYGNR'),
+(82, 14, 6, '2018-02-09', '2018-02-10', 12, 1, 'Approved', 'L473E1AHWX');
 
 -- --------------------------------------------------------
 
@@ -453,39 +428,23 @@ CREATE TABLE `transaction_masterfile` (
 
 CREATE TABLE `walkinreservation_masterfile` (
   `reservation_id` int(11) NOT NULL,
-  `room_id` varchar(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `checkindate` date NOT NULL,
   `checkoutdate` date NOT NULL,
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `balance` int(11) NOT NULL,
-  `total` int(11) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `code` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `walkinreservation_masterfile`
 --
 
-INSERT INTO `walkinreservation_masterfile` (`reservation_id`, `room_id`, `checkindate`, `checkoutdate`, `firstname`, `lastname`, `code`, `balance`, `total`, `email`, `password`) VALUES
-(10, '2', '2018-02-03', '2018-02-03', 'hi', 'e', 'YXATUQV0U0', 0, 0, '', ''),
-(11, '1', '2018-02-03', '2018-02-04', 'kek', 'top', '0STZDX21WE', 0, 0, '', ''),
-(12, '1', '2018-02-06', '2018-02-08', 'kek', 'top', 'TQG4H6GVCJ', 0, 0, '', ''),
-(18, '6 7 ', '2018-02-08', '2018-02-10', '', '', 'RBO1Y9AF6B', 6000, 6000, 'boi@boi.com', '$2y$10$GBH/zdYVDlVsPYHUzo.tpuSPMH7jw0vtg0iHelNm6vEaueBxnPXZ6'),
-(19, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$36zQDthfMl969bn5rYAbdu7cu10o93YrCXeqdacIHLcxgXecTaMm6'),
-(20, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$lXbz9N1oEiXTChdbGRtVVO27NK5owNituglfQgm8VyNFOLmMFwQG6'),
-(21, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$e/7gdRr4XQnoiGtyJEyFG.qYbhUs3pX911z4ARSJ.UP.YL9X/g3ee'),
-(22, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$suTTKyqBm/j6yp8WKL0ASO25vDmlCpYZ0TU/ad4r4IPQBog5.94KC'),
-(23, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$ZxxEDcSbt19UKHLnBb0/K.i2tGKMWLEkk9XcOqu5cJoG.ggmzmp7i'),
-(24, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$nlr3c72e8U5yJjx3xjdrgup/y8JBkcijYdup0tBu4ug.GFHWPGUqG'),
-(25, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$SRSw6HIsE1S6XvPtLMHNJuu7.Nc3tyjQiBQbREBXZ5.7vxY68SL36'),
-(26, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$7ZkPkH/dx5/x4Vcmyq.sVuP9PeW03zg3gNoLFUzTxGXkvkymTPgqG'),
-(27, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$oUJpAzXNh0eroPa8l.c0yOx6a1RTWZsee.smpQkx5RVRisCbjjQnS'),
-(28, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$1TTSaZnDeVJjiRHTQZ9DG.ykF8mJLudxFP97HT2VCG4FpYSxQanIi'),
-(29, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$q.WDjDeBWfm3ndnLrBId5O9swQjwpU7es3KxdEARna8bV3KXp3Wx.'),
-(30, '6 ', '2018-02-08', '2018-02-09', '', '', 'JTNT14MRON', 1500, 1500, 'boii@boi.com', '$2y$10$2YnByPDBvsQ3tiKbnC0o6.0MTrAq9nfG8ohMwfcvhOyUHyCNjr4bK');
+INSERT INTO `walkinreservation_masterfile` (`reservation_id`, `room_id`, `checkindate`, `checkoutdate`, `firstname`, `lastname`, `code`) VALUES
+(10, 2, '2018-02-03', '2018-02-03', 'hi', 'e', 'YXATUQV0U0'),
+(11, 1, '2018-02-03', '2018-02-04', 'kek', 'top', '0STZDX21WE'),
+(12, 1, '2018-02-06', '2018-02-08', 'kek', 'top', 'TQG4H6GVCJ'),
+(13, 19, '2018-02-05', '2018-02-06', 'Alyanna', 'Cantos', 'NH0F93KF1S');
 
 -- --------------------------------------------------------
 
@@ -655,13 +614,13 @@ ALTER TABLE `adminuser_masterfile`
 -- AUTO_INCREMENT for table `assignedroom_masterfile`
 --
 ALTER TABLE `assignedroom_masterfile`
-  MODIFY `assignedroom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `assignedroom_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `billing_masterfile`
 --
 ALTER TABLE `billing_masterfile`
-  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `billing_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `discount_masterfile`
@@ -673,31 +632,31 @@ ALTER TABLE `discount_masterfile`
 -- AUTO_INCREMENT for table `financialreports_masterfile`
 --
 ALTER TABLE `financialreports_masterfile`
-  MODIFY `financialreport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `financialreport_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `guestaddons_masterfile`
 --
 ALTER TABLE `guestaddons_masterfile`
-  MODIFY `guestaddon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `guestaddon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `guest_masterfile`
 --
 ALTER TABLE `guest_masterfile`
-  MODIFY `guest_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `guest_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `proofofpayment_masterfile`
 --
 ALTER TABLE `proofofpayment_masterfile`
-  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `proofofpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `receipts_masterfile`
 --
 ALTER TABLE `receipts_masterfile`
-  MODIFY `receipts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `receipts_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `reports_masterfile`
@@ -727,7 +686,7 @@ ALTER TABLE `transaction_masterfile`
 -- AUTO_INCREMENT for table `walkinreservation_masterfile`
 --
 ALTER TABLE `walkinreservation_masterfile`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `walkinrooms_masterfile`

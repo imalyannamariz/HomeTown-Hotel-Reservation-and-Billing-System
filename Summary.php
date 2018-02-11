@@ -349,7 +349,7 @@ table {
           <form class="hide-this-shit hidden-xs" method="post" style="display:inline; float:right !important;" enctype="multipart/form-data">
             <input class="hide-this-shit hidden-xs" type="file" name="img" style="display:inline;">
             <input type ='hidden' name = 'code' value = '<?= $_GET['code']?>'/>
-            <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;">
+            <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;" style="background: red";>
               Upload
             </button> 
           </form>
@@ -386,7 +386,11 @@ table {
                 contentType: false,
                 processData: false,
                 success:function(html){
+                    alert(html)
                   alert("Success. Please wait for your reservation to accept")
+                },
+                error: function(html){
+                    alert(html)
                 }
               })
             })

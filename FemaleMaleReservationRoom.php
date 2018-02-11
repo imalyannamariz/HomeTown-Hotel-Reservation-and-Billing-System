@@ -53,11 +53,8 @@
         <div id="nav-menu" class="navbar-collapse rq-menu-wrapper collapse navbar-right" role="navigation">
           <ul class="nav navbar-nav rq-menus">
               <li class="">
-                <a href="HomepageFinal.php">Home</a>
+                <a href="index.php">Home</a>
                 <ul class="rq-sub-menu">
-                    <li>
-                        <a href="HomepageFinal.php.html">Homepage 1</a>
-                    </li>
                 </ul>
               </li>
               <li>

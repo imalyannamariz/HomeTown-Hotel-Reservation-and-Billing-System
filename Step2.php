@@ -94,7 +94,7 @@ if(!isset($_SESSION['reservation'])){
   <?php
   include_once 'navigationBar.php';
   ?>
-  <div class="rq-checkout-banner">
+  <div class="rq-checkout-banner" img src="hometown1.jpeg">
     <div class="rq-checkout-banner-mask">
       <div class="container">
         <div class="rq-checkout-banner-text">

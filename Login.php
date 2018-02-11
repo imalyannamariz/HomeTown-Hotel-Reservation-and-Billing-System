@@ -16,28 +16,51 @@
     background-color: #96281B;
     border-color: #96281B;
 }
+.form-group{
+  width:100%;
+  margin-left:15px;
+}
+.row{
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.container {
+    padding: 25px;
+    position: fixed;
+}
+.btn{
+    margin-left:15px;
+}
 </style>
 <body>
   <?php
     include_once 'navigationBar.php';
   ?>
-  <div class = "container" style = "margin-top:150px">
-    <div class = "container" style = "width:30%; margin-left:35%; margin-top:5;">
-      <form action = "authenticate_login.php" method = "post">
-        <p style ="color:red; text-align:center;"></p>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="text" name="email" class="form-control" id="email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" name="password" class="form-control" id="password" required>
-      </div>
-      <button name="submit" class="btn btn-primary">Log in</button>
-      <a href= 'Step3.php' class = 'btn btn-success'>Register</a>
-    </form>
-  </div>
-</div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <div class = "container-fluid" style = "width:100;">
+        <div class = "row">
+            <div class = "col-sm-offset-4 col-md-3">
+                <form action = "authenticate_login.php" method = "post">
+                    <p style ="color:red; text-align:center;"></p>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" class="form-control" id="password" required>
+                            </div>
+                            <button name="submit" class="btn btn-primary">Log in</button>
+                            <a href= 'Step3.php' class = 'btn btn-success'>Register</a>
+                            </form>
+                         </div>
+                    </div>
+                </div>
+            </div>
 
  <script src="js/main.js"></script>
 

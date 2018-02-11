@@ -43,11 +43,8 @@ header .rq-header-main-menu .container-fluid .rq-menu-wrapper ul li:hover:before
         <div id="nav-menu" class="navbar-collapse rq-menu-wrapper collapse navbar-right" role="navigation">
           <ul class="nav navbar-nav rq-menus">
               <li class="active">
-                <a href="HomepageFinal.php">Home</a>
+                <a href="index.php">Home</a>
                 <ul class="rq-sub-menu">
-                    <li>
-                        <a href="HomepageFinal.php">Homepage 1</a>
-                    </li>
                 </ul>
               </li>
             <!--   <li>
@@ -73,7 +70,7 @@ header .rq-header-main-menu .container-fluid .rq-menu-wrapper ul li:hover:before
                 </ul> -->
               </li>
               <li>
-                <a href="about-us.html">About</a>
+                <a href="aboutUs.php">About</a>
               </li>
               <li>
                 <a href="ContactUs.php">Contact</a>

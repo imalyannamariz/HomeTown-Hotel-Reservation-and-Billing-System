@@ -2,7 +2,39 @@
  ?>
 
  <div class="content-wrapper">
+     
   <div class="container-fluid">
+      <div class ='card' style ='margin-bottom:50px'>
+    <div class ='card-header'>
+        <h5>Filter options</h5>
+    </div>
+    <div class ='card-body'>
+        <div class ='row'>
+            <div class ='form-group col-md-6'>
+                <label>Month</label>
+                <select class ='form-control' name ='month'>
+                    <?php 
+                    $months = array("January","February","March","April","May","June","July","August","September","October","November","December");
+                    foreach($months as $i => $month){
+                        echo "<option value ='".($i + 1)."'>{$month}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class ='form-group col-md-6'>
+                <label>Year</label>
+                <select class ='form-control' name ='year'>
+                    <?php 
+                    $currentYear = intval(date("Y"));
+                    for($i = $currentYear; $i>= 1980; $i--){
+                        echo "<option value ='{$i}'>{$i}</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
@@ -14,7 +46,7 @@
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id ='financialreports'>
         <?php $fetchallreservation = mysqli_query($conn, "SELECT * from reservationreports_masterfile JOIN reservation_masterfile ON reservation_masterfile.reservation_id = reservationreports_masterfile.reservation_id");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
@@ -116,6 +148,20 @@
 <script>
   $(document).ready(function(){
     $('#thisTable').DataTable()
+          $('select[name=month], select[name=year').change(function(){
+          $.ajax({
+              type:'POST',
+              url:'../ajax/filterfinancial.php',
+              data:{
+                  month: $('select[name=month]').val(),
+                  year: $('select[name=year]').val(),
+                  dbtype:"reservationreports_masterfile"
+              },
+              success:function(html){
+                  $('#financialreports').html(html)
+              }
+          })
+      })
   })
 </script>
 </body>

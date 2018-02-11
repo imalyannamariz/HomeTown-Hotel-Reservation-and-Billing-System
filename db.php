@@ -3,9 +3,9 @@
 	/*connection string*/
 
 	$dbServerName = "localhost";
-	$dbUsername = "root";
-	$dbPassword = "";
-	$dbName = "hometown_hotel";
+	$dbUsername = "hthotel_admin";
+	$dbPassword = "adminhometownhotel";
+	$dbName = "hthotel_hometown_hotel";
 
 	$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 	// Check connection

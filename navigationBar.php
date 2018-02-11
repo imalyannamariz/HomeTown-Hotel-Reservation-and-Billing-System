@@ -24,7 +24,7 @@
         <div id="nav-menu" class="navbar-collapse rq-menu-wrapper collapse navbar-right" role="navigation">
           <ul class="nav navbar-nav rq-menus">
             <li class="active">
-              <a href="HomepageFinal.php">Home</a>
+              <a href="index.php">Home</a>
             </li>
 
               <a href="Rooms.php">Room</a>
@@ -33,7 +33,7 @@
                 <a href="aboutUs.php">About</a>
               </li>
               <li>
-                <a href="contact.html">Contact</a>
+                <a href="ContactUs.php">Contact</a>
               </li>
               <li>
                 <a href="Step1.php">Reservations</a>

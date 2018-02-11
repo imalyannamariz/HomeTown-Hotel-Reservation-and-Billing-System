@@ -12663,7 +12663,7 @@ SIDE MENU ITEMS
   left: -30px !important;
 }
 .rq-banner-area {
-  background: url('C:\xampp\htdocs\ThesisCapsA\New/img/Hometown1.jpg') center center no-repeat;
+  background: url('Hometown1.jpg') center center no-repeat;
   background-size: cover;
   height: 100vh;
   position: relative;
@@ -14247,7 +14247,7 @@ SIDE MENU ITEMS
   }
 }
 .rq-checkout-banner {
-  background: url('../img/placeholder-2100.jpg') center center no-repeat;
+  background: url('Hometown1.jpg') center center no-repeat;
   background-size: cover;
   height: 290px;
 }
@@ -14260,6 +14260,7 @@ SIDE MENU ITEMS
   height: 290px;
 }
 .rq-checkout-banner .rq-checkout-banner-mask .rq-checkout-banner-text .rq-checkout-banner-text-middle {
+    background: url('Hometown1.jpg') center center no-repeat;
   display: table-cell;
   text-align: center;
   vertical-align: middle;

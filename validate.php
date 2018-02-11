@@ -19,7 +19,7 @@
         }
         else {//hashing the password
           if ($password != $confirmPassword) {
-          echo "<script>alert('Password mismatch.');location.href='register.php';</script>";
+          echo "<script>alert('Password mismatch.');location.href='step3.php';</script>";
       } 
       else 
       {
@@ -44,7 +44,7 @@
               $_SESSION['country'] = $selectedValue;
               $_SESSION['address'] = $_POST['address'];
               header("Location: GuestDashboard.php");
-          echo "<script>alert('Successful!');location.href='step4.php';</script>";  
+          echo "<script>alert('Successful!');location.href='Step1.php';</script>";  
           }         
         }         
       }

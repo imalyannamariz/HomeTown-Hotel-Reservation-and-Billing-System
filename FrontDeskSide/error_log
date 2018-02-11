@@ -1,0 +1,18 @@
+[08-Feb-2018 06:42:03 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:42:03 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:42:18 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:42:18 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:49:20 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:49:20 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:49:28 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:49:28 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:52:35 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:52:35 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:52:37 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:52:37 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:53:15 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:53:15 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:53:16 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:53:16 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:53:37 UTC] PHP Warning:  include_once(dbConnect.php): failed to open stream: No such file or directory in /home/hthotel/public_html/FrontDeskSide/index.php on line 3
+[08-Feb-2018 06:53:37 UTC] PHP Warning:  include_once(): Failed opening 'dbConnect.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home/hthotel/public_html/FrontDeskSide/index.php on line 3

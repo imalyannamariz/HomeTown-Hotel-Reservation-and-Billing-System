@@ -37,13 +37,11 @@
     float: left;
     margin-top: 200px;
     width: 100%;
-    padding-left: 70px;
 }
 .wpcf7-submit {
     border: medium none;
     color: #ffffff;
     display: block;
-    float: right;
     font-size: 20px;
     height: 42px;
     line-height: 42px;
@@ -68,7 +66,7 @@
       <div class = "row" style = "margin-left: 10%; margin-top: -5%; margin-bottom: 5%;">
         <div class = "row">
           <form action = "Step1Action.php" method = "post">
-            <div class = "col-lg-5 col-md-5 col-sm-5">
+            <div class = "col-sm-offset-1 col-lg-5 col-md-5 col-sm-5">
               <div class = "contact_left wow fadeInLeft">
 
               <h1 style="font-size: 2em;">Check in:</h1>
@@ -99,6 +97,13 @@
                    <input type="submit" value="Confirm " class="wpcf7-submit photo-submit" style="margin-top:10%">   
       </div>
     </div>
+    <div class = "col-md-4">
+            <div class = "panel panel-default">
+              <div class = "panel-heading" style = "background-color: ;">
+                <h3 class = "text-center">
+                  <strong><p>A reservation made online is set <br> 3 days prior to the current date.</strong></p>
+                </h3>
+              </div>
   </form>
 
 

@@ -14247,7 +14247,7 @@ SIDE MENU ITEMS
   }
 }
 .rq-checkout-banner {
-  background: url('../img/placeholder-2100.jpg') center center no-repeat;
+  background: url('../img/Hometown1.jpg') center center no-repeat;
   background-size: cover;
   height: 290px;
 }
@@ -14484,16 +14484,16 @@ SIDE MENU ITEMS
   }
 }
 .rq-single-room-area {
-  padding: 80px 0px;
+  padding: 20px 0px;
   /*rq-single-room-checkin*/
   /*mobile---=====*/
 }
 .rq-single-room-area .rq-single-room-checkin {
-  padding: 25px 30px 50px;
+  padding: 15px 10px 10px;
   border: 1px solid #e5e5e5;
 }
 .rq-single-room-area .rq-single-room-checkin h2 {
-  margin: 25px 0 15px;
+  margin: 7px 0 10px;
   text-transform: uppercase;
   font-weight: normal;
   font-size: 13px;
@@ -15151,7 +15151,7 @@ li.ui-timepicker-selected,
   padding: 0 15px;
 }
 .singleRoom-grid-main .singleRoom-grid-item .thumbnail .caption .singleRoom-grid-main-custom h4 span {
-  color: #c99616;
+  color: #c10b0b;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
@@ -15548,7 +15548,7 @@ a[href^="https://maps.google.com/maps"] {
   height: 42px;
   line-height: 42px;
   color: #ffffff;
-  background-color: #c99616;
+  background-color: #c10b0b;
   text-align: center;
   display: inline-block;
   margin-top: 15px;
@@ -16887,7 +16887,7 @@ a[href^="https://maps.google.com/maps"] {
 }
 .btn-flat {
   color: #fff;
-  background-color: #c99616;
+  background-color: #ff0000;
   font-size: 11px;
 }
 .btn-flat:hover {
@@ -16912,7 +16912,7 @@ a[href^="https://maps.google.com/maps"] {
 }
 .modal-content {
   border-radius: 0;
-  padding: 70px 205px;
+  padding: 30px 130px;
 }
 .modal-content h2 {
   font-size: 14px;
@@ -16928,7 +16928,7 @@ a[href^="https://maps.google.com/maps"] {
   padding: 20px;
   padding-left: 70px;
   border: 1px solid #ffe39e;
-  margin-bottom: 65px;
+  margin-bottom: 15px;
   background-color: #fffdf8;
   position: relative;
 }
@@ -16969,7 +16969,7 @@ a[href^="https://maps.google.com/maps"] {
   display: table-cell;
   width: 50%;
   vertical-align: middle;
-  padding: 15px 35px;
+  padding: 7px 25px;
   border-bottom: 1px solid #e1e1e1;
 }
 .table-css-col:last-child {
@@ -17438,7 +17438,7 @@ fieldset[disabled] .rq-btn-primary.focus {
   font-size: 11px;
   line-height: 1.1;
   border-radius: 0;
-  color: #c99616;
+  color: #c10b0b;
   background-color: #fff;
   border-color: #c99616;
 }
@@ -17506,7 +17506,7 @@ a.rq-btn-secondary:hover,
 a.rq-btn-secondary:focus,
 a.rq-btn-secondary:active {
   outline: none;
-  background: #c99616;
+  background: #c10b0b;
   color: #fff;
   border-color: transparent;
 }
@@ -17693,6 +17693,7 @@ table {
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
+    text-transform: uppercase;
     white-space: nowrap;
     vertical-align: middle;
     -ms-touch-action: manipulation;

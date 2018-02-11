@@ -154,7 +154,7 @@ else{
 <?php 
 
 if(isset($_POST['update'])){
-  echo "<script>alert('Fuck you')</script>";
+  echo "<script>alert('Success!')</script>";
   $alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
   $code = '';
   do{

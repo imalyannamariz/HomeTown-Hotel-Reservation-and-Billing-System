@@ -93,7 +93,7 @@ table {
     <div style="width: 100%;text-align: center;">
       <h1 style = "text-align:center">Please log in your account</h1>
       <br>
-      <a style="text-align: center; color: blue;" href="Login.php?url=step1.php">Let me login or register an account</a>
+      <a style="text-align: center; color: blue;" href="login.php?url=step1.php">Let me login or register an account</a>
     </div>
   </div>
 

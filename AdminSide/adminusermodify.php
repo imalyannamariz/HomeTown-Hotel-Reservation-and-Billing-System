@@ -1,13 +1,15 @@
 <?php
-	// include_once 'dbConnect.php';
-  include_once 'headerAdmin.php';
+	//include_once 'dbConnect.php';
+	include_once 'sideBarAndTopBar.php';
 	// session_start();
 
 	$sql = "SELECT * FROM adminuser_masterfile";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-	    echo '<div class="container-fluid">
+	    echo '
+	            <div class="content-wrapper">
+	            <div class="container-fluid">
               <h3>User Accounts</h3>
 				        <div class="table-responsive">
                   <table class="table table-bordered table-striped" id="dataTable" align="center">
@@ -37,6 +39,7 @@
                   	 }
                   	 echo 
                   "</table>
+                </div>
                 </div>
               </div>";
 

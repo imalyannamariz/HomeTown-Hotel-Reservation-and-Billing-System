@@ -1,11 +1,13 @@
 <?php
-include_once 'headerAdmin.php';
+include_once 'sideBarAndTopBar.php';
 
 $sql    = "SELECT * FROM room_masterfile";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   echo '
+  <div class="content-wrapper">
+  <div class="container-fluid">
   <div class ="form-group">
   <form>
   <input type ="text" class ="form-control" id = "checkInDate" name ="checkInDate"/>
@@ -43,7 +45,7 @@ if ($result->num_rows > 0) {
     <td id='room_status'>" . $row["room_status"] . "</td>
     <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
     <td>
-    <form method = 'POST' action = 'roomsDelete.php'>
+    <form method = 'POST' action = 'Roomsdelete.php'>
     <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
     <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editRoom'>Edit</button>
     <br><br>
@@ -54,6 +56,8 @@ if ($result->num_rows > 0) {
   echo "
   </tbody>
   </table>
+  </div>
+  </div>
   </div>
   </div>
   ";
@@ -70,10 +74,10 @@ if ($result->num_rows > 0) {
       $delete_result = mysqli_query($conn, $delete_room_query) or die(mysqli_error($conn) . "saan?");
       if ($delete_result) {
         if (mysqli_affected_rows($conn) > 0) {
-          header("Location: roomsDelete.php");
+          header("Location: Roomsdelete.php");
           exit();
         } else {
-          echo "<script>alert('Data not Deleted.{$row['id']}');location.href='roomsDelete.php';</script>";
+          echo "<script>alert('Data not Deleted.{$row['id']}');location.href='Roomsdelete.php';</script>";
         }
       }
     } catch (Exception $ex) {
@@ -122,7 +126,7 @@ table{
 </style>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
-  <div class='modal fade' id='editRoom' role='dialog'>
+  <div class='modal fade' id='#editRoom' role='dialog'>
     <div class='modal-dialog modal-lg'>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -213,7 +217,7 @@ table{
           data: $(this).serialize()+`&image_upload=${image_path}`, // roomType=blabla&roomDescription=blabla&....
           success: function(response){ // eto ung response ng php na nilagay mo sa url
             alert(response)
-            location.href="RoomsDelete.php";
+            location.href="Roomsdelete.php";
           }
 
         });

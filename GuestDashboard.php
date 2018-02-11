@@ -212,6 +212,7 @@
           </div>
         </div>
         <!-- Latest jQuery plugin-->
+ 
         <script src="js/main.js"></script>
         <!-- Latest compiled and minified JavaScript for bootstrap-->
         <script src="js/bootstrap.min.js"></script>
@@ -229,13 +230,13 @@
         <script src="js/jquery.raty.js"></script>
         <script src="js/jquery.datetimepicker.full.min.js"></script>
         <script src="js/scripts.js"></script>
-        <script src ='Adminside/js/dataTables.min.js'></script>
-        <script src = 'Adminside/js/dataTables.bootstrap4.min.js'></script>
+        <script src ='AdminSide/js/datatables.min.js'></script>
+        <script src = 'AdminSide/js/dataTables.bootstrap4.min.js'></script>
         <script>
           $(document).ready(function(){
             $('#reservations').DataTable()
           })
         </script>
-      <script src ='Adminside/js/edit_reservation.js'></script>
+               <script src ='AdminSide/js/edit_reservation.js'></script>
       </body>
       </html>

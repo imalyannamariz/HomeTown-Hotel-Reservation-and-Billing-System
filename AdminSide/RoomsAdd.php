@@ -1,5 +1,5 @@
 <?php
-	include_once 'dbConnect.php';
+	include_once '../db.php';
 	session_start();
 
  
@@ -10,29 +10,17 @@
 		$roomRate = mysqli_escape_string($conn, $_POST['roomRate']);
 		$roomNumber = mysqli_escape_string($conn, $_POST['roomNumber']);
 		$roomStatus = mysqli_escape_string($conn, $_POST['roomStatus']);
-    $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
-		$insert_room_query =  "INSERT INTO `room_masterfile`(`room_type`, `room_description`, `room_capacity`, `room_rate`, `room_number`, `room_status`, `room_imagepath`) 
-    VALUES ('$roomType', '$roomDescription', '$roomCapacity', '$roomRate', '$roomNumber', '$roomStatus', 'img/$roomImage')";
-        try 
-        {
-          $insert_result = mysqli_query($conn, $insert_room_query) or die (mysqli_error($conn));
-          if ($insert_result) 
-          {
-            if (mysqli_affected_rows($conn) > 0) 
-            {
-              echo "<script>alert('Data Successfully Inserted.');location.href='roomsDelete.php';</script>";
-              exit();
-            }
-            else 
-            {
-              echo "<script>alert('Data not Inserted.');location.href='roomsAdd.php';</script>";
-            }
-          } 
-        } 
-        catch (Exception $ex) 
-        {
-          echo "Error Inserting Data".$ex->getMessage();
+        $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
+        
+        $query = mysqli_query($conn, "INSERT INTO room_masterfile (room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) VALUES('{$roomType}','{$roomDescription}',
+    {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','../img/{$roomImage}')") or die(mysqli_error($conn));
+    $fetchnewid = mysqli_query($conn, "SELECT max(room_id) FROM room_masterfile");
+    $room = mysqli_fetch_assoc($fetchnewid);
+        for($i = 1; $i <= $roomNumber; $i++){
+            mysqli_query($conn, "INSERT walkinrooms_masterfile(walkinrooms_name, room_id) VALUES('{$roomType}{$i}', {$room['max(room_id)']})") or die(mysqli_error($conn));
         }
+    // $insert_result = mysqli_query($conn, "INSERT INTO room_masterfile(room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) 
+    // VALUES ('{$roomType}', '{$roomDescription}', {$roomCapacity}, {$roomRate}, {$roomNumber}, '{$roomStatus}', '../img/{$roomImage}')") or die (mysqli_error($conn));
 	}
 ?>
 
@@ -93,10 +81,9 @@
             <input type ='file' accept = 'image/*' name = 'image_upload'>
           </div>
            </div>
-          
-          <button name = "submit" class="btn btn-primary btn-block">Add Room</button>
-        </form>     
-        
+          <input type = 'submit' name = "submit" class="btn btn-primary btn-block" />
+        </form>  
+         <button class="btn btn-primary btn-block" href="adminPanel.php" style="background: red";>Cancel</button>
       </div>
     </div>
   </div>

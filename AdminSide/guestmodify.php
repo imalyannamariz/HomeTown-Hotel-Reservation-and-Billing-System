@@ -1,13 +1,15 @@
 <!-- Guest modify -->
 
 <?php
-	include_once 'headerAdmin.php';
+	include_once 'sideBarAndTopBar.php';
 
 	$sql = "SELECT * FROM guest_masterfile";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
-	    echo '<div class="container-fluid">
+	    echo '
+	        <div class="content-wrapper">
+	            <div class="container-fluid">
               <h3>Guest Accounts</h3>
 				        <div class="table-responsive">
                   <table class="table table-bordered table-striped" id="dataTable" align="center">
@@ -41,6 +43,7 @@
               	    }
                   echo "</table>
                 </div>
+            </div>
             </div>";
 	    if (isset($_POST['delete'])) {
       $delete_guest_query =  "DELETE FROM guest_masterfile WHERE guest_ID = {$_POST['delete_id']}";

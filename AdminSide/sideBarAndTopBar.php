@@ -1,6 +1,5 @@
 <?php
 include_once '../db.php';
-
 session_start();
 ?>
 
@@ -30,27 +29,27 @@ session_start();
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top" style ='background-color: white; ' id="mainNav">
-    <a class="navbar-brand" href="index.php" style ='color:gray'>HomeTown Hotel Makati - Admin</a>
+  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top";  id="mainNav">
+    <a class="navbar-brand" href="adminPanel.php">HomeTown Hotel Makati - Admin</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion" style ='background-color:white;'>
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.php">
+          <a class="nav-link" href="adminPanel.php">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text" >Home</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
           </ul>
         </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="reservationpage.php" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Reservations</span>
-          </a>
-        </li>
+        <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">-->
+        <!--  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="reservationpage.php" data-parent="#exampleAccordion">-->
+        <!--    <i class="fa fa-fw fa-sitemap"></i>-->
+        <!--    <span class="nav-link-text">Reservations</span>-->
+        <!--  </a>-->
+        <!--</li>-->
         
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
@@ -203,7 +202,7 @@ session_start();
           <a href="ReportReservationSummary.php">Reservation Summary</a>
         </li>
         <li>
-          <a href="ReportDiscount.php">Discount Report</a>
+          <a href="discountreports.php">Discount Report</a>
         </li>
         <li>
           <a href="ReportEarningsSummary">Summary of Earnings</a>

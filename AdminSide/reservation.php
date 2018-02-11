@@ -7,9 +7,9 @@
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
-          <th style ='display:none'></th>
-          <th>Reservation code</th>
-          <th>Guest code</th>
+          <th>Reservation ID</th>
+          <th>Guest ID</th>
+          <th>Guest name</th>
           <th>Room Name</th>
           <th>Check in date</th>
           <th>Check out date</th>
@@ -32,9 +32,9 @@
 
           ?>
           <tr>
-            <td id = 'reservation-id' style ='display:none'><?=$row['reservation_id']?></td>
-            <td><?= $row['reservation_code'] ?></td>
-            <td id = 'guest-id' ><?= $row['guest_code'] ?></td>
+            <td id = 'reservation-id'><?=$row['reservation_id']?></td>
+            <td id = 'guest-id' ><?= $row['guest_id'] ?></td>
+            <td><?= "{$row['guest_firstname']} {$row['guest_lastname']}"?></td>
             <td id = 'room-id' ><?= $row['room_type'] ?></td>
             <td id = 'checkin' ><?= $row['checkindate'] ?></td>
             <td id = 'checkout' ><?= $row['checkoutdate'] ?></td>

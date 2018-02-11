@@ -103,12 +103,13 @@ table {
           <h4 class = "modal-title" id = "myModalLabel1">Confirm Reservation</h4>
         </div>
         <div class = "modal-body1">
-          <b>
-            Verify your Email address
-          </b>
+          <h4>
+            Notice 
+          </h4>
           <hr style="height:1px;border:none;color:#333;background-color:#333;">
           <b>
-            Kindly upload the screenshot of your deposit slip at your account immediately. Reservations will not be entertained without payment proof.<br>
+            Kindly upload the screenshot of your deposit slip at your account immediately. Reservations will not be entertained without payment proof. Please deposit your reservation payment at this bank account number<br><br>
+            <h3>BPI: 3050001902 - HomeTown Hotel</h3>
             <br>
             <br>
             You can view and print your payment, and upload your payment proof so that the Hotel can confirm your reservation. You may also cancel your reservation using your account.
@@ -448,8 +449,8 @@ table {
                       </td>
                       <td class ='highrow text-right'>
                         <?php 
-                        $total *= 0.90;
-                        echo number_format($total, 2). " php";
+                        $_SESSION['reservation']['balance'] *= 0.90;
+                        echo number_format($_SESSION['reservation']['balance'], 2). " php";
                         ?>
                       </td>
                     </tr>
@@ -465,7 +466,7 @@ table {
                         <strong>Total</strong>
                       </td>
                       <td class=" highrow text-right">
-                        <?= number_format($total,2) ?>php
+                        <?= number_format($_SESSION['reservation']['balance'],2) ?>php
                       </td>
                     </tr>
                   </tbody>

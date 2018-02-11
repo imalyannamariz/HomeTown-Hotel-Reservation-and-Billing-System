@@ -1,0 +1,2 @@
+[07-Feb-2018 23:01:55 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/hthotel/public_html/ajax/filterfinancial.php on line 4
+[07-Feb-2018 23:01:58 Asia/Manila] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/hthotel/public_html/ajax/filterfinancial.php on line 4
