@@ -13,7 +13,7 @@
     $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
         
     $query = mysqli_query($conn, "INSERT INTO room_masterfile (room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) VALUES('{$roomType}','{$roomDescription}',
-       {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','../img/{$roomImage}')") or die(mysqli_error($conn));
+       {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','img/{$roomImage}')") or die(mysqli_error($conn));
     $fetchnewid = mysqli_query($conn, "SELECT max(room_id) FROM room_masterfile");
     $room = mysqli_fetch_assoc($fetchnewid);
     for($i = 1; $i <= $roomNumber; $i++){

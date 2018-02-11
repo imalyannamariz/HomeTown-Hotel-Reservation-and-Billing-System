@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
     <td id='room_rate'>" . $row["room_rate"] . "</td>
     <td id='room_number'>" . $row["room_number"] . "</td>
     <td id='room_status'>" . $row["room_status"] . "</td>
-    <td><img src ='{$row['room_imagepath']}' style = 'width:100%'/></td>
+    <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
     <td>
     <form method = 'POST' action = 'Roomsdelete.php'>
     <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
