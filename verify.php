@@ -19,12 +19,12 @@
         $email = mysql_escape_string($_GET['email']); // Set email variable
         $verifier = mysql_escape_string($_GET['verifier']); // Set verifier variable
                      
-        $search = mysql_query("SELECT guest_email, verifier, active FROM guest_masterfile WHERE guest_email='".$email."' AND verifier='".$verifier."' AND active=0") or die(mysql_error()); 
+        $search = mysql_query("SELECT guest_email, verifier, active FROM guest_masterfile WHERE guest_email='".$email."' AND verifier='".$verifier."' AND active='0'") or die(mysql_error()); 
         $match  = mysql_num_rows($search);
                      
         if($match > 0){
             // We have a match, activate the account
-            mysql_query("UPDATE guest_masterfile SET active=1 WHERE guest_email='".$email."' AND verifier='".$verifier."' AND active=0") or die(mysql_error());
+            mysql_query("UPDATE guest_masterfile SET active='1' WHERE guest_email='".$email."' AND verifier='".$verifier."' AND active='0'") or die(mysql_error());
             echo '<script>alert("Your account has been activated, you can now login");Location.href="login.php"</script>';
         }else{
             // No match -> invalid url or account has already been activated.
