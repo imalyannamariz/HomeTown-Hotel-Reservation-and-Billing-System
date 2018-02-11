@@ -43,7 +43,7 @@ if(isset($_GET['Step3.php'])){
              <div class="col-md-6 col-sm-6">
               <div class="form-group">
                 <label for="firstName">FIRST NAME <span>*</span></label>
-                <input type="text" name = "firstName" class="form-control" id="firstName" pattern = "[a-zA-Z]+" required onkeypress="return isLetter(event)" placeholder = "Enter your First name">
+                <input type="text" name = "firstName" class="form-control" id="firstName" pattern = "[a-zA-Z ]+" required onkeypress="return isLetter(event)" placeholder = "Enter your First name">
               </div>
             </div>
             <div class="col-md-6 col-sm-6">
