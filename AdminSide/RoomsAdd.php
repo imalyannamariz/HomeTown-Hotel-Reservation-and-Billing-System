@@ -19,7 +19,7 @@
     for($i = 1; $i <= $roomNumber; $i++){
       mysqli_query($conn, "INSERT walkinrooms_masterfile(walkinrooms_name, room_id) VALUES('{$roomType}{$i}', {$room['max(room_id)']})") or die(mysqli_error($conn));
     }
-    echo "<script>window.alert('Success! Room added.')location.href='Roomsdelete.php'</script>";
+    echo "<script>window.alert('Success! Room added.');window.location.href='Roomsdelete.php';</script>";
 // $insert_result = mysqli_query($conn, "INSERT INTO room_masterfile(room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) 
     // VALUES ('{$roomType}', '{$roomDescription}', {$roomCapacity}, {$roomRate}, {$roomNumber}, '{$roomStatus}', '../img/{$roomImage}')") or die (mysqli_error($conn));
 	}
