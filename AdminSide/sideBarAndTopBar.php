@@ -4,7 +4,8 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  style="
+    background-color: #cc0000;">  
 
 <head>
   <meta charset="utf-8">
@@ -27,9 +28,10 @@ session_start();
   <link rel ='stylesheet' type ='text/css' href = 'css/jquery.datetimepicker.min.css'/>
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg- dark" id="page-top" >
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top";  id="mainNav">
+  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top";  id="mainNav"
+  style="background-color: #cc0000;">
     <a class="navbar-brand" href="adminPanel.php">HomeTown Hotel Makati - Admin</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -58,7 +60,7 @@ session_start();
             <span class="nav-link-text">Manage Account</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti22">
-            <li style = "color: #007bff">
+            <li style="color: #f8f9fa;background-color: #990000;">
               Admin Account
             </li> 
             <li>
@@ -157,7 +159,7 @@ session_start();
 </li>
 </ul>
 </li>
-<!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
   <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">
     <i class="fa fa-fw fa-sitemap"></i>
     <span class="nav-link-text">Manage Discounts</span>
@@ -169,23 +171,23 @@ session_start();
     <li>
       <a href="discountModify.php">Modify Discounts</a>
     </li>
-            <li>
+            <!-- <li>
               <a href="#">Delete Discounts</a>
-            </li>
+            </li> -->
             <li>
             </li>
           </li>
 
 
 
-           <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+          <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
           <ul class="sidenav-third-level collapse" id="collapseMulti2">
 
           </ul>
         </li>
       </ul>
     </li>
- -->
+
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
       <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti100000" data-parent="#exampleAccordion">
         <i class="fa fa-fw fa-sitemap"></i>
