@@ -41,7 +41,7 @@ if(!isset($_SESSION['reservation'])){
                 <?php $fetch_addons = mysqli_query($conn, "SELECT * FROM addons_masterfile");
 
                 while($row = mysqli_fetch_assoc($fetch_addons)){
-                  $fetchreservedaddons = mysqli_query($conn, "SELECT guestaddons_masterfile.quantity FROM reservation_masterfile JOIN guestaddons_masterfile ON guestaddons_masterfile.reservation_id = reservation_masterfile.reservation_id WHERE (((checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}')) AND guestaddons_masterfile.addons_id = {$row['Addon_ID']}) AND (status = 'Approved' or status = 'Checkin')") or die(mysqli_error($conn));
+                  $fetchreservedaddons = mysqli_query($conn, "SELECT guestaddons_masterfile.quantity FROM guestaddons_masterfile JOIN reservation_masterfile ON guestaddons_masterfile.reservation_id = reservation_masterfile.reservation_id WHERE (((checkoutdate >= '{$_SESSION['reservation']['checkInDate']}' AND checkindate <= '{$_SESSION['reservation']['checkInDate']}') OR (checkoutdate >='{$_SESSION['reservation']['checkOutDate']}' AND checkindate <= '{$_SESSION['reservation']['checkOutDate']}')) AND guestaddons_masterfile.addons_id = {$row['Addon_ID']}) AND (status = 'Approved' or status = 'Checkin')") or die(mysqli_error($conn));
                   $reservedaddons = 0;
                   while($guestaddons = mysqli_fetch_assoc($fetchreservedaddons)){
                     $reservedaddons += $guestaddons['quantity'];

@@ -326,9 +326,8 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
           $('#addonsQuantity').append(`<option value ='x' selected >None</option>`)
           var checkInDate = $(this).closest('tr').find('#checkin').html()
           var checkOutDate = $(this).closest('tr').find('#checkout').html()
-          var r_id = $(this).closest('tr').find('input[name=t_id]').val()
+          var r_id =  $(this).closest('tr').find('#reservation-id').html()
           var g_id = $(this).closest('tr').find('#guest-id').html()
-          alert(g_id)
           $('input[name=r_id]').val(r_id)
           $('input[name=checkInDate').val(checkInDate)
           $('input[name=checkOutDate').val(checkOutDate)
@@ -370,14 +369,13 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
       url:$('form#formEditRoom').attr('action'),
       data: $(this).serialize(),
       success: function(html){
-        alert("Success")
+        alert(html) 
         location.reload()
       }
     })
       })
       $('form').on('submit', function(e) {
           e.preventDefault()
-          alert($(this).attr('id'))
           var message = ''
           var prompt = true
           if ($(this).attr('id') == 'formEditBilling') {
@@ -396,6 +394,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
                   data: $(this).serialize(),
                   success: function(html) {
                       alert(html)
+                      alert(message)
                       location.reload()
                   }
               })

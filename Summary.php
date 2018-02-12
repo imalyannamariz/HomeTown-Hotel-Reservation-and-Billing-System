@@ -386,7 +386,6 @@ table {
                 contentType: false,
                 processData: false,
                 success:function(html){
-                    alert(html)
                   alert("Success. Please wait for your reservation to accept")
                 },
                 error: function(html){
