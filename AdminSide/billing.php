@@ -202,7 +202,7 @@ if (isset($_POST['submitservice'])) {
               </button>
             </div>
             <div class="modal-body">
-              <form id="formEditRoom" enctype="multipart/form-data" method ='post'>
+              <form id="formEditRoom" enctype="multipart/form-data" action = '../ajax/editreservation.php' method ='post'>
                 <div class='container-fluid'>
                   <div class='form-group'>
                     <table class='table table-bordered' id='dataTable' width='100%' cellspacing='0'>
@@ -362,18 +362,6 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
           $('input[name=decrease]').val(decrease)
       })
       // End edit reservation
-      $('form#formEditRoom').on('submit', function(e){
-    e.preventDefault();
-    $.ajax({
-      type:'POST',
-      url:$('form#formEditRoom').attr('action'),
-      data: $(this).serialize(),
-      success: function(html){
-        alert(html) 
-        location.reload()
-      }
-    })
-      })
       $('form').on('submit', function(e) {
           e.preventDefault()
           var message = ''
@@ -387,18 +375,20 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
           else if ($(this).attr('id')=='addservice'){
               message ="Services has been updated"
           }
+          else if($(this).attr('id') =='formEditRoom'){
+            message = 'Room has been edited'
+          }
           if (prompt) {
               $.ajax({
                   type: 'POST',
                   url: $(this).attr('action'),
                   data: $(this).serialize(),
                   success: function(html) {
-                      alert(html)
-                      alert(message)
                       location.reload()
                   }
               })
           }
+          alert(message)
       })
       $('#payment').change(function() {
           var payment = parseFloat($(this).val())
