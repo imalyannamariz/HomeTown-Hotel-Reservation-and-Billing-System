@@ -35,7 +35,6 @@ $vatable = $lengthofstay * 0.12;
 $vattotal = $lengthofstay;
 
 mysqli_query($conn, "DELETE FROM guestaddons_masterfile WHERE reservation_id = {$_POST['reservationno']}") or die(mysqli_error($conn));
-echo print_r($_POST);
 if(isset($_POST['addonqty'])){
 	foreach($_POST['addonqty'] as $addon_id => $addonqty){
 		if($addonqty != 0){
