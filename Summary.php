@@ -101,7 +101,7 @@ table {
   <div class = "container">
     <div class = "row" style = "margin-bottom: 10%">
       <div class = "col-xs-12">
-        <button class="btn-hide btn btn-success pull-right hide-this-shit" onclick="window.print()" style="margin-right:1.4%;">Print</button>
+        <button class="btn-hide btn btn-success pull-right hide-this-shit" onclick="window.print()" style="margin-right:2.5%;">Print</button>
         <div class = "col-md-12">
           <!-- policy -->
           <div class = "col-md-4">
