@@ -107,7 +107,6 @@ session_start();
           -->         <li>
           </li>
         </li>
-<?php } ?>
         <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
         <ul class="sidenav-third-level collapse" id="collapseMulti2">
 
@@ -115,6 +114,7 @@ session_start();
       </li>
     </ul>
   </li>
+  <?php } ?>
   <!-- Manage reservation -->
   <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti101" data-parent="#exampleAccordion">
