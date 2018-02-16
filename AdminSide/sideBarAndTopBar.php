@@ -1,6 +1,11 @@
 <?php
 include_once '../db.php';
 session_start();
+  if(!isset($_SESSION['login'])){
+      echo "<script>alert('Please login to continue')
+      window.location.href = 'login.php';
+      </script>";
+    }
 ?>
 
 <!DOCTYPE html>
