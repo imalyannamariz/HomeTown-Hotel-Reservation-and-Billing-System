@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2018 at 03:03 AM
+-- Generation Time: Feb 16, 2018 at 11:33 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -67,9 +67,9 @@ CREATE TABLE `adminuser_masterfile` (
 --
 
 INSERT INTO `adminuser_masterfile` (`user_id`, `User_firstname`, `User_lastname`, `email`, `admin_type`, `password`) VALUES
-(2, 'aaaa', 'aaaaaa', 'aaaa@gmail.com', 'Admin', '123'),
-(6, 'aya aya', 'aya', 'aya@gmail.com', 'Admin', '$2y$10$w190AMJ0VrxhTLAg/cXq6.4b61bA9o8dXO4L3uOxIpurrt7czW906'),
-(10, 'Cardi', 'B', 'cardib@gmail.com', 'Admin', '$2y$10$U8c5bcv3e4O4opw/BH4kx.0y2uA01Imixk2oIcKFrRIJlh/vUUujq');
+(2, 'aaaa', 'aaaaaa', 'aaaa@gmail.com', 'Admin', '$2y$10$C2FLBTKZxTm5VnVLWIdc0uZp/TmC/wl5Kk2O5nKowbEkXAi3y3f7.'),
+(11, 'nicememe', 'hey', 'ee@gmail.com', 'Admin', '$2y$10$/7nZHWvY4wCRlyxPJIvWLuL2MvWb5ltd5jvx85JlpiszwuX7e/NQy'),
+(14, 'admin', 'admin', 'admin@admin.com', 'Admin', '$2y$10$78JPK1K8.LUdDU7pJyCX6O2MTkdG.52oyF9pbvMI87KsGAiRM8/Xm');
 
 -- --------------------------------------------------------
 
@@ -476,7 +476,6 @@ INSERT INTO `room_masterfile` (`room_id`, `room_type`, `room_description`, `room
 (17, 'Twin Queen Room', 'Capacity: 2 pax', '2', 1950, 8, 'Available', 'img/Twin.JPG'),
 (18, 'Quad Room', 'Capacity: 4 pax', '4', 2400, 3, 'Available', 'img/Quad1.jpg'),
 (19, 'Family Room', 'Capacity: 3-4 pax', '4', 2400, 3, 'Available', 'img/FM3.jpg'),
-(20, 'Group Room', 'Capacity: 14 pax', '14', 4000, 1, 'Available', 'img/group1.jpg'),
 (21, 'Dorm Room', 'Php 599/pax\r\nCapacity: 4 pax', '4', 599, 2, 'Available', 'img/Quad3.jpg');
 
 -- --------------------------------------------------------
@@ -538,7 +537,6 @@ INSERT INTO `walkinrooms_masterfile` (`walkinrooms_id`, `walkinrooms_name`, `roo
 (44, 'Family Room1', 19),
 (45, 'Family Room2', 19),
 (46, 'Family Room3', 19),
-(47, 'Group Room1', 20),
 (48, 'Dorm Room1', 21),
 (49, 'Dorm Room2', 21);
 
@@ -656,7 +654,7 @@ ALTER TABLE `addons_masterfile`
 -- AUTO_INCREMENT for table `adminuser_masterfile`
 --
 ALTER TABLE `adminuser_masterfile`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `assignedroom_masterfile`
@@ -728,7 +726,7 @@ ALTER TABLE `reservation_masterfile`
 -- AUTO_INCREMENT for table `room_masterfile`
 --
 ALTER TABLE `room_masterfile`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `walkinreservation_masterfile`
@@ -740,7 +738,7 @@ ALTER TABLE `walkinreservation_masterfile`
 -- AUTO_INCREMENT for table `walkinrooms_masterfile`
 --
 ALTER TABLE `walkinrooms_masterfile`
-  MODIFY `walkinrooms_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `walkinrooms_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1308;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

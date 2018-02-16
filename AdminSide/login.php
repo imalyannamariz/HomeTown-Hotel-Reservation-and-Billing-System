@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['firstName'] = $row['User_firstname'];
     $_SESSION['lastName']  = $row['User_lastname'];
     $_SESSION['email']     = $row['email'];
-    $_SESSION['adminType'] = $row['adminType'];
+    $_SESSION['adminType'] = $row['admin_type'];
     header("Location: index.php");
   } else {
   echo "<script>alert('Incorrect Username or Password');location.href='login.php';</script>";
