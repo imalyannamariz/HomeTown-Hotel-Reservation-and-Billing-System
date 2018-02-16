@@ -37,6 +37,7 @@
     <h5 id ='totalBill'>Total: 
     </h5>
     <hr/>
+    <a href ='printreport.php?category=financial' target='_blank' class ='btn btn-success' style ='margin-bottom:10px'>Print</a>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
