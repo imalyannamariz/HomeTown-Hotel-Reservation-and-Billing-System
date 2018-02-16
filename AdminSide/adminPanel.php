@@ -1,5 +1,4 @@
  <?= include_once 'sideBarAndTopBar.php'; 
- print_r($_SESSION);
  ?>
   <div class="content-wrapper">
     <?php if ($_SESSION['adminType'] == 'Admin') {?>
@@ -7,9 +6,11 @@
     <!-- <small> <?php echo $_SESSION['email']; ?></small></h1> -->
     <div class="container-fluid">
    <?php } ?>
+  <?php if ($_SESSION['adminType'] == 'FrontDesk') {?>
 	<h3 align = "center">Welcome Front Desk!</h3>
     <!-- <small> <?php echo $_SESSION['email']; ?></small></h1> -->
     <div class="container-fluid">
+   <?php } ?>
             <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">

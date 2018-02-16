@@ -68,7 +68,7 @@
 <body class="bg-dark">
   <div class="container">
     <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Register an Account</div>
+      <div class="card-header">Guest Registration</div>
       <div class="card-body">
         <form method = "POST" action = "registerCustomer.php">
           <div class="form-group">
@@ -141,9 +141,9 @@
           <button class="btn btn-primary btn-block" name = "submit" type = "submit">Register Customer</button>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="login.php">Login Page</a>
-          <a class="d-block small" href="forgot-password.php">Forgot Password?</a>
-        </div>
+        <a class="d-block small mt-3" href="adminPanel.php">Go Back</a>
+        <!-- <a class="d-block small" href="forgot-password.php">Forgot Password?</a> -->
+      </div>
       </div>
     </div>
   </div>
