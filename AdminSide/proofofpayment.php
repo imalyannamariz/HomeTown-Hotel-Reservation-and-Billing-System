@@ -17,7 +17,9 @@
     if(isset($_POST['delete'])){
       echo "<script>alert('Proof of payment has been deleted')</script>";
       mysqli_query($conn, "DELETE FROM proofofpayment_masterfile WHERE proofofpayment_id = {$_POST['proof_id']}") or die(mysqli_error($conn));
+
     }
+    $_POST = array();
     ?>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>

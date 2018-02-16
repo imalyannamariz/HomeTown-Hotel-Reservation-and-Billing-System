@@ -164,6 +164,7 @@ if(!isset($_SESSION['login'])){
                   echo "<script>alert('Success. Password has been changed')</script>";
               }
             }
+            $_POST = array();
           ?>
         </div>
       </div>

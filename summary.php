@@ -2,6 +2,8 @@
 include_once 'db.php';
 include_once 'header.php';
 session_start();
+$_FILES = array();
+$_POST = array();
 $fetchCurrentReservation = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_GET['code']} AND guest_id = {$_SESSION['guest_ID']}");
 $reservation = mysqli_fetch_assoc($fetchCurrentReservation);
 if(mysqli_num_rows($fetchCurrentReservation) == 0){
