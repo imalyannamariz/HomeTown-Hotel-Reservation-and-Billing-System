@@ -7,72 +7,62 @@ if (isset($_POST['delete'])) {
 }
 $sql    = "SELECT * FROM room_masterfile";
 $result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-  echo '
-  <div class="content-wrapper">
-  <div class="container-fluid">
-  <div class ="form-group">
-  <form>
-  <input type ="text" class ="form-control" id = "checkInDate" name ="checkInDate"/>
-  </form>
-  </div>
-  <div class="container-fluid">
-  <h3>Room List</h3>
-  <div class="table-responsive">
-  <div id="alert_message"></div>
-  <table class="table table-bordered table-striped" align="center">
-  <thead> 
-  <tr>
-  <th>ID</th>
-  <th>Name</th>
-  <th>Room Description</th>
-  <th>Room Capacity</th>
-  <th>Room Rate per night</th>
-  <th>Room Number</th>
-  <th>Room Status</th>
-  <th>Image</th>
-  <th colspan="2">Actions</th>
-  </tr>
-  </thead>
-  <tbody>';
-              // output data of each row
-  while ($row = $result->fetch_assoc()) {
-    echo
-    "<tr>
-    <td id='room_id'>" . $row["room_id"] . "</td>
-    <td id='room_type'>" . $row["room_type"] . "</td>
-    <td id='room_description'>" . $row["room_description"] . "</td>
-    <td id='room_capacity'>" . $row["room_capacity"] . "</td>
-    <td id='room_rate'>" . $row["room_rate"] . "</td>
-    <td id='room_number'>" . $row["room_number"] . "</td>
-    <td id='room_status'>" . $row["room_status"] . "</td>
-    <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
-    <td>
-    <form method = 'POST' action = 'Roomsdelete.php'>
-    <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
-    <button class = 'btn btn-info btn-xs edit_data' name = 'edit' type = 'button' data-toggle='modal' data-target='#editRoom'>Edit</button>
-    <br><br>
-    <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
-    </form>
-    </td>";
-  }
-  echo "
-  </tbody>
-  </table>
-  </div>
-  </div>
-  </div>
-  </div>
-  ";
-
-  // if (isset($_POST['edit'])) {
-  //   $update_room_query = "";
-  // }
-
-}
 ?>
-
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class ="form-group col-md-3">
+      <form>
+        <label>Search availability</label>
+        <input type ="text" class ="form-control" id = "checkInDate" name ="checkInDate"/>
+      </form>
+    </div>
+    <div class="container-fluid">
+      <h3>Room List</h3>
+      <div class="table-responsive">
+        <div id="alert_message"></div>
+        <table class="table table-bordered table-striped" align="center">
+          <thead> 
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Room Description</th>
+              <th>Room Capacity</th>
+              <th>Room Rate per night</th>
+              <th>Room Number</th>
+              <th>Room Status</th>
+              <th>Image</th>
+              <th colspan="2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+         <?php     // output data of each row
+         while ($row = $result->fetch_assoc()) {
+          echo
+          "<tr>
+          <td id='room_id'>" . $row["room_id"] . "</td>
+          <td id='room_type'>" . $row["room_type"] . "</td>
+          <td id='room_description'>" . $row["room_description"] . "</td>
+          <td id='room_capacity'>" . $row["room_capacity"] . "</td>
+          <td id='room_rate'>" . $row["room_rate"] . "</td>
+          <td id='room_number'>" . $row["room_number"] . "</td>
+          <td id='room_status'>" . $row["room_status"] . "</td>
+          <td><img src ='../{$row['room_imagepath']}' style = 'width:100%'/></td>
+          <td>
+          <form method = 'POST' action = 'Roomsdelete.php'>
+          <input type ='hidden' value = '{$row['room_id']}' name = 'id'>
+          <button class = 'btn btn-info btn-xs edit_data' name = \"edit\" type = 'button' data-toggle=\"modal\" data-target=\"#editRoom\">Edit</button>
+          <br><br>
+          <button name = 'delete' class = 'btn btn-info btn-xs delete_data' type = 'submit'>Delete</button>
+          </form>
+          </td>";
+        }?>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,7 +152,7 @@ table{
                 </div>
               </div>
             </form>
-            
+
             <!-- </div> -->
           </div>
           <div class='modal-footer'>
@@ -172,6 +162,14 @@ table{
       </div>
     </div>    <script src="vendor/jquery/jquery.min.js"></script>
     <script src = 'js/jquery.datetimepicker.full.min.js'></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script type = 'text/javascript' src ='js/datatables.min.js'></script> 
+    <script type="text/javascript" charset="utf8" src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript" language="javascript" >
       $(document).ready(function(){
         $("button.edit_data").click(function(){
