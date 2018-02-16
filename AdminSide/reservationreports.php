@@ -35,6 +35,7 @@
         </div>
       </div>
     </div>
+    <a href = 'printreport.php?category=reservation' target ='_blank' class ='btn btn-success'>Print</a>
     <table id ='thisTable' class ='table table-striped display dataTable table-responsive'>
       <thead>
         <tr>
