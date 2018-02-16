@@ -126,7 +126,7 @@ session_start();
     </a>
     <ul class="sidenav-second-level collapse" id="collapseMulti101">
       <li>
-        <a href="reservation.php">Modify Reservation</a>
+        <a href="reservation.php">Reservations</a>
       </li>
       <li>
         <a href="walkin.php">Walkin</a>
