@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
   $row    = mysqli_fetch_assoc($result);
   $rows   = mysqli_num_rows($result);
-
+  
   if ($rows > 0 && password_verify($password, $row['password'])) {
     // kapag walang email
     //if($row['password'] !== $password){
