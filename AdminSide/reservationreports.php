@@ -43,7 +43,7 @@
           <th>Reservation status</th>
           <th>Created at</th>
           <th>Updated at</th>
-          <th>Actions</th>
+          <!-- <th>Actions</th> -->
         </tr>
       </thead>
       <tbody id ='financialreports'>
@@ -58,7 +58,7 @@
           <td><?=$row['updated_at']?></td>
           <td><form method ='post'>
             <input type ='hidden' name ='proof_id' value ='<?= $row['proofofpayment_id']?> '/>
-            <button type ='submit' class ='btn btn-danger' onclick ="return confirm('Are you sure?')" name ='delete'>Delete</button>
+            <!-- <button type ='submit' class ='btn btn-danger' onclick ="return confirm('Are you sure?')" name ='delete'>Delete</button> -->
           </form>
         </td>
       </tr>
