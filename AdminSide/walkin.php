@@ -8,14 +8,14 @@
         <div class ='col-md-4'>
           <div class ='form-group'>
             <label>Check In</label>
-            <input type ='text' class ='form-control' name ='checkInDate' value = '<?php echo (isset($_POST['check']))? $_POST['checkInDate'] : '' ;?>' id ='checkInDate'/>
+            <input type ='text' class ='form-control' readonly name ='checkInDate' value = '<?php echo (isset($_POST['check']))? $_POST['checkInDate'] : '' ;?>' id ='checkInDate'/>
 
           </div>
         </div>
         <div class ='col-md-4'>
           <div class ='form-group'>
             <label>Check out</label>
-            <input type ='text' class ='form-control' name ='checkOutDate' value ='<?php echo (isset($_POST['check']))? $_POST['checkOutDate'] : '' ; ?>'id = 'checkOutDate'/>
+            <input type ='text' class ='form-control' readonly name ='checkOutDate' value ='<?php echo (isset($_POST['check']))? $_POST['checkOutDate'] : '' ; ?>'id = 'checkOutDate'/>
           </div>
         </div>
         <div class ='col-md-4'>
@@ -27,14 +27,14 @@
       </form>
     </div>
 
-    <?php if(isset($_POST['check'])){ ?>
+    <?php if(isset($_POST['check'])){ 
+      ?>
     <form method ='post'>
       <table id ='thisTable'  class ='table table-striped display dataTable table-responsive'>
         <thead>
           <tr>
           </tr>
         </thead>
-
         <tbody>
           <?php $fetchrooms = mysqli_query($conn, "SELECT * FROM room_masterfile");
           while($row = mysqli_fetch_assoc($fetchrooms)){ 
@@ -195,8 +195,9 @@ if(isset($_POST['update'])){
 }
 $downpayment = $total * 0.15;
 $hashedpwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
-mysqli_query($conn, "INSERT INTO walkinreservation_masterfile(room_id, checkindate, checkoutdate, code, balance, total, email, password) vALUES
-  ('{$room_ids}', '{$_POST['checkInDate']}', '{$_POST['checkOutDate']}', '{$code}', {$total},{$total}, '{$_POST['email']}', '{$hashedpwd}')") or die(mysqli_error($conn));
+mysqli_query($conn, "INSERT INTO walkinreservation_masterfile(room_id, checkindate, checkoutdate, firstname, lastname, code, balance, total, email, password) vALUES
+  ('{$room_ids}', '{$_POST['checkInDate']}', '{$_POST['checkOutDate']}', '{$_POST['fname']}', '{$_POST['lname']}', '{$code}', {$total},{$total}, '{$_POST['email']}', '{$hashedpwd}')") or die(mysqli_error($conn));
+$_POST = array();
 }
 ?>
 <!-- Bootstrap core JavaScript-->

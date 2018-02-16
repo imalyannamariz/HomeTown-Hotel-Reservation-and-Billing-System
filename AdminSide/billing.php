@@ -20,7 +20,7 @@
       </thead>
       <tbody>
         <?php
-        $fetchallreservation = mysqli_query($conn, "select * from billing_masterfile join guest_masterfile on billing_masterfile.guest_id = guest_masterfile.guest_ID join reservation_masterfile on reservation_masterfile.reservation_id = billing_masterfile.reservation_id JOIN room_masterfile on room_masterfile.room_id = reservation_masterfile.room_id") or die(mysqli_error($conn));
+        $fetchallreservation = mysqli_query($conn, "select * from billing_masterfile join guest_masterfile on billing_masterfile.guest_id = guest_masterfile.guest_ID join reservation_masterfile on reservation_masterfile.reservation_id = billing_masterfile.reservation_id JOIN room_masterfile on room_masterfile.room_id = reservation_masterfile.room_id WHERE reservation_masterfile.status != 'Checkout' AND reservation_masterfile.status != 'Void'") or die(mysqli_error($conn));
         $currentTime         = date("Y-m-d");
         while ($row = mysqli_fetch_assoc($fetchallreservation)) {
           ?>

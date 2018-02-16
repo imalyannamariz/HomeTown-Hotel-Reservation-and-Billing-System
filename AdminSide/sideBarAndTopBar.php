@@ -155,6 +155,9 @@ session_start();
     <li>
       <a href="receipts.php">Check Receipts</a>
     </li>
+        <li>
+      <a href="walkinbilling.php">Walkin billing</a>
+    </li>
   </li>
   <ul class="sidenav-third-level collapse" id="collapseMulti2">
   </ul>
