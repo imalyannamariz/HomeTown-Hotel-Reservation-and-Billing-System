@@ -108,7 +108,7 @@ table {
             <div class = "panel panel-default">
               <div class = "panel-heading" style = "background-color: ;">
                 <h3 class = "text-center">
-                  <strong>Policy</strong>
+                  <strong style = "color: white;">Policy</strong>
                 </h3>
               </div>
               <div class = "panel-body __web-inspector-hidebefore-shortcut__">
@@ -153,7 +153,7 @@ table {
             <div class = "panel panel-default">
               <div class = "panel-heading" style = "background-color: ">
                 <h3 class = "text-center">
-                  <strong>Guest Information</strong>
+                  <strong style = "color: white;">Guest Information</strong>
                 </h3>
               </div>
               <div class = "panel-body">
@@ -237,7 +237,7 @@ table {
             <div class = "panel panel-default">
               <div class = "panel-heading" style = "background-color: ">
                 <h3 class = "text-center">
-                  <strong>Total Billing</strong>
+                  <strong style = "color: white;">Total Billing</strong>
                 </h3>
               </div>
               <div class = "panel-body" stlye = "margin-bottom: -25px">
@@ -345,11 +345,11 @@ table {
               </div>
             </div>
           </div>
-          <h3>Payment Proof:</h3>
+          <h3 style = "color:black;">Payment Proof:</h3>
           <form class="hide-this-shit hidden-xs" method="post" style="display:inline; float:right !important;" enctype="multipart/form-data">
             <input class="hide-this-shit hidden-xs" type="file" name="img" style="display:inline;">
             <input type ='hidden' name = 'code' value = '<?= $_GET['code']?>'/>
-            <button required class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;" style="background: red";>
+            <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;" style="background: red";>
               Upload
             </button> 
           </form>
@@ -376,7 +376,6 @@ table {
           $(document).ready(function(){
             $('form').on('submit',function(e){
               e.preventDefault()
-              
               var form_data = new FormData()
               form_data.append('img', $('input[type=file]').prop('files')[0])
               if($('input[type=file]').prop('files')[0] == undefined ){
@@ -391,6 +390,7 @@ table {
                 contentType: false,
                 processData: false,
                 success:function(html){
+                    alert(html)
                   alert("Success. Please wait for your reservation to accept")
                 },
                 error: function(html){
