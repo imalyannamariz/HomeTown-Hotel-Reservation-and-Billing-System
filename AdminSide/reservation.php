@@ -45,9 +45,11 @@
             <td><form id = 'deletereservation'>
               <?php $checkIndisabled = 'disabled';
               $checkOutdisabled = 'disabled';
-              if($row['status'] == 'Checkin')
+               if($row['status'] == 'Checkin')
+              //if(true)
                 $checkOutdisabled = '';
               if($row['checkindate'] <= $currentDay & ($row['status'] != 'Checkin' && $row['status'] != 'Checkout' ))
+              //if(true)
                 $checkIndisabled = '';
               ?>
               <input type ='hidden' <?=$checkIndisabled?> name ='checkin'/>
