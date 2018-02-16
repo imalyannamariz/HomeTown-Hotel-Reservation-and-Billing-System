@@ -4,7 +4,7 @@ include_once 'dbConnect.php';
 if (isset($_POST['submit'])) {
   $email     = mysqli_real_escape_string($conn, $_POST['email']);
   $password  = mysqli_real_escape_string($conn, $_POST['password']);
-  $adminType = mysqli_real_escape_string($conn, $_POST['adminType']);
+  // $adminType = mysqli_real_escape_string($conn, $_POST['adminType']);
 
   $query  = "SELECT * FROM adminuser_masterfile WHERE email='$email'";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form method = "POST" action = "login.php">
+        <form method = "POST">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input required class="form-control" id="exampleInputEmail1" name = "email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
