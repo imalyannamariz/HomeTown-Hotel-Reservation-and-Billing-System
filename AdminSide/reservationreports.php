@@ -39,7 +39,7 @@
       <thead>
         <tr>
           <th>Report ID</th>
-          <th>Reservation code</th>
+          <th>Guest Name</th>
           <th>Reservation status</th>
           <th>Created at</th>
           <th>Updated at</th>
@@ -47,12 +47,12 @@
         </tr>
       </thead>
       <tbody id ='financialreports'>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT * from reservationreports_masterfile JOIN reservation_masterfile ON reservation_masterfile.reservation_id = reservationreports_masterfile.reservation_id");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM reservationreports_masterfile JOIN reservation_masterfile ON reservation_masterfile.reservation_id = reservationreports_masterfile.reservation_id INNER JOIN guest_masterfile ON guest_masterfile.guest_ID = reservation_masterfile.guest_id");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
           <td id ='reservation-id' ><?= $row['reservereports_id'] ?></td>
-          <td id = 'guest-id' ><?= $row['reservation_code'] ?></td>
+          <td><?= "{$row['guest_firstname']} {$row['guest_lastname']}"?></td>
           <td><?=$row['status']?></td>
           <td> <?= $row['created_at']?></td>
           <td><?=$row['updated_at']?></td>
