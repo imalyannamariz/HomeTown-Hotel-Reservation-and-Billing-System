@@ -1,4 +1,6 @@
- <?= include_once 'sideBarAndTopBar.php'; ?>
+ <?= include_once 'sideBarAndTopBar.php'; 
+ print_r($_SESSION);
+ ?>
   <div class="content-wrapper">
     <?php if ($_SESSION['adminType'] == 'Admin') {?>
     <h3 align = "center">Welcome Administrator!</h3>

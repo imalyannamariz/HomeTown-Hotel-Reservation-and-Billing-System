@@ -2,35 +2,9 @@
 session_start();
 include_once 'dbConnect.php';
 if(isset($_SESSION['login'])){
-    header("Location: adminPanel.php");
+  header("Location: adminPanel.php");
 }
-if (isset($_POST['submit'])) {
-  $email     = mysqli_real_escape_string($conn, $_POST['email']);
-  $password  = mysqli_real_escape_string($conn, $_POST['password']);
-  $adminType = mysqli_real_escape_string($conn, $_POST['adminType']);
 
-  $query  = "SELECT * FROM adminuser_masterfile WHERE email='$email'";
-  $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-  $row    = mysqli_fetch_assoc($result);
-  $rows   = mysqli_num_rows($result);
-  
-  if ($rows > 0 && password_verify($password, $row['password'])) {
-    // kapag walang email
-    //if($row['password'] !== $password){
-    // kapag mali password
-    // header("Location: login.php?login=Incorrect+username+or+password");
-    $_SESSION['login']     = true;
-    $_SESSION['user_id']   = $row['user_id'];
-    $_SESSION['firstName'] = $row['User_firstname'];
-    $_SESSION['lastName']  = $row['User_lastname'];
-    $_SESSION['email']     = $row['email'];
-    $_SESSION['adminType'] = $row['adminType'];
-    header("Location: adminPanel.php");
-  } else {
-  echo "<script>alert('Incorrect Username or Password');location.href='index.php';</script>";
-    exit();
-  }
-}
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +30,7 @@ if (isset($_POST['submit'])) {
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">HomeTown Hotel Login</div>
       <div class="card-body"> 
-        <form method = "POST" action = "adminPanel.php">
+        <form method = "POST">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input required class="form-control" id="exampleInputEmail1" name = "email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -79,6 +53,33 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </div>
+  <?php 
+  if (isset($_POST['submit'])) {
+    $email     = mysqli_real_escape_string($conn, $_POST['email']);
+    $password  = mysqli_real_escape_string($conn, $_POST['password']);
+
+    $query  = "SELECT * FROM adminuser_masterfile WHERE email='$email'";
+    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    $row    = mysqli_fetch_assoc($result);
+    $rows   = mysqli_num_rows($result);
+    
+    if ($rows > 0 && password_verify($password, $row['password'])) {
+    // kapag walang email
+    //if($row['password'] !== $password){
+    // kapag mali password
+    // header("Location: login.php?login=Incorrect+username+or+password");
+      $_SESSION['login']     = true;
+      $_SESSION['user_id']   = $row['user_id'];
+      $_SESSION['firstName'] = $row['User_firstname'];
+      $_SESSION['lastName']  = $row['User_lastname'];
+      $_SESSION['email']     = $row['email'];
+      $_SESSION['adminType'] = $row['admin_type'];
+      header("Location: adminPanel.php");
+    } else {
+      echo "<script>alert('Incorrect Username or Password');location.href='index.php';</script>";
+      exit();
+    }
+  }?>
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

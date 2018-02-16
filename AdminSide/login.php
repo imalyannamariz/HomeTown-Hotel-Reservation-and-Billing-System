@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) {
                 <input class="form-check-input" type="checkbox"> Remember Password</label>
             </div>
           </div> -->
-          <button name = "submit" class="btn btn-primary btn-block">Login</button>
+          <input type  = "submit" name ='submit' class="btn btn-primary btn-block"/>
         </form>
        <!--  <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Register an Account</a>
