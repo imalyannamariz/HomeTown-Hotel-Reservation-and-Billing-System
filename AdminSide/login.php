@@ -4,7 +4,7 @@ include_once 'dbConnect.php';
 if (isset($_POST['submit'])) {
   $email     = mysqli_real_escape_string($conn, $_POST['email']);
   $password  = mysqli_real_escape_string($conn, $_POST['password']);
-  $adminType = mysqli_real_escape_string($conn, $_POST['adminType']);
+  // $adminType = mysqli_real_escape_string($conn, $_POST['adminType']);
 
   $query  = "SELECT * FROM adminuser_masterfile WHERE email='$email'";
   $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['firstName'] = $row['User_firstname'];
     $_SESSION['lastName']  = $row['User_lastname'];
     $_SESSION['email']     = $row['email'];
-    $_SESSION['adminType'] = $row['adminType'];
+    $_SESSION['adminType'] = $row['admin_type'];
     header("Location: index.php");
   } else {
   echo "<script>alert('Incorrect Username or Password');location.href='login.php';</script>";
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>HomeTown Hotel - Admin Module</title>
+  <title>HomeTown Hotel —  Login Modue</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -51,36 +51,36 @@ if (isset($_POST['submit'])) {
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login</div>
+      <div class="card-header">HOMETOWN HOTEL MAKATI —  LOGIN</div>
       <div class="card-body">
-        <form method = "POST" action = "login.php">
+        <form method = "POST">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label for="exampleInputEmail1">Email address:</label>
             <input required class="form-control" id="exampleInputEmail1" name = "email" type="email" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="exampleInputPassword1">Password:</label>
             <input required class="form-control" id="exampleInputPassword1" name = "password" type="password" placeholder="Password">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="exampleInputAdminType">Type</label>
             <select required id="cmbMake" name="adminType">
                <option value="Admin" selected="selected">Admin</option>
                <option value="FrontDesk">Front Desk</option>
             </select>
-          </div>
-          <div class="form-group">
+          </div> -->
+       <!--    <div class="form-group">
             <div class="form-check">
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox"> Remember Password</label>
             </div>
-          </div>
-          <button name = "submit" class="btn btn-primary btn-block">Login</button>
+          </div> -->
+          <input type  = "submit" name ='submit' class="btn btn-primary btn-block"/>
         </form>
-        <div class="text-center">
+       <!--  <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Register an Account</a>
           <a class="d-block small" href="forgot-password.php">Forgot Password?</a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

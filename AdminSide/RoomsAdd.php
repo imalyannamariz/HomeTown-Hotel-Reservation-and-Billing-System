@@ -2,7 +2,6 @@
 	include_once '../db.php';
 	session_start();
 
- 
 	if (isset($_POST['submit'])) {
 		$roomType = mysqli_escape_string($conn, $_POST['roomType']);
 		$roomDescription = mysqli_escape_string($conn, $_POST['roomDescription']);
@@ -84,8 +83,10 @@
           </div>
            </div>
           <input type = 'submit' name = "submit" class="btn btn-primary btn-block" />
-        </form>  
-         <button class="btn btn-primary btn-block" href="adminPanel.php" style="background: red";>Cancel</button>
+          <div class="text-center">
+        <a class="d-block small mt-3" href="AdminPanel.php">Go Back</a>
+      </div>
+        </form> 
       </div>
     </div>
   </div>
