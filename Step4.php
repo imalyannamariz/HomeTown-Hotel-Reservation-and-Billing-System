@@ -103,13 +103,18 @@ table {
           <h4 class = "modal-title" id = "myModalLabel1">Confirm Reservation</h4>
         </div>
         <div class = "modal-body1">
-          <h4>
-            Notice 
-          </h4>
+          <h1>
+            Notice!
+          </h1>
           <hr style="height:1px;border:none;color:#333;background-color:#333;">
           <b>
-            Kindly upload the screenshot of your deposit slip at your account immediately. Reservations will not be entertained without payment proof. Please deposit your reservation payment at this bank account number<br><br>
+            Kindly upload the screenshot of your deposit slip at your account immediately. Reservations will not be entertained without payment proof. Please deposit your reservation payment at this bank account number,<br><br>
             <h3>BPI: 3050001902 - HomeTown Hotel</h3>
+            ______________________________________________________________________________________________________________
+            <br>
+            <h3>
+            For PayPal Payments please go to this form and then upload the screenshot of your payment completion
+          </h3>
             <br>
             <br>
             You can view and print your payment, and upload your payment proof so that the Hotel can confirm your reservation. You may also cancel your reservation using your account.
