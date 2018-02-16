@@ -2,10 +2,33 @@
 	//include_once 'dbConnect.php';
 include_once 'sideBarAndTopBar.php';
 	// session_start();
+if(isset($_POST['updateinfo'])){
+  $firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
+  $lastname= mysqli_real_escape_string($conn, $_POST['lastName']);
+  $email = mysqli_real_escape_string($conn, $_POST['email']);
+  $admintype = mysqli_real_escape_string($conn, $_POST['adminType']);
+  mysqli_query($conn, "UPDATE adminuser_masterfile SET User_firstname = '{$firstname}', User_lastname ='{$lastname}', email ='{$email}', admin_type = '{$admintype}' WHERE user_id = {$_POST['account_id']}") or die(mysqli_error($conn));
+  echo "<script>alert('Success')</script>";
+}
+else if(isset($_POST['changepass'])){
+  $password = mysqli_real_escape_string($conn, $_POST['password']);
+  $confirmpass = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
+  if($password == $confirmpass){
+    $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+    mysqli_query($conn, "UPDATE adminuser_masterfile SET password ='{$hashedpassword}' WHERE user_id = {$_POST['account_id']}") or die(mysqli_error($conn));
+    echo "<script>alert('Password has been updated')</script>";
+  }
+  else{
+    echo "<script>alert('Password don't match')</script>";
+  }
+
+}
+
 if (isset($_POST['delete'])) {
   mysqli_query($conn, "DELETE FROM adminuser_masterfile WHERE user_id = {$_POST['delete_id']}") or die(mysqli_error($conn));
   echo "<script>alert('Account has been deleted')location.href='adminusermodify.php'</script>";
 }
+$_POST = array();
 ?>
 <div class="content-wrapper">
  <div class="container-fluid">
@@ -25,9 +48,9 @@ if (isset($_POST['delete'])) {
        while($row = mysqli_fetch_assoc($result)) {
         echo "<tr>
         <td class ='account-id'>" . $row["user_id"]. "</td>
-        <td>" . $row["User_firstname"]. "</td>
-        <td>" . $row["User_lastname"]. "</td>
-        <td>" . $row["email"] . "</td>
+        <td class ='firstname'>" . $row["User_firstname"]. "</td>
+        <td class ='lastname'>" . $row["User_lastname"]. "</td>
+        <td class ='email'>" . $row["email"] . "</td>
         <td>" . $row["admin_type"] . "</td><td>
         <a data-toggle ='modal' data-target = \"#editModal\" class='btn btn-primary edit' style ='color:white;margin-bottom:10px'>Edit</a>
         <form method = 'POST' action = 'adminusermodify.php'>
@@ -99,30 +122,7 @@ if (isset($_POST['delete'])) {
          </div>
 
        </form>
-       <?php
-       $print_r = print_r($_POST);
-       if(isset($_POST['updateinfo'])){
-          $firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
-          $lastname= mysqli_real_escape_string($conn, $_POST['lastName']);
-          $email = mysqli_real_escape_string($conn, $_POST['email']);
-          $admintype = mysqli_real_escape_string($conn, $_POST['adminType']);
-          mysqli_query($conn, "UPDATE adminuser_masterfile SET User_firstname = '{$firstname}', User_lastname ='{$lastname}', email ='{$email}', admin_type = '{$admintype}' WHERE user_id = {$_POST['account_id']}") or die(mysqli_error($conn));
-          echo "<script>alert('Success')</script>";
-       }
-       else if(isset($_POST['changepass'])){
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
-        $confirmpass = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
-        if($password == $confirmpass){
-          $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
-          mysqli_query($conn, "UPDATE adminuser_masterfile SET password ='{$hashedpassword}' WHERE user_id = {$_POST['account_id']}") or die(mysqli_error($conn));
-          echo "<script>alert('Password has been updated')</script>";
-        }
-        else{
-          echo "<script>alert('Password don't match')</script>";
-        }
-        $_POST = array();
-       }
-       ?>
+
        <!-- </div> -->
      </div>
      <div class='modal-footer'>
@@ -146,6 +146,12 @@ if (isset($_POST['delete'])) {
 <script>
   $('.edit').click(function(){
     account_id = $(this).closest('tr').find('.account-id').html()
+    firstname = $(this).closest('tr').find('.firstname').html()
+    lastname = $(this).closest('tr').find('.lastname').html()
+    email = $(this).closest('tr').find('.email').html()
     $('input[name=account_id').val(account_id)
+    $('input[name=firstName]').val(firstname)
+    $('input[name=lastName]').val(lastname)
+    $('input[name=email]').val(email)
   })
 </script>
