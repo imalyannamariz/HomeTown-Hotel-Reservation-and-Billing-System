@@ -197,20 +197,20 @@ session_start();
         <li>
           <a href="reservationreports.php">Reservation Report</a>
         </li>
-        <li>
+        <!-- <li>
           <a href="ReportReservationSummary.php">Reservation Summary</a>
-        </li>
+        </li> -->
         <li>
           <a href="discountreports.php">Discount Report</a>
         </li>
-        <li>
+<!--         <li>
           <a href="ReportEarningsSummary">Summary of Earnings</a>
         </li>
         <li>
           <a href="ReportAveRoomIncome.php">Average Room Income</a>
         </li>
         <li>
-        </li>
+        </li> -->
       </li>
 
 
