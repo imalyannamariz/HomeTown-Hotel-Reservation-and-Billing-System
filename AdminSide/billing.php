@@ -341,8 +341,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
           var reservationno = $(this).closest('tr').find('#reservation-id').html()
           var roomno = $(this).closest('tr').find('#room-number').html()
           var decrease = $(this).closest('form').find('input[name=decrease]').val()
-          alert(`${checkin} ${checkout} ${reservationno} ${roomno} ${decrease}`)
-          $.ajax({
+              $.ajax({
               type: 'POST',
               url: '../ajax/assigncheckin.php',
               data: {
@@ -385,14 +384,13 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
                   url: $(this).attr('action'),
                   data: $(this).serialize(),
                   success: function(html) {
-                    alert(html)
                       location.reload()
                   }
               })
           }
           alert(message)
       })
-      $('#payment').change(function() {
+      $('#payment').keyup(function() {
           var payment = parseFloat($(this).val())
           var balance = parseFloat($('input[name=currentBalance]').val())
           $('#changeVal').html("None")
