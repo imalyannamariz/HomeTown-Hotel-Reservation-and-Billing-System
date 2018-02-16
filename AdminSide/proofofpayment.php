@@ -26,17 +26,19 @@
         <tr>
           <th>Proof of payment ID</th>
           <th>Reservation ID</th>
+          <th>Guest Name</th>
           <th>Image</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT * from proofofpayment_masterfile");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT * from proofofpayment_masterfile join reservation_masterfile on proofofpayment_masterfile.reservation_id = reservation_masterfile.reservation_id inner join guest_masterfile on guest_masterfile.guest_ID = reservation_masterfile.guest_id");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
           <td id ='reservation-id' ><?= $row['proofofpayment_id'] ?></td>
           <td id = 'guest-id' ><?= $row['reservation_id'] ?></td>
+          <td><?= "{$row['guest_firstname']} {$row['guest_lastname']}"?></td>
           <td ><img src = '<?= $row['path'] ?>' style ='width:50%'/></td>
           <td><form method ='post'>
             <input type ='hidden' name ='proof_id' value ='<?= $row['proofofpayment_id']?> '/>
