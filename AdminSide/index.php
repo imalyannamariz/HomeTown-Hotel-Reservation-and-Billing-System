@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>HomeTown Hotel - Admin Module</title>
+  <title>HomeTown Hotel Makati</title>
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -54,8 +54,8 @@ if (isset($_POST['submit'])) {
 <body class="bg-dark">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login - Admin</div>
-      <div class="card-body">
+      <div class="card-header">HomeTown Hotel Login</div>
+      <div class="card-body"> 
         <form method = "POST" action = "adminPanel.php">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -65,17 +65,17 @@ if (isset($_POST['submit'])) {
             <label for="exampleInputPassword1">Password</label>
             <input required class="form-control" id="exampleInputPassword1" name = "password" type="password" placeholder="Password">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <div class="form-check">
               <label class="form-check-label">
                 <input class="form-check-input" type="checkbox"> Remember Password</label>
             </div>
-          </div>
+          </div> -->
           <button name = "submit" class="btn btn-primary btn-block">Login</button>
         </form>
-        <div class="text-center">
+       <!--  <div class="text-center">
           <a class="d-block small mt-3" href="register.php">Register an Account</a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
