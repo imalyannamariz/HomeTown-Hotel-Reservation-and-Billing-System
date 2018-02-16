@@ -1,7 +1,7 @@
 <?php
 	//include_once 'dbConnect.php';
 include_once 'sideBarAndTopBar.php';
-	// session_start();
+// session_start();
 if(isset($_POST['updateinfo'])){
   $firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
   $lastname= mysqli_real_escape_string($conn, $_POST['lastName']);
