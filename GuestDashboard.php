@@ -139,7 +139,7 @@
                         </tr>
                       </thead>
                     </tbody>
-                    <?php $fetch_reservations = mysqli_query($conn, "SELECT *, reservation_masterfile.room_number as roomno FROM reservation_masterfile JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id JOIN billing_masterfile ON reservation_masterfile.reservation_id = billing_masterfile.reservation_id WHERE reservation_masterfile.guest_id = {$_SESSION['guest_ID']}") or die(mysqli_error($conn));
+                    <?php $fetch_reservations = mysqli_query($conn, "SELECT *, reservation_masterfile.room_number as roomno FROM reservation_masterfile JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id JOIN billing_masterfile ON reservation_masterfile.reservation_id = billing_masterfile.reservation_id WHERE reservation_masterfile.guest_id = {$_SESSION['guest_ID']} AND (reservation_masterfile.status != 'Checkout' AND reservation_masterfile.status != 'Void')") or die(mysqli_error($conn));
                     while($row = mysqli_fetch_assoc($fetch_reservations)){ ?>
                     <tr>
                       <td style ='display:none' id = 'reservation-id'> <?= $row['reservation_id']?></td>

@@ -214,7 +214,7 @@ if (isset($_POST['submitservice'])) {
                       </div>
                       <div class='form-group'>
                         <label for='roomNumber'>Room Type</label><br>
-                        <select class ='form-control' name ='roomtype' id ='roomtype'>
+                        <select class ='form-control' name ='roomtype' id ='roomtype' REQUIRED>
                           <?php
 $fetchrooms = mysqli_query($conn, "SELECT * FROM room_masterfile");
 while ($row = mysqli_fetch_assoc($fetchrooms)) {
@@ -225,7 +225,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
                       </div>
                       <div class='form-group'>
                         <label for='roomRate'>Room Quantity</label><br>
-                        <select id ='roomquantity' name = 'roomquantity' class ='form-control'>
+                        <select id ='roomquantity' name = 'roomquantity' class ='form-control' REQUIRED>
 
                         </select>
                       </div>
@@ -341,6 +341,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
           var reservationno = $(this).closest('tr').find('#reservation-id').html()
           var roomno = $(this).closest('tr').find('#room-number').html()
           var decrease = $(this).closest('form').find('input[name=decrease]').val()
+          alert(`${checkin} ${checkout} ${reservationno} ${roomno} ${decrease}`)
           $.ajax({
               type: 'POST',
               url: '../ajax/assigncheckin.php',
@@ -384,6 +385,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
                   url: $(this).attr('action'),
                   data: $(this).serialize(),
                   success: function(html) {
+                    alert(html)
                       location.reload()
                   }
               })

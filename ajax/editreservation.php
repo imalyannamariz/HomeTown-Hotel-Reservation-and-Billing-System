@@ -25,7 +25,7 @@ while($row = mysqli_fetch_assoc($getallwalkrinrooms)){
 
 // END UPDATING OF RESERVATION + ASSIGNING OF ROOMS
 
-$fetchnewroom = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$_POST['roomtype']}");
+$fetchnewroom = mysqli_query($conn, "SELECT * FROM room_masterfile WHERE room_id = {$_POST['roomtype']}") or die(mysqli_error($conn));
 $getnewroom = mysqli_fetch_assoc($fetchnewroom);
 // UPDATE billing record
 $daydiff = (strtotime($_POST['checkout']) - strtotime($_POST['checkin']))/(60*60*24);
@@ -40,7 +40,7 @@ if(isset($_POST['addonqty'])){
 		if($addonqty != 0){
 			$fetchrate = mysqli_query($conn, "SELECT * FROM addons_masterfile WHERE Addon_id = {$addon_id}") or die(mysqli_error($conn));
 			$addonrate = mysqli_fetch_assoc($fetchrate);
-			mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id, reservation_id, quantity) VALUES({$addon_id}, {$_POST['reservationno']}, {$addonqty})") or die(mysqli_error($conn));
+			mysqli_query($conn, "INSERT INTO guestaddons_masterfile(addons_id, reservation_id, quantity) VALUES({$addon_id}, {$_POST['reservationno']}, {$addonqty})") or die(mysqli_error($conn)) or die(mysqli_error($conn));
 			$vattotal += $addonrate['Addon_rate'] * $addonqty;
 		}
 	}

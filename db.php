@@ -2,12 +2,13 @@
 	date_default_timezone_set("Asia/Manila");
 	/*connection string*/
 
-	$dbServerName = "localhost";
-	$dbUsername = "hthotel_admin";
-	$dbPassword = "adminhometownhotel";
-	$dbName = "hthotel_hometown_hotel";
+	// $dbServerName = "localhost";
+	// $dbUsername = "hthotel_admin";
+	// $dbPassword = "adminhometownhotel";
+	// $dbName = "hthotel_hometown_hotel";
 
-	$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+	// $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+	$conn = mysqli_connect('localhost','root','','hometown_hotel');
 	// Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);

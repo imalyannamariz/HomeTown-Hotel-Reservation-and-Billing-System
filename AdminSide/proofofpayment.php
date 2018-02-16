@@ -6,12 +6,13 @@
     <?php 
     if(isset($_POST['submit'])){
       echo "<script>alert('Success')</script>";
+      mysqli_query($conn, "DELETE FROM proofofpayment_masterfile WHERE proofofpayment_id = {$_POST['proof_id']}") or die(mysqli_error($conn));
       $fetchcode = mysqli_query($conn, "SELECT * FROM reservation_masterfile WHERE reservation_id = {$_POST['approve_id']}");
       $row = mysqli_fetch_assoc($fetchcode);
       mysqli_query($conn, "UPDATE reservation_masterfile SET status = 'Approved' WHERE reservation_id = {$_POST['approve_id']}");
       mysqli_query($conn, "UPDATE assignedroom_masterfile SET status = 'Reserved' WHERE type ='Reservation' AND code ='{$row['reservation_code']}'") or die(mysqli_error($conn));
       $currentDay = date("Y-m-d H:i:s");
-      mysqli_query($conn, "INSERT INTO reservationreports_masterfile(reservation_id, created_at, updated_at) VALUES({$_POST['approve_id']}, '{$currentDay}', '{$currentDay}')");
+      mysqli_query($conn, "INSERT INTO reservationreports_masterfile(reservation_id, created_at, updated_at) VALUES({$_POST['approve_id']}, '{$currentDay}', '{$currentDay}')") or die(mysqli_error($conn));
     }
     if(isset($_POST['delete'])){
       echo "<script>alert('Proof of payment has been deleted')</script>";
