@@ -1,6 +1,10 @@
 <?php
 include_once 'sideBarAndTopBar.php';
-
+if (isset($_POST['delete'])) {
+  mysqli_query($conn, "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}");
+  mysqli_query($conn, "DELETE FROM walkinrooms_masterfile WHERE room_id = {$_POST['id']}");
+  echo "<script>alert('Success')</script>";
+}
 $sql    = "SELECT * FROM room_masterfile";
 $result = $conn->query($sql);
 
@@ -166,15 +170,7 @@ table{
           </div>
         </div>
       </div>
-    </div>
-    <?php
-    if (isset($_POST['delete'])) {
-      mysqli_query($conn, "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}");
-      mysqli_query($conn, "DELETE FROM walkinrooms_masterfile WHERE room_id = {$_POST['id']}");
-      echo "<script>alert('Success')</script>";
-    }
-    ?>
-    <script src="vendor/jquery/jquery.min.js"></script>
+    </div>    <script src="vendor/jquery/jquery.min.js"></script>
     <script src = 'js/jquery.datetimepicker.full.min.js'></script>
     <script type="text/javascript" language="javascript" >
       $(document).ready(function(){
