@@ -1,4 +1,4 @@
- <?= include_once 'sideBarAndTopBar.php';
+ <? include_once 'sideBarAndTopBar.php';
  ?>
 
  <div class="content-wrapper">

@@ -37,10 +37,10 @@ while ($row = mysqli_fetch_assoc($fetchallreservation)) {
           <td ><?= $row['status'] ?></td>
           <td ><?= $row['created_at'] ?></td>
           <td ><?= $row['updated_at'] ?></td>
-          <td><form id = 'deletebilling' action = '../ajax/deletebilling.php'>
-             <a data-toggle ='modal' data-target = '#editreservation1' class='btn btn-primary btn-block' id = 'editreservation' style ='color:white;margin-bottom:10px'>Edit</a>
+          <td><form class ='deletebilling' action = '../ajax/deletebilling.php'>
+             <a data-toggle ='modal' data-target = '#editreservation1' class='btn btn-primary btn-block editreservation' style ='color:white;margin-bottom:10px'>Edit</a>
              <a data-toggle ='modal' data-target = '#addservice' class ='btn btn-primary addservice btn-block' style ='color:white;margin-bottom:10px'>Add service</a>
-            <a data-toggle ='modal' data-target = '#pay' class='btn btn-primary btn-block' id = 'paymentmodal'style ='color:white;margin-bottom:10px'>Pay</a>
+            <a data-toggle ='modal' data-target = '#pay' class='btn btn-primary btn-block paymentmodal' style ='color:white;margin-bottom:10px'>Pay</a>
             <input type="hidden" name="t_id" value="<?= $row['billing_id'] ?>">
             <input type ='hidden' name ='decrease' value ='<?=floor(($row['number_guest']-1)/$row['room_capacity']) ?>'/>
             <button type ='submit' class ='btn btn-danger btn-block'>Delete</button>
@@ -289,7 +289,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
       }
     })
   })
-      $('#paymentmodal').click(function() {
+      $('.paymentmodal').click(function() {
           var b_id = $(this).closest('tr').find('#billing-id').html()
           var total = $(this).closest('tr').find('#balance').html().replace(/\,/, '')
           var r_id = $(this).closest('tr').find('#reservation-id').html()
@@ -335,7 +335,7 @@ while ($row = mysqli_fetch_assoc($fetchrooms)) {
       })
       //End service
       // Edit reservation
-      $('#editreservation').on('click', function() {
+      $('.editreservation').on('click', function() {
           var checkin = $(this).parent().closest('tr').find('#checkin').html()
           var checkout = $(this).closest('tr').find('#checkout').html()
           var reservationno = $(this).closest('tr').find('#reservation-id').html()

@@ -8,16 +8,18 @@
         <tr>
           <th>Receipt ID</th>
           <th>Guest ID</th>
+          <th>Name</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM receipts_masterfile");
+        <?php $fetchallreservation = mysqli_query($conn, "SELECT * FROM receipts_masterfile JOIN guest_masterfile ON guest_masterfile.guest_ID = receipts_masterfile.guest_id");
         $currentTime = date("Y-m-d");
         while($row = mysqli_fetch_assoc($fetchallreservation)){ ?>
         <tr>
           <td id = 'guest-id' ><?= $row['receipts_id'] ?></td>
           <td ><?= $row['guest_id']?></td>
+          <td ><?= "{$row['guest_firstname']} {$row['guest_lastname']}"?></td>
           <td>
             <a href = "printreceipt.php?receipt_id=<?=$row['receipts_id']?>" class ='btn btn-success'>View</a>
         </td>

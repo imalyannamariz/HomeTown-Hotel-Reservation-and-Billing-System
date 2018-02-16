@@ -349,7 +349,7 @@ table {
           <form class="hide-this-shit hidden-xs" method="post" style="display:inline; float:right !important;" enctype="multipart/form-data">
             <input class="hide-this-shit hidden-xs" type="file" name="img" style="display:inline;">
             <input type ='hidden' name = 'code' value = '<?= $_GET['code']?>'/>
-            <button class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;" style="background: red";>
+            <button required class="hide-this-shit hidden-xs" name="upload" onclick="return confirm('Are you sure you want to save the changes?')" style="display:inline;" style="background: red";>
               Upload
             </button> 
           </form>
@@ -376,8 +376,13 @@ table {
           $(document).ready(function(){
             $('form').on('submit',function(e){
               e.preventDefault()
+              
               var form_data = new FormData()
               form_data.append('img', $('input[type=file]').prop('files')[0])
+              if($('input[type=file]').prop('files')[0] == undefined ){
+                    alert('Please upload an image')
+                    return false
+                }
               form_data.append('code', $('input[name=code]').val())
               $.ajax({
                 url:'ajax/uploadproof.php',

@@ -4,8 +4,7 @@ session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en"  style="
-    background-color: #cc0000;">  
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -28,10 +27,9 @@ session_start();
   <link rel ='stylesheet' type ='text/css' href = 'css/jquery.datetimepicker.min.css'/>
 </head>
 
-<body class="fixed-nav sticky-footer bg- dark" id="page-top" >
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top";  id="mainNav"
-  style="background-color: #cc0000;">
+  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top";  id="mainNav">
     <a class="navbar-brand" href="adminPanel.php">HomeTown Hotel Makati - Admin</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -60,7 +58,7 @@ session_start();
             <span class="nav-link-text">Manage Account</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseMulti22">
-            <li style="color: #f8f9fa;background-color: #990000;">
+            <li style = "color: #007bff">
               Admin Account
             </li> 
             <li>
@@ -74,7 +72,7 @@ session_start();
             </li> -->
             <li>
             </li>
-            <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti001" style="-webkit-text-fill-color: #ffff; color: white;">Customer Account</a>
+            <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti001">Customer Account</a>
             <ul class="sidenav-third-level collapse" id="collapseMulti001">
               <li>
                 <a href="registerCustomer.php">Add Account</a>
@@ -159,34 +157,34 @@ session_start();
 </li>
 </ul>
 </li>
-<!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">-->
-<!--  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">-->
-<!--    <i class="fa fa-fw fa-sitemap"></i>-->
-<!--    <span class="nav-link-text">Manage Discounts</span>-->
-<!--  </a>-->
-<!--  <ul class="sidenav-second-level collapse" id="collapseMulti10000">-->
-<!--    <li>-->
-<!--      <a href="DiscountAdd.php">Add Discounts</a>-->
-<!--    </li>-->
-<!--    <li>-->
-<!--      <a href="discountModify.php">Modify Discounts</a>-->
-<!--    </li>-->
+<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+  <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti10000" data-parent="#exampleAccordion">
+    <i class="fa fa-fw fa-sitemap"></i>
+    <span class="nav-link-text">Manage Discounts</span>
+  </a>
+  <ul class="sidenav-second-level collapse" id="collapseMulti10000">
+    <li>
+      <a href="DiscountAdd.php">Add Discounts</a>
+    </li>
+    <li>
+      <a href="discountModify.php">Modify Discounts</a>
+    </li>
             <!-- <li>
               <a href="#">Delete Discounts</a>
             </li> -->
-    <!--        <li>-->
-    <!--        </li>-->
-    <!--      </li>-->
+            <li>
+            </li>
+          </li>
 
 
 
           <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
-    <!--      <ul class="sidenav-third-level collapse" id="collapseMulti2">-->
+          <ul class="sidenav-third-level collapse" id="collapseMulti2">
 
-    <!--      </ul>-->
-    <!--    </li>-->
-    <!--  </ul>-->
-    <!--</li>-->
+          </ul>
+        </li>
+      </ul>
+    </li>
 
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
       <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti100000" data-parent="#exampleAccordion">
@@ -200,20 +198,20 @@ session_start();
         <li>
           <a href="reservationreports.php">Reservation Report</a>
         </li>
-        <!--<li>-->
-        <!--  <a href="ReportReservationSummary.php">Reservation Summary</a>-->
-        <!--</li>-->
+        <li>
+          <a href="ReportReservationSummary.php">Reservation Summary</a>
+        </li>
         <li>
           <a href="discountreports.php">Discount Report</a>
         </li>
-        <!--<li>-->
-        <!--  <a href="ReportEarningsSummary">Summary of Earnings</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--  <a href="ReportAveRoomIncome.php">Average Room Income</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--</li>-->
+        <li>
+          <a href="ReportEarningsSummary">Summary of Earnings</a>
+        </li>
+        <li>
+          <a href="ReportAveRoomIncome.php">Average Room Income</a>
+        </li>
+        <li>
+        </li>
       </li>
 
 
@@ -228,7 +226,7 @@ session_start();
 
 <li class="nav-item">
   <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-    <i class="fa fa-fw fa-sign-out" a href="index.php"></i>Logout</a>
+    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
   </li>
 </ul>
 </div>
