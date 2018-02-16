@@ -169,23 +169,20 @@
               </div>
               <hr/>
               <div class ='row'>
-                <div class ='col-md-6'style ='text-align:left'>
+                <div class ='col-md-6' style ='text-align:left'>
                   <h6>Change</h6>
                 </div>
-<<<<<<< HEAD
                 <hr/>
-                <div class ='row'>
-                  <div class ='col-md-6'style ='text-align:left'>
+                <!-- <div class ='row'>
+                  <div class ='col-md-6' style ='text-align:left'>
                     <h6>Change: Php</h6>
-                  </div>
+                  </div> -->
                   <div class ='col-md-6' style ='text-align:right'>
                     <h6 id = 'changeVal'>None</h6>
                   </div>
-=======
-                <div class ='col-md-6' style ='text-align:right'>
+                <!-- <div class ='col-md-6' style ='text-align:right'>
                   <h6 id = 'changeVal'>None</h6>
->>>>>>> 4d50e7a9e9212eeb8e030a23f9e16724b36ed526
-                </div>
+                </div> -->
               </div>
 
             </div>
