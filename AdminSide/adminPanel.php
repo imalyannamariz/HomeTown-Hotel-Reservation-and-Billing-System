@@ -1,9 +1,13 @@
  <?= include_once 'sideBarAndTopBar.php'; ?>
   <div class="content-wrapper">
-    <h3 align = "center">Welcome Admin!</h3>
+    <?php if ($_SESSION['adminType'] == 'Admin') {?>
+    <h3 align = "center">Welcome Administrator!</h3>
     <!-- <small> <?php echo $_SESSION['email']; ?></small></h1> -->
     <div class="container-fluid">
-	
+   <?php } ?>
+	<h3 align = "center">Welcome Front Desk!</h3>
+    <!-- <small> <?php echo $_SESSION['email']; ?></small></h1> -->
+    <div class="container-fluid">
             <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">

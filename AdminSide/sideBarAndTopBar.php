@@ -184,7 +184,7 @@ session_start();
         </li>
       </ul>
     </li> -->
-
+  <?php if ($_SESSION['adminType'] == 'Admin') {?>
     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
       <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti100000" data-parent="#exampleAccordion">
         <i class="fa fa-fw fa-sitemap"></i>
@@ -217,12 +217,11 @@ session_start();
 
       <!--  <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a> -->
       <ul class="sidenav-third-level collapse" id="collapseMulti2">
-
       </ul>
     </li>
   </ul>
 </li>
-
+  <?php } ?>
 <li class="nav-item">
   <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
     <i class="fa fa-fw fa-sign-out" a href="logout.php"></i>Logout</a>
