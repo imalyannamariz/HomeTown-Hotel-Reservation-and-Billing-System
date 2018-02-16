@@ -10,10 +10,12 @@
 		$roomRate = mysqli_escape_string($conn, $_POST['roomRate']);
 		$roomNumber = mysqli_escape_string($conn, $_POST['roomNumber']);
 		$roomStatus = mysqli_escape_string($conn, $_POST['roomStatus']);
-    $roomImage = mysqli_escape_string($conn, $_POST['image_upload']);
-        
+    $name = basename($_FILES['image_upload']['name']);
+    $tmp = $_FILES['image_upload']['tmp_name'];
+    echo print_r($_POST). "<br/>". print_r($_FILES);
+    move_uploaded_file($tmp,"../img/{$name}");
     $query = mysqli_query($conn, "INSERT INTO room_masterfile (room_type, room_description, room_capacity, room_rate, room_number, room_status, room_imagepath) VALUES('{$roomType}','{$roomDescription}',
-       {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','img/{$roomImage}')") or die(mysqli_error($conn));
+       {$roomCapacity}, {$roomRate}, {$roomNumber},'{$roomStatus}','img/{$name}')") or die(mysqli_error($conn));
     $fetchnewid = mysqli_query($conn, "SELECT max(room_id) FROM room_masterfile");
     $room = mysqli_fetch_assoc($fetchnewid);
     for($i = 1; $i <= $roomNumber; $i++){

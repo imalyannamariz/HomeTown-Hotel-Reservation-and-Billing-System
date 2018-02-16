@@ -66,11 +66,6 @@ if ($result->num_rows > 0) {
   //   $update_room_query = "";
   // }
 
-  if (isset($_POST['delete'])) {
-    mysqli_query($conn, "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}");
-    mysqli_query($conn, "DELETE FROM walkinrooms_masterfile WHERE room_id = {$_POST['id']}");
-    echo "<script>alert('Success')</script>";
-  }
 }
 ?>
 
@@ -113,7 +108,7 @@ table{
 </style>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 
-  <div class='modal fade' id='#editRoom' role='dialog'>
+  <div class='modal fade' id='editRoom' role='dialog'>
     <div class='modal-dialog modal-lg'>
       <div class='modal-content'>
         <div class='modal-header'>
@@ -172,7 +167,13 @@ table{
         </div>
       </div>
     </div>
-    
+    <?php
+    if (isset($_POST['delete'])) {
+      mysqli_query($conn, "DELETE FROM room_masterfile WHERE room_id = {$_POST['id']}");
+      mysqli_query($conn, "DELETE FROM walkinrooms_masterfile WHERE room_id = {$_POST['id']}");
+      echo "<script>alert('Success')</script>";
+    }
+    ?>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src = 'js/jquery.datetimepicker.full.min.js'></script>
     <script type="text/javascript" language="javascript" >
