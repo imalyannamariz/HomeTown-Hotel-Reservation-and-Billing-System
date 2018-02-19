@@ -17,11 +17,11 @@ if (isset($_POST['submit'])) {
     //if($row['password'] !== $password){
     // kapag mali password
     // header("Location: login.php?login=Incorrect+username+or+password");
-    $_SESSION['login']     = true;
+    $_SESSION['adminlogin']     = true;
     $_SESSION['user_id']   = $row['user_id'];
-    $_SESSION['firstName'] = $row['User_firstname'];
-    $_SESSION['lastName']  = $row['User_lastname'];
-    $_SESSION['email']     = $row['email'];
+    $_SESSION['adminfirstName'] = $row['User_firstname'];
+    $_SESSION['adminlastName']  = $row['User_lastname'];
+    $_SESSION['adminemail']     = $row['email'];
     $_SESSION['adminType'] = $row['admin_type'];
     header("Location: index.php");
   } else {

@@ -25,15 +25,15 @@
       {
           $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
           $alphanum = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-          $verifier = md5(rand(0,1000));
+          //$verifier = md5(rand(0,1000));
           $code = '';
           do{
             $code = '';
           for($x = 0; $x <= 10; $x++)
             $code .= $alphanum[rand(0, strlen($alphanum))];
           }while(mysqli_num_rows(mysqli_query($conn, "SELECT * FROM guest_masterfile WHERE guest_code ='$code'")) != 0);
-          $sql = "INSERT INTO guest_masterfile (guest_firstname, guest_lastname, guest_email, guest_password, guest_ContactNumber, guest_country, guest_address, guest_code, verifier) VALUES ('$firstName', '$lastName', '$email', '$hashedPwd', '$contactNumber', '$country', '$address','$code', '$verifier')";
-          mysqli_query($conn, $sql) or die(mysqli_error($conn));
+          $sql = "INSERT INTO guest_masterfile (guest_firstname, guest_lastname, guest_email, guest_password, guest_ContactNumber, guest_country, guest_address, guest_code) VALUES ('$firstName', '$lastName', '$email', '$hashedPwd', '$contactNumber', '$country', '$address','$code')";
+          mysqli_query($conn, $sql) or die(mysqli_error($conn). " INSERT");
           $fetchnewaccount = mysqli_query($conn, "SELECT max(guest_ID) FROM guest_masterfile");
           $getnewaccount = mysqli_fetch_assoc($fetchnewaccount);
               $_SESSION['login'] = true;
@@ -44,27 +44,27 @@
               $_SESSION['contactNumber'] = $_POST['contactNumber'];
               $_SESSION['country'] = $selectedValue;
               $_SESSION['address'] = $_POST['address'];
-              echo "<script>alert('Success! Please verify your account by clicking the activation link that has been send to your email.');Location.href='index.php';</script>"; 
+              echo "<script>alert('Success!');Location.href='index.php';</script>"; 
               
 
-              $to      = $email; // Send email to our user
-              $subject = 'Signup | Verification'; // Give the email a subject 
-              $message = '
+              // $to      = $email; // Send email to our user
+              // $subject = 'Signup | Verification'; // Give the email a subject 
+              // $message = '
                
-              Thanks for signing up!
-              Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+              // Thanks for signing up!
+              // Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
                
-              ------------------------
-              Username: '.$firstName.' '.$lastName.'
-              ------------------------
+              // ------------------------
+              // Username: '.$firstName.' '.$lastName.'
+              // ------------------------
                
-              Please click this link to activate your account:
-              http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$verifier.'
+              // Please click this link to activate your account:
+              // http://www.yourwebsite.com/verify.php?email='.$email.'&hash='.$verifier.'
                
-              '; // Our message above including the link
+              // '; // Our message above including the link
                                    
-              $headers = 'From:hometownhotelmakati.com' . "\r\n"; // Set from headers
-              mail($to, $subject, $message, $headers); // Send our email
+              // $headers = 'From:hometownhotelmakati.com' . "\r\n"; // Set from headers
+              // mail($to, $subject, $message, $headers); // Send our email
 
           }         
         }         

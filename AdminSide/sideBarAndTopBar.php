@@ -1,7 +1,7 @@
 <?php
 include_once '../db.php';
 session_start();
-  if(!isset($_SESSION['login'])){
+  if(!isset($_SESSION['adminlogin'])){
       echo "<script>alert('Please login to continue')
       window.location.href = 'login.php';
       </script>";

@@ -3,10 +3,20 @@ include_once 'sideBarAndTopBar.php';
 
 if(isset($_POST['update'])){
 	echo "<script>alert('Success')</script>";
+	$currentTime = date("Y-m-d H:i:s");
+	$cBalance = mysqli_real_escape_string($conn, $_POST['currentBalance']);
 	$payment = mysqli_real_escape_string($conn, $_POST['payment']);
+	if($payment < $cBalance){
 	mysqli_query($conn, "UPDATE walkinreservation_masterfile SET balance = balance - {$payment} WHERE reservation_id = {$_POST['r_id']}") or die(mysqli_error($conn));
+	mysqli_query($conn, "INSERT INTO financialreports_masterfile (payment, payment_type, created_at) VALUES({$payment},'Partial', '{$currentTime}')") or die(mysqli_error($conn));
+	// mysqli_query($conn, "INSERT INTO financialreports_masterfile values()");
+}else{
+	mysqli_query($conn, "UPDATE walkinreservation_masterfile SET balance = 0 WHERE reservation_id = {$_POST['r_id']}");
+	mysqli_query($conn, "INSERT INTO financialreports_masterfile(payment, payment_type,created_at) VALUES({$cBalance}, 'Fully Paid', '{$currentTime}')") or die(mysqli_error($conn));
+}
 	$_POST = array();
 }
+
 ?>
 <div class="content-wrapper">
 	<div class="container-fluid">
@@ -34,8 +44,8 @@ if(isset($_POST['update'])){
 						<td><?=$row['checkoutdate']?></td>
 						<td><?="{$row['firstname']} {$row['lastname']}"?></td>
 						<td><?=$row['code']?></td>
-						<td id ='balance'><?=number_format($row['balance'],2). " PHP"?></td>
-						<td><?=number_format($row['total'],2) ." PHP"?></td>
+						<td id ='balance'><?=number_format($row['balance'],2)?></td>
+						<td><?=number_format($row['total'],2)?></td>
 						<td><?=$row['email']?></td>
 						<td><a href ='#'class ='btn btn-info btn-block paymentmodal' data-toggle= 'modal' data-target='#pay'>Pay</a></td>
 					</tr>
@@ -48,7 +58,7 @@ if(isset($_POST['update'])){
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Modal title</h5>
+						<h5 class="modal-title">Payment</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
