@@ -8,6 +8,8 @@
   $fetchallbilling = mysqli_query($conn, "SELECT *, reservation_masterfile.room_number as reserve_number FROM billing_masterfile INNER JOIN reservation_masterfile ON reservation_masterfile.reservation_id = billing_masterfile.reservation_id INNER JOIN room_masterfile ON reservation_masterfile.room_id = room_masterfile.room_id WHERE billing_masterfile.guest_id = {$receipt['guest_id']} AND (billing_masterfile.status = 'Partial' OR billing_masterfile.status = 'Fully Paid')");
 
   ?>
+  <body data-gr-c-s-loaded="true" style="
+    background-color: #fff;">
   <div align = 'center'>
   	<h1 class ='title'>Hometown Hotel</h1>
   	<div class ='col-md-6'>
